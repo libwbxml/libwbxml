@@ -1,0 +1,60 @@
+WAP Forum Specifications: (http://www.wapforum.org)
+-------------------------
+* WAP 1.0:
+	WBXML 1.0: WBXML-30-Apr-98.pdf
+	WML 1.0: WML-30-Apr-98.pdf
+	WTA 1.0: wta-30-apr-98.pdf
+		
+* WAP 1.1:
+	WBXML 1.1: SPEC-WBXML-19990616.pdf
+	WML 1.1: SPEC-WML-19990616.pdf
+	CHANNEL 1.1: SPEC-WTA-19990716.pdf
+
+* WAP 1.2:
+	WBXML 1.2: SPEC-WBXML-19991104.pdf
+	WML 1.2: SPEC-WML-19991104.pdf
+	SI 1.0: WAP-167-ServiceInd-20010731-a.pdf
+	SL 1.0: WAP-168-ServiceLoad-20010731-a.pdf
+
+* WAP 1.2.1 (June 2000):
+	WBXML 1.3: WAP-192-WBXML-20010725-a.pdf
+	WBXML 1.3 SIN : WAP-192_105-WBXML-20011015-a.pdf
+	WML 1.3: WAP-191-WML-20000219-a.pdf
+	CO 1.0: WAP-175-CacheOp-20010731-a.pdf	
+
+* WAP 2.0:
+	Prov 1.0 : WAP-183-PROVCONT-20010724-a.pdf
+	WTA WML1.2: WAP-266-WTA-20010908-a.pdf
+	CHANNEL 1.2: WAP-266-WTA-20010908-a.pdf
+
+
+OMA Specifications: (http://www.openmobilealliance.org/)
+-------------------
+* WAP Provisioning 1.0:
+    OMA-WAP-ProvCont-v1_1-20021112-C.PDF
+    
+* EMail Notification 1.0:
+    OMA-ERELD-EMN-V1_0-20021031-C.PDF
+    
+* Rights Expression Language Version 1.0:
+    OMA-Download-DRMREL-v1_0-20020913-a.pdf
+
+
+OMA SyncML Spécifications: (http://www.openmobilealliance.org/tech/affiliates/syncml/syncmlindex.html)
+--------------------------
+* SyncML 1.1.1:
+    syncml_represent_v111_20021002.pdf    
+    syncml_metinf_v111_20021002.pdf
+    syncml_devinf_v111_20021002.pdf
+
+* SyncML 1.2:
+	...
+
+
+OMA Wireless-Village Spécifications: (http://www.openmobilealliance.org/tech/affiliates/wv/wvindex.html)
+------------------------------------
+* OMA Wireless-Village CSP 1.1
+    OMA-WV-CSP_WBXML-V1_1-20021001-A.pdf
+
+* OMA Wireless-Village CSP 1.2
+    OMA-IMPS-WV-CSP_WBXML-V1_2-20040522-C.pdf

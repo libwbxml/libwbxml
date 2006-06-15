@@ -1,0 +1,8 @@
+#! /bin/sh
+libtoolize
+aclocal
+autoheader
+#  automake --foreign --add-missing --copy
+automake --add-missing
+autoconf
+./configure --prefix=/usr

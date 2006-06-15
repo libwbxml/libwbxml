@@ -1,0 +1,53 @@
+General
+-------
+- An automatic test tool
+- Add 'HAVE_EXPAT' to autoconf process... not directly in 'Makefile.am' files in 'src/' and 'tools/'
+
+Encoder:
+- Parse and encode XML CDDATA
+- Parse and encode XML PI
+- Generate ENTITY tokens
+- Handle Charsets Encoding
+- UCS4 convertion 
+
+Parser:
+- Handle Charsets Encoding
+
+
+WML 1.0 / WML 1.1 / WML 1.2 / WML 1.3
+-------------------------------------
+- WML Test Suite
+
+Encoder:
+- Check if there are variables: encode them in Extension Tokens 
+- Check if we must keep Ignorable Whitespaces (in WML, if we are in a <pre>, we MUST keep this spaces)
+
+
+WTA 1.0
+-------
+- WTA Test Suite
+
+
+CO 1.0
+------
+- CO Test Suite
+
+
+CHANNEL 1.1 / CHANNEL 1.2
+-------------------------
+- Channel Test Suite
+
+
+WTA-WML 1.2
+-----------
+- WTA-WML Test Suite
+
+
+SYNCML 1.1 / 1.2
+----------------
+- Real SyncML Support (testing with real devices/servers)
+
+
+WV CSP 1.1
+----------
+- Encode Date and Time in OPAQUE (WV_CSP_WBXML_v1.1.pdf - 4.6)

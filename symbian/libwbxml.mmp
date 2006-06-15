@@ -1,0 +1,57 @@
+TARGET 		Libwbxml.dll
+TARGETTYPE 	dll
+UID 		0x1000008D 0x001FAE0C
+
+MACRO 	    __SYMBIAN32__
+MACRO 	    HAVE_EXPAT
+MACRO 	    WBXML_ENCODER_USE_STRTBL
+MACRO 	    WBXML_SUPPORT_SYNCML
+MACRO 	    WBXML_SUPPORT_WML
+MACRO 	    WBXML_SUPPORT_WTA
+MACRO 	    WBXML_SUPPORT_SI
+MACRO 	    WBXML_SUPPORT_SL
+MACRO 	    WBXML_SUPPORT_CO
+MACRO 	    WBXML_SUPPORT_PROV
+MACRO 	    WBXML_SUPPORT_EMN
+MACRO 	    WBXML_SUPPORT_DRMREL
+MACRO 	    WBXML_SUPPORT_OTA_SETTINGS
+MACRO 	    WBXML_SUPPORT_WV
+// MACRO 	    WBXML_WRAPPERS
+
+SOURCEPATH 	..\src
+SOURCE 		wbxml_base64.c
+SOURCE 		wbxml_buffers.c
+SOURCE 		wbxml_charset.c
+SOURCE 		wbxml_conv.c
+SOURCE 		wbxml_elt.c
+SOURCE 		wbxml_encoder.c
+SOURCE 		wbxml_errors.c
+SOURCE 		wbxml_lists.c
+SOURCE 		wbxml_log.c
+SOURCE 		wbxml_mem.c
+SOURCE 		wbxml_parser.c
+SOURCE 		wbxml_tables.c
+SOURCE 		wbxml_tree.c
+SOURCE 		wbxml_tree_clb_wbxml.c
+SOURCE 		wbxml_tree_clb_xml.c
+SOURCE 		..\symbian\libwbxmldll.cpp
+
+USERINCLUDE .
+USERINCLUDE ..\src
+
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE \epoc32\include\libc
+SYSTEMINCLUDE  ..\..\expat\lib
+
+LIBRARY 	estlib.lib euser.lib expat.lib
+/*
+#if defined(WINS)
+deffile .\Libwbxml_wins.def
+#else 
+#if defined(ARM)
+deffile .\Libwbxml_armi.def
+#endif
+#endif
+nostrictdef
+*/
+EXPORTUNFROZEN

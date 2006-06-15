@@ -1,0 +1,66 @@
+
+  WBXML Library INSTALLATION OVERVIEW
+  
+  Dependencies
+  ------------
+  
+    The WBXML library needs the Expat XML Parser library to convert XML to WBXML
+    (http://expat.sourceforge.net)
+  
+  Linux
+  -----
+
+    Generate all the makefiles and build the necessary scripts (chmod 755 if not already done)
+    $ ./bootstrap
+
+    If you want to obtain an rpm do:
+    $ make dist
+    $ rpmbuild -ta wbxml*.tar.gz
+
+    If you do not use rpm, just make the project as usual:
+    $ make all
+    $ make install
+    $ make clean
+
+    WARNING: If you have problems compiling on Linux, it may be a 'CR LF' problem. 
+             Try changing all 'CR LF' to 'LF'.
+
+  Windows
+  -------
+  
+    The Win32 binary of Expat library is in: "/win32/expat"
+  
+     Just open the 'win32/libwbxml.dsw' VC++ workspace, and build:
+     
+        - libwbxml2.dll : Main WBXML engine - Parser and Encoder (needs Expat for XML to WBXML conversion)
+        - wbxml2xml.exe : WBXML to XML converter tool
+        - xml2wbxml.exe : XML to WBXML converter tool
+
+  Symbian
+  -------
+    
+     You must have the "Nokia S60 SDK v1.2" installed.
+     
+     You must have the Expat library (ported to Symbian) installed.
+     
+     Go to 'symbian/' folder and type:
+     c:\Symbian\libwbxml\symbian> bldmake bldfiles
+     c:\Symbian\libwbxml\symbian> abld build wins deb
+
+  Compilation Flags
+  -----------------
+    
+    WBXML_ENCODER_USE_STRTBL : Enable "String Table" code in WBXML Encoder
+    WBXML_SUPPORT_WML : Support of WML 1.0 / WML 1.1 / WML 1.2 / WML 1.3
+    WBXML_SUPPORT_WTA : Support of WTA 1.0 / WTAWML 1.2 / CHANNEL 1.1 / CHANNEL 1.2
+    WBXML_SUPPORT_SI : Support of SI 1.0
+    WBXML_SUPPORT_SL : Support of SL 1.0
+    WBXML_SUPPORT_CO : Support of CO 1.0
+    WBXML_SUPPORT_PROV : Support of PROV 1.0
+    WBXML_SUPPORT_EMN : Support of EMN 1.0
+    WBXML_SUPPORT_DRMREL : Support of DRMREL 1.0
+    WBXML_SUPPORT_OTA_SETTINGS : Support of Ericsson / Nokia OTA Settings v7.0
+    WBXML_SUPPORT_SYNCML : Support of SyncML 1.0 / SyncML 1.1 / SyncML 1.2
+    WBXML_SUPPORT_WV : Support of Wireless-Village CSP 1.1 / CSP 1.2
+    
+    HAVE_EXPAT : Enable XML Parsing feature (needs Expat)

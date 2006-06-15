@@ -1,0 +1,87 @@
+%define name	@PACKAGE@
+%define ver	@VERSION@
+%define RELEASE	@RELEASE@
+%define rel	%{?CUSTOM_RELEASE} %{!?CUSTOM_RELEASE:%RELEASE}
+%define prefix	/usr
+
+Summary:	WBXML parser and compiler library
+Summary(ca_ES):	llibreria WBXML amb parser i compilador
+Summary(es_ES):	libreria WBXML con parser y compilador
+Name:		%name
+Version:	%ver
+Release:	%rel
+Copyright:	GPL
+Vendor:		Aymerick Jéhanne <aymerick@jehanne.org>
+URL:		http://libwbxml.aymerick.com/
+
+Packager:	Pau Aliagas <pau@smsarena.com>
+Group:		Development/Libraries
+Source:		%{ver}/%{name}-%{ver}.tar.gz
+
+BuildRoot:	%{_tmppath}/%{name}-%{ver}-root
+Requires:	expat >= 1.95.4
+BuildRequires:	expat-devel >= 1.95.4
+AutoReqProv:	yes
+Provides:	wbxml2
+
+%description
+wbxml2 is a library that includes a WBXML parser and a WBXML compiler.
+Unlike wbxml, it does not depend on libxml2 but on expat, making it faster and more portable.
+
+%description -l ca_ES
+wbxml2 és una lliberia que inclou un parser i un compilador WBXML.
+A diferència de wbxml, no depén de libxml2, fent-la més ràpida i portable.
+
+%description -l es_ES
+wbxml2 es una liberia que incluye un parser y un compilador WBXML.
+A diferencia de wbxml, no depende de libxml2, haciéndola más rápida y portable.
+
+%prep
+%setup
+# CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" libtoolize && aclocal && autoheader && automake --add-missing && autoconf && ./configure --prefix=%{prefix}
+CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{prefix} --includedir=%{prefix}/include/%{name}
+
+
+%build
+# Setup for parallel builds
+numprocs=`egrep -c ^cpu[0-9]+ /proc/stat || :`
+if [ "$numprocs" = "0" ]; then
+  numprocs=1
+fi
+make -j$numprocs
+
+%install
+
+rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_DIR/file.list.wbxml
+
+make install-strip DESTDIR=$RPM_BUILD_ROOT
+
+# Ensure that all directories exist
+cd $RPM_BUILD_ROOT
+
+# Install include files found in different subdirs (hack)
+# SBD=$RPM_BUILD_DIR/%{name}-%{ver}
+# install -d ./%{prefix}/include
+# install -m644 $SBD/ince/*.h $SBD/inci/*.h ./%{prefix}/include
+
+# list all files in the distribution
+find . -type d | sed '1,2d;s,^\.,\%attr(-\,root\,root) \%dir ,' > $RPM_BUILD_DIR/file.list.wbxml
+find . -type f | sed 's,^\.,\%attr(-\,root\,root) ,' >> $RPM_BUILD_DIR/file.list.wbxml
+find . -type l | sed 's,^\.,\%attr(-\,root\,root) ,' >> $RPM_BUILD_DIR/file.list.wbxml
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_DIR/%{name}-%{ver}
+rm -rf $RPM_BUILD_DIR/file.list.wbxml
+
+
+%files -f ../file.list.wbxml
+
+%changelog 
+
+* Wed Mar 19 2003 Pau Aliagas <pau@smsarena.com>
+- spec number 0.7.1
+- install header files in their own directory
+- include new documentation
+- first rpm release
