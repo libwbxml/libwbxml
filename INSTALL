@@ -6,9 +6,16 @@
   
     The WBXML library needs the Expat XML Parser library to convert XML to WBXML
     (http://expat.sourceforge.net)
+    
+    On Linux Debian, just type:
+    $ apt-get install libexpat1-dev
   
   Linux
   -----
+    
+    You must have automake, autoconf and libtool. For example, on Debian:
+    $ apt-get install automake
+    $ apt-get install libtool
 
     Generate all the makefiles and build the necessary scripts (chmod 755 if not already done)
     $ ./bootstrap
