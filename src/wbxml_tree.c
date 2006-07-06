@@ -39,8 +39,6 @@
  *    Public Functions
  */
 
-#pragma mark WBXML Tree Building Functions
-
 WBXML_DECLARE(WBXMLError) wbxml_tree_from_wbxml(WB_UTINY *wbxml, WB_ULONG wbxml_len, WBXMLLanguage lang, WBXMLTree **tree)
 {
     WBXMLParser *wbxml_parser = NULL;
@@ -354,8 +352,6 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_to_libxml_doc(WBXMLTree *tree,
 
 #endif /* HAVE_LIBXML */
 
-
-#pragma mark WBXMLTreeNode
 
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_node_create(WBXMLTreeNodeType type)
 {
@@ -883,8 +879,6 @@ WBXML_DECLARE(WBXMLList*) wbxml_tree_node_get_all_children(WBXMLTreeNode *node)
     return result;
 }
 
-
-#pragma mark WBXMLTree
 
 WBXML_DECLARE(WBXMLTree *) wbxml_tree_create(WBXMLLanguage lang,
                                              WBXMLCharsetMIBEnum orig_charset)

@@ -55,8 +55,6 @@
 #include "wbxml.h"
 
 
-#pragma mark Constants
-
 /**
  * Compilation Flag: WBXML_ENCODER_USE_STRTBL
  * -----------------
@@ -121,8 +119,6 @@
  */
 #define WBXML_ENCODER_XML_NO_EMPTY_ELT_INDENT
 
-
-#pragma mark Types
 
 /**
  * @warning For now 'current_tag' field is only used for WV Content Encoding. And for this use, it works.
@@ -210,14 +206,9 @@ typedef struct WBXMLValueElement_t {
 } WBXMLValueElement;
 
 
-#pragma mark -
-#pragma mark Private Functions prototypes
-
 /***************************************************
  *    Private Functions prototypes
  */
-
-#pragma mark . Common Functions
 
 /*******************************
  * Common Functions
@@ -232,8 +223,6 @@ static WBXMLError encoder_encode_tree(WBXMLEncoder *encoder);
 static WB_BOOL encoder_init_output(WBXMLEncoder *encoder);
 
 
-#pragma mark . WBXML Tree Parsing Functions
-
 /*******************************
  * WBXML Tree Parsing Functions
  */
@@ -247,8 +236,6 @@ static WBXMLError parse_cdata(WBXMLEncoder *encoder, WBXMLTreeNode *node);
 static WBXMLError parse_pi(WBXMLEncoder *encoder, WBXMLTreeNode *node);
 static WBXMLError parse_tree(WBXMLEncoder *encoder, WBXMLTreeNode *node);
 
-
-#pragma mark . WBXML Output Functions
 
 /*******************************
  * WBXML Output Functions
@@ -317,8 +304,6 @@ static WB_BOOL wbxml_strtbl_add_element(WBXMLEncoder *encoder, WBXMLStringTableE
 #endif /* WBXML_ENCODER_USE_STRTBL */
 
 
-#pragma mark . XML Output Functions
-
 /*******************************
  * XML Output Functions
  */
@@ -364,14 +349,9 @@ static WBXMLError xml_encode_end_cdata(WBXMLEncoder *encoder);
 static WBXMLError xml_encode_tree(WBXMLEncoder *encoder, WBXMLTree *tree);
 
 
-#pragma mark -
-#pragma mark Public Functions
-
 /***************************************************
  *    Public Functions
  */
-
-#pragma mark . WBXMLEncoder Functions
 
 WBXML_DECLARE(WBXMLEncoder *) wbxml_encoder_create_real(void)
 {
@@ -485,8 +465,6 @@ WBXML_DECLARE(void) wbxml_encoder_reset(WBXMLEncoder *encoder)
 }
 
 
-#pragma mark . Possible options when generating WBXML or XML
-
 WBXML_DECLARE(void) wbxml_encoder_set_ignore_empty_text(WBXMLEncoder *encoder, WB_BOOL set_ignore)
 {
     if (encoder == NULL)
@@ -515,8 +493,6 @@ WBXML_DECLARE(void) wbxml_encoder_set_output_charset(WBXMLEncoder *encoder, WBXM
 }
 
 
-#pragma mark . Possible options when generating WBXML
-
 WBXML_DECLARE(void) wbxml_encoder_set_use_strtbl(WBXMLEncoder *encoder, WB_BOOL use_strtbl)
 {
 #if defined( WBXML_ENCODER_USE_STRTBL )
@@ -538,8 +514,6 @@ WBXML_DECLARE(void) wbxml_encoder_set_wbxml_version(WBXMLEncoder *encoder, WBXML
 }
 
 
-#pragma mark . Possible options when generating XML
-
 WBXML_DECLARE(void) wbxml_encoder_set_xml_gen_type(WBXMLEncoder *encoder, WBXMLGenXMLType gen_type)
 {
     if (encoder == NULL)
@@ -557,8 +531,6 @@ WBXML_DECLARE(void) wbxml_encoder_set_indent(WBXMLEncoder *encoder, WB_UTINY ind
     encoder->indent_delta = indent;
 }
 
-
-#pragma mark . Tree Encoding Functions
 
 WBXML_DECLARE(void) wbxml_encoder_set_tree(WBXMLEncoder *encoder, WBXMLTree *tree)
 {
@@ -616,8 +588,6 @@ WBXML_DECLARE(WBXMLError) wbxml_encoder_encode_tree_to_xml(WBXMLEncoder *encoder
     return wbxml_encoder_get_output(encoder, xml, xml_len);
 }
 
-
-#pragma mark . Flow Mode Encoding Functions
 
 WBXML_DECLARE(WBXMLError) wbxml_encoder_set_flow_mode(WBXMLEncoder *encoder, WB_BOOL flow_mode)
 {
@@ -814,16 +784,9 @@ WBXML_DECLARE(void) wbxml_encoder_delete_last_node(WBXMLEncoder *encoder)
 }
 
 
-#pragma mark -
-#pragma mark Private Functions
-
 /***************************************************
  *    Private Functions
  */
-
-
-#pragma mark 
-#pragma mark Common Functions
 
 /****************************
  * Common Functions
@@ -981,9 +944,6 @@ static WB_BOOL encoder_init_output(WBXMLEncoder *encoder)
     return TRUE;
 }
 
-
-#pragma mark 
-#pragma mark WBXML Tree Parsing Functions
 
 /*********************************
  * WBXML Tree Parsing Functions
@@ -1407,14 +1367,9 @@ static WBXMLError parse_tree(WBXMLEncoder *encoder, WBXMLTreeNode *node)
 }
 
 
-#pragma mark 
-#pragma mark WBXML Output Functions
-
 /*****************************************
  *  WBXML Output Functions
  */
-
-#pragma mark . Build WBXML Result
 
 /****************************
  * Build WBXML Result
@@ -1597,8 +1552,6 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     return WBXML_OK;
 }
 
-
-#pragma mark . WBXML Encoding Functions
 
 /****************************
  * WBXML Encoding Functions
@@ -2624,8 +2577,6 @@ static WBXMLError wbxml_encode_tree(WBXMLEncoder *encoder, WBXMLTree *tree)
 }
 
 
-#pragma mark . Language Specific Encoding Functions
-
 /****************************************
  * Language Specific Encoding Functions
  */
@@ -3183,8 +3134,6 @@ static WBXMLError wbxml_encode_drmrel_content(WBXMLEncoder *encoder, WB_UTINY *b
 
 #if defined( WBXML_ENCODER_USE_STRTBL )
 
-#pragma mark . String Table Functions
-
 /****************************
  * String Table Functions
  */
@@ -3636,14 +3585,9 @@ static WB_BOOL wbxml_strtbl_add_element(WBXMLEncoder *encoder, WBXMLStringTableE
 #endif /* WBXML_ENCODER_USE_STRTBL */
 
 
-#pragma mark 
-#pragma mark XML Output Functions
-
 /*****************************************
  *  XML Output Functions
  */
-
-#pragma mark . Build XML Result
 
 /****************************
  * Build XML Result
@@ -3779,8 +3723,6 @@ static WBXMLError xml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     return WBXML_OK;
 }
 
-
-#pragma mark . XML Encoding Functions
 
 /****************************
  * XML Encoding Functions

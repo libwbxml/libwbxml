@@ -58,9 +58,6 @@ typedef enum WBXMLEncoderOutputType_e {
 } WBXMLEncoderOutputType;
 
 
-#pragma mark 
-#pragma mark WBXMLEncoder Functions
-
 /**
  * @brief Create a WBXML Encoder
  * @result Return the newly created WBXMLEncoder, or NULL if not enough memory
@@ -81,9 +78,6 @@ WBXML_DECLARE(void) wbxml_encoder_destroy(WBXMLEncoder *encoder);
  */
 WBXML_DECLARE(void) wbxml_encoder_reset(WBXMLEncoder *encoder);
 
-
-#pragma mark 
-#pragma mark Possible options when generating WBXML or XML
 
 /**
  * @brief Set the WBXML Encoder to ignore empty texts (ie: ignorable Whitespaces) [Default: FALSE]
@@ -115,9 +109,6 @@ WBXML_DECLARE(void) wbxml_encoder_set_remove_text_blanks(WBXMLEncoder *encoder, 
 WBXML_DECLARE(void) wbxml_encoder_set_output_charset(WBXMLEncoder *encoder, WBXMLCharsetMIBEnum charset);
 
 
-#pragma mark 
-#pragma mark Possible options when generating WBXML
-
 /**
  * @brief Set if we use String Table when Encoding into WBXML [Default: TRUE]
  * @param encoder [in] The WBXML Encoder
@@ -134,9 +125,6 @@ WBXML_DECLARE(void) wbxml_encoder_set_use_strtbl(WBXMLEncoder *encoder, WB_BOOL 
 WBXML_DECLARE(void) wbxml_encoder_set_wbxml_version(WBXMLEncoder *encoder, WBXMLVersion version);
 
 
-#pragma mark 
-#pragma mark Possible options when generating XML
-
 /**
  * @brief Set the WBXML Encoder XML Generation Type, when generating XML [Default: WBXML_GEN_XML_COMPACT]
  * @param encoder [in] The WBXML Encoder
@@ -151,9 +139,6 @@ WBXML_DECLARE(void) wbxml_encoder_set_xml_gen_type(WBXMLEncoder *encoder, WBXMLG
  */
 WBXML_DECLARE(void) wbxml_encoder_set_indent(WBXMLEncoder *encoder, WB_UTINY indent);
 
-
-#pragma mark 
-#pragma mark Tree Encoding Functions
 
 /**
  * @brief Set the WBXML Tree to encode
@@ -197,9 +182,6 @@ WBXML_DECLARE(WBXMLError) wbxml_encoder_encode_tree_to_xml(WBXMLEncoder *encoder
 /* BC */
 #define wbxml_encoder_encode_to_xml(a,b,c) wbxml_encoder_encode_tree_to_xml(a,b,c)
 
-
-#pragma mark 
-#pragma mark Flow Mode Encoding Functions
 
 /**
  * @brief Set the encoder into 'Flow Mode' (to encode nodes directly)

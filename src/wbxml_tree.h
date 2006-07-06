@@ -135,9 +135,6 @@ typedef enum WBXMLSyncMLDataType_e {
 #endif /* WBXML_SUPPORT_SYNCML */
 
 
-#pragma mark 
-#pragma mark WBXML Tree Building Functions
-
 /****************************************************
  *  WBXML Tree Building Functions
  */
@@ -219,14 +216,9 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_to_libxml_doc(WBXMLTree *tree,
 #endif /* HAVE_LIBXML */
 
 
-#pragma mark 
-#pragma mark WBXML Tree Functions
-
 /****************************************************
  *	WBXML Tree Functions
  */
-
-#pragma mark . WBXMLTreeNode
 
 /**
  * @brief Create a Tree Node structure
@@ -398,8 +390,6 @@ WBXML_DECLARE(WB_BOOL) wbxml_tree_node_have_child_elt(WBXMLTreeNode *node);
  */
 WBXML_DECLARE(WBXMLList*) wbxml_tree_node_get_all_children(WBXMLTreeNode *node);
 
-
-#pragma mark . WBXMLTree
 
 /**
  * @brief Create a Tree structure
