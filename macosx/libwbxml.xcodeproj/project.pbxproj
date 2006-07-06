@@ -1,0 +1,789 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E0042B020A5D0A4400DB9445 /* libwbxml2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0042AEB0A5D09D400DB9445 /* libwbxml2.a */; };
+		E0042B0C0A5D0A5700DB9445 /* xml2wbxml_tool.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B080A5D0A5700DB9445 /* xml2wbxml_tool.c */; };
+		E0042B310A5D0A7A00DB9445 /* wbxml.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B0F0A5D0A7A00DB9445 /* wbxml.h */; };
+		E0042B320A5D0A7A00DB9445 /* wbxml_base64.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B100A5D0A7A00DB9445 /* wbxml_base64.c */; };
+		E0042B330A5D0A7A00DB9445 /* wbxml_base64.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B110A5D0A7A00DB9445 /* wbxml_base64.h */; };
+		E0042B340A5D0A7A00DB9445 /* wbxml_buffers.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B120A5D0A7A00DB9445 /* wbxml_buffers.c */; };
+		E0042B350A5D0A7A00DB9445 /* wbxml_buffers.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B130A5D0A7A00DB9445 /* wbxml_buffers.h */; };
+		E0042B360A5D0A7A00DB9445 /* wbxml_charset.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B140A5D0A7A00DB9445 /* wbxml_charset.c */; };
+		E0042B370A5D0A7A00DB9445 /* wbxml_charset.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B150A5D0A7A00DB9445 /* wbxml_charset.h */; };
+		E0042B380A5D0A7A00DB9445 /* wbxml_conv.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B160A5D0A7A00DB9445 /* wbxml_conv.c */; };
+		E0042B390A5D0A7A00DB9445 /* wbxml_conv.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B170A5D0A7A00DB9445 /* wbxml_conv.h */; };
+		E0042B3A0A5D0A7A00DB9445 /* wbxml_elt.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B180A5D0A7A00DB9445 /* wbxml_elt.c */; };
+		E0042B3B0A5D0A7A00DB9445 /* wbxml_elt.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B190A5D0A7A00DB9445 /* wbxml_elt.h */; };
+		E0042B3C0A5D0A7A00DB9445 /* wbxml_encoder.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B1A0A5D0A7A00DB9445 /* wbxml_encoder.c */; };
+		E0042B3D0A5D0A7A00DB9445 /* wbxml_encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B1B0A5D0A7A00DB9445 /* wbxml_encoder.h */; };
+		E0042B3E0A5D0A7A00DB9445 /* wbxml_errors.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B1C0A5D0A7A00DB9445 /* wbxml_errors.c */; };
+		E0042B3F0A5D0A7A00DB9445 /* wbxml_errors.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B1D0A5D0A7A00DB9445 /* wbxml_errors.h */; };
+		E0042B400A5D0A7A00DB9445 /* wbxml_handlers.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B1E0A5D0A7A00DB9445 /* wbxml_handlers.h */; };
+		E0042B410A5D0A7A00DB9445 /* wbxml_lists.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B1F0A5D0A7A00DB9445 /* wbxml_lists.c */; };
+		E0042B420A5D0A7A00DB9445 /* wbxml_lists.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B200A5D0A7A00DB9445 /* wbxml_lists.h */; };
+		E0042B430A5D0A7A00DB9445 /* wbxml_log.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B210A5D0A7A00DB9445 /* wbxml_log.c */; };
+		E0042B440A5D0A7A00DB9445 /* wbxml_log.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B220A5D0A7A00DB9445 /* wbxml_log.h */; };
+		E0042B450A5D0A7A00DB9445 /* wbxml_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B230A5D0A7A00DB9445 /* wbxml_mem.c */; };
+		E0042B460A5D0A7A00DB9445 /* wbxml_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B240A5D0A7A00DB9445 /* wbxml_mem.h */; };
+		E0042B470A5D0A7A00DB9445 /* wbxml_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B250A5D0A7A00DB9445 /* wbxml_parser.c */; };
+		E0042B480A5D0A7A00DB9445 /* wbxml_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B260A5D0A7A00DB9445 /* wbxml_parser.h */; };
+		E0042B490A5D0A7A00DB9445 /* wbxml_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B270A5D0A7A00DB9445 /* wbxml_tables.c */; };
+		E0042B4A0A5D0A7A00DB9445 /* wbxml_tables.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B280A5D0A7A00DB9445 /* wbxml_tables.h */; };
+		E0042B4B0A5D0A7A00DB9445 /* wbxml_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B290A5D0A7A00DB9445 /* wbxml_tree.c */; };
+		E0042B4C0A5D0A7A00DB9445 /* wbxml_tree.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B2A0A5D0A7A00DB9445 /* wbxml_tree.h */; };
+		E0042B4D0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B2B0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.c */; };
+		E0042B4E0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B2C0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.h */; };
+		E0042B4F0A5D0A7A00DB9445 /* wbxml_tree_clb_xml.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B2D0A5D0A7A00DB9445 /* wbxml_tree_clb_xml.c */; };
+		E0042B500A5D0A7A00DB9445 /* wbxml_tree_clb_xml.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B2E0A5D0A7A00DB9445 /* wbxml_tree_clb_xml.h */; };
+		E0042B510A5D0A7A00DB9445 /* wbxml_wrap_syncml.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B2F0A5D0A7A00DB9445 /* wbxml_wrap_syncml.c */; };
+		E0042B520A5D0A7A00DB9445 /* wbxml_wrap_syncml.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B300A5D0A7A00DB9445 /* wbxml_wrap_syncml.h */; };
+		E0042B6A0A5D0B7A00DB9445 /* libwbxml2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0042AEB0A5D09D400DB9445 /* libwbxml2.a */; };
+		E0042B6D0A5D0B8600DB9445 /* wbxml2xml_tool.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B070A5D0A5700DB9445 /* wbxml2xml_tool.c */; };
+		E0042CAB0A5D120C00DB9445 /* xmlparse.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042C9A0A5D120C00DB9445 /* xmlparse.c */; };
+		E0042CAC0A5D120C00DB9445 /* xmlrole.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042C9B0A5D120C00DB9445 /* xmlrole.c */; };
+		E0042CAE0A5D120C00DB9445 /* xmltok.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042C9D0A5D120C00DB9445 /* xmltok.c */; };
+		E0042CCE0A5D13EF00DB9445 /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0042C880A5D102F00DB9445 /* libexpat.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E0042B000A5D0A3D00DB9445 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0042ADD0A5D09C800DB9445 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0042AEA0A5D09D400DB9445 /* wbxml2 */;
+			remoteInfo = wbxml2;
+		};
+		E0042B680A5D0B7400DB9445 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0042ADD0A5D09C800DB9445 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0042AEA0A5D09D400DB9445 /* wbxml2 */;
+			remoteInfo = wbxml2;
+		};
+		E0042CCC0A5D13EA00DB9445 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0042ADD0A5D09C800DB9445 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0042C870A5D102F00DB9445 /* expat */;
+			remoteInfo = expat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E0042AEB0A5D09D400DB9445 /* libwbxml2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libwbxml2.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0042AF50A5D0A3000DB9445 /* xml2wbxml */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xml2wbxml; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0042B040A5D0A5700DB9445 /* attgetopt.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = attgetopt.c; sourceTree = "<group>"; };
+		E0042B050A5D0A5700DB9445 /* getopt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = getopt.h; sourceTree = "<group>"; };
+		E0042B070A5D0A5700DB9445 /* wbxml2xml_tool.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml2xml_tool.c; sourceTree = "<group>"; };
+		E0042B080A5D0A5700DB9445 /* xml2wbxml_tool.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xml2wbxml_tool.c; sourceTree = "<group>"; };
+		E0042B0F0A5D0A7A00DB9445 /* wbxml.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml.h; sourceTree = "<group>"; };
+		E0042B100A5D0A7A00DB9445 /* wbxml_base64.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_base64.c; sourceTree = "<group>"; };
+		E0042B110A5D0A7A00DB9445 /* wbxml_base64.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_base64.h; sourceTree = "<group>"; };
+		E0042B120A5D0A7A00DB9445 /* wbxml_buffers.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_buffers.c; sourceTree = "<group>"; };
+		E0042B130A5D0A7A00DB9445 /* wbxml_buffers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_buffers.h; sourceTree = "<group>"; };
+		E0042B140A5D0A7A00DB9445 /* wbxml_charset.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_charset.c; sourceTree = "<group>"; };
+		E0042B150A5D0A7A00DB9445 /* wbxml_charset.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_charset.h; sourceTree = "<group>"; };
+		E0042B160A5D0A7A00DB9445 /* wbxml_conv.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_conv.c; sourceTree = "<group>"; };
+		E0042B170A5D0A7A00DB9445 /* wbxml_conv.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_conv.h; sourceTree = "<group>"; };
+		E0042B180A5D0A7A00DB9445 /* wbxml_elt.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_elt.c; sourceTree = "<group>"; };
+		E0042B190A5D0A7A00DB9445 /* wbxml_elt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_elt.h; sourceTree = "<group>"; };
+		E0042B1A0A5D0A7A00DB9445 /* wbxml_encoder.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_encoder.c; sourceTree = "<group>"; };
+		E0042B1B0A5D0A7A00DB9445 /* wbxml_encoder.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_encoder.h; sourceTree = "<group>"; };
+		E0042B1C0A5D0A7A00DB9445 /* wbxml_errors.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_errors.c; sourceTree = "<group>"; };
+		E0042B1D0A5D0A7A00DB9445 /* wbxml_errors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_errors.h; sourceTree = "<group>"; };
+		E0042B1E0A5D0A7A00DB9445 /* wbxml_handlers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_handlers.h; sourceTree = "<group>"; };
+		E0042B1F0A5D0A7A00DB9445 /* wbxml_lists.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_lists.c; sourceTree = "<group>"; };
+		E0042B200A5D0A7A00DB9445 /* wbxml_lists.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_lists.h; sourceTree = "<group>"; };
+		E0042B210A5D0A7A00DB9445 /* wbxml_log.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_log.c; sourceTree = "<group>"; };
+		E0042B220A5D0A7A00DB9445 /* wbxml_log.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_log.h; sourceTree = "<group>"; };
+		E0042B230A5D0A7A00DB9445 /* wbxml_mem.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_mem.c; sourceTree = "<group>"; };
+		E0042B240A5D0A7A00DB9445 /* wbxml_mem.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_mem.h; sourceTree = "<group>"; };
+		E0042B250A5D0A7A00DB9445 /* wbxml_parser.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_parser.c; sourceTree = "<group>"; };
+		E0042B260A5D0A7A00DB9445 /* wbxml_parser.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_parser.h; sourceTree = "<group>"; };
+		E0042B270A5D0A7A00DB9445 /* wbxml_tables.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_tables.c; sourceTree = "<group>"; };
+		E0042B280A5D0A7A00DB9445 /* wbxml_tables.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_tables.h; sourceTree = "<group>"; };
+		E0042B290A5D0A7A00DB9445 /* wbxml_tree.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_tree.c; sourceTree = "<group>"; };
+		E0042B2A0A5D0A7A00DB9445 /* wbxml_tree.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_tree.h; sourceTree = "<group>"; };
+		E0042B2B0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_tree_clb_wbxml.c; sourceTree = "<group>"; };
+		E0042B2C0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_tree_clb_wbxml.h; sourceTree = "<group>"; };
+		E0042B2D0A5D0A7A00DB9445 /* wbxml_tree_clb_xml.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_tree_clb_xml.c; sourceTree = "<group>"; };
+		E0042B2E0A5D0A7A00DB9445 /* wbxml_tree_clb_xml.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_tree_clb_xml.h; sourceTree = "<group>"; };
+		E0042B2F0A5D0A7A00DB9445 /* wbxml_wrap_syncml.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml_wrap_syncml.c; sourceTree = "<group>"; };
+		E0042B300A5D0A7A00DB9445 /* wbxml_wrap_syncml.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_wrap_syncml.h; sourceTree = "<group>"; };
+		E0042B660A5D0B7000DB9445 /* wbxml2xml */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wbxml2xml; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0042C880A5D102F00DB9445 /* libexpat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libexpat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0042C910A5D120C00DB9445 /* ascii.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ascii.h; sourceTree = "<group>"; };
+		E0042C920A5D120C00DB9445 /* asciitab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = asciitab.h; sourceTree = "<group>"; };
+		E0042C930A5D120C00DB9445 /* expat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = expat.h; sourceTree = "<group>"; };
+		E0042C940A5D120C00DB9445 /* iasciitab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = iasciitab.h; sourceTree = "<group>"; };
+		E0042C950A5D120C00DB9445 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
+		E0042C960A5D120C00DB9445 /* latin1tab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = latin1tab.h; sourceTree = "<group>"; };
+		E0042C970A5D120C00DB9445 /* nametab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = nametab.h; sourceTree = "<group>"; };
+		E0042C980A5D120C00DB9445 /* utf8tab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = utf8tab.h; sourceTree = "<group>"; };
+		E0042C9A0A5D120C00DB9445 /* xmlparse.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmlparse.c; sourceTree = "<group>"; };
+		E0042C9B0A5D120C00DB9445 /* xmlrole.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmlrole.c; sourceTree = "<group>"; };
+		E0042C9C0A5D120C00DB9445 /* xmlrole.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = xmlrole.h; sourceTree = "<group>"; };
+		E0042C9D0A5D120C00DB9445 /* xmltok.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmltok.c; sourceTree = "<group>"; };
+		E0042C9E0A5D120C00DB9445 /* xmltok.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = xmltok.h; sourceTree = "<group>"; };
+		E0042CB50A5D12DF00DB9445 /* expat_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = expat_config.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E0042AE90A5D09D400DB9445 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0042CCE0A5D13EF00DB9445 /* libexpat.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042AF20A5D0A3000DB9445 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0042B020A5D0A4400DB9445 /* libwbxml2.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042B630A5D0B7000DB9445 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0042B6A0A5D0B7A00DB9445 /* libwbxml2.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042C860A5D102F00DB9445 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E0042ADB0A5D09C800DB9445 = {
+			isa = PBXGroup;
+			children = (
+				E0042B0D0A5D0A7A00DB9445 /* src */,
+				E0042B030A5D0A5700DB9445 /* tools */,
+				E0042C900A5D120C00DB9445 /* expat */,
+				E0042AEC0A5D09D400DB9445 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E0042AEC0A5D09D400DB9445 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E0042AEB0A5D09D400DB9445 /* libwbxml2.a */,
+				E0042C880A5D102F00DB9445 /* libexpat.a */,
+				E0042AF50A5D0A3000DB9445 /* xml2wbxml */,
+				E0042B660A5D0B7000DB9445 /* wbxml2xml */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E0042B030A5D0A5700DB9445 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				E0042B040A5D0A5700DB9445 /* attgetopt.c */,
+				E0042B050A5D0A5700DB9445 /* getopt.h */,
+				E0042B070A5D0A5700DB9445 /* wbxml2xml_tool.c */,
+				E0042B080A5D0A5700DB9445 /* xml2wbxml_tool.c */,
+			);
+			name = tools;
+			path = ../tools;
+			sourceTree = SOURCE_ROOT;
+		};
+		E0042B0D0A5D0A7A00DB9445 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E0042B0F0A5D0A7A00DB9445 /* wbxml.h */,
+				E0042B100A5D0A7A00DB9445 /* wbxml_base64.c */,
+				E0042B110A5D0A7A00DB9445 /* wbxml_base64.h */,
+				E0042B120A5D0A7A00DB9445 /* wbxml_buffers.c */,
+				E0042B130A5D0A7A00DB9445 /* wbxml_buffers.h */,
+				E0042B140A5D0A7A00DB9445 /* wbxml_charset.c */,
+				E0042B150A5D0A7A00DB9445 /* wbxml_charset.h */,
+				E0042B160A5D0A7A00DB9445 /* wbxml_conv.c */,
+				E0042B170A5D0A7A00DB9445 /* wbxml_conv.h */,
+				E0042B180A5D0A7A00DB9445 /* wbxml_elt.c */,
+				E0042B190A5D0A7A00DB9445 /* wbxml_elt.h */,
+				E0042B1A0A5D0A7A00DB9445 /* wbxml_encoder.c */,
+				E0042B1B0A5D0A7A00DB9445 /* wbxml_encoder.h */,
+				E0042B1C0A5D0A7A00DB9445 /* wbxml_errors.c */,
+				E0042B1D0A5D0A7A00DB9445 /* wbxml_errors.h */,
+				E0042B1E0A5D0A7A00DB9445 /* wbxml_handlers.h */,
+				E0042B1F0A5D0A7A00DB9445 /* wbxml_lists.c */,
+				E0042B200A5D0A7A00DB9445 /* wbxml_lists.h */,
+				E0042B210A5D0A7A00DB9445 /* wbxml_log.c */,
+				E0042B220A5D0A7A00DB9445 /* wbxml_log.h */,
+				E0042B230A5D0A7A00DB9445 /* wbxml_mem.c */,
+				E0042B240A5D0A7A00DB9445 /* wbxml_mem.h */,
+				E0042B250A5D0A7A00DB9445 /* wbxml_parser.c */,
+				E0042B260A5D0A7A00DB9445 /* wbxml_parser.h */,
+				E0042B270A5D0A7A00DB9445 /* wbxml_tables.c */,
+				E0042B280A5D0A7A00DB9445 /* wbxml_tables.h */,
+				E0042B290A5D0A7A00DB9445 /* wbxml_tree.c */,
+				E0042B2A0A5D0A7A00DB9445 /* wbxml_tree.h */,
+				E0042B2B0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.c */,
+				E0042B2C0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.h */,
+				E0042B2D0A5D0A7A00DB9445 /* wbxml_tree_clb_xml.c */,
+				E0042B2E0A5D0A7A00DB9445 /* wbxml_tree_clb_xml.h */,
+				E0042B2F0A5D0A7A00DB9445 /* wbxml_wrap_syncml.c */,
+				E0042B300A5D0A7A00DB9445 /* wbxml_wrap_syncml.h */,
+			);
+			name = src;
+			path = ../src;
+			sourceTree = SOURCE_ROOT;
+		};
+		E0042C900A5D120C00DB9445 /* expat */ = {
+			isa = PBXGroup;
+			children = (
+				E0042C910A5D120C00DB9445 /* ascii.h */,
+				E0042C920A5D120C00DB9445 /* asciitab.h */,
+				E0042C930A5D120C00DB9445 /* expat.h */,
+				E0042CB50A5D12DF00DB9445 /* expat_config.h */,
+				E0042C940A5D120C00DB9445 /* iasciitab.h */,
+				E0042C950A5D120C00DB9445 /* internal.h */,
+				E0042C960A5D120C00DB9445 /* latin1tab.h */,
+				E0042C970A5D120C00DB9445 /* nametab.h */,
+				E0042C980A5D120C00DB9445 /* utf8tab.h */,
+				E0042C9A0A5D120C00DB9445 /* xmlparse.c */,
+				E0042C9B0A5D120C00DB9445 /* xmlrole.c */,
+				E0042C9C0A5D120C00DB9445 /* xmlrole.h */,
+				E0042C9D0A5D120C00DB9445 /* xmltok.c */,
+				E0042C9E0A5D120C00DB9445 /* xmltok.h */,
+			);
+			name = expat;
+			path = ../expat;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E0042AE70A5D09D400DB9445 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0042B310A5D0A7A00DB9445 /* wbxml.h in Headers */,
+				E0042B330A5D0A7A00DB9445 /* wbxml_base64.h in Headers */,
+				E0042B350A5D0A7A00DB9445 /* wbxml_buffers.h in Headers */,
+				E0042B370A5D0A7A00DB9445 /* wbxml_charset.h in Headers */,
+				E0042B390A5D0A7A00DB9445 /* wbxml_conv.h in Headers */,
+				E0042B3B0A5D0A7A00DB9445 /* wbxml_elt.h in Headers */,
+				E0042B3D0A5D0A7A00DB9445 /* wbxml_encoder.h in Headers */,
+				E0042B3F0A5D0A7A00DB9445 /* wbxml_errors.h in Headers */,
+				E0042B400A5D0A7A00DB9445 /* wbxml_handlers.h in Headers */,
+				E0042B420A5D0A7A00DB9445 /* wbxml_lists.h in Headers */,
+				E0042B440A5D0A7A00DB9445 /* wbxml_log.h in Headers */,
+				E0042B460A5D0A7A00DB9445 /* wbxml_mem.h in Headers */,
+				E0042B480A5D0A7A00DB9445 /* wbxml_parser.h in Headers */,
+				E0042B4A0A5D0A7A00DB9445 /* wbxml_tables.h in Headers */,
+				E0042B4C0A5D0A7A00DB9445 /* wbxml_tree.h in Headers */,
+				E0042B4E0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.h in Headers */,
+				E0042B500A5D0A7A00DB9445 /* wbxml_tree_clb_xml.h in Headers */,
+				E0042B520A5D0A7A00DB9445 /* wbxml_wrap_syncml.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042AF00A5D0A3000DB9445 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042B610A5D0B7000DB9445 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042C840A5D102F00DB9445 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E0042AEA0A5D09D400DB9445 /* wbxml2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0042AED0A5D09D500DB9445 /* Build configuration list for PBXNativeTarget "wbxml2" */;
+			buildPhases = (
+				E0042AE70A5D09D400DB9445 /* Headers */,
+				E0042AE80A5D09D400DB9445 /* Sources */,
+				E0042AE90A5D09D400DB9445 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = wbxml2;
+				ZERO_LINK = YES;
+			};
+			dependencies = (
+				E0042CCD0A5D13EA00DB9445 /* PBXTargetDependency */,
+			);
+			name = wbxml2;
+			productName = wbxml2;
+			productReference = E0042AEB0A5D09D400DB9445 /* libwbxml2.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E0042C870A5D102F00DB9445 /* expat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0042C890A5D104A00DB9445 /* Build configuration list for PBXNativeTarget "expat" */;
+			buildPhases = (
+				E0042C840A5D102F00DB9445 /* Headers */,
+				E0042C850A5D102F00DB9445 /* Sources */,
+				E0042C860A5D102F00DB9445 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = expat;
+				ZERO_LINK = YES;
+			};
+			dependencies = (
+			);
+			name = expat;
+			productName = expat;
+			productReference = E0042C880A5D102F00DB9445 /* libexpat.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E0042ADD0A5D09C800DB9445 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = E0042ADE0A5D09C800DB9445 /* Build configuration list for PBXProject "libwbxml" */;
+			buildStyles = (
+			);
+			hasScannedForEncodings = 0;
+			mainGroup = E0042ADB0A5D09C800DB9445;
+			productRefGroup = E0042AEC0A5D09D400DB9445 /* Products */;
+			projectDirPath = "";
+			targets = (
+				E0042AEA0A5D09D400DB9445 /* wbxml2 */,
+				E0042C870A5D102F00DB9445 /* expat */,
+				E0042AF40A5D0A3000DB9445 /* xml2wbxml */,
+				E0042B650A5D0B7000DB9445 /* wbxml2xml */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXRezBuildPhase section */
+		E0042AF30A5D0A3000DB9445 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042B640A5D0B7000DB9445 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E0042AE80A5D09D400DB9445 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0042B320A5D0A7A00DB9445 /* wbxml_base64.c in Sources */,
+				E0042B340A5D0A7A00DB9445 /* wbxml_buffers.c in Sources */,
+				E0042B360A5D0A7A00DB9445 /* wbxml_charset.c in Sources */,
+				E0042B380A5D0A7A00DB9445 /* wbxml_conv.c in Sources */,
+				E0042B3A0A5D0A7A00DB9445 /* wbxml_elt.c in Sources */,
+				E0042B3C0A5D0A7A00DB9445 /* wbxml_encoder.c in Sources */,
+				E0042B3E0A5D0A7A00DB9445 /* wbxml_errors.c in Sources */,
+				E0042B410A5D0A7A00DB9445 /* wbxml_lists.c in Sources */,
+				E0042B430A5D0A7A00DB9445 /* wbxml_log.c in Sources */,
+				E0042B450A5D0A7A00DB9445 /* wbxml_mem.c in Sources */,
+				E0042B470A5D0A7A00DB9445 /* wbxml_parser.c in Sources */,
+				E0042B490A5D0A7A00DB9445 /* wbxml_tables.c in Sources */,
+				E0042B4B0A5D0A7A00DB9445 /* wbxml_tree.c in Sources */,
+				E0042B4D0A5D0A7A00DB9445 /* wbxml_tree_clb_wbxml.c in Sources */,
+				E0042B4F0A5D0A7A00DB9445 /* wbxml_tree_clb_xml.c in Sources */,
+				E0042B510A5D0A7A00DB9445 /* wbxml_wrap_syncml.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042AF10A5D0A3000DB9445 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0042B0C0A5D0A5700DB9445 /* xml2wbxml_tool.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042B620A5D0B7000DB9445 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0042B6D0A5D0B8600DB9445 /* wbxml2xml_tool.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0042C850A5D102F00DB9445 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0042CAB0A5D120C00DB9445 /* xmlparse.c in Sources */,
+				E0042CAC0A5D120C00DB9445 /* xmlrole.c in Sources */,
+				E0042CAE0A5D120C00DB9445 /* xmltok.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E0042B010A5D0A3D00DB9445 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0042AEA0A5D09D400DB9445 /* wbxml2 */;
+			targetProxy = E0042B000A5D0A3D00DB9445 /* PBXContainerItemProxy */;
+		};
+		E0042B690A5D0B7400DB9445 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0042AEA0A5D09D400DB9445 /* wbxml2 */;
+			targetProxy = E0042B680A5D0B7400DB9445 /* PBXContainerItemProxy */;
+		};
+		E0042CCD0A5D13EA00DB9445 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0042C870A5D102F00DB9445 /* expat */;
+			targetProxy = E0042CCC0A5D13EA00DB9445 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXToolTarget section */
+		E0042AF40A5D0A3000DB9445 /* xml2wbxml */ = {
+			isa = PBXToolTarget;
+			buildConfigurationList = E0042AFD0A5D0A3400DB9445 /* Build configuration list for PBXToolTarget "xml2wbxml" */;
+			buildPhases = (
+				E0042AF00A5D0A3000DB9445 /* Headers */,
+				E0042AF10A5D0A3000DB9445 /* Sources */,
+				E0042AF20A5D0A3000DB9445 /* Frameworks */,
+				E0042AF30A5D0A3000DB9445 /* Rez */,
+			);
+			buildSettings = {
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = xml2wbxml;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			dependencies = (
+				E0042B010A5D0A3D00DB9445 /* PBXTargetDependency */,
+			);
+			name = xml2wbxml;
+			productInstallPath = /usr/local/bin;
+			productName = xml2wbxml;
+			productReference = E0042AF50A5D0A3000DB9445 /* xml2wbxml */;
+		};
+		E0042B650A5D0B7000DB9445 /* wbxml2xml */ = {
+			isa = PBXToolTarget;
+			buildConfigurationList = E0042B710A5D0B8D00DB9445 /* Build configuration list for PBXToolTarget "wbxml2xml" */;
+			buildPhases = (
+				E0042B610A5D0B7000DB9445 /* Headers */,
+				E0042B620A5D0B7000DB9445 /* Sources */,
+				E0042B630A5D0B7000DB9445 /* Frameworks */,
+				E0042B640A5D0B7000DB9445 /* Rez */,
+			);
+			buildSettings = {
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = wbxml2xml;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			dependencies = (
+				E0042B690A5D0B7400DB9445 /* PBXTargetDependency */,
+			);
+			name = wbxml2xml;
+			productInstallPath = /usr/local/bin;
+			productName = wbxml2xml;
+			productReference = E0042B660A5D0B7000DB9445 /* wbxml2xml */;
+		};
+/* End PBXToolTarget section */
+
+/* Begin XCBuildConfiguration section */
+		E0042ADF0A5D09C800DB9445 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		E0042AE00A5D09C800DB9445 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+			};
+			name = Release;
+		};
+		E0042AEE0A5D09D500DB9445 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					HAVE_EXPAT,
+					WBXML_ENCODER_USE_STRTBL,
+					WBXML_SUPPORT_SYNCML,
+					WBXML_SUPPORT_WV,
+					WBXML_SUPPORT_PROV,
+					WBXML_SUPPORT_OTA_SETTINGS,
+					WBXML_SUPPORT_SI,
+					WBXML_SUPPORT_SL,
+					WBXML_SUPPORT_CO,
+					WBXML_SUPPORT_EMN,
+					WBXML_SUPPORT_DRMREL,
+					WBXML_SUPPORT_WML,
+					WBXML_SUPPORT_WTA,
+				);
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = wbxml2;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		E0042AEF0A5D09D500DB9445 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					HAVE_EXPAT,
+					WBXML_ENCODER_USE_STRTBL,
+					WBXML_SUPPORT_SYNCML,
+					WBXML_SUPPORT_WV,
+					WBXML_SUPPORT_PROV,
+					WBXML_SUPPORT_OTA_SETTINGS,
+					WBXML_SUPPORT_SI,
+					WBXML_SUPPORT_SL,
+					WBXML_SUPPORT_CO,
+					WBXML_SUPPORT_EMN,
+					WBXML_SUPPORT_DRMREL,
+					WBXML_SUPPORT_WML,
+					WBXML_SUPPORT_WTA,
+				);
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = wbxml2;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		E0042AFE0A5D0A3400DB9445 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = xml2wbxml;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		E0042AFF0A5D0A3400DB9445 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = xml2wbxml;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		E0042B720A5D0B8D00DB9445 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = wbxml2xml;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		E0042B730A5D0B8D00DB9445 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = wbxml2xml;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		E0042C8A0A5D104A00DB9445 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = expat;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		E0042C8B0A5D104A00DB9445 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = expat;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E0042ADE0A5D09C800DB9445 /* Build configuration list for PBXProject "libwbxml" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0042ADF0A5D09C800DB9445 /* Debug */,
+				E0042AE00A5D09C800DB9445 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0042AED0A5D09D500DB9445 /* Build configuration list for PBXNativeTarget "wbxml2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0042AEE0A5D09D500DB9445 /* Debug */,
+				E0042AEF0A5D09D500DB9445 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0042AFD0A5D0A3400DB9445 /* Build configuration list for PBXToolTarget "xml2wbxml" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0042AFE0A5D0A3400DB9445 /* Debug */,
+				E0042AFF0A5D0A3400DB9445 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0042B710A5D0B8D00DB9445 /* Build configuration list for PBXToolTarget "wbxml2xml" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0042B720A5D0B8D00DB9445 /* Debug */,
+				E0042B730A5D0B8D00DB9445 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0042C890A5D104A00DB9445 /* Build configuration list for PBXNativeTarget "expat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0042C8A0A5D104A00DB9445 /* Debug */,
+				E0042C8B0A5D104A00DB9445 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E0042ADD0A5D09C800DB9445 /* Project object */;
+}
