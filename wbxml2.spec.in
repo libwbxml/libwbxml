@@ -10,7 +10,7 @@ Summary(es_ES):	libreria WBXML con parser y compilador
 Name:		%name
 Version:	%ver
 Release:	%rel
-Copyright:	GPL
+Copyright:	LGPL
 Vendor:		Aymerick Jéhanne <aymerick@jehanne.org>
 URL:		http://libwbxml.aymerick.com/
 

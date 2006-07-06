@@ -12,7 +12,7 @@ wbxmldoc_DATA = \
 	BUGS\
 	ChangeLog\
 	COPYING\
-	GNU-GPL\
+	GNU-LGPL\
 	INSTALL\
 	NEWS\
 	README\
