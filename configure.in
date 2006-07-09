@@ -46,4 +46,4 @@ dnl Checks for library functions.
 AC_FUNC_MEMCMP
 AC_FUNC_VPRINTF
 
-AC_OUTPUT(Makefile wbxml2.spec src/Makefile tools/Makefile)
+AC_OUTPUT(Makefile wbxml2.spec src/Makefile tools/Makefile libwbxml2.pc)

@@ -790,11 +790,11 @@ WBXML_DECLARE(WBXMLSyncMLDataType) wbxml_tree_node_get_syncml_data_type(WBXMLTre
              (node->parent->children != NULL) && 
              ((tmp_node = wbxml_tree_node_elt_get_from_name(node->parent->children, "Meta", FALSE)) != NULL) &&
              ((tmp_node = wbxml_tree_node_elt_get_from_name(tmp_node->children, "Type", FALSE)) != NULL)) ||
-            ((node->parent != NULL) && 
-             (node->parent->parent != NULL) && 
-             (node->parent->parent->children != NULL) && 
-             ((tmp_node = wbxml_tree_node_elt_get_from_name(node->parent->parent->children, "Meta", FALSE)) != NULL)) &&
-             ((tmp_node = wbxml_tree_node_elt_get_from_name(tmp_node->children, "Type", FALSE)) != NULL))
+            (((node->parent != NULL) && 
+              (node->parent->parent != NULL) && 
+              (node->parent->parent->children != NULL) && 
+              ((tmp_node = wbxml_tree_node_elt_get_from_name(node->parent->parent->children, "Meta", FALSE)) != NULL)) &&
+              ((tmp_node = wbxml_tree_node_elt_get_from_name(tmp_node->children, "Type", FALSE)) != NULL)))
         {
             /* Check <Type> value */
             if ((tmp_node->children != NULL) && (tmp_node->children->type == WBXML_TREE_TEXT_NODE)) {

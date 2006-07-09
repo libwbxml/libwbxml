@@ -1366,9 +1366,7 @@ static WBXMLError parse_content(WBXMLParser *parser, WBXMLBuffer **result)
      *
      * Thanks to Balaji Alasyam for finding this bug.
      *
-     * Reference : http://libwbxml.aymerick.com/forums/viewtopic.php?t=11
-     *
-     * Exemple : 02 9F 53 6A 00 6D 6C 71 C3 03 31 2E 31 01 72 C3 0A 53 79 6E
+     * Example : 02 9F 53 6A 00 6D 6C 71 C3 03 31 2E 31 01 72 C3 0A 53 79 6E
      *           63 4D 4C 2F 31 2E 31 01 65 C3 01 34 01 5B C3 01 31 01 6E 57
      *           C3 31 68 74 74 70 3A 2F 2F 32 31 30 2E 32 31 34 2E 31 36 31
      *           2E 31 37 32 3A 38 30 38 30 2F 74 65 73 74 2F 53 79 6E 63 4D

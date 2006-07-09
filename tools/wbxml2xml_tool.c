@@ -173,10 +173,10 @@ static void help(void)
     fprintf(stderr, "       CHANNEL12 : CHANNEL 1.2\n");
 #endif /* WBXML_SUPPORT_WTA */
 #if defined( WBXML_SUPPORT_SI )
-    fprintf(stderr, "       SI10 : SL 1.0\n");
+    fprintf(stderr, "       SI10 : SI 1.0\n");
 #endif /* WBXML_SUPPORT_SI */
 #if defined( WBXML_SUPPORT_SL )
-    fprintf(stderr, "       SL10 : SI 1.0\n");
+    fprintf(stderr, "       SL10 : SL 1.0\n");
 #endif /* WBXML_SUPPORT_SL */
 #if defined( WBXML_SUPPORT_CO )
     fprintf(stderr, "       CO10 : CO 1.0\n");
@@ -329,7 +329,8 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
         fprintf(stderr, "wbxml2xml failed: %s\n", wbxml_errors_string(ret));
     }
     else {
-        fprintf(stderr, "wbxml2xml succeded: \n%s\n", xml);
+        /* fprintf(stderr, "wbxml2xml succeded: \n%s\n", xml); */
+        fprintf(stderr, "wbxml2xml succeded");
 
         if (output != NULL) {
             if (WBXML_STRCMP(output, "-") == 0) {
@@ -346,8 +347,10 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
             /* Write to Output File */
             if (fwrite(xml, sizeof(WB_UTINY), xml_len, output_file) < xml_len)
                 fprintf(stderr, "Error while writing to file: %s\n", output);
+            /*
             else
                 fprintf(stderr, "Written %u bytes to file: %s\n", xml_len, output);
+            */
 
             if (output_file != stdout)
                 fclose(output_file);

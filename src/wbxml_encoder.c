@@ -124,6 +124,9 @@
  * @warning For now 'current_tag' field is only used for WV Content Encoding. And for this use, it works.
  *          But this field is reset after End Tag, and as there is no Linked List mecanism, this is bad for
  *          cascading elements: we don't fill this field with parent Tag when parsing End Tag.
+ *
+ * @warning For now 'current_text_parent' field is only used for DRM REL Content Encoding. It should not be
+ *          used for another purpose.
  */
 struct WBXMLEncoder_s {
     WBXMLTree *tree;                        /**< WBXML Tree to Encode */
@@ -131,6 +134,7 @@ struct WBXMLEncoder_s {
     WBXMLBuffer *output;                    /**< The output (wbxml or xml) we are producing */
     WBXMLBuffer *output_header;             /**< The output header (used if Flow Mode encoding is activated) */
     const WBXMLTagEntry *current_tag;       /**< Current Tag (See The Warning For This Field !) */
+    const WBXMLTreeNode *current_text_parent; /**< Text parent of current Node (See The Warning For This Field !) */
     const WBXMLAttrEntry *current_attr;     /**< Current Attribute */
     WB_UTINY tagCodePage;                   /**< Current Tag Code Page */
     WB_UTINY attrCodePage;                  /**< Current Attribute Code Page */
@@ -377,6 +381,7 @@ WBXML_DECLARE(WBXMLEncoder *) wbxml_encoder_create_real(void)
     encoder->output_header = NULL;
 
     encoder->current_tag = NULL;
+    encoder->current_text_parent = NULL;
     encoder->current_attr = NULL;
 
     encoder->tagCodePage = 0;
@@ -1236,6 +1241,8 @@ static WBXMLError parse_attribute(WBXMLEncoder *encoder, WBXMLAttribute *attribu
  */
 static WBXMLError parse_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
 {
+    WBXMLError ret = WBXML_OK;
+    
     /* Do not modify text inside a CDATA section */
     if (!encoder->in_cdata) {
         /* If Canonical Form: "Ignorable white space is considered significant and is treated equivalently to data" */
@@ -1261,23 +1268,21 @@ static WBXMLError parse_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
                 return WBXML_ERROR_INTERNAL;
             }
 
-#if 0
-/** @todo Armin Patch To Rewrite */
 #if defined( WBXML_SUPPORT_SYNCML )
 
             if ((encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML10) ||
-                (encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML11))
+                (encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML11) ||
+                (encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML12))
             {
+                /** @todo We suppose that Opaque Data in SyncML messages can only be vCard or vCal documents. CHANGE THAT ! */
                 if (node->content != NULL) {
                     if (wbxml_buffer_get_cstr(node->content)[0] == 0x0a && wbxml_buffer_len(node->content) == 1) {
-                        wbxml_buffer_insert_cstr(node->content, "\r", 0);
+                        wbxml_buffer_insert_cstr(node->content, (WB_UTINY*) "\r", 0);
                     }
                 }
             }
 
 #endif /* WBXML_SUPPORT_SYNCML */
-/* End of Armin Patch To Rewrite */
-#endif /* 0 */
 
             /* Add text into CDATA Buffer */
             if (!wbxml_buffer_append(encoder->cdata, node->content))
@@ -1287,7 +1292,10 @@ static WBXMLError parse_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
         }
         else {
             /* Encode text */
-        return wbxml_encode_value_element_buffer(encoder, wbxml_buffer_get_cstr(node->content), WBXML_VALUE_ELEMENT_CTX_CONTENT);
+            encoder->current_text_parent = node->parent;
+            ret = wbxml_encode_value_element_buffer(encoder, wbxml_buffer_get_cstr(node->content), WBXML_VALUE_ELEMENT_CTX_CONTENT);
+            encoder->current_text_parent = NULL;
+            return ret;
         }
 
     case WBXML_ENCODER_OUTPUT_XML:
@@ -3095,11 +3103,19 @@ static WBXMLError wbxml_encode_drmrel_content(WBXMLEncoder *encoder, WB_UTINY *b
 {
     WB_UTINY *data = NULL;
     WB_LONG data_len = 0;
+    const WBXMLTagEntry *current_tag = NULL;
 
-    if (encoder->current_tag != NULL)
+    if ((encoder->current_text_parent != NULL) && 
+        (encoder->current_text_parent->name != NULL) &&
+        (encoder->current_text_parent->name->type == WBXML_VALUE_TOKEN))
     {
-        if ((encoder->current_tag->wbxmlCodePage == 0x00) &&
-            (encoder->current_tag->wbxmlToken == 0x0C))
+        current_tag = encoder->current_text_parent->name->u.token;
+    }
+
+    if (current_tag != NULL) 
+    {
+        if ((current_tag->wbxmlCodePage == 0x00) &&
+            (current_tag->wbxmlToken == 0x0C))
         {
             /* <ds:KeyValue> content: "Encoded in binary format, i.e., no base64 encoding" */
 

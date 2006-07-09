@@ -5,6 +5,9 @@
 
 SUBDIRS = src tools
 
+pkgconfigdir=$(libdir)/pkgconfig
+pkgconfig_DATA = libwbxml2.pc
+
 wbxmldocdir = ${prefix}/share/doc/wbxml2-${VERSION}
 wbxmldoc_DATA = \
 	AUTHORS\
