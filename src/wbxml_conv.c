@@ -46,16 +46,18 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_withlen(WB_UTINY  *wbxml,
                                                        WBXMLGenXMLParams *params)
 {
     WBXMLTree *wbxml_tree = NULL;
+    WB_ULONG   dummy_len = 0;
     WBXMLError ret = WBXML_OK;
 
     /* Check Parameters (we allow 'xml_len' to be NULL for backward compatibility) */
     if ((wbxml == NULL) || (wbxml_len == 0) || (xml == NULL))
         return WBXML_ERROR_BAD_PARAMETER;
 
+    if (xml_len == NULL)
+        xml_len = &dummy_len;
+
     *xml = NULL;
-    if (xml_len != NULL) {
-        *xml_len = 0;
-    }
+    *xml_len = 0;
 
     /* Parse WBXML to WBXML Tree */
     ret = wbxml_tree_from_wbxml(wbxml, wbxml_len, params ? params->lang : WBXML_LANG_UNKNOWN, &wbxml_tree);

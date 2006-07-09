@@ -324,7 +324,7 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_to_xml(WBXMLTree *tree,
     }
 
     /* Encode WBXML Tree to XML */
-    ret = wbxml_encoder_encode_to_xml(wbxml_encoder, xml, xml_len);
+    ret = wbxml_encoder_encode_tree_to_xml(wbxml_encoder, xml, xml_len);
 
     /* Clean-up */
     wbxml_encoder_destroy(wbxml_encoder);
