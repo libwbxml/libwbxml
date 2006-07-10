@@ -51,26 +51,43 @@
 		E0042CCE0A5D13EF00DB9445 /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0042C880A5D102F00DB9445 /* libexpat.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildStyle section */
+		E0BEC8A90A5EB1DF000A0E1D /* Development */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Development;
+		};
+		E0BEC8AA0A5EB1DF000A0E1D /* Deployment */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+			};
+			name = Deployment;
+		};
+/* End PBXBuildStyle section */
+
 /* Begin PBXContainerItemProxy section */
 		E0042B000A5D0A3D00DB9445 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E0042ADD0A5D09C800DB9445 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E0042AEA0A5D09D400DB9445 /* wbxml2 */;
+			remoteGlobalIDString = E0042AEA0A5D09D400DB9445;
 			remoteInfo = wbxml2;
 		};
 		E0042B680A5D0B7400DB9445 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E0042ADD0A5D09C800DB9445 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E0042AEA0A5D09D400DB9445 /* wbxml2 */;
+			remoteGlobalIDString = E0042AEA0A5D09D400DB9445;
 			remoteInfo = wbxml2;
 		};
 		E0042CCC0A5D13EA00DB9445 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E0042ADD0A5D09C800DB9445 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E0042C870A5D102F00DB9445 /* expat */;
+			remoteGlobalIDString = E0042C870A5D102F00DB9445;
 			remoteInfo = expat;
 		};
 /* End PBXContainerItemProxy section */
@@ -375,7 +392,11 @@
 		E0042ADD0A5D09C800DB9445 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = E0042ADE0A5D09C800DB9445 /* Build configuration list for PBXProject "libwbxml" */;
+			buildSettings = {
+			};
 			buildStyles = (
+				E0BEC8A90A5EB1DF000A0E1D /* Development */,
+				E0BEC8AA0A5EB1DF000A0E1D /* Deployment */,
 			);
 			hasScannedForEncodings = 0;
 			mainGroup = E0042ADB0A5D09C800DB9445;
@@ -624,7 +645,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				OPTIMIZATION_CFLAGS = "";
+				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
@@ -645,7 +666,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				OPTIMIZATION_CFLAGS = "";
+				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
@@ -668,7 +689,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				OPTIMIZATION_CFLAGS = "";
+				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
@@ -689,7 +710,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				OPTIMIZATION_CFLAGS = "";
+				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";

@@ -130,7 +130,8 @@ typedef enum WBXMLSyncMLDataType_e {
     WBXML_SYNCML_DATA_TYPE_CLEAR,			/**< text/clear */
     WBXML_SYNCML_DATA_TYPE_DIRECTORY_VCARD, /**< text/directory;profile=vCard */
     WBXML_SYNCML_DATA_TYPE_VCARD,           /**< text/x-vcard */
-    WBXML_SYNCML_DATA_TYPE_VCALENDAR        /**< text/x-vcalendar */
+    WBXML_SYNCML_DATA_TYPE_VCALENDAR,       /**< text/x-vcalendar */
+    WBXML_SYNCML_DATA_TYPE_VOBJECT          /**< Hack: we assume that any <Data> inside a <Replace> or <Add> Item is a vObjec (vCard / vCal / ...) */
 } WBXMLSyncMLDataType;
 #endif /* WBXML_SUPPORT_SYNCML */
 

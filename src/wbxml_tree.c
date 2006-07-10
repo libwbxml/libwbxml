@@ -824,6 +824,36 @@ WBXML_DECLARE(WBXMLSyncMLDataType) wbxml_tree_node_get_syncml_data_type(WBXMLTre
                 }
             }
         }
+        
+        /**
+         * Hack: we assume that any <Data> inside a <Replace> or <Add> Item is a vObject (vCard / vCal / ...).
+         *
+         * This is because when parsing a <Data> content we really need to put a CDATA, event if we don't really
+         * know the content-type. For example when receiving the end of a splitted vObject with Samsung D600, we receive this:
+         *
+         * 	      <Replace>
+         * 	        <CmdID>162</CmdID>
+         * 	        <Item>
+         * 	          <Source>
+         * 	            <LocURI>./690</LocURI>
+         * 	          </Source>
+         * 	          <Data>EF;CELL:0661809055
+         * 	TEL;HOME:0299783886
+         * 	X-IRMC-LUID:690
+         * 	END:VCARD</Data>
+         * 	        </Item>
+         * 	      </Replace>
+         *
+         * There is no <Meta> info to find the content-type of the <Data>.
+         */
+        if ( (node->parent != NULL) &&
+             (node->parent->parent != NULL) &&
+             (node->parent->parent->name != NULL) &&
+             ((WBXML_STRCMP(wbxml_tag_get_xml_name(node->parent->parent->name), "Add") == 0) ||
+              (WBXML_STRCMP(wbxml_tag_get_xml_name(node->parent->parent->name), "Replace") == 0)) )
+        {
+            return WBXML_SYNCML_DATA_TYPE_VOBJECT;
+        }
     }
 
     return WBXML_SYNCML_DATA_TYPE_NORMAL;

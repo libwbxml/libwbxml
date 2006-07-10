@@ -100,7 +100,6 @@ const WBXMLPublicIDEntry sv_syncml_metinf10_public_id = { WBXML_PUBLIC_ID_SYNCML
 const WBXMLPublicIDEntry sv_syncml_syncml11_public_id = { WBXML_PUBLIC_ID_SYNCML_SYNCML11,    XML_PUBLIC_ID_SYNCML_SYNCML11,  "SyncML",               "http://www.syncml.org/docs/syncml_represent_v11_20020213.dtd"  };
 const WBXMLPublicIDEntry sv_syncml_devinf11_public_id = { WBXML_PUBLIC_ID_SYNCML_DEVINF11,    XML_PUBLIC_ID_SYNCML_DEVINF11,  "DevInf",               "http://www.syncml.org/docs/devinf_v11_20020215.dtd"            };
 const WBXMLPublicIDEntry sv_syncml_metinf11_public_id = { WBXML_PUBLIC_ID_SYNCML_METINF11,    XML_PUBLIC_ID_SYNCML_METINF11,  "MetInf",               "http://www.syncml.org/docs/syncml_metinf_v11_20020215.dtd"     };
-/** @todo const WBXMLPublicIDEntry sv_syncml_syncml11_public_id_nokia = { WBXML_PUBLIC_ID_SYNCML_SYNCML11_NOKIA, XML_PUBLIC_ID_SYNCML_SYNCML11, "SyncML",       "http://www.syncml.org/docs/syncml_represent_v11_20020213.dtd"  }; */
 
 /* SyncML 1.2 */
 const WBXMLPublicIDEntry sv_syncml_syncml12_public_id = { WBXML_PUBLIC_ID_SYNCML_SYNCML12,    XML_PUBLIC_ID_SYNCML_SYNCML12,  "SyncML",               "http://www.openmobilealliance.org/tech/DTD/OMA-TS-SyncML_RepPro_DTD-V1_2.dtd"         };
@@ -2524,7 +2523,6 @@ const WBXMLLangEntry sv_table_entry[] = {
 
     /* SyncML 1.1 */
     { WBXML_LANG_SYNCML_SYNCML11,   &sv_syncml_syncml11_public_id,  sv_syncml_syncml11_tag_table,   sv_syncml_syncml11_ns_table,    NULL,                       NULL,                           NULL },
-    /** @todo { WBXML_LANG_SYNCML_SYNCML11,   &sv_syncml_syncml11_public_id_nokia, sv_syncml_syncml11_tag_table, sv_syncml_syncml11_ns_table, NULL,             NULL,                           NULL }, */
     { WBXML_LANG_SYNCML_DEVINF11,   &sv_syncml_devinf11_public_id,  sv_syncml_devinf11_tag_table,   sv_syncml_devinf11_ns_table,    NULL,                       NULL,                           NULL },
     { WBXML_LANG_SYNCML_METINF11,   &sv_syncml_metinf11_public_id,  sv_syncml_metinf11_tag_table,   NULL,                           NULL,                       NULL,                           NULL },
     

@@ -348,6 +348,7 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
     case WBXML_SYNCML_DATA_TYPE_DIRECTORY_VCARD:
     case WBXML_SYNCML_DATA_TYPE_VCALENDAR:
     case WBXML_SYNCML_DATA_TYPE_VCARD:
+    case WBXML_SYNCML_DATA_TYPE_VOBJECT:
         /*
          * Add a missing CDATA section node
          *

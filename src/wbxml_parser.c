@@ -2303,8 +2303,6 @@ static WBXMLError decode_datetime(WBXMLBuffer *buff)
 static WBXMLError decode_opaque_content(WBXMLParser  *parser,
                                         WBXMLBuffer **data)
 {
-    WBXMLError ret = WBXML_OK;
-  
     switch (parser->langTable->langID) 
     {
 
@@ -2323,6 +2321,8 @@ static WBXMLError decode_opaque_content(WBXMLParser  *parser,
         if ((parser->current_tag->wbxmlCodePage == 0x00) &&
             (parser->current_tag->wbxmlToken == 0x0C))
         {
+            WBXMLError ret = WBXML_OK;
+            
             /* Decode <KeyValue> */
             if ((ret = decode_drmrel_keyvalue(data)) != WBXML_OK)
                 return ret;

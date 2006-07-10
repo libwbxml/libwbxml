@@ -149,6 +149,7 @@ void wbxml_tree_clb_wbxml_characters(void *ctx, WB_UTINY *ch, WB_ULONG start, WB
     case WBXML_SYNCML_DATA_TYPE_DIRECTORY_VCARD:
     case WBXML_SYNCML_DATA_TYPE_VCALENDAR:
     case WBXML_SYNCML_DATA_TYPE_VCARD:
+    case WBXML_SYNCML_DATA_TYPE_VOBJECT:
         /*
          * Add a CDATA section node
          *
@@ -197,9 +198,10 @@ void wbxml_tree_clb_wbxml_characters(void *ctx, WB_UTINY *ch, WB_ULONG start, WB
         /* NOP */
         break;
     } /* switch */
-#endif /* WBXML_SUPPORT_SYNCML */
 
 text_node:
+
+#endif /* WBXML_SUPPORT_SYNCML */
 
     /* Add Text Node */
     if (wbxml_tree_add_text(tree_ctx->tree,
