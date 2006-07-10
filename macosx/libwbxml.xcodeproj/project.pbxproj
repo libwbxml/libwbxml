@@ -94,7 +94,7 @@
 
 /* Begin PBXFileReference section */
 		E0042AEB0A5D09D400DB9445 /* libwbxml2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libwbxml2.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0042AF50A5D0A3000DB9445 /* xml2wbxml */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xml2wbxml; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0042AF50A5D0A3000DB9445 /* xml2wbxml */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = xml2wbxml; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0042B040A5D0A5700DB9445 /* attgetopt.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = attgetopt.c; sourceTree = "<group>"; };
 		E0042B050A5D0A5700DB9445 /* getopt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = getopt.h; sourceTree = "<group>"; };
 		E0042B070A5D0A5700DB9445 /* wbxml2xml_tool.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = wbxml2xml_tool.c; sourceTree = "<group>"; };
