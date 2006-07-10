@@ -32,7 +32,7 @@ macosx/expat/xmltok.h
 macosx/expat/xmltok_impl.c
 macosx/expat/xmltok_impl.h
 macosx/expat/xmltok_ns.c
-macosx/libwbxml.xcodeproj
+macosx/libwbxml.xcodeproj/project.pbxproj
 src/Makefile.am
 src/wbxml.h
 src/wbxml_base64.c
