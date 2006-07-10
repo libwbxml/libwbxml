@@ -49,7 +49,14 @@ echo "Building $distdir based on the MANIFEST:"
 files="`sed -e 's/[ ]:.*$//' $tmpdir/MANIFEST`"
 for file in $files; do
   echo "Copying $file..."
-  (cd $tmpdir && cp $CPOPTS $file ../$distdir) || exit 1
+  
+  OUTPUT_DIR="`pwd`/$distdir/`dirname $file`"
+  # Create output directories if they don't exist
+  if [ ! -d $OUTPUT_DIR ]; then
+    mkdir -p $OUTPUT_DIR
+  fi
+  
+  (cd $tmpdir && cp $file $OUTPUT_DIR) || exit 1
 done
 
 echo ""
