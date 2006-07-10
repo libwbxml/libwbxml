@@ -24,7 +24,7 @@ echo "Checking out into temporary area: $tmpdir"
 svn co -q -r "$1" "$SVNROOT" $tmpdir || exit 1
 
 # figure out the release version
-vsn="`$tmpdir/version.sh $tmpdir/src/wbxml.h`"
+vsn="`$tmpdir/bin/version.sh $tmpdir/src/wbxml.h`"
 
 echo ""
 echo "Release version: $vsn"
