@@ -1,8 +1,10 @@
 2006-07-10  Aymerick Jehanne <aymerick@jehanne.org>
   * New release: 0.9.2
   * Finally applied fixes from OpenSync project and Debian libwbxml package
+  * Added XCode project for MacOS X
   * Added Microsoft AirSync support
   * Some more cleanup and bug fixes
+  * Windows and Symbian projects files are NOT up to date at all. Searching for mainteners.
 
 2005-12-19  Aymerick Jehanne <aymerick@jehanne.org>
   * wbxml_tree.c: Fixed wbxml_tree_node_get_syncml_data_type().
