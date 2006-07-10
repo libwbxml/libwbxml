@@ -19,6 +19,7 @@ CFLAGS =\
 	 -DWBXML_SUPPORT_OTA_SETTINGS\
 	 -DWBXML_SUPPORT_SYNCML\
 	 -DWBXML_SUPPORT_WV\
+	 -DWBXML_SUPPORT_AIRSYNC\
 	 -Wall -Wimplicit -Wreturn-type -Wunused -Wswitch -Wcomment -Wuninitialized -Wparentheses -Wpointer-arith -Wmissing-prototypes\
 	 -O3\
 	 -g

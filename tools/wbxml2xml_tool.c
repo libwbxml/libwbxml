@@ -136,6 +136,11 @@ static WBXMLLanguage get_lang(const WB_TINY *lang)
         return WBXML_LANG_WV_CSP12;
 #endif /* WBXML_SUPPORT_WV */
 
+#if defined( WBXML_SUPPORT_AIRSYNC )
+    if (WBXML_STRCMP(lang, "AIRSYNC") == 0)
+        return WBXML_LANG_AIRSYNC;
+#endif /* WBXML_SUPPORT_AIRSYNC */
+
     return WBXML_LANG_UNKNOWN;
 }
 
@@ -207,6 +212,9 @@ static void help(void)
     fprintf(stderr, "       CSP11 : WV CSP 1.1\n");
     fprintf(stderr, "       CSP12 : WV CSP 1.2\n");
 #endif /* WBXML_SUPPORT_WV */
+#if defined( WBXML_SUPPORT_AIRSYNC )
+    fprintf(stderr, "       AIRSYNC : Microsoft AirSync\n");
+#endif /* WBXML_SUPPORT_AIRSYNC */
     fprintf(stderr, "\nNote: '-' can be used to mean stdin on input or stdout on output\n\n");
 }
 

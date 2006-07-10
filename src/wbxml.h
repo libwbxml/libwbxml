@@ -235,8 +235,13 @@ typedef enum WBXMLLanguage_e {
     /* Wireless-Village */
 #if defined( WBXML_SUPPORT_WV )
     WBXML_LANG_WV_CSP11,        /**< WV CSP 1.1 */
-    WBXML_LANG_WV_CSP12         /**< WV CSP 1.2 */
+    WBXML_LANG_WV_CSP12,        /**< WV CSP 1.2 */
 #endif /* WBXML_SUPPORT_WV */
+
+    /* Microsoft AirSync */
+#if defined( WBXML_SUPPORT_AIRSYNC )
+    WBXML_LANG_AIRSYNC          /**< AirSync */
+#endif /* WBXML_SUPPORT_AIRSYNC */
 } WBXMLLanguage;
 
 

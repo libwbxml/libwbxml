@@ -122,6 +122,10 @@ extern "C" {
 #define XML_PUBLIC_ID_WV_CSP11 "-//OMA//DTD WV-CSP 1.1//EN" /**< @todo Also defined as "-//WIRELESSVILLAGE//DTD CSP 1.1//EN" (so choose one) */
 #define XML_PUBLIC_ID_WV_CSP12 "-//OMA//DTD WV-CSP 1.2//EN"
 
+/* Microsoft AirSync */
+#define WBXML_PUBLIC_ID_AIRSYNC WBXML_PUBLIC_ID_UNKNOWN
+#define XML_PUBLIC_ID_AIRSYNC "-//AIRSYNC//DTD AirSync//EN"
+
 
 /****************************************************
  *    WBXML Tables Structures
