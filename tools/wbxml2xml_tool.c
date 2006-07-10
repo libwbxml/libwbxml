@@ -330,7 +330,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
     }
     else {
         /* fprintf(stderr, "wbxml2xml succeded: \n%s\n", xml); */
-        fprintf(stderr, "wbxml2xml succeded");
+        fprintf(stderr, "wbxml2xml succeded\n");
 
         if (output != NULL) {
             if (WBXML_STRCMP(output, "-") == 0) {

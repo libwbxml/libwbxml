@@ -209,8 +209,10 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
                 /* Write to Output File */
                 if (fwrite(wbxml, sizeof(WB_UTINY), wbxml_len, output_file) < wbxml_len)
                     fprintf(stderr, "Error while writing to file: %s\n", output);
+                /*
                 else
                     fprintf(stderr, "Written %u bytes to file: %s\n", wbxml_len, output);
+                */
 
                 if (output_file != stdout)
                     fclose(output_file);
