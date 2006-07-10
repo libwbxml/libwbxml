@@ -27,7 +27,6 @@ wbxmldoc_DATA = \
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(wbxmldocdir)/manual
 	cp -Rp doc/* $(DESTDIR)$(wbxmldocdir)/manual
-	rm -r `find $(DESTDIR)$(wbxmldocdir)/manual -name "CVS"`
 
 dist-bz2: distdir
 	sed -e "s/tar.gz/tar.bz2/g" $(distdir)/wbxml2.spec > $(distdir)/wbxml2.spec.aux
