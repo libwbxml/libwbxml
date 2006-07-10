@@ -45,10 +45,10 @@
 		E0042B520A5D0A7A00DB9445 /* wbxml_wrap_syncml.h in Headers */ = {isa = PBXBuildFile; fileRef = E0042B300A5D0A7A00DB9445 /* wbxml_wrap_syncml.h */; };
 		E0042B6A0A5D0B7A00DB9445 /* libwbxml2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0042AEB0A5D09D400DB9445 /* libwbxml2.a */; };
 		E0042B6D0A5D0B8600DB9445 /* wbxml2xml_tool.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042B070A5D0A5700DB9445 /* wbxml2xml_tool.c */; };
-		E0042CAB0A5D120C00DB9445 /* xmlparse.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042C9A0A5D120C00DB9445 /* xmlparse.c */; };
-		E0042CAC0A5D120C00DB9445 /* xmlrole.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042C9B0A5D120C00DB9445 /* xmlrole.c */; };
-		E0042CAE0A5D120C00DB9445 /* xmltok.c in Sources */ = {isa = PBXBuildFile; fileRef = E0042C9D0A5D120C00DB9445 /* xmltok.c */; };
 		E0042CCE0A5D13EF00DB9445 /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0042C880A5D102F00DB9445 /* libexpat.a */; };
+		E0A01FBB0A625C5000514B02 /* xmlrole.c in Sources */ = {isa = PBXBuildFile; fileRef = E0A01FAA0A625C5000514B02 /* xmlrole.c */; };
+		E0A01FBD0A625C5000514B02 /* xmltok.c in Sources */ = {isa = PBXBuildFile; fileRef = E0A01FAC0A625C5000514B02 /* xmltok.c */; };
+		E0A01FC60A625C8700514B02 /* xmlparse.c in Sources */ = {isa = PBXBuildFile; fileRef = E0A01FA90A625C5000514B02 /* xmlparse.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
@@ -135,20 +135,23 @@
 		E0042B300A5D0A7A00DB9445 /* wbxml_wrap_syncml.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = wbxml_wrap_syncml.h; sourceTree = "<group>"; };
 		E0042B660A5D0B7000DB9445 /* wbxml2xml */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wbxml2xml; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0042C880A5D102F00DB9445 /* libexpat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libexpat.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0042C910A5D120C00DB9445 /* ascii.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ascii.h; sourceTree = "<group>"; };
-		E0042C920A5D120C00DB9445 /* asciitab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = asciitab.h; sourceTree = "<group>"; };
-		E0042C930A5D120C00DB9445 /* expat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = expat.h; sourceTree = "<group>"; };
-		E0042C940A5D120C00DB9445 /* iasciitab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = iasciitab.h; sourceTree = "<group>"; };
-		E0042C950A5D120C00DB9445 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
-		E0042C960A5D120C00DB9445 /* latin1tab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = latin1tab.h; sourceTree = "<group>"; };
-		E0042C970A5D120C00DB9445 /* nametab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = nametab.h; sourceTree = "<group>"; };
-		E0042C980A5D120C00DB9445 /* utf8tab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = utf8tab.h; sourceTree = "<group>"; };
-		E0042C9A0A5D120C00DB9445 /* xmlparse.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmlparse.c; sourceTree = "<group>"; };
-		E0042C9B0A5D120C00DB9445 /* xmlrole.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmlrole.c; sourceTree = "<group>"; };
-		E0042C9C0A5D120C00DB9445 /* xmlrole.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = xmlrole.h; sourceTree = "<group>"; };
-		E0042C9D0A5D120C00DB9445 /* xmltok.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmltok.c; sourceTree = "<group>"; };
-		E0042C9E0A5D120C00DB9445 /* xmltok.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = xmltok.h; sourceTree = "<group>"; };
-		E0042CB50A5D12DF00DB9445 /* expat_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = expat_config.h; sourceTree = "<group>"; };
+		E0A01FA00A625C5000514B02 /* ascii.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ascii.h; sourceTree = "<group>"; };
+		E0A01FA10A625C5000514B02 /* asciitab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = asciitab.h; sourceTree = "<group>"; };
+		E0A01FA20A625C5000514B02 /* expat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = expat.h; sourceTree = "<group>"; };
+		E0A01FA30A625C5000514B02 /* expat_config.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = expat_config.h; sourceTree = "<group>"; };
+		E0A01FA40A625C5000514B02 /* iasciitab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = iasciitab.h; sourceTree = "<group>"; };
+		E0A01FA50A625C5000514B02 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
+		E0A01FA60A625C5000514B02 /* latin1tab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = latin1tab.h; sourceTree = "<group>"; };
+		E0A01FA70A625C5000514B02 /* nametab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = nametab.h; sourceTree = "<group>"; };
+		E0A01FA80A625C5000514B02 /* utf8tab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = utf8tab.h; sourceTree = "<group>"; };
+		E0A01FA90A625C5000514B02 /* xmlparse.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmlparse.c; sourceTree = "<group>"; };
+		E0A01FAA0A625C5000514B02 /* xmlrole.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmlrole.c; sourceTree = "<group>"; };
+		E0A01FAB0A625C5000514B02 /* xmlrole.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = xmlrole.h; sourceTree = "<group>"; };
+		E0A01FAC0A625C5000514B02 /* xmltok.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmltok.c; sourceTree = "<group>"; };
+		E0A01FAD0A625C5000514B02 /* xmltok.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = xmltok.h; sourceTree = "<group>"; };
+		E0A01FAE0A625C5000514B02 /* xmltok_impl.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmltok_impl.c; sourceTree = "<group>"; };
+		E0A01FAF0A625C5000514B02 /* xmltok_impl.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = xmltok_impl.h; sourceTree = "<group>"; };
+		E0A01FB00A625C5000514B02 /* xmltok_ns.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = xmltok_ns.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,7 +194,7 @@
 			children = (
 				E0042B0D0A5D0A7A00DB9445 /* src */,
 				E0042B030A5D0A5700DB9445 /* tools */,
-				E0042C900A5D120C00DB9445 /* expat */,
+				E0A01F9F0A625C5000514B02 /* expat */,
 				E0042AEC0A5D09D400DB9445 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -261,27 +264,29 @@
 			path = ../src;
 			sourceTree = SOURCE_ROOT;
 		};
-		E0042C900A5D120C00DB9445 /* expat */ = {
+		E0A01F9F0A625C5000514B02 /* expat */ = {
 			isa = PBXGroup;
 			children = (
-				E0042C910A5D120C00DB9445 /* ascii.h */,
-				E0042C920A5D120C00DB9445 /* asciitab.h */,
-				E0042C930A5D120C00DB9445 /* expat.h */,
-				E0042CB50A5D12DF00DB9445 /* expat_config.h */,
-				E0042C940A5D120C00DB9445 /* iasciitab.h */,
-				E0042C950A5D120C00DB9445 /* internal.h */,
-				E0042C960A5D120C00DB9445 /* latin1tab.h */,
-				E0042C970A5D120C00DB9445 /* nametab.h */,
-				E0042C980A5D120C00DB9445 /* utf8tab.h */,
-				E0042C9A0A5D120C00DB9445 /* xmlparse.c */,
-				E0042C9B0A5D120C00DB9445 /* xmlrole.c */,
-				E0042C9C0A5D120C00DB9445 /* xmlrole.h */,
-				E0042C9D0A5D120C00DB9445 /* xmltok.c */,
-				E0042C9E0A5D120C00DB9445 /* xmltok.h */,
+				E0A01FA00A625C5000514B02 /* ascii.h */,
+				E0A01FA10A625C5000514B02 /* asciitab.h */,
+				E0A01FA20A625C5000514B02 /* expat.h */,
+				E0A01FA30A625C5000514B02 /* expat_config.h */,
+				E0A01FA40A625C5000514B02 /* iasciitab.h */,
+				E0A01FA50A625C5000514B02 /* internal.h */,
+				E0A01FA60A625C5000514B02 /* latin1tab.h */,
+				E0A01FA70A625C5000514B02 /* nametab.h */,
+				E0A01FA80A625C5000514B02 /* utf8tab.h */,
+				E0A01FA90A625C5000514B02 /* xmlparse.c */,
+				E0A01FAA0A625C5000514B02 /* xmlrole.c */,
+				E0A01FAB0A625C5000514B02 /* xmlrole.h */,
+				E0A01FAC0A625C5000514B02 /* xmltok.c */,
+				E0A01FAD0A625C5000514B02 /* xmltok.h */,
+				E0A01FAE0A625C5000514B02 /* xmltok_impl.c */,
+				E0A01FAF0A625C5000514B02 /* xmltok_impl.h */,
+				E0A01FB00A625C5000514B02 /* xmltok_ns.c */,
 			);
-			name = expat;
-			path = ../expat;
-			sourceTree = SOURCE_ROOT;
+			path = expat;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -472,9 +477,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0042CAB0A5D120C00DB9445 /* xmlparse.c in Sources */,
-				E0042CAC0A5D120C00DB9445 /* xmlrole.c in Sources */,
-				E0042CAE0A5D120C00DB9445 /* xmltok.c in Sources */,
+				E0A01FBB0A625C5000514B02 /* xmlrole.c in Sources */,
+				E0A01FBD0A625C5000514B02 /* xmltok.c in Sources */,
+				E0A01FC60A625C8700514B02 /* xmlparse.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
