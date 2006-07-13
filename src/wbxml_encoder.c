@@ -637,6 +637,10 @@ WBXML_DECLARE(void) wbxml_encoder_set_text_public_id(WBXMLEncoder *encoder, WB_B
 
 WBXML_DECLARE(WBXMLError) wbxml_encoder_encode_node(WBXMLEncoder *encoder, WBXMLTreeNode *node)
 {
+    if (encoder->flow_mode == FALSE) {
+        WBXML_WARNING((WBXML_ENCODER, "You should NOT call wbxml_encoder_encode_node() if you are not in Flow Mode encoding ! (use wbxml_encoder_set_flow_mode(encoder, TRUE))"));
+    }
+
     return wbxml_encoder_encode_node_with_elt_end(encoder, node, TRUE);
 }
 
@@ -648,10 +652,6 @@ WBXML_DECLARE(WBXMLError) wbxml_encoder_encode_node_with_elt_end(WBXMLEncoder *e
     
     if ((encoder == NULL) || (node == NULL))
         return WBXML_ERROR_BAD_PARAMETER;
-    
-    if (encoder->flow_mode == FALSE) {
-        WBXML_WARNING((WBXML_ENCODER, "You should NOT call wbxml_encoder_encode_node() if you are not in Flow Mode encoding ! (use wbxml_encoder_set_flow_mode(encoder, TRUE))"));
-    }
     
     /* Check that language table has been set */
     if (encoder->lang == NULL)
