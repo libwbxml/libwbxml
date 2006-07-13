@@ -309,6 +309,13 @@ WBXML_DECLARE(WB_BOOL) wbxml_tree_node_add_child(WBXMLTreeNode *parent,
                                                  WBXMLTreeNode *node);
 
 /**
+ * @brief Extract a node
+ * @param node Node to extract
+ * @return TRUE if extracted or FALSE if error
+ */
+WBXML_DECLARE(WBXMLError) wbxml_tree_node_extract(WBXMLTreeNode *node);
+
+/**
  * @brief Add a WBXML Attribute to a Tree Node structure
  * @param node The Tree Node to modify
  * @param attr The WBXML Attribute to add
