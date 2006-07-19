@@ -12,7 +12,12 @@
  * @defgroup wbxml_buffers WBXML Buffers
  * @ingroup wbxml
  */
- 
+
+/** 
+ * @defgroup wbxml_charset WBXML Charset
+ * @ingroup wbxml
+ */
+
 /** 
  * @defgroup wbxml_conv WBXML Converters
  * @ingroup wbxml
