@@ -180,10 +180,10 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_xml(WB_UTINY *xml,
 
 /**
  * @brief Convert a WBXML Tree to an XML document
- * @param tree      [in]  The WBXML Tree to convert
- * @param wbxml     [out] The resulting XML document
- * @param wbxml_len [out] The resulting XML document length
- * @param params    [in]  Parameters (if NULL, default values are used)
+ * @param tree    [in]  The WBXML Tree to convert
+ * @param xml     [out] The resulting XML document
+ * @param xml_len [out] The resulting XML document length
+ * @param params  [in]  Parameters (if NULL, default values are used)
  * @result Return WBXML_OK if no error, an error code otherwise
  */
 WBXML_DECLARE(WBXMLError) wbxml_tree_to_xml(WBXMLTree *tree,
@@ -237,7 +237,7 @@ WBXML_DECLARE(void) wbxml_tree_node_destroy(WBXMLTreeNode *node);
 
 /**
  * @brief Destroy a Tree Node structure (used for wbxml_list_destroy())
- * @paramnode The Tree Node structure to destroy
+ * @param node The Tree Node structure to destroy
  */
 WBXML_DECLARE(void) wbxml_tree_node_destroy_item(void *node);
 

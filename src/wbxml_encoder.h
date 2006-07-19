@@ -191,7 +191,7 @@ WBXML_DECLARE(WBXMLError) wbxml_encoder_encode_tree_to_xml(WBXMLEncoder *encoder
  *
  * You should use this function (with TRUE parameter) before calling wbxml_encoder_encode_node().
  *
- * @param encode    [in] The WBXML Encoder to use
+ * @param encoder   [in] The WBXML Encoder to use
  * @param flow_mode [in] Set Flow Mode ?
  * @return Return WBXML_OK if no error, an error code otherwise
  */
@@ -226,8 +226,8 @@ WBXML_DECLARE(void) wbxml_encoder_set_text_public_id(WBXMLEncoder *encoder, WB_B
  * You should call wbxml_encoder_set_flow_mode(TRUE), wbxml_encoder_set_output_type() before using this function.
  * You must call wbxml_encoder_set_lang() before using this function.
  *
- * @param encode [in] The WBXML Encoder to use
- * @param node   [in] The WBXML Tree Node to encode
+ * @param encoder [in] The WBXML Encoder to use
+ * @param node    [in] The WBXML Tree Node to encode
  * @return Return WBXML_OK if no error, an error code otherwise
  */
 WBXML_DECLARE(WBXMLError) wbxml_encoder_encode_node(WBXMLEncoder *encoder, WBXMLTreeNode *node);
@@ -236,7 +236,7 @@ WBXML_DECLARE(WBXMLError) wbxml_encoder_encode_node(WBXMLEncoder *encoder, WBXML
  * @brief Encode node, but if node is an Element, choose the encode 'end' tag or not
  *
  * @param encoder [in] The WBXML Encoder to use
- * @param tree    [in] The WBXML Tree to encode
+ * @param node    [in] The WBXML Tree Node to encode
  * @param enc_end [in] Encoded element 'end' ?
  * @return Return WBXML_OK if no error, an error code otherwise
  */

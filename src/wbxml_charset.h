@@ -97,7 +97,7 @@ WBXML_DECLARE(WB_BOOL) wbxml_charset_get_name(WBXMLCharsetMIBEnum   mib_enum,
  *
  * @param in_buf      Buffer to convert
  * @param io_bytes    Number of bytes in buffer
- * @param in_charser  Original charset
+ * @param in_charset  Original charset
  * @param out_buf     Resulting converted Buffer
  * @param out_charset Destination charset
  */
@@ -123,7 +123,7 @@ WBXML_DECLARE(WBXMLError) wbxml_charset_conv(const WB_TINY        *in_buf,
  *
  * @param in_buf      Buffer to convert
  * @param io_bytes    Number of bytes in buffer
- * @param in_charser  Original charset
+ * @param in_charset  Original charset
  * @param out_buf     Resulting converted Buffer
  * @param out_charset Destination charset
  */

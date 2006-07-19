@@ -102,18 +102,18 @@
 #define WBXML_ENCODER_XML_DEFAULT_CHARSET WBXML_CHARSET_UTF_8
 
 /**
- * If defined, generate empty XML elements (eg: <foo />), else generate
- * full "end element" (eg: <foo></foo>)
+ * If defined, generate empty XML elements (eg: &lt;foo /&gt;), else generate
+ * full "end element" (eg: &lt;foo&gt;&lt;/foo&gt;)
  *
  * @todo This must be a 'WBXMLGenXMLParams' parameter
  */
 #define WBXML_ENCODER_XML_GEN_EMPTY_ELT
 
 /**
- * If defined, do not indent elements that have no element child (eg: <foo>bar</foo>),
- * else indent anyway (eg: <foo>
+ * If defined, do not indent elements that have no element child (eg: &lt;foo&gt;bar&lt;/foo&gt;),
+ * else indent anyway (eg: &lt;foo&gt;
  *                           bar
- *                         </foo>)
+ *                         &lt;/foo&gt;)
  *
  * @todo This must be a 'WBXMLGenXMLParams' parameter
  */
