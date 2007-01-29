@@ -659,12 +659,14 @@ static WBXMLError parse_version(WBXMLParser *parser)
      * Do NOT keep 'WBXML_VERSION_UNKNOWN' (0xffffffff) because only one byte will change.
      * (for example, if the version is 0x02, then parser->version will be 0xffffff02)
      */
-    parser->version = WBXML_VERSION_10;
+    WB_UTINY version = WBXML_VERSION_10;
     
-    if ((ret = parse_uint8(parser, (WB_UTINY*) &parser->version)) != WBXML_OK)
+    if ((ret = parse_uint8(parser, &version)) != WBXML_OK)
         return ret;
+    
+    parser->version = version;
 
-    WBXML_DEBUG((WBXML_PARSER, "(%d) Parsed version: '0x%X'", parser->pos - 1, (WB_TINY) parser->version));
+    WBXML_DEBUG((WBXML_PARSER, "(%d) Parsed version: 1.%d", parser->pos - 1, parser->version));
 
     return WBXML_OK;
 }
@@ -938,6 +940,8 @@ static WBXMLError parse_element(WBXMLParser *parser)
     if ((ret = parse_stag(parser, &tag, &element)) != WBXML_OK ) {
         return ret;
     }
+
+    WBXML_DEBUG((WBXML_PARSER, "<%s>", wbxml_tag_get_xml_name(element)));
   
     /* Set Current Tag */
     if (element->type == WBXML_VALUE_TOKEN) {
@@ -990,7 +994,7 @@ static WBXMLError parse_element(WBXMLParser *parser)
                                                attrs,
                                                is_empty);
     }
-      
+    
     /* Free Attributes */
     free_attrs_table(attrs);
     
@@ -1023,7 +1027,7 @@ static WBXMLError parse_element(WBXMLParser *parser)
             content = NULL;
         }
         
-        WBXML_DEBUG((WBXML_PARSER, "(%d) End of Element", parser->pos));
+        WBXML_DEBUG((WBXML_PARSER, "(%d) End of Element", parser->pos - 1));
         
         /* Skip END */
         parser->pos++;
@@ -1037,7 +1041,9 @@ static WBXMLError parse_element(WBXMLParser *parser)
                                              element,
                                              is_empty);
     }
-      
+    
+    WBXML_DEBUG((WBXML_PARSER, "</%s>", wbxml_tag_get_xml_name(element)));
+    
     /* Free Tag */
     wbxml_tag_destroy(element);
       
@@ -1078,7 +1084,7 @@ static WBXMLError parse_switch_page(WBXMLParser *parser, WBXMLTokenType code_spa
     WBXML_DEBUG((WBXML_PARSER, "(%d) Parsing switchPage", parser->pos));
 
     if ((WB_UTINY) parser->version < (WB_UTINY) WBXML_VERSION_12)
-        WBXML_WARNING((WBXML_PARSER, "No Switch Page mecanism possible in WBXML < %s", WBXML_VERSION_TEXT_12));
+        WBXML_WARNING((WBXML_PARSER, "No Switch Page mecanism possible in WBXML < %s (current: %d)", WBXML_VERSION_TEXT_12, (WB_UTINY) parser->version));
 
     /* Skip SWITCH_PAGE token */
     parser->pos++;
