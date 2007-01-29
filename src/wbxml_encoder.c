@@ -1499,8 +1499,8 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
             }
             else {
 #endif /* WBXML_ENCODER_USE_STRTBL */
-                /* Length of String Table is length of XML Public ID */
-                strstbl_len = wbxml_buffer_len(pid);
+                /* Length of String Table is length of XML Public ID (plus the NULL char) */
+                strstbl_len = wbxml_buffer_len(pid) + 1;
 
                 /* There is only the XML Public ID in String Table */
                 public_id_index = 0;
@@ -1545,10 +1545,12 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
 #endif /* WBXML_ENCODER_USE_STRTBL */
 
         if (pid != NULL) {
-            /* The append includes terminating NULL char */
             if (!wbxml_buffer_append(header, pid))
                 return WBXML_ERROR_ENCODER_APPEND_DATA;
             
+            if (!wbxml_buffer_append_char(header, WBXML_STR_END))
+                return WBXML_ERROR_ENCODER_APPEND_DATA;
+
             /* Clean up */
             wbxml_buffer_destroy(pid);
         }
