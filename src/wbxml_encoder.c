@@ -1936,7 +1936,8 @@ static WBXMLError wbxml_encode_value_element_buffer(WBXMLEncoder *encoder, WB_UT
 #if defined( WBXML_SUPPORT_SYNCML )
         /* If this is a SyncML document ? */
         if ((encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML10) ||
-            (encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML11))
+            (encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML11) ||
+            (encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML12))
         {
             /** @todo We must check too if we are in a <Type> */
 
@@ -4019,7 +4020,8 @@ static WBXMLError xml_encode_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
 #if defined( WBXML_SUPPORT_SYNCML )
         /* Change text in <Type> from "application/vnd.syncml-devinf+wbxml" to "application/vnd.syncml-devinf+xml" */
         if (((encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML10) ||
-             (encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML11)) &&
+             (encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML11) ||
+             (encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML12)) &&
             (encoder->current_tag != NULL) &&
             (encoder->current_tag->wbxmlCodePage == 0x01 ) &&
             (encoder->current_tag->wbxmlToken == 0x13 ) &&
