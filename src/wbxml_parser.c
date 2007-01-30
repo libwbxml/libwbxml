@@ -277,7 +277,7 @@ WBXML_DECLARE(WBXMLError) wbxml_parser_parse(WBXMLParser *parser, WB_UTINY *wbxm
             parser->charset = WBXML_PARSER_DEFAULT_CHARSET;
       
             WBXML_WARNING((WBXML_PARSER,
-                           "No charset information found, using default : %s",
+                           "No charset information found, using default : %x",
                            WBXML_PARSER_DEFAULT_CHARSET));
         }
     }
@@ -998,7 +998,7 @@ static WBXMLError parse_element(WBXMLParser *parser)
     /* Free Attributes */
     free_attrs_table(attrs);
     
-      
+    
     /* Parse *content */
     if (!is_empty) {
         /* There can be NO content */

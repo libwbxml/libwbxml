@@ -39,7 +39,7 @@
 
 
 /** Start Document Callback */
-void parse_clb_start_document(void *ctx, WB_LONG charset, const WBXMLLangEntry *lang)
+void parse_clb_start_document(void *ctx, WBXMLCharsetMIBEnum charset, const WBXMLLangEntry *lang)
 {
     printf("Parsing Document:\n"
            "\tRoot Element: %s\n"
