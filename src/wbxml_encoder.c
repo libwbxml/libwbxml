@@ -127,6 +127,10 @@
  *
  * @warning For now 'current_text_parent' field is only used for DRM REL Content Encoding. It should not be
  *          used for another purpose.
+ *
+ * @warning For now 'current_node' field is a hack. It is reset after End Tag, and as there is no Linked List
+ *          mecanism, this is bad for cascading elements: we don't fill this field with parent Tag
+ *          when parsing End Tag.
  */
 struct WBXMLEncoder_s {
     WBXMLTree *tree;                        /**< WBXML Tree to Encode */
@@ -136,6 +140,7 @@ struct WBXMLEncoder_s {
     const WBXMLTagEntry *current_tag;       /**< Current Tag (See The Warning For This Field !) */
     const WBXMLTreeNode *current_text_parent; /**< Text parent of current Node (See The Warning For This Field !) */
     const WBXMLAttrEntry *current_attr;     /**< Current Attribute */
+    WBXMLTreeNode *current_node;            /**< Current Node (See The Warning For This Field !) */
     WB_UTINY tagCodePage;                   /**< Current Tag Code Page */
     WB_UTINY attrCodePage;                  /**< Current Attribute Code Page */
     WB_BOOL ignore_empty_text;              /**< Do we ignore empty text nodes (ie: ignorable whitespaces)? */
@@ -269,6 +274,7 @@ static WBXMLError wbxml_encode_inline_integer_extension_token(WBXMLEncoder *enco
 static WBXMLError wbxml_encode_entity(WBXMLEncoder *encoder, WB_ULONG value);
 #endif /* 0 */
 static WBXMLError wbxml_encode_opaque(WBXMLEncoder *encoder, WBXMLBuffer *buff);
+static WBXMLError wbxml_encode_opaque_data(WBXMLEncoder *encoder, WB_UTINY *data, WB_ULONG data_len);
 #if defined( WBXML_ENCODER_USE_STRTBL )
 static WBXMLError wbxml_encode_tableref(WBXMLEncoder *encoder, WB_ULONG offset);
 #endif /* WBXML_ENCODER_USE_STRTBL */
@@ -292,6 +298,10 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
 #if defined( WBXML_SUPPORT_DRMREL )
 static WBXMLError wbxml_encode_drmrel_content(WBXMLEncoder *encoder, WB_UTINY *buffer);
 #endif /* WBXML_SUPPORT_DRMREL */
+
+#if defined( WBXML_SUPPORT_OTA_SETTINGS ) 
+static WBXMLError wbxml_encode_ota_nokia_icon(WBXMLEncoder *encoder, WB_UTINY *buffer);
+#endif /* WBXML_SUPPORT_OTA_SETTINGS */
 
 #if defined( WBXML_ENCODER_USE_STRTBL )
 /* WBXML String Table Functions */
@@ -383,6 +393,7 @@ WBXML_DECLARE(WBXMLEncoder *) wbxml_encoder_create_real(void)
     encoder->current_tag = NULL;
     encoder->current_text_parent = NULL;
     encoder->current_attr = NULL;
+    encoder->current_node = NULL;
 
     encoder->tagCodePage = 0;
     encoder->attrCodePage = 0;
@@ -450,6 +461,7 @@ WBXML_DECLARE(void) wbxml_encoder_reset(WBXMLEncoder *encoder)
     
     encoder->current_tag = NULL;
     encoder->current_attr = NULL;
+    encoder->current_node = NULL;
     
     encoder->tagCodePage = 0;
     encoder->attrCodePage = 0;
@@ -965,6 +977,9 @@ static WB_BOOL encoder_init_output(WBXMLEncoder *encoder)
 static WBXMLError parse_node(WBXMLEncoder *encoder, WBXMLTreeNode *node, WB_BOOL enc_end)
 {
     WBXMLError ret = WBXML_OK;
+    
+    /* Set current node */
+    encoder->current_node = node;
 
     /* Parse this node */
     switch (node->type) {
@@ -1076,8 +1091,9 @@ static WBXMLError parse_node(WBXMLEncoder *encoder, WBXMLTreeNode *node, WB_BOOL
         break;
     }
 
-    /* Reset Current Tag */
+    /* Reset Current Tag and Current Node */
     encoder->current_tag = NULL;
+    encoder->current_node = NULL;
 
     /* Parse next node */
     if (node->next != NULL)
@@ -1895,6 +1911,22 @@ static WBXMLError wbxml_encode_value_element_buffer(WBXMLEncoder *encoder, WB_UT
             break;
 #endif /* WBXML_SUPPORT_EMN */
 
+#if defined( WBXML_SUPPORT_OTA_SETTINGS )
+        case WBXML_LANG_OTA_SETTINGS:
+            /**
+             * Nokia OTA Settings support for the ICON value in bookmarks.
+             * The encoding is done using base64 encoded images in XML, and encoding it as OPAQUE data in the WBXML. 
+             * The icon is embedded using an PARM element with name ICON.
+             */
+            if ((encoder->current_attr->wbxmlCodePage == 0x00) &&
+                (encoder->current_attr->wbxmlToken == 0x11)) 
+            {
+                if ((ret = wbxml_encode_ota_nokia_icon(encoder, buffer)) != WBXML_NOT_ENCODED)
+                    return ret;
+            }
+            break;
+#endif /* WBXML_SUPPORT_OTA_SETTINGS */
+
         default:
             break;
         }
@@ -2434,25 +2466,39 @@ static WBXMLError wbxml_encode_entity(WBXMLEncoder *encoder, WB_ULONG value)
 
 
 /**
- * @brief Encode a WBXML Opaque
+ * @brief Encode a WBXML Opaque, given a Buffer
  * @param encoder The WBXML Encoder
  * @param buff The Buffer to encode
+ * @return WBXML_OK if encoding is OK, an error code otherwise
+ * @note This function is simple a wrapper to wbxml_encode_opaque_data()
+ */
+static WBXMLError wbxml_encode_opaque(WBXMLEncoder *encoder, WBXMLBuffer *buff)
+{
+    return wbxml_encode_opaque_data(encoder, wbxml_buffer_get_cstr(buff), wbxml_buffer_len(buff));
+}
+
+
+/**
+ * @brief Encode a WBXML Opaque
+ * @param encoder The WBXML Encoder
+ * @param data The data to encode
+ * @param data_len The data length to encode
  * @return WBXML_OK if encoding is OK, an error code otherwise
  * @note  opaque = OPAQUE length *byte
  *        length = mb_u_int32
  */
-static WBXMLError wbxml_encode_opaque(WBXMLEncoder *encoder, WBXMLBuffer *buff)
+static WBXMLError wbxml_encode_opaque_data(WBXMLEncoder *encoder, WB_UTINY *data, WB_ULONG data_len)
 {
     /* Add WBXML_OPAQUE */
     if (!wbxml_buffer_append_char(encoder->output, WBXML_OPAQUE))
         return WBXML_ERROR_ENCODER_APPEND_DATA;
 
     /* Add Length */
-    if (!wbxml_buffer_append_mb_uint_32(encoder->output, wbxml_buffer_len(buff)))
+    if (!wbxml_buffer_append_mb_uint_32(encoder->output, data_len))
         return WBXML_ERROR_ENCODER_APPEND_DATA;
 
     /* Add Buffer */
-    if (!wbxml_buffer_append(encoder->output, buff))
+    if (!wbxml_buffer_append_data(encoder->output, data, data_len))
         return WBXML_ERROR_ENCODER_APPEND_DATA;
 
     return WBXML_OK;
@@ -3149,6 +3195,87 @@ static WBXMLError wbxml_encode_drmrel_content(WBXMLEncoder *encoder, WB_UTINY *b
 }
 
 #endif /* WBXML_SUPPORT_DRMREL */
+
+
+#if defined( WBXML_SUPPORT_OTA_SETTINGS )
+
+/*******************
+ * OTA Settings
+ */
+
+/**
+ * @brief Encode a OTA ICON as opaque data 
+ * @param encoder The WBXML Encoder
+ * @param buffer The buffer to encode
+ * @return WBXML_OK if encoded, WBXML_NOT_ENCODED if not encoded, another error code otherwise 
+ * @note Nokia OTA Settings support for the ICON value in bookmarks.
+ *
+ * Nokia introduced a proprietary way of including icons in the old Nokia OTA Settings format when sending bookmarks.
+ * The encoding is done using base64 encoded images in XML, and encoding it as OPAQUE data in the WBXML. 
+ * The icon is embedded using an PARM element with name ICON.
+ *
+ * E.g. the following bookmark (XML) is valid:
+ * 
+ * <?xml version="1.0"?>
+ * <!DOCTYPE CHARACTERISTIC-LIST PUBLIC "-//WAPFORUM//DTD NOKIA-OTA 1.0//EN" "http://localhost:8080/OMABootSendWEB/DTD/characteristic_list.dtd">
+ * 
+ * <CHARACTERISTIC-LIST>
+ *    <CHARACTERISTIC TYPE="BOOKMARK"> 
+ *       <PARM NAME="NAME" VALUE="TV2"/>
+ *       <PARM NAME="URL" VALUE="http://wap.tv2.dk"/>
+ *       <PARM NAME="ICON" VALUE="R0lGODlhIAAgAPMAAP//AP8zAMwAAJkAAGYAAN0AAKoAAIgAAHcAAFUAAEQAACIAABEAALu7u8jIyP8AMyH5BAEAAA4ALAAAAAAgACAAQATh0MlJq704Z8bkucyiJARyHEM6HAjCNJw2hWNpnmdLJMrSyUBMICApAAqbhUiheDVgicQg8dPQSKaBQVAQGFaIXa8KDC2ZaCU5yL4QPe3yoXAIfDacfJVBZV9JNi16fWUiWChbAl5gBAxjMlclKFoGX4w8PkF/BJydO5hrbXp5caUYd6YycwVvqRY4R64goa4dMRKtGBxKaqNShIVMUSUcTwxTtCCGnC04LMWkkMtZlJbPMLdJNVlbXV8sYplW04iKi+Cg0tvUKixh6eqALfM64cnKwlH6PI+mu7y8sskaCMFFADs="/>
+ *    </CHARACTERISTIC>
+ * </CHARACTERISTIC-LIST>
+ *
+ * If not found, this is not encoded... and it will be encoded latter as an Inline String in wbxml_encode_value_element_buffer().
+ */
+static WBXMLError wbxml_encode_ota_nokia_icon(WBXMLEncoder *encoder, WB_UTINY *buffer)
+{
+    WBXMLError ret = WBXML_NOT_ENCODED;
+    
+    /* Is a VALUE attribute ? */
+    if ((encoder->current_tag != NULL) &&
+        (encoder->current_attr->wbxmlCodePage == 0x00) && 
+        (encoder->current_attr->wbxmlToken == 0x11) &&
+        (encoder->current_node && encoder->current_node->attrs)) 
+    {
+        WBXMLList *attrs = encoder->current_node->attrs;
+        WB_ULONG index = 0;
+        WB_ULONG nb_attrs = wbxml_list_len(attrs);
+        WB_BOOL found = FALSE;
+        
+        /* Search for a NAME="ICON" attribute */
+        while (!found && (index < nb_attrs)) {
+            WBXMLAttribute *attr = (WBXMLAttribute*)wbxml_list_get(attrs, index);
+            
+            if ((WBXML_STRCMP("NAME", wbxml_attribute_get_xml_name(attr)) == 0) &&
+                (WBXML_STRCMP("ICON", wbxml_attribute_get_xml_value(attr)) == 0))
+            {
+                WB_UTINY *data = NULL;
+                WB_LONG data_len = 0;
+                
+                /* Decode Base64 */
+                if ((data_len = wbxml_base64_decode(buffer, &data)) < 0)
+                    return WBXML_NOT_ENCODED;
+            
+                /* Encode opaque */
+                if ((ret = wbxml_encode_opaque_data(encoder, data, data_len)) != WBXML_OK)
+                    return ret;
+                
+                /* Free Data */
+                wbxml_free(data);
+                
+                found = TRUE;
+            }
+            
+            index++;
+        }
+    }
+    
+    return ret;
+}
+
+#endif /* WBXML_SUPPORT_OTA_SETTINGS */
 
 
 #if defined( WBXML_ENCODER_USE_STRTBL )

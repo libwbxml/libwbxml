@@ -153,21 +153,20 @@ static WBXMLError parse_uint8(WBXMLParser *parser, WB_UTINY *result);
 static WBXMLError parse_mb_uint32(WBXMLParser *parser, WB_ULONG *result);
 
 /* Language Specific Decoding Functions */
+static WBXMLError decode_base64_value(WBXMLBuffer **data);
+
 #if defined( WBXML_SUPPORT_SI ) || defined( WBXML_SUPPORT_EMN )
 static WBXMLError decode_datetime(WBXMLBuffer *buff);
 #endif /* WBXML_SUPPORT_SI || WBXML_SUPPORT_EMN */
 
 static WBXMLError decode_opaque_content(WBXMLParser *parser, WBXMLBuffer **data);
+static WBXMLError decode_opaque_attr_value(WBXMLParser *parser, WBXMLBuffer **data);
 
 #if defined( WBXML_SUPPORT_WV )
 static WBXMLError decode_wv_content(WBXMLParser *parser, WBXMLBuffer **data);
 static WBXMLError decode_wv_integer(WBXMLBuffer **data);
 static WBXMLError decode_wv_datetime(WBXMLBuffer **data);
 #endif /* WBXML_SUPPORT_WV */
-
-#if defined( WBXML_SUPPORT_DRMREL )
-static WBXMLError decode_drmrel_keyvalue(WBXMLBuffer **data);
-#endif /* WBXML_SUPPORT_DRMREL */
 
 /* Macro for error handling */
 #define CHECK_ERROR if (ret != WBXML_OK) return ret;
@@ -1952,7 +1951,10 @@ static WBXMLError parse_attr_value(WBXMLParser  *parser,
             WBXML_ERROR((WBXML_PARSER, "An Attribute value can't be 'opaque' in WBXML version < %s", WBXML_VERSION_TEXT_12));
         }
         
-        return parse_opaque(parser, result);
+        if ((ret = parse_opaque(parser, result)) != WBXML_OK) 
+            return ret;
+        
+        return decode_opaque_attr_value(parser, result);
     }
   
   
@@ -2215,6 +2217,40 @@ static WBXMLError parse_mb_uint32(WBXMLParser *parser, WB_ULONG *result)
  * Language Specific Decoding Functions 
  */
 
+/**
+ * @brief Decode a BASE64 value
+ * @param data [in/out]The value to decode
+ * @return WBXML_OK if OK, another error code otherwise
+ */
+static WBXMLError decode_base64_value(WBXMLBuffer **data)
+{
+    WB_UTINY   *result = NULL;
+    WBXMLError  ret    = WBXML_OK;
+    
+    if ((data == NULL) || (*data == NULL)) {
+        return WBXML_ERROR_INTERNAL;
+    }
+    
+    if ((result = wbxml_base64_encode((const WB_UTINY *) wbxml_buffer_get_cstr(*data),
+                                      wbxml_buffer_len(*data))) == NULL)
+    {
+        return WBXML_ERROR_B64_ENC;
+    }
+    
+    /* Reset buffer */
+    wbxml_buffer_delete(*data, 0, wbxml_buffer_len(*data));
+    
+    /* Set data */
+    if (!wbxml_buffer_append_cstr(*data, result)) {
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+    }
+    
+    wbxml_free(result);
+    
+    return ret;
+}
+
+
 #if ( defined( WBXML_SUPPORT_SI ) || defined( WBXML_SUPPORT_EMN ) )
 
 /**************************************
@@ -2303,8 +2339,6 @@ static WBXMLError decode_datetime(WBXMLBuffer *buff)
  * @param parser The WBXML Parser
  * @param data The Opaque data buffer
  * @return WBXML_OK if OK, another error code otherwise
- * @note Used for:
- *      - WV 1.1 / 1.2
  */
 static WBXMLError decode_opaque_content(WBXMLParser  *parser,
                                         WBXMLBuffer **data)
@@ -2324,13 +2358,14 @@ static WBXMLError decode_opaque_content(WBXMLParser  *parser,
 #if defined( WBXML_SUPPORT_DRMREL )
 
     case WBXML_LANG_DRMREL10:
+        /* ds:KeyValue */
         if ((parser->current_tag->wbxmlCodePage == 0x00) &&
             (parser->current_tag->wbxmlToken == 0x0C))
         {
             WBXMLError ret = WBXML_OK;
             
-            /* Decode <KeyValue> */
-            if ((ret = decode_drmrel_keyvalue(data)) != WBXML_OK)
+            /* Decode base64 value */ 
+            if ((ret = decode_base64_value(data)) != WBXML_OK)
                 return ret;
 
             return WBXML_OK;
@@ -2338,7 +2373,62 @@ static WBXMLError decode_opaque_content(WBXMLParser  *parser,
         break;
 
 #endif /* WBXML_SUPPORT_DRMREL */    
-    
+
+#if defined( WBXML_SUPPORT_SYNCML )
+
+    case WBXML_LANG_SYNCML_SYNCML10: 
+    case WBXML_LANG_SYNCML_SYNCML11: 
+    case WBXML_LANG_SYNCML_SYNCML12: 
+        /* NextNonce */
+        if ((parser->current_tag->wbxmlCodePage == 0x01) &&
+            (parser->current_tag->wbxmlToken == 0x10)) 
+        {
+            WBXMLError ret = WBXML_OK;
+            
+            /* Decode base64 value */ 
+            if ((ret = decode_base64_value(data)) != WBXML_OK)
+                return ret;
+                
+            return WBXML_OK;
+        }
+        break;
+
+#endif /* WBXML_SUPPORT_SYNCML */    
+
+    default:
+        /* NOP */
+        break;
+    } /* switch */
+  
+    return WBXML_OK;
+}
+
+
+/**
+ * @brief Decode an Opaque Attribute Value buffer
+ * @param parser The WBXML Parser
+ * @param data The Opaque data buffer
+ * @return WBXML_OK if OK, another error code otherwise
+ */
+static WBXMLError decode_opaque_attr_value(WBXMLParser *parser, WBXMLBuffer **data)
+{
+    switch (parser->langTable->langID) 
+    {
+#if defined( WBXML_SUPPORT_OTA_SETTINGS )
+
+    case WBXML_LANG_OTA_SETTINGS:
+    {
+        WBXMLError ret = WBXML_OK;
+        
+        /* Decode base64 value */
+        if ((ret = decode_base64_value(data)) != WBXML_OK)
+            return ret; 
+
+        return WBXML_OK;
+    }
+
+#endif /* WBXML_SUPPORT_OTA_SETTINGS */ 
+
     default:
         /* NOP */
         break;
@@ -2711,49 +2801,3 @@ static WBXMLError decode_wv_datetime(WBXMLBuffer **data)
 }
 
 #endif /* WBXML_SUPPORT_WV */
-
-
-#if defined( WBXML_SUPPORT_DRMREL )
-
-/**************************************
- * DRMREL 1.0
- */
-
-/**
- * @brief Decode a DRMREL 'KeyValue'
- * @param data The KeyValue to decode
- * @return WBXML_OK if OK, another error code otherwise
- * @note Used for:
- *      - DRMREL 1.0
- * @note [OMA-Download-DRMREL-v1_0-20020913-C.PDF] - 7.1:
- *       "The content of the <KeyValue> element MUST be in binary format using the ‘opaque’ token."
- */
-static WBXMLError decode_drmrel_keyvalue(WBXMLBuffer **data)
-{
-    WB_UTINY   *result = NULL;
-    WBXMLError  ret    = WBXML_OK;
-  
-    if ((data == NULL) || (*data == NULL)) {
-        return WBXML_ERROR_INTERNAL;
-    }
-  
-    if ((result = wbxml_base64_encode((const WB_UTINY *) wbxml_buffer_get_cstr(*data),
-                                      wbxml_buffer_len(*data))) == NULL)
-    {
-        return WBXML_ERROR_B64_ENC;
-    }
-
-    /* Reset buffer */
-    wbxml_buffer_delete(*data, 0, wbxml_buffer_len(*data));
-
-    /* Set data */
-    if (!wbxml_buffer_append_cstr(*data, result)) {
-        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
-    }
-
-    wbxml_free(result);
-  
-    return ret;
-}
-
-#endif /* WBXML_SUPPORT_DRMREL */
