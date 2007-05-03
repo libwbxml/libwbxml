@@ -256,7 +256,8 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_xml(WB_UTINY *xml, WB_ULONG xml_len, W
 
 #else /* HAVE_EXPAT */
 
-#if defined( HAVE_LIBXML )
+//#if defined( HAVE_LIBXML )
+#if 0
 
     /** @todo Use LibXML2 SAX interface ! */
     return WBXML_ERROR_NO_XMLPARSER;
@@ -333,7 +334,8 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_to_xml(WBXMLTree *tree,
 }
 
 
-#if defined( HAVE_LIBXML )
+// #if defined( HAVE_LIBXML )
+#if 0
 
 WBXML_DECLARE(WBXMLError) wbxml_tree_from_libxml_doc(xmlDocPtr libxml_doc,
                                                      WBXMLTree **tree)
