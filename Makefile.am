@@ -24,9 +24,6 @@ wbxmldoc_DATA = \
 	TODO\
 	doxygen.h
 
-install-data-local:
-	$(mkinstalldirs) $(DESTDIR)$(wbxmldocdir)/manual
-
 dist-bz2: distdir
 	sed -e "s/tar.gz/tar.bz2/g" $(distdir)/wbxml2.spec > $(distdir)/wbxml2.spec.aux
 	mv $(distdir)/wbxml2.spec.aux $(distdir)/wbxml2.spec
