@@ -7,7 +7,7 @@
 # Note: tagname may be HEAD to just grab the head revision
 #
 
-SVNROOT='http://libwbxml.aymerick.com:8080/repo/wbxml2/trunk'
+SVNROOT='http://libwbxml.aymerick.com/repo/wbxml2/trunk'
 
 if test $# != 1; then
   echo "USAGE: $0 tagname"
