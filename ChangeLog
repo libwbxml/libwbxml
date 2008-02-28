@@ -1,6 +1,8 @@
 2008-02-28  Aymerick Jehanne <aymerick@jehanne.org>
-  * Applied wbxml-svn-r53-anonymous.patch from synce project:
-    https://synce.svn.sourceforge.net/svnroot/synce/trunk/patches/
+  * Applied wbxml-svn-r53-anonymous.patch from synce project.
+  * Applied wbxml-svn-r53-build.patch from synce project. Blindly, because I have no
+    linux box anymore to test. So if you have issues when compiling on linux, send me
+    a mail please.
 
 2006-07-10  Aymerick Jehanne <aymerick@jehanne.org>
   * New release: 0.9.2

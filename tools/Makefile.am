@@ -3,7 +3,7 @@
 INCLUDES =\
 	 -I. -I../src -I/usr/include
 
-CFLAGS =\
+AM_CFLAGS =\
 	 -DHAVE_CONFIG_H\
 	 -DHAVE_EXPAT\
 	 -D_REENTRANT\
@@ -20,9 +20,7 @@ CFLAGS =\
 	 -DWBXML_SUPPORT_SYNCML\
 	 -DWBXML_SUPPORT_WV\
 	 -DWBXML_SUPPORT_AIRSYNC\
-	 -Wall -Wimplicit -Wreturn-type -Wunused -Wswitch -Wcomment -Wuninitialized -Wparentheses -Wpointer-arith -Wmissing-prototypes\
-	 -O3\
-	 -g
+	 -Wall
 
 bin_PROGRAMS = wbxml2xml xml2wbxml
 
