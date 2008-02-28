@@ -158,6 +158,7 @@ struct WBXMLEncoder_s {
     WB_BOOL use_strtbl;                     /**< Do we use String Table when generating WBXML output ? (default: YES) */
 #endif /* WBXML_ENCODER_USE_STRTBL */
     WB_BOOL xml_encode_header;              /**< Do we generate XML Header ? */
+    WB_BOOL produce_anonymous;              /**< Do we produce anonymous documents? (default: NO) */
     WBXMLVersion wbxml_version;             /**< WBXML Version to use (when generating WBXML output) */
     WBXMLCharsetMIBEnum output_charset;     /**< Output charset encoding */
     WB_BOOL flow_mode;                      /**< Is Flow Mode encoding activated ? */
@@ -411,6 +412,7 @@ WBXML_DECLARE(WBXMLEncoder *) wbxml_encoder_create_real(void)
     encoder->cdata = NULL;
 
     encoder->xml_encode_header = TRUE;
+    encoder->produce_anonymous = FALSE;
 
     /* Default Version: WBXML 1.3 */
     encoder->wbxml_version = WBXML_VERSION_13;
@@ -518,6 +520,15 @@ WBXML_DECLARE(void) wbxml_encoder_set_use_strtbl(WBXMLEncoder *encoder, WB_BOOL 
 
     encoder->use_strtbl = use_strtbl;
 #endif /* WBXML_ENCODER_USE_STRTBL */
+}
+
+
+WBXML_DECLARE(void) wbxml_encoder_set_produce_anonymous(WBXMLEncoder *encoder, WB_BOOL set_anonymous)
+{
+    if (encoder == NULL)
+        return;
+
+    encoder->produce_anonymous = set_anonymous;
 }
 
 
@@ -1480,7 +1491,8 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
 
     /* Encode Public ID */
     /* If WBXML Public Id is '0x01' (unknown), or we forced it, add the XML Public ID in the String Table */
-    if (encoder->textual_publicid || (public_id == WBXML_PUBLIC_ID_UNKNOWN))
+    if ((encoder->textual_publicid || (public_id == WBXML_PUBLIC_ID_UNKNOWN)) &&
+        !encoder->produce_anonymous)
     {
         if (encoder->lang->publicID->xmlPublicID != NULL)
         {
