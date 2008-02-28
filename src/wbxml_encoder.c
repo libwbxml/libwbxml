@@ -1900,7 +1900,7 @@ static WBXMLError wbxml_encode_value_element_buffer(WBXMLEncoder *encoder, WB_UT
      *  Encoder Language Specific Attribute Values
      */
 
-    if (ctx == WBXML_VALUE_ELEMENT_CTX_ATTR) {
+    if ((ctx == WBXML_VALUE_ELEMENT_CTX_ATTR) && (encoder->current_attr != NULL)) {
         switch (encoder->lang->langID) {
 #if defined( WBXML_SUPPORT_SI )
         case WBXML_LANG_SI10:
