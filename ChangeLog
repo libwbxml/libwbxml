@@ -15,52 +15,52 @@
   * New encoder 'flow mode'
   * Back to LGPL licence
 
-2005-05-23  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-05-23  Aymerick Jehanne <aymerick@jehanne.org>
   * wbxml_tables.c: Added the 'WBXML_SUPPORT_PROV_11' flag to activate
     OMA PROV 1.1 tables. There is no new Public ID defined to OMA PROV 1.1.
     I don't know how to handle this, so for the moment I apply the OMA PROV 1.1
     tables modifications directly into OMA PROV 1.0 tables.
 
-2005-04-01  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-04-01  Aymerick Jehanne <aymerick@jehanne.org>
   * wbxml_parser.c: Corrected a bug when Public ID is in string table.
     Handle phones that don't end string table with a terminating NULL char.
     Removed some potential memory leaks.
 
-2005-03-29  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-03-29  Aymerick Jehanne <aymerick@jehanne.org>
   * wbxml_tree.[h|c]: Added wbxml_tree_node_have_child_elt()
   * wbxml_encoder.c: Added WBXML_ENCODER_XML_NO_EMPTY_ELT_INDENT
     to disable indent of elements that do not have child elements, for
     a more readable XML generation. This flag should be replaced by
     a configuration var later.
 
-2005-03-20  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-03-20  Aymerick Jehanne <aymerick@jehanne.org>
   * Work on Symbian port / Start of SyncML wrapper / Some cleanup
 
-2005-03-16  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-03-16  Aymerick Jehanne <aymerick@jehanne.org>
   * src/wbxml_encoder.c: Do not generate string table for OTA Settings
     documents (thanks to Rasmus Lock Larsen).
 
-2005-03-10  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-03-10  Aymerick Jehanne <aymerick@jehanne.org>
   * src/wbxml_tables.c: Changed 'NumberOfChanged' to 'NumberOfChanges'
     in SyncML table (thanks to Frank Sprague).
 
-2005-03-01  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-03-01  Aymerick Jehanne <aymerick@jehanne.org>
   * doc/: Removed deprecated files.
   * web/: Removed folder.
 
-2005-02-24  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-24  Aymerick Jehanne <aymerick@jehanne.org>
   * src/wbxml_parser.c: Fixed bug [1080489] (thanks to Rasmus Lock Larsen)
   * src/wbxml_encoder.c: Added a 'WBXML_ENCODER_XML_GEN_EMPTY_ELT' flag
     to enable generation of '<foo />' instead of '<foo></foo>'. This flag
     should be replace to a configuration var later.
 
-2005-02-23  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-23  Aymerick Jehanne <aymerick@jehanne.org>
   * src/wbxml_tree.[h|c] : Added wbxml_tree_node_destroy_all().
 
-2005-02-22  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-22  Aymerick Jehanne <aymerick@jehanne.org>
   * src/wbxml_tree.[h|c] : Added wbxml_tree_extract_node().
 
-2005-02-17  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-17  Aymerick Jehanne <aymerick@jehanne.org>
   * src/wbxml.h, src/wbxml_conv.[h|c], src/wbxml_elt.[h|c],
     src/wbxml_encoder.c, src/wbxml_tree.[h|c],
     src/wbxml_tree_clb_wbxml.c, src/wbxml_tree_clb_xml.c,
@@ -69,11 +69,11 @@
     
   * src/wbxml_buffers.h: typo correction
 
-2005-02-17  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-17  Aymerick Jehanne <aymerick@jehanne.org>
   * src/wbxml_tree.c, src/wbxml_tree_clb_xml.c : Implemented
     wbxml_tree_add_elt()
 
-2005-02-16  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-16  Aymerick Jehanne <aymerick@jehanne.org>
 	* src/wbxml.h, src/wbxml_conv.[h|c], src/wbxml_elt.h,
 	  src/wbxml_encoder.[h|c], src/wbxml_tables.[h|c],
 	  src/wbxml_tree.[h|c], src/wbxml_tree_clb_wbxml.c,
@@ -82,12 +82,12 @@
 	    - refactored wbxml_tree.c and wbxml_conv.c
 		- some typo fixes and code clean-up
 
-2005-02-11  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-11  Aymerick Jehanne <aymerick@jehanne.org>
     * all files cleanup: replaced tabs by 4 spaces, and forced Unix
       files format
     * WV test suite fixes
 
-2005-02-08  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-08  Aymerick Jehanne <aymerick@jehanne.org>
     * src/wbxml_conv.[h|c], src/wbxml_encoder.c,
       tools/wbxml2xml_tool.c, tools/xml2wbxml_tool.c : Renamed
       wbxml_conv_wbxml2xml() and wbxml_conv_xml2wbxml() functions,
@@ -96,34 +96,34 @@
     * src/wbxml_encoder.c: Fixed a bug that produced non valid XML
       by not replacing '<' and '&' characters to their entity values
 
-2005-02-02  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-02  Aymerick Jehanne <aymerick@jehanne.org>
     * src/wbxml_charset.c: clean-up
     * src/wbxml_tables.c: WV 1.2 - Reviewed tables to apply
       OMA-IMPS-WV-CSP_WBXML-V1_2-20040522-C.pdf
 
-2005-02-01  Aymerick Jéhanne <aymerick@jehanne.org>
+2005-02-01  Aymerick Jehanne <aymerick@jehanne.org>
     * Some files: Typo corrections
     * All files: Copyright update
     * Lot of files: First work on multiple charsets
       handling, using libiconv
 
-2004-09-20  Aymerick Jéhanne <aymerick@jehanne.org>
+2004-09-20  Aymerick Jehanne <aymerick@jehanne.org>
     * New release of wbxml2: 0.9.1
 
-2004-09-20  Aymerick Jéhanne <aymerick@jehanne.org>
+2004-09-20  Aymerick Jehanne <aymerick@jehanne.org>
     * src/wbxml_parser.c: Modified parse_content()
       to handle correctly a SyncML content generated
       by a Nokia 6600
     
-2004-02-29  Aymerick Jéhanne <aymerick@jehanne.org>
+2004-02-29  Aymerick Jehanne <aymerick@jehanne.org>
     * New release of wbxml2: 0.9.0
     
-2004-02-28  Aymerick Jéhanne <aymerick@jehanne.org>
+2004-02-28  Aymerick Jehanne <aymerick@jehanne.org>
     * src/wbxml_tables.h: Corrected WBXML Public Ids for
       SyncML 1.0 and DevInf 1.0 (hope, this is a good
       choice...)
 
-2004-02-26  Aymerick Jéhanne <aymerick@jehanne.org>
+2004-02-26  Aymerick Jehanne <aymerick@jehanne.org>
     * src/wbxml_parser.c: Initialize wbxml version
       to WBXML_VERSION_10 in parse_version() before
       parsing (thanks to Thomas Butter).
@@ -134,36 +134,36 @@
       to allow decoding of '0 length' integers
       (thanks to Erik) [Example: 'C3 80 00 01'].
 
-2004-02-25  Aymerick Jéhanne <aymerick@jehanne.org>
+2004-02-25  Aymerick Jehanne <aymerick@jehanne.org>
     * New license: GNU GPL
     * New website: http://libwbxml.aymerick.com
 
-2004-01-13  Aymerick Jéhanne <libwbxml@jehanne.org>
+2004-01-13  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml_encoder.c: Corrected CDATA encoding.
       Now CDATA is encoded into Opaque [to be tested
       with real phones]
     * src/wbxml_parser.c: Added debug info
 
-2004-01-11  Aymerick Jéhanne <libwbxml@jehanne.org>
+2004-01-11  Aymerick Jehanne <libwbxml@jehanne.org>
     * Added Symbian Port
     * Added CDATA Support
     * src/wbxml_tables.h: Corrected WBXML Public Ids for
       SyncML 1.1 and DevInf 1.1 (Thanks to Miguel Coca)
 
-2003-11-24  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-11-24  Aymerick Jehanne <libwbxml@jehanne.org>
     * New release of wbxml2: 0.8.2
       - This is the last release before moving to 
         'happycoders.net' framework
       - This is the last release under LGPL licence
 
-2003-11-23  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-11-23  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml_buffers.c: Corrected initializations.
 
-2003-11-19  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-11-19  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml_encoder.c: Patched xml_encode_text() for SyncML
       support. Thanks to Bo Lincoln.
 
-2003-11-01  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-11-01  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml_base64.[h|c]: Added base64 support.
     * testsuite/drmrel/: Added DRMREL 1.0 Test Suite.
     * Added support of <ds:KeyValue> for DRMREL 1.0 in Parser
@@ -171,16 +171,16 @@
     * Added Leak Tracker.
     * New release of wbxml2: 0.8.1
 
-2003-10-28  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-10-28  Aymerick Jehanne <libwbxml@jehanne.org>
     * Moved WBXML Versions tokens to an Enumeration.
     * Added possibility to choose the WBXML Version when encoding
       to WBXML.
 
-2003-10-20  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-10-20  Aymerick Jehanne <libwbxml@jehanne.org>
     * Lot of code fixes / clean-up
     * New release of wbxml2: 0.8.0
 
-2003-10-18  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-10-18  Aymerick Jehanne <libwbxml@jehanne.org>
     * Lot of work on SyncML : Now, XML to WBXML encoding should work. 
       This must be tested a bit more, but it seems to work fine :)
     * testsuite/syncml/ : Some SyncML test files has been corrected.
@@ -189,26 +189,26 @@
       (thanks to Bo Lincoln)
     * Lot of Doxygen fixes
 
-2003-10-17  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-10-17  Aymerick Jehanne <libwbxml@jehanne.org>
     * Refactored code:
       - Removed 'conv/' directory and moved code to 'src/'.
       - Added 'HAVE_EXPAT' compile flag.
       - Renamed some files, fonctions, etc...
 
-2003-10-15  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-10-15  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml_encoder.c : In parse_attribute(), return 'WBXML_OK'
       if there is no Attribute Table (ie: do not stop encoding).
       This is needed for SyncML.
 
-2003-08-02  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-08-02  Aymerick Jehanne <libwbxml@jehanne.org>
     * New release of wbxml2: 0.7.3
 
-2003-06-25  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-06-25  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml.h, wbxml_encoder.[h|c], wbxml_parser.c, 
       wbxml_tables.[c|h] : Corrected SyncML WBXML Parsing and 
       SyncML XML Encoding.
 
-2003-06-24  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-06-24  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml_buffers.[c|h] : Added wbxml_buffer_compare_cstr()
     * src/wbxml_tree.[c|h] : Added a new Node Type 'WBXML_TREE_TREE_NODE'
       and the search function wbxml_tree_get_element_node_from_name()
@@ -217,25 +217,25 @@
     * src/wbxml_encoder.c : XML Encoding of encapsulated WBXML documents
     * src/wbxml_tables.h : Corrected DevInf 1.0 XML ID
 
-2003-06-03  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-06-03  Aymerick Jehanne <libwbxml@jehanne.org>
     * testsuite/syncml, testsuite/testsuite.xml : Started a SyncML
     Test Suite. Only 4 documents seems to work... mMm... too bad :-/
 
-2003-05-26  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-05-26  Aymerick Jehanne <libwbxml@jehanne.org>
     * conv/Makefile.am, tools/Makefile.am : Added WBXML_LANG_OTA_SETTINGS.
     * wbxml_tables.c : Removed bugs when XML Header is not fully filled
       (thanks to Nicolas Bougues).
     * tools/xml2wbxml_tool.c, tools/wbxml2xml_tool.c : Added support of
       stdin and stdout (thanks to Nicolas Bougues).
 
-2003-05-23  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-05-23  Aymerick Jehanne <libwbxml@jehanne.org>
     * testsuite/ota, testsuite/testsuite.xml : Added OTA Settings
       Test Suite.
     * src/wbxml_parser.c, src/wbxml_encoder.c: Modified the way the lib
       handle WBXML Versions.
     * tools/wbxml2xml_tool.c : Added OTA Settings forcing support.
 
-2003-05-22  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-05-22  Aymerick Jehanne <libwbxml@jehanne.org>
     * Added support of Ericsson / Nokia OTA Settings v7.0. Thanks
       to Nicolas Bougues for the hints.
     * src/wbxml.h : Added WBXML_LANG_OTA_SETTINGS.
@@ -247,12 +247,12 @@
       omna-wbxml-public-docid.htm'. XML Public ID is different too... maybe
       we have to switch to it... one day
 
-2003-05-02  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-05-02  Aymerick Jehanne <libwbxml@jehanne.org>
     * Added compilation flag WBXML_ENCODER_USE_STRTBL. If not defined,
       the String Table mecanism is not used (but it is still used
       for unknown WBXML Public ID).
 
-2003-05-01  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-05-01  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml.h: Added a new enum 'WBXMLLanguage' to identify
       each language supported. So that we don't rely on WBXML Public
       ID (some languages doesn't have one).
@@ -281,7 +281,7 @@
       src/wbxml_log.c, wbxml_parser.c, wbxml_tables.c: Added compilation
       flags for selecting supported languages.
 
-2003-04-30  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-04-30  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml.h : Added #pragma for WIN32 plateform, so that
       some hidden warnings generate errors. Thanks to Ramki for
       it's ARM compilation support ;)
@@ -291,10 +291,10 @@
       casts so that we don't have to modify the API. Most of the
       modifications concern WB_TINY to WB_UTINY casts.
 
-2003-04-26  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-04-26  Aymerick Jehanne <libwbxml@jehanne.org>
     * New release of wbxml2: 0.7.2
 
-2003-04-26  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-04-26  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/wbxml.h: Casted strlen(), strdup(), strcmp(), strncmp()
       and strstr() parameters to (const char*) in macros.
     * src/wbxml_tables.[h|c]: Added function 
@@ -306,28 +306,28 @@
         - In wbxml_encode_value_element_buffer(): corrected a bug 
           when splitting the buffer for String Table elements
 
-2003-04-25  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-04-25  Aymerick Jehanne <libwbxml@jehanne.org>
     * testsuite/prov: Added OMA Prov 1.0 Test Suite
     * src/wbxml_tables.c: Updated Prov 1.0 tables 
       (added new OMA elements / attributes)
     * src/wbxml_encoder.c: Ignore blanks Text Node when building
       String Table
 
-2003-04-24  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-04-24  Aymerick Jehanne <libwbxml@jehanne.org>
     * Changed 'CR-LF' to 'LF' in all source files and Makefiles.
       This should permits Linux users to compile normally.
       Thanks to Jannes Faber for finding this solution.
 
-2003-04-19  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-04-19  Aymerick Jehanne <libwbxml@jehanne.org>
     * Added Parsing of WV DateTime - Encoding not yet finished
     * src/wbxml_tables.c : wbxml_tables_get_attr_from_xml() - check if
       attr table is NULL ... thanx to Bo Lincoln
 
-2003-03-26  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-26  Aymerick Jehanne <libwbxml@jehanne.org>
     * wbxml_encoder.c, wbxml_tables.c: More work on WV. Now Extension
       tokens are generated, even while encoding simple String.
 
-2003-03-25  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-25  Aymerick Jehanne <libwbxml@jehanne.org>
     * wbxml_errors.[h|c]: Added 'WBXML_NOT_ENCODED' and 
       'WBXML_ERROR_WV_INTEGER_OVERFLOW' error codes.
     * wbxml_encoder.c: Added wbxml_encode_wv_content() and
@@ -340,7 +340,7 @@
     * wbxml_parser.c: Added decode_opaque_content() and
       decode_wv_integer(). Now WV Integers are decoded correctly.
     
-2003-03-24  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-24  Aymerick Jehanne <libwbxml@jehanne.org>
     * wbxml_tables.[c|h]: wbxml_tables_get_attr_from_xml(): modified for
       better behaviour. Now it returns the attribute value part that is
       not included in Attribute Token returns.
@@ -349,7 +349,7 @@
     * conv/xml2wbxml_clb.c: Modification due to changes of
       wbxml_tables_get_attr_from_xml() prototype.
 
-2003-03-23  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-23  Aymerick Jehanne <libwbxml@jehanne.org>
     * wbxml_tables.[h|c]: Added Wireless-Village 1.2 tokens. This is taken
       from a Beta spec from OMA that contains some bugs. Hope this will be
       corrected in next release of the spec. Corrected XML Public ID and
@@ -358,30 +358,30 @@
       If undefined, only WML 1.3 tables are used, for all versions of WML.
     * testsuite/wv: Corrected for OMA WV 1.1
 
-2003-03-22  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-22  Aymerick Jehanne <libwbxml@jehanne.org>
     * Added 'testsuite/emn': E-Mail Notification 1.0 Test Suite
     * src/wbxml_encoder.c, src/wbxml_parser.c: Added encoding/decoding
       of EMN 1.0 'timestamp' attribute
 
-2003-03-21  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-21  Aymerick Jehanne <libwbxml@jehanne.org>
     * New release of wbxml2: 0.7.1
 
-2003-03-20  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-20  Aymerick Jehanne <libwbxml@jehanne.org>
     * Added /doc directory, with Docbook file and generated HTML
     * Added /web directory, with the few website files
     * Worked with Pau Alliagas on Linux port
     
-2003-03-19  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-19  Aymerick Jehanne <libwbxml@jehanne.org>
     * Review the header files include mecanism
     * Debug
 
-2003-03-17  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-17  Aymerick Jehanne <libwbxml@jehanne.org>
     * Added Encoding/Decoding of SI %Datetime Attribute Values
     * Added /testsuite/testsuite.xml Index File
     * Added /testsuite/si/si-022.xml, /testsuite/si/si-023.xml,
             /testsuite/si/si-024.xml, /testsuite/si/si-025.xml
 
-2003-03-16  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-03-16  Aymerick Jehanne <libwbxml@jehanne.org>
     * New 'wbxml2' branch. A lot of changes:
         - Now, we have two libraries:
             - libwbxml2 (standalone)
@@ -391,16 +391,16 @@
         - etc...
     * The Makefile for wbxml2xml and xml2wbxml tools is not finished
 
-2003-02-21  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-02-21  Aymerick Jehanne <libwbxml@jehanne.org>
     * src/Makefile.am: Removed definition of WBXML_LIB_VERBOSE,
       replaced by the '-DWBXML_LIB_VERBOSE' CFLAG in src/Makefile.am
       (thanks to Pau Aliagas)
 
-2003-02-03  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-02-03  Aymerick Jehanne <libwbxml@jehanne.org>
     * wbxml_tables.c: Fixed "WVCSPFeat" attribute
     * bootstrap: chmoded correctly
 
-2003-01-28  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-01-28  Aymerick Jehanne <libwbxml@jehanne.org>
     * New release v0.6.1 (not yet packaged)
     
 2003-01-27  Pau Aliagas <pau@smsarena.com>
@@ -408,23 +408,23 @@
     * Build dynamic library
     * Create a spec file for rpm
     
-2003-01-25  Aymerick Jéhanne <libwbxml@jehanne.org>
+2003-01-25  Aymerick Jehanne <libwbxml@jehanne.org>
     * wbxml_tables.c: Removed a bug in 'sv_prov10_attr_table'.
       Thanks to Pau Aliagas.
     * src/wbxml_parser.c and test/parser_clb.c: Removed a bug
       with empty attribute value.     
 
-2002-12-08  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-12-08  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * New release v0.6
 
-2002-12-08  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-12-08  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * wbxml_parser.c : Removed bug when parsing Literal Tag
     * wbxml_buffers.c : Removed bug in wbxml_buffer_create()
     * wbxml_encoder.c : Now encode Literal Attribut Names and Tags
     * Added Leak Tracker Support in several files
     * Redone a new 'makefile' (still needs 'configure' to searche for LibXML2)
 
-2002-12-07  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-12-07  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Added wbxml_lists.[h|c]: List module needed by String Table handling in
     wbxml_encoder.c.
     * Added support of String Table in WBXML Encoder (still needs testing)
@@ -432,13 +432,13 @@
         - Apply String Table to attribute values
         - Handle Literal tags and Attribute Names
 
-2002-12-04  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-12-04  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Changed the Log Mecanism: Added Macros with variable parameters number
     
-2002-12-01  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-12-01  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * More work on Wireless-Village CSP
 
-2002-11-24  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-11-24  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Added first version of WBXML Encoder... not really tested yet
     * Todo in WBXML Encoder:
         - Remove Ignorable XML Whitespaces before parsing
@@ -449,7 +449,7 @@
         - Correctly encode the attribute values (not only as Inline Strings)
         - Handle Charsets Encoding    
 
-2002-11-14  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-11-14  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Commited Benedykt Kroplewski modifications
 
 2002-11-11 Benedykt Kroplewski <benedykt@age.pl>
@@ -458,7 +458,7 @@
     * Make more detailed debug messages...
     * Added SyncMl 1.0 definitions...(my phone use it)
 
-2002-11-11  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-11-11  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Reorganized DLLs to start coding of a WBXML Encoder:
         - wbxml_common: Common WBXML Functions
         - wbxml_parser: WBXML Parser
@@ -470,17 +470,17 @@
     * New magic macro "WBXML_DECLARE" for automatic DLL export under Windows, so lot of files has been
       updated to use this macro
 
-2002-09-22  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-09-22  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Added a best effort mode (WBXML_PARSER_BEST_EFFORT define).
     * New release v0.5
 
-2002-09-08  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-09-08  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Removed bug in parse_attr_start() for 'attrCodePage' search.
 
-2002-08-16  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-08-16  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Changed a stupid logic in wbxml_buffers.c for memory management (gosh)
 
-2002-08-15  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-08-15  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Changed all Tabs to '4 spaces'
     * Changed root element of WTA WML 1.2 to 'wta-wml'
     * Changed 'Channel 1.2' token from 0x0D to 0x0E. I don't really understand if Channel 1.2 Public ID
@@ -490,32 +490,32 @@
       there is no PublicID defined for it. I have to implement support of Extension Tokens for CSP 1.1 too...
       but... well... why have they defined use of Extension Tokens instead of normal Attribute Value Table ??
 
-2002-08-03  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-08-03  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Enum and Struct naming clean-up
     * Added "NULL" line in sv_table_entry to avoid crash if publicId not found.
     * New release v0.4
 
-2002-07-13  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-07-13  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Makefile for Linux done (only tested with Cygwin)    
     * src/wbxml_parser.c: Removed duplicate WBXMLParser Typedef (Linux Error generated)
     * test/parser_tester.c: Changed main() argv parameter type (Linux Warning generated)
     * Added a WBXML Test File
     * Making release v0.3
 
-2002-06-29  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-06-29  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Making release v0.2
 
-2002-06-29  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-06-29  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Added a Windows GUI. It seems to work.. it's late... and i go to bed... 
 
-2002-06-28  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-06-28  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Added 'extern "C"' in *.h files, so that we can use the library
       in a C++ program.
 
-2002-06-19  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-06-19  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * Ho yes ! Now wbxmllib is accessible via SourceForge ! =)
 
-2002-06-15  Aymerick Jéhanne <wbxml_lib@jehanne.org>
+2002-06-15  Aymerick Jehanne <wbxml_lib@jehanne.org>
     * First release of WBXML Library (v0.1) under LGPL 2.1
       It contains a WBXML Parser, with a SAX like interface.
       
