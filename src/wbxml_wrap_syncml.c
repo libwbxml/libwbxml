@@ -1,6 +1,6 @@
 /*
  * libwbxml, the WBXML Library.
- * Copyright (C) 2002-2005 Aymerick Jehanne <aymerick@jehanne.org>
+ * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,7 +18,7 @@
  * 
  * LGPL v2.1: http://www.gnu.org/copyleft/lesser.txt
  * 
- * Contact: libwbxml@aymerick.com
+ * Contact: aymerick@jehanne.org
  * Home: http://libwbxml.aymerick.com
  */
  
@@ -28,7 +28,7 @@
  * @file wbxml_wrap_syncml.c
  * @ingroup wbxml_wrap
  *
- * @author Aymerick Jehanne <libwbxml@aymerick.com>
+ * @author Aymerick Jehanne <aymerick@jehanne.org>
  * @date 05/03/08
  *
  * @brief SyncML Wrapper

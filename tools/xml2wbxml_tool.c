@@ -1,6 +1,6 @@
 /*
  * libwbxml, the WBXML Library.
- * Copyright (C) 2002-2005 Aymerick Jéhanne <aymerick@jehanne.org>
+ * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *
  * GPL v2: http://www.gnu.org/licenses/gpl.txt
  *
- * Contact: libwbxml@aymerick.com
+ * Contact: aymerick@jehanne.org
  * Home: http://libwbxml.aymerick.com
  */
 
@@ -26,7 +26,7 @@
  * @file xml2wbxml_tool.c
  * @ingroup xml2wbxml_tool
  *
- * @author Aymerick Jéhanne <libwbxml@aymerick.com>
+ * @author Aymerick Jehanne <aymerick@jehanne.org>
  * @date 03/03/11
  *
  * @brief XML to WBXML Converter Tool
@@ -68,7 +68,7 @@ static WBXMLVersion get_version(const WB_TINY *lang)
 
 static void help(void) {
     fprintf(stderr, "xml2wbxml [libwbxml %s] by Aymerick Jehanne <aymerick@jehanne.org>\n", WBXML_LIB_VERSION);
-    fprintf(stderr, "If you use this tool, please send feedbacks to libwbxml@aymerick.com\n");
+    fprintf(stderr, "If you use this tool, please send feedbacks to aymerick@jehanne.org\n");
     fprintf(stderr, "http://libwbxml.aymerick.com/\n");
 #if defined( HAVE_EXPAT )
     fprintf(stderr, "This tool is linked with Expat (http://expat.sourceforge.net)\n\n");

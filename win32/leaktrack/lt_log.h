@@ -1,6 +1,6 @@
 /*
  * Leaktrack, a Memory Leack Tracker.
- * Copyright (C) 2002-2004 Aymerick Jéhanne <aymerick@jehanne.org>
+ * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *  
  * GPL v2: http://www.gnu.org/licenses/gpl.txt
  * 
- * Contact: libwbxml@aymerick.com
+ * Contact: aymerick@jehanne.org
  * Home: http://libwbxml.aymerick.com
  */
 
