@@ -118,13 +118,6 @@ WBXML_DECLARE(void) wbxml_encoder_set_output_charset(WBXMLEncoder *encoder, WBXM
 WBXML_DECLARE(void) wbxml_encoder_set_use_strtbl(WBXMLEncoder *encoder, WB_BOOL use_strtbl);
 
 /**
- * @brief Set if we want to produce anonymous WBXML documents [Default: FALSE]
- * @param encoder [in] The WBXML encoder
- * @param set_anonymous [in] TRUE to produce anonymous documents, FALSE otherwise
- */
-WBXML_DECLARE(void) wbxml_encoder_set_produce_anonymous(WBXMLEncoder *encoder, WB_BOOL set_anonymous);
-
-/**
  * @brief Set the WBXML Version of the output document, when generating WBXML [Default: 'WBXML_VERSION_TOKEN_13' (1.3)]
  * @param encoder [in] The WBXML Encoder
  * @param version [in] The WBXML Version

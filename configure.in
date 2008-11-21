@@ -1,11 +1,11 @@
 dnl  Process this file with autoconf to produce a configure script.
-AC_INIT(src/wbxml.h)
-AM_INIT_AUTOMAKE(wbxml2, 0.9.3)
+AC_INIT(doxygen.h)
+AM_INIT_AUTOMAKE(wbxml2, 0.9.0)
 AM_CONFIG_HEADER(config.h)
 
 
 dnl Define common variables
-VERSION="0.9.3"
+VERSION="0.9.2"
 AC_SUBST(VERSION)
 RELEASE="1"
 AC_SUBST(RELEASE)

@@ -21,7 +21,8 @@ wbxmldoc_DATA = \
 	README\
 	References\
 	THANKS\
-	TODO
+	TODO\
+	doxygen.h
 
 dist-bz2: distdir
 	sed -e "s/tar.gz/tar.bz2/g" $(distdir)/wbxml2.spec > $(distdir)/wbxml2.spec.aux
