@@ -5,7 +5,7 @@
 # This script will print libwbxml version number on stdout. For example:
 #
 #   $ ./version.sh ../src/wbxml.h
-#   0.9.2
+#   0.9.3
 #   $
 #
 

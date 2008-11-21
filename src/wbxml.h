@@ -54,7 +54,7 @@
  */
 
 /** WBXML Parser Lib Version */
-#define WBXML_LIB_VERSION "0.9.2"
+#define WBXML_LIB_VERSION "0.9.3"
 
 /** Backward compatibility flag */
 #define WBXML_BACKWARD_COMPAT

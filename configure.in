@@ -5,7 +5,7 @@ AM_CONFIG_HEADER(config.h)
 
 
 dnl Define common variables
-VERSION="0.9.2"
+VERSION="0.9.3"
 AC_SUBST(VERSION)
 RELEASE="1"
 AC_SUBST(RELEASE)
