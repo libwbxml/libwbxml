@@ -3,7 +3,7 @@
 INCLUDES =\
 	 -I. -I../src -I/usr/include
 
-CFLAGS =\
+AM_CFLAGS =\
 	 -DHAVE_CONFIG_H\
 	 -DHAVE_EXPAT\
 	 -D_REENTRANT\
