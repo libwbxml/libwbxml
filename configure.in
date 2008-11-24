@@ -1,5 +1,5 @@
 dnl  Process this file with autoconf to produce a configure script.
-AC_INIT(doxygen.h)
+AC_INIT(doxygen/doxygen.h)
 AM_INIT_AUTOMAKE(wbxml2, 0.9.3)
 AM_CONFIG_HEADER(config.h)
 
