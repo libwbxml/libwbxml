@@ -1,3 +1,12 @@
+  * Size changed to MaxSize in OMA DS 1.2 DevInf
+  * Fixes a couple of issues with SyncML, by Michael Bell
+  * Fix segault in wbxml_encoder.c
+      - Thanks Stijn van Drongelen
+  * Add Sax like entity parsing
+  * Miscallaneus build fixes and anonymous document support
+  * Namespaces support
+  * Some more cleanup and bug fixes
+
 2008-11-21  Aymerick Jehanne <aymerick@jehanne.org>
   * New release: 0.9.3
   * Project cleanup.
