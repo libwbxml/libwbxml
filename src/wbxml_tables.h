@@ -307,6 +307,9 @@ WBXML_DECLARE(WB_BOOL) wbxml_tables_contains_attr_value_from_xml(const WBXMLLang
 WBXML_DECLARE(const WB_TINY *) wbxml_tables_get_xmlns(const WBXMLNameSpaceEntry *ns_table,
                                                       WB_UTINY code_page);
 
+WBXML_DECLARE(WB_UTINY) wbxml_tables_get_code_page(const WBXMLNameSpaceEntry *ns_table,
+                                                   const WB_TINY* xmlns);
+
 /** @} */
 
 #ifdef __cplusplus

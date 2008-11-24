@@ -34,6 +34,7 @@
 
 #include "wbxml.h"
 
+#define WBXML_NAMESPACE_SEPARATOR ':'
 
 /***************************************************
  *    Public Functions
@@ -201,9 +202,9 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_xml(WB_UTINY *xml, WB_ULONG xml_len, W
         *tree = NULL;
 
     /* Create Expat XML Parser */
-    if ((xml_parser = XML_ParserCreate(NULL)) == NULL)
+    if ((xml_parser = XML_ParserCreateNS(NULL, WBXML_NAMESPACE_SEPARATOR)) == NULL)
         return WBXML_ERROR_NOT_ENOUGH_MEMORY;
-    
+
     /* Init context */
     wbxml_tree_clb_ctx.current = NULL;
     wbxml_tree_clb_ctx.error = WBXML_OK;
@@ -1082,10 +1083,38 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_xml_elt(WBXMLTree *tree,
                                                       WB_UTINY *name)
 {
     WBXMLTreeNode *node = NULL;
+     WB_UTINY *sep = NULL;
+     const WB_UTINY *namespace_name = NULL;
+     const WB_UTINY *element_name = NULL;
+ 
+     /* Separate the namespace from the element name */
+     sep = (WB_UTINY *)strrchr((const WB_TINY *) name, WBXML_NAMESPACE_SEPARATOR);
+     if (sep != NULL) {
+         /* Temporarily split the string by changing the separater to a null-terminator */
+         *sep = '\0';
+         
+         namespace_name = name;
+         element_name = sep+1;
+     }
+     else {
+         /* No namespace, so just set it to an empty string (specifically, the null-terminator at the end of the elemet name */
+         namespace_name = name + strlen((const WB_TINY *) name);
+         element_name = name;
+     }
+ 
+     WBXML_DEBUG((WBXML_CONV, "Parsed element name: Namespace='%s', Element='%s'", namespace_name, element_name));
+ 
+     /* Update the current code page to match the one specified by the namespace */
+     tree->cur_code_page = wbxml_tables_get_code_page(tree->lang->nsTable, (const WB_TINY *) namespace_name);
     
     /* Create element node */
     if ((node = wbxml_tree_node_create_xml_elt(tree->lang, (const WB_UTINY *) name)) == NULL)
         return NULL;
+
+	if (sep != NULL) {
+         /* We are done with the element and namespace names, so put the separator character back */
+        *sep = WBXML_NAMESPACE_SEPARATOR;
+     }
 
     /* Add this Node to Tree  */
     if (!wbxml_tree_add_node(tree, parent, node)) {

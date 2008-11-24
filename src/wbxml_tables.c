@@ -2806,6 +2806,46 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { NULL,                     0x00, 0x00 }
 };
 
+/* NOTE:
+ * These namespace names differ from the Microsoft-assigned namespaces.  The
+ * reason for the difference is that the Microsoft-assigned names are not
+ * valid URI's and hence produce warning messages when processed by some
+ * libraries.  The mapping is as follows:
+ * 
+ *   Microsoft	          Ours
+ *   ---------            ----
+ *   AirSync:             http://synce.org/formats/airsync_wm5/airsync
+ *   POOMCONTACTS:        http://synce.org/formats/airsync_wm5/contacts
+ *   POOMMAIL:            http://synce.org/formats/airsync_wm5/mail
+ *   AirNotify:           http://synce.org/formats/airsync_wm5/airnotify
+ *   POOMCAL:             http://synce.org/formats/airsync_wm5/calendar
+ *   Move:                http://synce.org/formats/airsync_wm5/move
+ *   GetItemEstimate:     http://synce.org/formats/airsync_wm5/getitemestimate
+ *   FolderHierarchy:     http://synce.org/formats/airsync_wm5/folderhierarchy
+ *   MeetingResponse:     http://synce.org/formats/airsync_wm5/meetingresponse
+ *   POOMTASKS:           http://synce.org/formats/airsync_wm5/tasks
+ *   ResolveRecipients:   http://synce.org/formats/airsync_wm5/resolverecipients
+ *   ValidateCert:        http://synce.org/formats/airsync_wm5/validatecert
+ *   POOMCONTACTS2:       http://synce.org/formats/airsync_wm5/contacts2
+ *
+ */
+const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
+    { "http://synce.org/formats/airsync_wm5/airsync",           0x00 },     /**< Code Page 0 */
+    { "http://synce.org/formats/airsync_wm5/contacts",          0x01 },     /**< Code Page 1 */
+    { "http://synce.org/formats/airsync_wm5/mail",              0x02 },     /**< Code Page 2 */
+    { "http://synce.org/formats/airsync_wm5/airnotify",         0x03 },     /**< Code Page 3 */
+    { "http://synce.org/formats/airsync_wm5/calendar",          0x04 },     /**< Code Page 4 */
+    { "http://synce.org/formats/airsync_wm5/move",              0x05 },     /**< Code Page 5 */
+    { "http://synce.org/formats/airsync_wm5/getitemestimate",   0x06 },     /**< Code Page 6 */
+    { "http://synce.org/formats/airsync_wm5/folderhierarchy",   0x07 },     /**< Code Page 7 */
+    { "http://synce.org/formats/airsync_wm5/meetingresponse",   0x08 },     /**< Code Page 8 */
+    { "http://synce.org/formats/airsync_wm5/tasks",             0x09 },     /**< Code Page 9 */
+    { "http://synce.org/formats/airsync_wm5/resolverecipients", 0x0a },     /**< Code Page 10 */
+    { "http://synce.org/formats/airsync_wm5/validatecert",      0x0b },     /**< Code Page 11 */
+    { "http://synce.org/formats/airsync_wm5/contacts2",         0x0c },     /**< Code Page 12 */
+    { NULL,                                                     0x00 }
+};
+
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
 
@@ -2885,7 +2925,7 @@ const WBXMLLangEntry sv_table_entry[] = {
 #endif /* WBXML_SUPPORT_WV */
 
 #if defined( WBXML_SUPPORT_AIRSYNC )
-    { WBXML_LANG_AIRSYNC,           &sv_airsync_public_id,          sv_airsync_tag_table,           NULL,                           NULL,                       NULL,                           NULL },
+    { WBXML_LANG_AIRSYNC,           &sv_airsync_public_id,          sv_airsync_tag_table,           sv_airsync_ns_table,            NULL,                       NULL,                           NULL },
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
     { WBXML_LANG_UNKNOWN,           NULL,                           NULL,                           NULL,                           NULL,                       NULL,                           NULL }
@@ -3163,6 +3203,24 @@ WBXML_DECLARE(const WB_TINY *) wbxml_tables_get_xmlns(const WBXMLNameSpaceEntry 
     {
         if (ns_table[i].wbxmlCodePage == code_page)
             return ns_table[i].xmlNameSpace;
+
+        i++;
+    }
+
+    return NULL;
+}
+
+WBXML_DECLARE(WB_UTINY) wbxml_tables_get_code_page(const WBXMLNameSpaceEntry *ns_table, const WB_TINY* xmlns)
+{
+    WB_ULONG i = 0;
+
+    if (ns_table == NULL)
+        return NULL;
+
+    while (ns_table[i].xmlNameSpace != NULL)
+    {
+        if (strcmp(ns_table[i].xmlNameSpace, xmlns) == 0)
+            return ns_table[i].wbxmlCodePage;
 
         i++;
     }
