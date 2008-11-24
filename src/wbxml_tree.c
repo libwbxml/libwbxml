@@ -267,8 +267,7 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_xml(WB_UTINY *xml, WB_ULONG xml_len, W
 
 #else /* HAVE_EXPAT */
 
-//#if defined( HAVE_LIBXML )
-#if 0
+#if defined( HAVE_LIBXML )
 
     /** @todo Use LibXML2 SAX interface ! */
     return WBXML_ERROR_NO_XMLPARSER;
@@ -345,8 +344,7 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_to_xml(WBXMLTree *tree,
 }
 
 
-// #if defined( HAVE_LIBXML )
-#if 0
+#if defined( HAVE_LIBXML )
 
 WBXML_DECLARE(WBXMLError) wbxml_tree_from_libxml_doc(xmlDocPtr libxml_doc,
                                                      WBXMLTree **tree)
@@ -627,40 +625,6 @@ WBXML_DECLARE(WB_BOOL) wbxml_tree_node_add_child(WBXMLTreeNode *parent,
     }
 
     return TRUE;
-}
-
-
-WBXML_DECLARE(WBXMLError) wbxml_tree_node_extract(WBXMLTreeNode *node)
-{
-    if (node == NULL)
-        return WBXML_ERROR_BAD_PARAMETER;
-    
-    /* Parent link */
-    if (node->parent != NULL) {
-        if (node->parent->children == node) {
-            /* Update parent children */
-		    node->parent->children = node->next;
-        }
-
-        /* No more parent */
-        node->parent = NULL;
-    }
-
-    /* Next link */
-    if (node->next != NULL) {
-        /* Link next node to previous node */
-        node->next->prev = node->prev;
-        node->next = NULL;
-    }
-
-    /* Previous link */
-    if (node->prev != NULL) {
-        /* Link previous node to next node */
-        node->prev->next = node->next;
-        node->prev = NULL;
-    }
-    
-    return WBXML_OK;
 }
 
 
@@ -966,8 +930,6 @@ WBXML_DECLARE(WBXMLList*) wbxml_tree_node_get_all_children(WBXMLTreeNode *node)
 }
 
 
-/* Tree functions */
-
 WBXML_DECLARE(WBXMLTree *) wbxml_tree_create(WBXMLLanguage lang,
                                              WBXMLCharsetMIBEnum orig_charset)
 {
@@ -997,16 +959,34 @@ WBXML_DECLARE(void) wbxml_tree_destroy(WBXMLTree *tree)
 }
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WB_BOOL) wbxml_tree_add_node(WBXMLTree *tree, WBXMLTreeNode *parent, WBXMLTreeNode *node)
 {
+    WBXMLTreeNode *tmp = NULL;
 
     if ((tree == NULL) || (node == NULL))
         return FALSE;
-    
+
+    /* Set parent to new node */
+    node->parent = parent;    
+
     /* Check if this is the Root Element */
     if (parent != NULL) {
-        if (!wbxml_tree_node_add_child(parent, node))
-            return FALSE;
+        /* This is not the Root Element... search for previous sibbling element */
+        if (parent->children != NULL) {
+            /* Add this Node to end of Sibbling Node list of Parent */
+            tmp = parent->children;
+
+            while (tmp->next != NULL)
+                tmp = tmp->next;
+            
+            node->prev = tmp;
+            tmp->next = node;
+        }
+        else {
+            /* No previous sibbling element */
+            parent->children = node;
+        }
     }
     else {
         /* We do NOT allow replacement of an existing Tree Node */
@@ -1015,28 +995,53 @@ WBXML_DECLARE(WB_BOOL) wbxml_tree_add_node(WBXMLTree *tree, WBXMLTreeNode *paren
 
         /* This is the Root Element */
         tree->root = node;
-        node->parent = NULL;
     }
 
     return TRUE;
 }
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WBXMLError) wbxml_tree_extract_node(WBXMLTree *tree,
                                                   WBXMLTreeNode *node)
 {
     if ((tree == NULL) || (node == NULL))
         return WBXML_ERROR_BAD_PARAMETER;
-    
-    if (node == tree->root) {
+
+    /* Parent link */
+    if (node->parent != NULL) {
+        if (node->parent->children == node) {
+            /* Update parent children */
+		    node->parent->children = node->next;
+        }
+
+        /* No more parent */
+        node->parent = NULL;
+    }
+    else {
         /* Root removed ! */
         tree->root = node->next;
     }
 
-    return wbxml_tree_node_extract(node);
+    /* Next link */
+    if (node->next != NULL) {
+        /* Link next node to previous node */
+        node->next->prev = node->prev;
+        node->next = NULL;
+    }
+
+    /* Previous link */
+    if (node->prev != NULL) {
+        /* Link previous node to next node */
+        node->prev->next = node->next;
+        node->prev = NULL;
+    }
+
+    return WBXML_OK;
 }
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_elt(WBXMLTree *tree,
                                                   WBXMLTreeNode *parent,
                                                   WBXMLTag *tag)
@@ -1064,6 +1069,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_elt(WBXMLTree *tree,
 }
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_elt_with_attrs(WBXMLTree *tree,
                                                              WBXMLTreeNode *parent,
                                                              WBXMLTag *tag,
@@ -1090,43 +1096,66 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_elt_with_attrs(WBXMLTree *tree,
 }
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_xml_elt(WBXMLTree *tree,
                                                       WBXMLTreeNode *parent,
                                                       WB_UTINY *name)
 {
+    const WBXMLTagEntry *tag_entry = NULL;
     WBXMLTreeNode *node = NULL;
-     WB_UTINY *sep = NULL;
-     const WB_UTINY *namespace_name = NULL;
-     const WB_UTINY *element_name = NULL;
- 
-     /* Separate the namespace from the element name */
-     sep = (WB_UTINY *)strrchr((const WB_TINY *) name, WBXML_NAMESPACE_SEPARATOR);
-     if (sep != NULL) {
-         /* Temporarily split the string by changing the separater to a null-terminator */
-         *sep = '\0';
-         
-         namespace_name = name;
-         element_name = sep+1;
-     }
-     else {
-         /* No namespace, so just set it to an empty string (specifically, the null-terminator at the end of the elemet name */
-         namespace_name = name + strlen((const WB_TINY *) name);
-         element_name = name;
-     }
- 
-     WBXML_DEBUG((WBXML_CONV, "Parsed element name: Namespace='%s', Element='%s'", namespace_name, element_name));
- 
-     /* Update the current code page to match the one specified by the namespace */
-     tree->cur_code_page = wbxml_tables_get_code_page(tree->lang->nsTable, (const WB_TINY *) namespace_name);
+    WBXMLTag *tag = NULL;
+    WB_UTINY *sep = NULL;
+    const WB_UTINY *namespace_name = NULL;
+    const WB_UTINY *element_name = NULL;
+
+    /* Separate the namespace from the element name */
+    sep = (WB_UTINY *)strrchr((const WB_TINY *) name, WBXML_NAMESPACE_SEPARATOR);
+    if (sep != NULL) {
+        /* Temporarily split the string by changing the separater to a null-terminator */
+        *sep = '\0';
+        
+        namespace_name = name;
+        element_name = sep+1;
+    }
+    else {
+        /* No namespace, so just set it to an empty string (specifically, the null-terminator at the end of the elemet name */
+        namespace_name = name + strlen((const WB_TINY *) name);
+        element_name = name;
+    }
+
+    WBXML_DEBUG((WBXML_CONV, "Parsed element name: Namespace='%s', Element='%s'", namespace_name, element_name));
+
+    /* Update the current code page to match the one specified by the namespace */
+    tree->cur_code_page = wbxml_tables_get_code_page(tree->lang->nsTable, (const WB_TINY *) namespace_name);
+
+    /* Search for XML Tag Name in Table */
+    if ((tag_entry = wbxml_tables_get_tag_from_xml(tree->lang, tree->cur_code_page, element_name)) != NULL) {
+        tree->cur_code_page = tag_entry->wbxmlCodePage;
+
+        /* Found : token tag */
+        tag = wbxml_tag_create_token(tag_entry);
+    }
+    else {
+        /* Not found : literal tag */
+        tag = wbxml_tag_create_literal(name);
+    }
+
+    if (sep != NULL) {
+        /* We are done with the element and namespace names, so put the separator character back */
+        *sep = WBXML_NAMESPACE_SEPARATOR;
+    }
     
-    /* Create element node */
-    if ((node = wbxml_tree_node_create_xml_elt(tree->lang, (const WB_UTINY *) name)) == NULL)
+    if (tag == NULL)
         return NULL;
 
-	if (sep != NULL) {
-         /* We are done with the element and namespace names, so put the separator character back */
-        *sep = WBXML_NAMESPACE_SEPARATOR;
-     }
+    /* Create a new Node */
+    if ((node = wbxml_tree_node_create(WBXML_TREE_ELEMENT_NODE)) == NULL) {
+        wbxml_tag_destroy(tag);
+        return NULL;
+    }
+    
+    /* Set Node Tag */
+    node->name = tag;
 
     /* Add this Node to Tree  */
     if (!wbxml_tree_add_node(tree, parent, node)) {
@@ -1138,6 +1167,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_xml_elt(WBXMLTree *tree,
 }
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_xml_elt_with_attrs(WBXMLTree *tree,
                                                                  WBXMLTreeNode *parent,
                                                                  WB_UTINY *name,
@@ -1164,6 +1194,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_xml_elt_with_attrs(WBXMLTree *tree
 }
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_text(WBXMLTree *tree,
                                                    WBXMLTreeNode *parent,
                                                    const WB_UTINY *text,
@@ -1172,7 +1203,13 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_text(WBXMLTree *tree,
     WBXMLTreeNode *node = NULL;
 
     /* Create a new Node */
-    if ((node = wbxml_tree_node_create_text(text, len)) == NULL) {
+    if ((node = wbxml_tree_node_create(WBXML_TREE_TEXT_NODE)) == NULL) {
+        return NULL;
+    }
+
+    /* Set Content */
+    if ((node->content = wbxml_buffer_create(text, len, len)) == NULL) {
+        wbxml_tree_node_destroy(node);
         return NULL;
     }
 
@@ -1186,6 +1223,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_text(WBXMLTree *tree,
 }
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_cdata(WBXMLTree *tree,
                                                     WBXMLTreeNode *parent)
 {
@@ -1209,6 +1247,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_cdata(WBXMLTree *tree,
 /** @todo wbxml_tree_add_cdata_with_text() */
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_tree(WBXMLTree *tree,
                                                    WBXMLTreeNode *parent,
                                                    WBXMLTree *new_tree)
@@ -1233,6 +1272,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_tree(WBXMLTree *tree,
 }
 
 
+/** @todo Rewrite this function (use wbxml_tree_node_* functions) */
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_xml_elt_with_attrs_and_text(WBXMLTree *tree,
                                                                           WBXMLTreeNode *parent,
                                                                           WB_UTINY *name,
