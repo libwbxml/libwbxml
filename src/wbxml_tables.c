@@ -1891,7 +1891,7 @@ const WBXMLTagEntry sv_syncml_devinf12_tag_table[] = {
     { "Rx",             0x00, 0x19 },
     { "Rx-Pref",        0x00, 0x1a },
     { "SharedMem",      0x00, 0x1b },
-    { "Size",           0x00, 0x1c },
+    { "MaxSize",        0x00, 0x1c },
     { "SourceRef",      0x00, 0x1d },
     { "SwV",            0x00, 0x1e },
     { "SyncCap",        0x00, 0x1f },
