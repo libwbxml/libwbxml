@@ -142,7 +142,7 @@ void wbxml_tree_clb_xml_start_element(void           *ctx,
 #if defined( WBXML_SUPPORT_SYNCML )
 
     /* If this is an embedded (not root) "DevInf" document, skip it */
-    if ((WBXML_STRCMP(localName, "DevInf") == 0) &&
+    if ((WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0) &&
         (tree_ctx->current != NULL))
     {
         tree_ctx->skip_start = XML_GetCurrentByteIndex(tree_ctx->xml_parser);
@@ -192,7 +192,7 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
             /* End of skipped node */
 
 #if defined( WBXML_SUPPORT_SYNCML )
-            if (WBXML_STRCMP(localName, "DevInf") == 0) {
+            if (WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0) {
                 /* Get embedded DevInf Document */
                 devinf_doc = wbxml_buffer_create(tree_ctx->input_buff + tree_ctx->skip_start, 
                                                  XML_GetCurrentByteIndex(tree_ctx->xml_parser) - tree_ctx->skip_start,
@@ -204,6 +204,16 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 
                 /* Check Buffer Creation and addd </DevInf> ending tag */
                 if ((devinf_doc == NULL) || (!wbxml_buffer_append_cstr(devinf_doc, "</DevInf>")))
+                {
+                    tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+                    wbxml_buffer_destroy(devinf_doc);
+                    return;
+                }
+
+                /* Add doctype to give the XML parser a chance
+                 * SyncML 1.2 is downward compatible to older versions.
+                 */
+                if (!wbxml_buffer_insert_cstr(devinf_doc, "<!DOCTYPE DevInf PUBLIC '-//SYNCML//DTD DevInf 1.2//EN' 'http://www.openmobilealliance.org/tech/DTD/OMA-SyncML-Device_Information-DTD-1.2.dtd' >\n", 0))
                 {
                     tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
                     wbxml_buffer_destroy(devinf_doc);

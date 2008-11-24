@@ -252,7 +252,10 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_xml(WB_UTINY *xml, WB_ULONG xml_len, W
     }
     else {
         if ((ret = wbxml_tree_clb_ctx.error) != WBXML_OK)
+        {
+            WBXML_ERROR((WBXML_CONV, "xml2wbxml conversion failed - context error %i", ret));
             wbxml_tree_destroy(wbxml_tree_clb_ctx.tree);
+        }
         else
             *tree = wbxml_tree_clb_ctx.tree;
     }
@@ -842,11 +845,20 @@ WBXML_DECLARE(WBXMLSyncMLDataType) wbxml_tree_node_get_syncml_data_type(WBXMLTre
         {
             /* Check <Type> value */
             if ((tmp_node->children != NULL) && (tmp_node->children->type == WBXML_TREE_TEXT_NODE)) {
+                /* This function is used by wbxml and xml callbacks.
+                 * So content types must be handled for both situations.
+                 */
+
                 /* application/vnd.syncml-devinf+wbxml */
                 if (wbxml_buffer_compare_cstr(tmp_node->children->content, "application/vnd.syncml-devinf+wbxml") == 0) {
                     return WBXML_SYNCML_DATA_TYPE_WBXML;
                 }
                 
+                /* application/vnd.syncml-devinf+xml */
+                if (wbxml_buffer_compare_cstr(tmp_node->children->content, "application/vnd.syncml-devinf+xml") == 0) {
+                    return WBXML_SYNCML_DATA_TYPE_NORMAL;
+                }
+
                 /* text/clear */
                 if (wbxml_buffer_compare_cstr(tmp_node->children->content, "text/clear") == 0) {
                     return WBXML_SYNCML_DATA_TYPE_CLEAR;

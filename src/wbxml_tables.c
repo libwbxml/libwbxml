@@ -1601,21 +1601,21 @@ const WBXMLAttrEntry sv_ota_settings_attr_table[] = {
 #if defined( WBXML_SUPPORT_SYNCML )
 
 const WBXMLNameSpaceEntry sv_syncml_syncml10_ns_table[] = {
-    { "syncml:SYNCML1.0",   0x00 },     /**< Code Page 0: SYNCML1.0 */
+    { "SYNCML:SYNCML1.0",   0x00 },     /**< Code Page 0: SYNCML1.0 */
     { "syncml:metinf",      0x01 },     /**< Code Page 1: metinf */
     { NULL,                 0x00 }
 };
 
 
 const WBXMLNameSpaceEntry sv_syncml_syncml11_ns_table[] = {
-    { "syncml:SYNCML1.1",   0x00 },     /**< Code Page 0: SYNCML1.1 */
+    { "SYNCML:SYNCML1.1",   0x00 },     /**< Code Page 0: SYNCML1.1 */
     { "syncml:metinf",      0x01 },     /**< Code Page 1: metinf */
     { NULL,                 0x00 }
 };
 
 
 const WBXMLNameSpaceEntry sv_syncml_syncml12_ns_table[] = {
-    { "syncml:SYNCML1.2",   0x00 },     /**< Code Page 0: SYNCML1.2 */
+    { "SYNCML:SYNCML1.2",   0x00 },     /**< Code Page 0: SYNCML1.2 */
     { "syncml:metinf",      0x01 },     /**< Code Page 1: metinf */
     { NULL,                 0x00 }
 };
