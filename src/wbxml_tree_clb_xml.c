@@ -210,15 +210,41 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
                     return;
                 }
 
-                /* Add doctype to give the XML parser a chance
-                 * SyncML 1.2 is downward compatible to older versions.
-                 */
-                if (!wbxml_buffer_insert_cstr(devinf_doc, "<!DOCTYPE DevInf PUBLIC '-//SYNCML//DTD DevInf 1.2//EN' 'http://www.openmobilealliance.org/tech/DTD/OMA-SyncML-Device_Information-DTD-1.2.dtd' >\n", 0))
-                {
-                    tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
-                    wbxml_buffer_destroy(devinf_doc);
-                    return;
-                }
+                /* Add doctype to give the XML parser a chance */
+		const WBXMLLangEntry *lang;
+		switch(tree_ctx->tree->lang->langID)
+		{
+			case WBXML_LANG_SYNCML_SYNCML10:
+				lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DEVINF10);
+				break;
+			case WBXML_LANG_SYNCML_SYNCML11:
+				lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DEVINF11);
+				break;
+			case WBXML_LANG_SYNCML_SYNCML12:
+				lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DEVINF12);
+				break;
+			default:
+				tree_ctx->error = WBXML_ERROR_UNKNOWN_XML_LANGUAGE;
+				return;
+		}
+		WBXMLBuffer *buffer = wbxml_buffer_create(NULL, 0, 0);
+		if (!buffer) {
+			tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+			return;
+		}
+		/* DOCTYPE in reverse order */
+		if (!wbxml_buffer_insert_cstr(devinf_doc, "\">\n", 0) ||                     /* > */
+		    !wbxml_buffer_insert_cstr(devinf_doc, lang->publicID->xmlDTD, 0) ||      /* DTD */
+		    !wbxml_buffer_insert_cstr(devinf_doc, "\" \"", 0) ||                     /* DTD */
+		    !wbxml_buffer_insert_cstr(devinf_doc, lang->publicID->xmlPublicID, 0) || /* Public ID */
+		    !wbxml_buffer_insert_cstr(devinf_doc, " PUBLIC \"", 0) ||                /*  PUBLIC " */
+		    !wbxml_buffer_insert_cstr(devinf_doc, lang->publicID->xmlRootElt, 0) ||  /* Root Element */
+		    !wbxml_buffer_insert_cstr(devinf_doc, "<!DOCTYPE ", 0))                  /* <!DOCTYPE */
+		{
+			tree_ctx->error = WBXML_ERROR_ENCODER_APPEND_DATA;
+                	wbxml_buffer_destroy(devinf_doc);
+			return;
+		}
 
                 WBXML_DEBUG((WBXML_PARSER, "\t DevInf Doc : '%s'", wbxml_buffer_get_cstr(devinf_doc)));
 
