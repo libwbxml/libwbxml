@@ -259,7 +259,7 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header);
 static WBXMLError wbxml_encode_end(WBXMLEncoder *encoder);
 
 static WBXMLError wbxml_encode_tag(WBXMLEncoder *encoder, WBXMLTreeNode *node, WB_BOOL has_content);
-static WBXMLError wbxml_encode_tag_literal(WBXMLEncoder *encoder, WB_UTINY *tag, WB_UTINY mask);
+static WBXMLError wbxml_encode_tag_literal(WBXMLEncoder *encoder, const WB_UTINY *tag, WB_UTINY mask);
 static WBXMLError wbxml_encode_tag_token(WBXMLEncoder *encoder, WB_UTINY token, WB_UTINY page);
 
 static WBXMLError wbxml_encode_attr(WBXMLEncoder *encoder, WBXMLAttribute *attribute);
@@ -1672,7 +1672,7 @@ static WBXMLError wbxml_encode_tag(WBXMLEncoder *encoder, WBXMLTreeNode *node, W
  *          literalTag = LITERAL | LITERAL_A | LITERAL_C | LITERAL_AC
  *          index = mb_u_int32
  */
-static WBXMLError wbxml_encode_tag_literal(WBXMLEncoder *encoder, WB_UTINY *tag, WB_UTINY mask)
+static WBXMLError wbxml_encode_tag_literal(WBXMLEncoder *encoder, const WB_UTINY *tag, WB_UTINY mask)
 {
 #if defined( WBXML_ENCODER_USE_STRTBL )
     WBXMLStringTableElement *elt = NULL;
