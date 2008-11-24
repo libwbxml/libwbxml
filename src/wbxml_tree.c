@@ -137,6 +137,9 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_to_wbxml(WBXMLTree *tree,
 
         /* Use String Table */
         wbxml_encoder_set_use_strtbl(wbxml_encoder, TRUE);
+
+        /* Don't produce an anonymous document by default */
+        wbxml_encoder_set_produce_anonymous(wbxml_encoder, FALSE);
     }
     else {
         /* WBXML Version */
@@ -153,6 +156,10 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_to_wbxml(WBXMLTree *tree,
 
         /* String Table */
         wbxml_encoder_set_use_strtbl(wbxml_encoder, params->use_strtbl);
+
+        /* Produce an anonymous document? */
+        wbxml_encoder_set_produce_anonymous(wbxml_encoder,
+            params->produce_anonymous);
 
         /** @todo Add parameter to call : wbxml_encoder_set_output_charset() */
     }
@@ -457,7 +464,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_node_create_xml_elt(const WBXMLLangEnt
     WBXMLTag *tag = NULL;
     
     /* Search for XML Tag Name in Table */
-    if ((tag_entry = wbxml_tables_get_tag_from_xml(lang_table, name)) != NULL) {
+    if ((tag_entry = wbxml_tables_get_tag_from_xml(lang_table, -1, name)) != NULL) {
         /* Found : token tag */
         tag = wbxml_tag_create_token(tag_entry);
     }
@@ -959,6 +966,7 @@ WBXML_DECLARE(WBXMLTree *) wbxml_tree_create(WBXMLLanguage lang,
     result->lang = wbxml_tables_get_table(lang);
     result->root = NULL;
     result->orig_charset = orig_charset;
+    result->cur_code_page = 0;
 
     return result;
 }
@@ -978,7 +986,6 @@ WBXML_DECLARE(void) wbxml_tree_destroy(WBXMLTree *tree)
 
 WBXML_DECLARE(WB_BOOL) wbxml_tree_add_node(WBXMLTree *tree, WBXMLTreeNode *parent, WBXMLTreeNode *node)
 {
-    WBXMLTreeNode *tmp = NULL;
 
     if ((tree == NULL) || (node == NULL))
         return FALSE;

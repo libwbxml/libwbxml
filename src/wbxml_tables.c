@@ -2992,17 +2992,40 @@ WBXML_DECLARE(WB_ULONG) wbxml_tables_get_wbxml_publicid(const WBXMLLangEntry *ma
 
 
 WBXML_DECLARE(const WBXMLTagEntry *) wbxml_tables_get_tag_from_xml(const WBXMLLangEntry *lang_table,
+                                                                   const int cur_code_page,
                                                                    const WB_UTINY *xml_name)
 {
-    WB_ULONG i = 0;
+    WB_ULONG i;
+    WB_BOOL found_current = FALSE;
 
     if ((lang_table == NULL) || (lang_table->tagTable == NULL) || (xml_name == NULL))
         return NULL;
 
-    while (lang_table->tagTable[i].xmlName != NULL) {
-        if (WBXML_STRCMP(lang_table->tagTable[i].xmlName, xml_name) == 0)
-            return &(lang_table->tagTable[i]);
-        i++;
+    /* First off, try to find it in the current code page, if provided */
+    for (i = 0; cur_code_page >= 0 && lang_table->tagTable[i].xmlName != NULL; i++) {
+        const WBXMLTagEntry *entry = &lang_table->tagTable[i];
+
+        if (entry->wbxmlCodePage == cur_code_page) {
+            found_current = TRUE;
+
+            if (WBXML_STRCMP(entry->xmlName, xml_name) == 0)
+                return entry;
+        } else {
+            if (found_current)
+              break;
+        }
+    }
+
+    /* Then try all others */
+    for (i = 0; lang_table->tagTable[i].xmlName != NULL; i++) {
+        const WBXMLTagEntry *entry = &lang_table->tagTable[i];
+
+        /* We've already searched the current code page */
+        if (cur_code_page >= 0 && entry->wbxmlCodePage == cur_code_page)
+          continue;
+
+        if (WBXML_STRCMP(entry->xmlName, xml_name) == 0)
+            return entry;
     }
 
     return NULL;

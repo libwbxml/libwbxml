@@ -97,6 +97,7 @@ typedef struct WBXMLTree_s
     const WBXMLLangEntry *lang;         /**< Language Table */
     WBXMLTreeNode        *root;         /**< Root Element */
     WBXMLCharsetMIBEnum   orig_charset; /**< Charset encoding of original document */
+    WB_UTINY              cur_code_page;/**< Last seen code page */
 } WBXMLTree;
 
 

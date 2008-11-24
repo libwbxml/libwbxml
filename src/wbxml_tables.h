@@ -252,10 +252,12 @@ WBXML_DECLARE(WB_ULONG) wbxml_tables_get_wbxml_publicid(const WBXMLLangEntry *ma
 /**
  * @brief Search for a Tag Entry in Language Table, given the XML Name of the Tag
  * @param lang_table The Language Table to search in
+ * @param cur_code_page The current code page so that it can be searched first, or -1 to start from the first one.
  * @param xml_name The XML Name of the Tag to search
  * @return The Tag Entry of this XML Name in Language Table, or NULL if not found
  */
 WBXML_DECLARE(const WBXMLTagEntry *) wbxml_tables_get_tag_from_xml(const WBXMLLangEntry *lang_table,
+                                                                   const int cur_code_page,
                                                                    const WB_UTINY *xml_name);
 
 /**
