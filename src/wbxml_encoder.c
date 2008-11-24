@@ -1905,6 +1905,9 @@ static WBXMLError wbxml_encode_value_element_buffer(WBXMLEncoder *encoder, WB_UT
 #if defined( WBXML_SUPPORT_SI )
         case WBXML_LANG_SI10:
             /* SI 1.0: Encode date for 'created' and 'si-expires' attributes */
+            if (encoder->current_attr == NULL)
+                break;
+
             if ((encoder->current_attr->wbxmlCodePage == 0x00) &&
                 ((encoder->current_attr->wbxmlToken == 0x0a) || (encoder->current_attr->wbxmlToken == 0x10)))
             {
@@ -1916,6 +1919,9 @@ static WBXMLError wbxml_encode_value_element_buffer(WBXMLEncoder *encoder, WB_UT
 #if defined( WBXML_SUPPORT_EMN )
         case WBXML_LANG_EMN10:
             /* EMN 1.0: Encode date for 'timestamp' attribute */
+            if (encoder->current_attr == NULL)
+                break;
+
             if ((encoder->current_attr->wbxmlCodePage == 0x00) && (encoder->current_attr->wbxmlToken == 0x05))
             {
                 return wbxml_encode_datetime(encoder, buffer);
