@@ -717,7 +717,7 @@ static WBXMLError parse_charset(WBXMLParser *parser)
     WB_ULONG startpos = parser->pos;
 #endif /* WBXML_LIB_VERBOSE */
 
-    WBXMLError ret = parse_mb_uint32(parser, (WB_ULONG *)&parser->charset);
+    WBXMLError ret = parse_mb_uint32(parser, &parser->charset);
 
     WBXML_DEBUG((WBXML_PARSER, "(%d) Parsed charset: '0x%X'", startpos, parser->charset));
 

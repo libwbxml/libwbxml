@@ -3215,7 +3215,7 @@ WBXML_DECLARE(WB_UTINY) wbxml_tables_get_code_page(const WBXMLNameSpaceEntry *ns
     WB_ULONG i = 0;
 
     if (ns_table == NULL)
-        return NULL;
+        return 0;
 
     while (ns_table[i].xmlNameSpace != NULL)
     {
@@ -3225,5 +3225,5 @@ WBXML_DECLARE(WB_UTINY) wbxml_tables_get_code_page(const WBXMLNameSpaceEntry *ns
         i++;
     }
 
-    return NULL;
+    return 0;
 }

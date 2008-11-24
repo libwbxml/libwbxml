@@ -1566,7 +1566,7 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     /* Copy WBXML String Table */
 #if defined( WBXML_ENCODER_USE_STRTBL )
     if (encoder->use_strtbl) {
-        if ((ret = wbxml_strtbl_construct(header, encoder->strstbl)) != WBXML_OK)
+        if ((ret = wbxml_strtbl_construct(header,(WBXMLList *) encoder->strstbl)) != WBXML_OK)
             return ret;
     }
     else {

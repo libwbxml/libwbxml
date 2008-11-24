@@ -233,13 +233,13 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 			return;
 		}
 		/* DOCTYPE in reverse order */
-		if (!wbxml_buffer_insert_cstr(devinf_doc, "\">\n", 0) ||                     /* > */
-		    !wbxml_buffer_insert_cstr(devinf_doc, lang->publicID->xmlDTD, 0) ||      /* DTD */
-		    !wbxml_buffer_insert_cstr(devinf_doc, "\" \"", 0) ||                     /* DTD */
-		    !wbxml_buffer_insert_cstr(devinf_doc, lang->publicID->xmlPublicID, 0) || /* Public ID */
-		    !wbxml_buffer_insert_cstr(devinf_doc, " PUBLIC \"", 0) ||                /*  PUBLIC " */
-		    !wbxml_buffer_insert_cstr(devinf_doc, lang->publicID->xmlRootElt, 0) ||  /* Root Element */
-		    !wbxml_buffer_insert_cstr(devinf_doc, "<!DOCTYPE ", 0))                  /* <!DOCTYPE */
+		if (!wbxml_buffer_insert_cstr(devinf_doc,(WB_UTINY *) "\">\n", 0) ||                     /* > */
+		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) lang->publicID->xmlDTD, 0) ||      /* DTD */
+		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) "\" \"", 0) ||                     /* DTD */
+		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) lang->publicID->xmlPublicID, 0) || /* Public ID */
+		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) " PUBLIC \"", 0) ||                /*  PUBLIC " */
+		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) lang->publicID->xmlRootElt, 0) ||  /* Root Element */
+		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) "<!DOCTYPE ", 0))                  /* <!DOCTYPE */
 		{
 			tree_ctx->error = WBXML_ERROR_ENCODER_APPEND_DATA;
                 	wbxml_buffer_destroy(devinf_doc);
