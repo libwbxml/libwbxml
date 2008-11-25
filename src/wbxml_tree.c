@@ -32,6 +32,8 @@
  * @brief WBXML Tree
  */
 
+#include "config.h"
+
 #include "wbxml.h"
 
 #define WBXML_NAMESPACE_SEPARATOR ':'
