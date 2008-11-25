@@ -43,11 +43,11 @@ SET( LIBEXEC_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/libexec" CACHE INTERNAL "libex
 
 #MESSAGE(STATUS "CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}" )
 
-SET( LIBWBXML_LIBRARIES_DIR "${LIB_INSTALL_DIR}" CACHE PATH "Syncml library location" )
-SET( LIBWBXML_INCLUDE_DIR "${INCLUDE_INSTALL_DIR}/libsyncml-1.0" CACHE PATH "Syncml headers location" )
-SET( LIBWBXML_BIN_DIR "${BIN_INSTALL_DIR}" CACHE PATH "Syncml binaries location" )
-SET( LIBWBXML_DATA_DIR "${CMAKE_INSTALL_PREFIX}/share" CACHE PATH "Syncml data location" )
-SET( LIBWBXML_EXEC_INSTALL_DIR "${BIN_INSTALL_DIR}" CACHE PATH "Syncml binary location" )
+SET( LIBWBXML_LIBRARIES_DIR "${LIB_INSTALL_DIR}" CACHE PATH "wbxml library location" )
+SET( LIBWBXML_INCLUDE_DIR "${INCLUDE_INSTALL_DIR}/libwbxml2" CACHE PATH "wbxml headers location" )
+SET( LIBWBXML_BIN_DIR "${BIN_INSTALL_DIR}" CACHE PATH "wbxml binaries location" )
+SET( LIBWBXML_DATA_DIR "${CMAKE_INSTALL_PREFIX}/share" CACHE PATH "wbxml data location" )
+SET( LIBWBXML_EXEC_INSTALL_DIR "${BIN_INSTALL_DIR}" CACHE PATH "wbxml binary location" )
 
 # find header files and type size
 INCLUDE( CheckTypeSize )
@@ -137,7 +137,7 @@ MARK_AS_ADVANCED( CLEAR BUILD_DOCUMENTATION )
 #ENDIF ( BUILD_DOCUMENTATION )
 
 # todo: add requires in pc file
-INSTALL( FILES "${CMAKE_CURRENT_BINARY_DIR}/libsyncml-1.0.pc" DESTINATION "${LIB_INSTALL_DIR}/pkgconfig/" )
+INSTALL( FILES "${CMAKE_CURRENT_BINARY_DIR}/libwbxml2.pc" DESTINATION "${LIB_INSTALL_DIR}/pkgconfig/" )
 
 # status output
 INCLUDE( ShowStatus )
