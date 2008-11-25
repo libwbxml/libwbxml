@@ -7,7 +7,7 @@
 #cmakedefine HAVE_DOPRNT
 
 /* Define to 1 if you have the <expat.h> header file. */
-#cmakedefine HAVE_EXPAT
+#cmakedefine HAVE_EXPAT_H
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #cmakedefine HAVE_INTTYPES_H
