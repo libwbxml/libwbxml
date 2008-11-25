@@ -60,7 +60,6 @@ CHECK_INCLUDE_FILES( stdlib.h HAVE_STDLIB_H )
 CHECK_INCLUDE_FILES( stdio.h HAVE_STDIO_H )
 CHECK_INCLUDE_FILES( stdarg.h HAVE_STDARG_H )
 CHECK_INCLUDE_FILES( assert.h HAVE_ASSERT_H )
-CHECK_INCLUDE_FILES( expat.h HAVE_ASSERT_H )
 
 # ensure out od source build
 INCLUDE( MacroEnsureOutOfSourceBuild )
@@ -72,6 +71,10 @@ MACRO_ENSURE_OUT_OF_SOURCE_BUILD("${CMAKE_PROJECT_NAME} doesn't allow to build w
 # nsl is part of libc6
 FIND_PACKAGE( Expat REQUIRED )
 FIND_PACKAGE( Check )
+
+IF( EXPAT_FOUND )
+    SET( HAVE_EXPAT_H 1 )
+ENDIF( EXPAT_FOUND )
 
 IF(CHECK_FOUND)
 	OPTION( ENABLE_UNIT_TEST "enable unit tests" ON )
