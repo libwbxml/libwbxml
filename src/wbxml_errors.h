@@ -40,6 +40,8 @@
 extern "C" {
 #endif /* __cplusplus */
 
+#include <wbxml_config.h>
+
 /** @addtogroup wbxml_errors
  *  @{ 
  */

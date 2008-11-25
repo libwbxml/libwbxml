@@ -122,5 +122,7 @@ WBXML_DECLARE(const WB_UTINY *) wbxml_errors_string(WBXMLError error_code)
             return (const WB_UTINY *)error_table[i].string;
     }
 
+    fprintf(stderr, "PACKAGE_NAME: Unknown error code %d.\n", error_code);
+
     return (const WB_UTINY *)"Unknown Error Code";
 }

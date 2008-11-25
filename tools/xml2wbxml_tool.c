@@ -37,7 +37,7 @@
 #include <memory.h>
 #endif /* ! __SYMBIAN32__ */
 
-#include "wbxml.h" /* libwbxml2 */
+#include "src/wbxml.h" /* libwbxml2 */
 #include "getopt.h"
 
 /*

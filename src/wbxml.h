@@ -35,6 +35,8 @@
 #ifndef WBXML_H
 #define WBXML_H
 
+#include <wbxml_config.h>
+
 #if defined( __SYMBIAN32__ )
 /* For basic Symbian Types */
 #include <e32def.h>

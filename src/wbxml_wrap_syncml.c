@@ -21,6 +21,8 @@
  * Contact: aymerick@jehanne.org
  * Home: http://libwbxml.aymerick.com
  */
+
+#include "wbxml_config.h"
  
 #if defined( WBXML_WRAPPERS ) && defined( WBXML_SUPPORT_SYNCML )
  
