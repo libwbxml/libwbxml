@@ -7,10 +7,10 @@ if(COMMAND cmake_policy)
 endif(COMMAND cmake_policy)
 
 ADD_EXECUTABLE( wbxml2xml wbxml2xml_tool.c attgetopt.c )
-	TARGET_LINK_LIBRARIES( wbxml2xml wbxml )
+	TARGET_LINK_LIBRARIES( wbxml2xml wbxml2 )
 	INSTALL( TARGETS wbxml2xml DESTINATION ${LIBWBXML_BIN_DIR} )
 
 ADD_EXECUTABLE( xml2wbxml xml2wbxml_tool.c attgetopt.c )
-	TARGET_LINK_LIBRARIES( xml2wbxml wbxml )
+	TARGET_LINK_LIBRARIES( xml2wbxml wbxml2 )
 	INSTALL( TARGETS xml2wbxml DESTINATION ${LIBWBXML_BIN_DIR} )
 
