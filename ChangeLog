@@ -1,3 +1,4 @@
+  * Build system switched to cmake from GNU autotools.
   * Size changed to MaxSize in OMA DS 1.2 DevInf
   * Fixes a couple of issues with SyncML, by Michael Bell
   * Fix segault in wbxml_encoder.c
