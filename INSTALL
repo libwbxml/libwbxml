@@ -13,24 +13,12 @@
   Linux
   -----
     
-    You must have automake, autoconf and libtool. For example, on Debian:
-    $ apt-get install automake
-    $ apt-get install libtool
+    You must have cmake 2.4+. For example, on Debian:
+    $ apt-get install cmake
 
-    Generate all the makefiles and build the necessary scripts (chmod 755 if not already done)
-    $ ./bootstrap
+    Generate all the makefiles and build the necessary scripts
+    $ mkdir build && cd build && cmake ../
 
-    If you want to obtain an rpm do:
-    $ make dist
-    $ rpmbuild -ta wbxml*.tar.gz
-
-    If you do not use rpm, just make the project as usual:
-    $ make all
-    $ make install
-    $ make clean
-
-    WARNING: If you have problems compiling on Linux, it may be a 'CR LF' problem. 
-             Try changing all 'CR LF' to 'LF'.
 
   Windows
   -------
