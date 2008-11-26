@@ -73,7 +73,7 @@ FIND_PACKAGE( Expat REQUIRED )
 FIND_PACKAGE( Check )
 
 IF( EXPAT_FOUND )
-    SET( HAVE_EXPAT_H 1 )
+    SET( HAVE_EXPAT 1 )
 ENDIF( EXPAT_FOUND )
 
 IF(CHECK_FOUND)
@@ -186,4 +186,10 @@ SET( CPACK_GENERATOR "TGZ;TBZ2" ) # This line is need for a CMake (Version 2.4.7
 SET( CPACK_SOURCE_GENERATOR "TGZ;TBZ2") 
 SET( CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${LIBWBXML_VERSION}" ) 
 SET( CPACK_SET_DESTDIR ON )
-INCLUDE( CPack ) 
+INCLUDE( CPack )
+
+### CTest ########################################
+
+ENABLE_TESTING()
+CONFIGURE_FILE( "tests/launchTests.sh" "${CMAKE_CURRENT_BINARY_DIR}/launchTests.sh")
+ADD_TEST( converter launchTests.sh "${CMAKE_SOURCE_DIR}/tests" )

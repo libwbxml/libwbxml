@@ -235,5 +235,5 @@ clean_up:
     lt_log_close_file();
 #endif
 
-    return 0;
+    return ret;
 }
