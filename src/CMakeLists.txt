@@ -48,6 +48,6 @@ INSTALL( FILES
 	wbxml_tree.h
 	wbxml_tree_clb_wbxml.h
 	wbxml_tree_clb_xml.h
-	DESTINATION ${LIBWBXML_INCLUDE_DIR}/libwbxml
+	DESTINATION ${LIBWBXML_INCLUDE_DIR}
 )
 
