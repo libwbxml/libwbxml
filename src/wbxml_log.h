@@ -61,9 +61,9 @@ extern "C" {
 #define WBXML_ENCODER 0x00
 #define WBXML_CONV 0x00
 #else  /* !WBXML_USE_LEAKTRACKER */
-#define WBXML_DEBUG(msg)   wbxml_log_error msg
-#define WBXML_WARNING(msg) wbxml_log_debug msg
-#define WBXML_ERROR(msg)   wbxml_log_warning msg
+#define WBXML_DEBUG(msg)   wbxml_log_debug msg
+#define WBXML_WARNING(msg) wbxml_log_warning msg
+#define WBXML_ERROR(msg)   wbxml_log_error msg
 #define WBXML_PARSER 0x01
 #define WBXML_ENCODER 0x02
 #define WBXML_CONV 0x03
