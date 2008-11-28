@@ -22,7 +22,7 @@
  * Home: http://libwbxml.aymerick.com
  */
 
-#include "wbxml_config.h"
+#include "wbxml_config_internals.h"
  
 #if defined( WBXML_WRAPPERS ) && defined( WBXML_SUPPORT_SYNCML )
  

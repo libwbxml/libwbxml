@@ -1,10 +1,7 @@
 /* config.h.cmake */
 
-/* Define to 1 if you have the `expat' library (-lexpat). */
-#cmakedefine HAVE_EXPAT
-
-/* Define to 1 if you would like to enable debug, warning and error messages */
-#cmakedefine WBXML_LIB_VERBOSE
+#ifndef WBXML_CONFIG_H
+#define WBXML_CONFIG_H
 
 /* supported document types */
 #cmakedefine WBXML_ENCODER_USE_STRTBL
@@ -21,3 +18,4 @@
 #cmakedefine WBXML_SUPPORT_WV
 #cmakedefine WBXML_SUPPORT_AIRSYNC
 
+#endif /* WBXML_CONFIG_H */

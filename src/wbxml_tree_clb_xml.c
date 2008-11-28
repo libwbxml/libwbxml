@@ -32,7 +32,7 @@
  * @brief WBXML Tree Callbacks for XML Parser (Expat)
  */
 
-#include "wbxml_config.h"
+#include "wbxml_config_internals.h"
 
 #if defined( HAVE_EXPAT )
 

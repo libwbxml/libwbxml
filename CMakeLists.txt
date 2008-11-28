@@ -105,6 +105,7 @@ SET( PACKAGE_VERSION "${LIBWBXML_VERSION}" )
 SET( VERSION "${LIBWBXML_VERSION}" )
 
 CONFIGURE_FILE( "src/wbxml_config.h.cmake" "${CMAKE_CURRENT_BINARY_DIR}/wbxml_config.h")
+CONFIGURE_FILE( "src/wbxml_config_internals.h.cmake" "${CMAKE_CURRENT_BINARY_DIR}/wbxml_config_internals.h")
 CONFIGURE_FILE( "libwbxml2.pc.cmake" "${CMAKE_CURRENT_BINARY_DIR}/libwbxml2.pc" @ONLY)
 
 # add uninstall target
