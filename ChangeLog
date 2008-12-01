@@ -1,3 +1,6 @@
+  * Add datetime encoding support for Wireless-Village.
+    (The encoder can tolerate missing seconds like in the tests.)
+  * Tests were integrated and can be used via make test.
   * Build system switched to cmake from GNU autotools.
   * Size changed to MaxSize in OMA DS 1.2 DevInf
   * Fixes a couple of issues with SyncML, by Michael Bell
