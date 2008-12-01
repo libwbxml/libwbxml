@@ -3,6 +3,9 @@
 #ifndef WBXML_CONFIG_H
 #define WBXML_CONFIG_H
 
+/** WBXML Parser Lib Version */
+#define WBXML_LIB_VERSION "${PACKAGE_VERSION}"
+
 /* Define to 1 if you would like to enable debug, warning and error messages */
 #cmakedefine WBXML_LIB_VERBOSE
 

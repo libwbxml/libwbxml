@@ -55,9 +55,6 @@
  *  @{ 
  */
 
-/** WBXML Parser Lib Version */
-#define WBXML_LIB_VERSION "0.9.3"
-
 /** Backward compatibility flag */
 #define WBXML_BACKWARD_COMPAT
 
@@ -377,16 +374,6 @@ typedef struct WBXMLGenWBXMLParams_s {
 #pragma warning(error: 4715) /**< 'function' : not all control paths return a value */
 #pragma warning(error: 4761) /**< integral size mismatch in argument : conversion supplied */
 #endif /* WIN32 */
-
-
-/* Includes */
-#if defined( HAVE_EXPAT)
-#include <expat.h>
-#endif /* HAVE_EXPAT */
-
-#if defined( HAVE_ICONV )
-#include <iconv.h>
-#endif /* HAVE_ICONV */
 
 #include "wbxml_log.h"
 #include "wbxml_errors.h"

@@ -13,13 +13,11 @@
 #cmakedefine HAVE_DOPRNT
 
 /* Define to 1 if you have the <expat.h> header file. */
+/* Define to 1 if you have the `expat' library (-lexpat). */
 #cmakedefine HAVE_EXPAT
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #cmakedefine HAVE_INTTYPES_H
-
-/* Define to 1 if you have the `expat' library (-lexpat). */
-#cmakedefine HAVE_EXPAT
 
 /* Define to 1 if you have the `nsl' library (-lnsl). */
 #cmakedefine HAVE_LIBNSL
@@ -89,5 +87,15 @@
 
 /* Define to `unsigned int' if <sys/types.h> does not define. */
 #cmakedefine size_t
+
+/* Includes */
+#if defined( HAVE_EXPAT)
+#include <expat.h>
+#endif /* HAVE_EXPAT */
+
+#if defined( HAVE_ICONV )
+#include <iconv.h>
+#endif /* HAVE_ICONV */
+
 
 #endif /* WBXML_CONFIG_INTERNALS_H */
