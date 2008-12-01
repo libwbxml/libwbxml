@@ -90,7 +90,4 @@
 /* Define to `unsigned int' if <sys/types.h> does not define. */
 #cmakedefine size_t
 
-/* Define to 1 if you would like to enable debug, warning and error messages */
-#cmakedefine WBXML_LIB_VERBOSE
-
 #endif /* WBXML_CONFIG_INTERNALS_H */
