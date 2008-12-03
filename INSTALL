@@ -23,14 +23,14 @@
 
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=$prefix /path/to/libsyncml/source/
+        cmake -DCMAKE_INSTALL_PREFIX=$prefix /path/to/libwbxml/source/
         make
         make test
         make install
 
     Example 2:
 
-        cd /path/to/libsyncml/source/
+        cd /path/to/libwbxml/source/
         cmake . -B/tmp/build/libwbxml
         cd /tmp/build/libwbxml
         make
