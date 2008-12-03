@@ -39,9 +39,11 @@ To make a release of libwbxml, do the following:
  - write checksums with md5sum from the tarballs to a file with the
    same name like the tarballs without the tar and compression suffixes
    and plus a new suffix md5sum
-   (e.g. libwbxml-0.10.0.md5sum)
+   Example:
+     md5sum libwbxml-0.0.10.tar.* > libwbxml-0.0.10.md5sum
+     md5sum -c libwbxml-0.0.10.md5sum
 
- - upload the tarballs and the checksum files to releases.
+ - upload the tarballs and the checksum file to releases.
    make sure the version numbers are the same!
 
  - Annouce the release on the mailing list
