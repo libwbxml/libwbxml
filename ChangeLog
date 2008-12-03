@@ -1,15 +1,15 @@
   * Fixed ticket #14 with patch from ticket
     (hexadecimal integer support for Wireless-Village)
-  * Add datetime encoding support for Wireless-Village.
+  * Added datetime encoding support for Wireless-Village.
     (The encoder can tolerate missing seconds like in the tests.)
   * Tests were integrated and can be used via make test.
   * Build system switched to cmake from GNU autotools.
   * Size changed to MaxSize in OMA DS 1.2 DevInf
-  * Fixes a couple of issues with SyncML, by Michael Bell
-  * Fix segault in wbxml_encoder.c
+  * Fixed a couple of issues with SyncML, by Michael Bell
+  * Fixed segault in wbxml_encoder.c
       - Thanks Stijn van Drongelen
-  * Add Sax like entity parsing
-  * Miscallaneus build fixes and anonymous document support
+  * Added Sax like entity parsing
+  * Miscellaneous build fixes and anonymous document support
   * Namespaces support
   * Some more cleanup and bug fixes
 
