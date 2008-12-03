@@ -1,4 +1,3 @@
-
   WBXML Library INSTALLATION OVERVIEW
   
   Dependencies
@@ -10,15 +9,33 @@
     On Linux Debian, just type:
     $ apt-get install libexpat1-dev
   
-  Linux
-  -----
+  Unix(Linux/FreeBSD/Solaris)
+  ---------------------------
     
+    libwbxml is using CMake as "build environment" (http://www.cmake.org).
     You must have cmake 2.4+. For example, on Debian:
     $ apt-get install cmake
 
-    Generate all the makefiles and build the necessary scripts
-    $ mkdir build && cd build && cmake ../
+    We only support/test "out of source builds", which means you have to create a 
+     separated build directory.
 
+    Example 1:
+
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=$prefix /path/to/libsyncml/source/
+        make
+        make test
+        make install
+
+    Example 2:
+
+        cd /path/to/libsyncml/source/
+        cmake . -B/tmp/build/libwbxml
+        cd /tmp/build/libwbxml
+        make
+        make test
+        make install
 
   Windows
   -------
