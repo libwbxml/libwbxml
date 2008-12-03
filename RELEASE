@@ -8,19 +8,19 @@ To make a release of libwbxml, do the following:
  - increment the version numbers in ./CMakeLists.txt: 
 
    Package Version:
-   LIBSYNCML_VERSION_MAJOR
-   LIBSYNCML_VERSION_MINOR
-   LIBSYNCML_VERSION_PATCH
+   LIBWBXML_VERSION_MAJOR
+   LIBWBXML_VERSION_MINOR
+   LIBWBXML_VERSION_PATCH
 
    Library Version:
-   LIBSYNCML_LIBVERSION_AGE 
+   LIBWBXML_LIBVERSION_AGE 
     * Increment if any interface changed since last release.
 
-   LIBSYNCML_LIBVERSION_REVISION
+   LIBWBXML_LIBVERSION_REVISION
     * Increment if any library code changed since last release.
       Set to 0 if any interface  has been changed since last release.
 
-   LIBSYNCML_LIBVERSION_AGE
+   LIBWBXML_LIBVERSION_AGE
     * Reset to 0 if any interface has been removed since last release.
       If any interface has been added incremnt.
 
