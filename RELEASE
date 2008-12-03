@@ -1,0 +1,47 @@
+Making a release
+===
+
+To make a release of libwbxml, do the following:
+
+ - check out a fresh copy from subversion
+
+ - increment the version numbers in ./CMakeLists.txt: 
+
+   Package Version:
+   LIBSYNCML_VERSION_MAJOR
+   LIBSYNCML_VERSION_MINOR
+   LIBSYNCML_VERSION_PATCH
+
+   Library Version:
+   LIBSYNCML_LIBVERSION_AGE 
+    * Increment if any interface changed since last release.
+
+   LIBSYNCML_LIBVERSION_REVISION
+    * Increment if any library code changed since last release.
+      Set to 0 if any interface  has been changed since last release.
+
+   LIBSYNCML_LIBVERSION_AGE
+    * Reset to 0 if any interface has been removed since last release.
+      If any interface has been added incremnt.
+
+
+ - Run "make test" again several times to try to see race conditions.
+
+ - Commit the increased version changes (and build fixes)
+
+ - if someone else made changes and the commit fails,
+   you have to "svn up" and run the tests again
+
+ - once the commit succeeds, "svn cp trunk tags/libwbxml-$MAJOR.$MINJOR.$PATCH"
+
+ - create tarballs with "cmake $SOURCES; make package_source" (out of source build!)
+
+ - write checksums with md5sum from the tarballs to the file MD5SUM
+
+ - upload the tarballs and the file MD5SUM to releases.
+   make sure the version numbers are the same!
+
+ - Annouce the release on the mailing list
+   Tips: 
+     * make diff of the exported symbols "nm -g -P libwbxml.so"
+     * read svn log
