@@ -7,7 +7,7 @@
   * Build system switched to cmake from GNU autotools.
   * Size changed to MaxSize in OMA DS 1.2 DevInf
   * Fixed a couple of issues with SyncML, by Michael Bell
-  * Fixed segault in wbxml_encoder.c
+  * Fixed segfault in wbxml_encoder.c
       - Thanks Stijn van Drongelen
   * Added Sax like entity parsing
   * Miscellaneous build fixes and anonymous document support
