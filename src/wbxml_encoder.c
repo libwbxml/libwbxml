@@ -1,6 +1,7 @@
 /*
  * libwbxml, the WBXML Library.
  * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
+ * Copyright (C) 2008 Michael Bell <michael.bell@opensync.org>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -3015,7 +3016,12 @@ static WBXMLError wbxml_encode_wv_integer(WBXMLEncoder *encoder, WB_UTINY *buffe
     if ((encoder == NULL) || (buffer == NULL))
         return WBXML_ERROR_INTERNAL;
 
-    the_int = (WB_ULONG) atol((const WB_TINY *) buffer);
+    if (buffer[1] == 'x' || buffer[1] == 'X') {
+        the_int = (WB_ULONG) strtol((const WB_TINY *) buffer , NULL , 16);
+    } else {
+        the_int = (WB_ULONG) atol((const WB_TINY *) buffer);
+    }
+
 
     for (i = 3; the_int > 0 && i >= 0; i--) {
         octets[i] = (WB_UTINY)(the_int & 0xff);
@@ -3066,11 +3072,6 @@ static WBXMLError wbxml_encode_wv_integer(WBXMLEncoder *encoder, WB_UTINY *buffe
  */
 static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buffer)
 {
-#if 0
-    /** @todo Finish wbxml_encode_wv_datetime() */
-
-    return WBXML_ERROR_NOT_IMPLEMENTED;
-#endif
     WBXMLError error;
     WBXMLBuffer *tmp = NULL;
     WB_ULONG i = 0, len = 0;

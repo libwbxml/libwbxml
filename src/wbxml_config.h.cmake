@@ -1,4 +1,6 @@
-/* config.h.cmake */
+/*
+ * Copyright (C) 2008 Michael Bell <michael.bell@opensync.org>
+ */
 
 #ifndef WBXML_CONFIG_H
 #define WBXML_CONFIG_H
