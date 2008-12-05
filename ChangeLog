@@ -1,3 +1,4 @@
+2008-12-05  Michael Bell <michael.bell@web.de>
   * Fixed ticket #14 with patch from ticket
     (hexadecimal integer support for Wireless-Village)
   * Added datetime encoding support for Wireless-Village.
