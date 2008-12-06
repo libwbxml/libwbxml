@@ -36,6 +36,7 @@ SET( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules" )
 
 SET( LIB_SUFFIX "" CACHE STRING "The library directory suffix. 32bit empty string, 64 for 64bit." )
 SET( LIB_INSTALL_DIR  "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}" CACHE INTERNAL "libary location" )
+SET( LIBDATA_INSTALL_DIR  "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}" CACHE PATH "The library data directory" )
 SET( BIN_INSTALL_DIR  "${CMAKE_INSTALL_PREFIX}/bin" CACHE INTERNAL "binary location" )
 SET( SHARE_INSTALL_DIR  "${CMAKE_INSTALL_PREFIX}/share" CACHE INTERNAL "data location" )
 SET( INCLUDE_INSTALL_DIR  "${CMAKE_INSTALL_PREFIX}/include" CACHE INTERNAL "headers location" )
@@ -152,8 +153,7 @@ ADD_DOCUMENTATION( TEXT FILE ${CMAKE_SOURCE_DIR}/THANKS )
 ADD_DOCUMENTATION( TEXT FILE ${CMAKE_SOURCE_DIR}/TODO )
 
 # todo: add requires in pc file
-INSTALL( FILES "${CMAKE_CURRENT_BINARY_DIR}/libwbxml2.pc" DESTINATION "${LIB_INSTALL_DIR}/pkgconfig/" )
-
+INSTALL( FILES "${CMAKE_CURRENT_BINARY_DIR}/libwbxml2.pc" DESTINATION "${LIBDATA_INSTALL_DIR}/pkgconfig/" )
 # status output
 INCLUDE( ShowStatus )
 MESSAGE( STATUS "==================================================" )
