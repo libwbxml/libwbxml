@@ -229,11 +229,7 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 				tree_ctx->error = WBXML_ERROR_UNKNOWN_XML_LANGUAGE;
 				return;
 		}
-		WBXMLBuffer *buffer = wbxml_buffer_create(NULL, 0, 0);
-		if (!buffer) {
-			tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
-			return;
-		}
+
 		/* DOCTYPE in reverse order */
 		if (!wbxml_buffer_insert_cstr(devinf_doc,(WB_UTINY *) "\">\n", 0) ||                     /* > */
 		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) lang->publicID->xmlDTD, 0) ||      /* DTD */
