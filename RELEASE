@@ -32,7 +32,12 @@ To make a release of libwbxml, do the following:
  - if someone else made changes and the commit fails,
    you have to "svn up" and run the tests again
 
- - once the commit succeeds, "svn cp trunk tags/libwbxml-$MAJOR.$MINJOR.$PATCH"
+ - once the commit succeeds, you have to create a new tag with
+   "cp -R trunk tags/libwbxml-$MAJOR.$MINJOR.$PATCH",
+   "svn add tags/libwbxml-$MAJOR.$MINJOR.$PATCH" and
+   "svn commit tags/libwbxml-$MAJOR.$MINJOR.$PATCH"
+   (NEVER use "svn cp" because you must replace the external entities
+   of the trunk directory with hard copies of the actual state.)
 
  - create tarballs with "cmake $SOURCES; make package_source" (out of source build!)
 
