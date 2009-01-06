@@ -33,7 +33,8 @@ To make a release of libwbxml, do the following:
    you have to "svn up" and run the tests again
 
  - once the commit succeeds, you have to create a new tag with
-   "cp -R trunk tags/libwbxml-$MAJOR.$MINJOR.$PATCH",
+   "mkdir tags/libwbxml-$MAJOR.$MINJOR.$PATCH",
+   "tar -C trunk --exclude=\"\\.svn\" -cf - . | tar -C tags/libwbxml-$MAJOR.$MINJOR.$PATCH -xf -"
    "svn add tags/libwbxml-$MAJOR.$MINJOR.$PATCH" and
    "svn commit tags/libwbxml-$MAJOR.$MINJOR.$PATCH"
    (NEVER use "svn cp" because you must replace the external entities
