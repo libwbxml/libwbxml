@@ -56,3 +56,4 @@ To make a release of libwbxml, do the following:
    Tips: 
      * make diff of the exported symbols "nm -g -P libwbxml.so"
      * read svn log
+     * check trac tickets which are attached to the according milestone

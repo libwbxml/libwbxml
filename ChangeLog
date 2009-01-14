@@ -1,4 +1,5 @@
 2009-01-06  Michael Bell <michael.bell@web.de>
+  * Released 0.10.1
   * Removed a useless buffer which only creates a memory leak.
   * The installation of the documentation can be disabled.
   * LIBDATA_INSTALL_DIR was introduced (used by pkgconfig). 
@@ -7,6 +8,7 @@
   * The timezone of the nightly build-time was fixed.
 
 2008-12-05  Michael Bell <michael.bell@web.de>
+  * Released 0.10.0
   * Fixed ticket #14 with patch from ticket
     (hexadecimal integer support for Wireless-Village)
   * Added datetime encoding support for Wireless-Village.
