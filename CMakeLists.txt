@@ -71,6 +71,7 @@ MACRO_ENSURE_OUT_OF_SOURCE_BUILD("${CMAKE_PROJECT_NAME} doesn't allow to build w
 # popt is not used
 # zlib is not used
 # nsl is part of libc6
+
 FIND_PACKAGE( Expat REQUIRED )
 FIND_PACKAGE( Check )
 
@@ -82,6 +83,23 @@ IF(CHECK_FOUND)
 	OPTION( ENABLE_UNIT_TEST "enable unit tests" ON )
 	INCLUDE( Testing )
 ENDIF(CHECK_FOUND)
+
+# look for the commands required for testing
+
+FIND_PROGRAM( XMLLINT_PROGRAM "xmllint" )
+FIND_PROGRAM( DIFF_PROGRAM "diff" )
+
+IF( XMLLINT_PROGRAM )
+	SET( ENABLE_XMLLINT ON )
+ELSE( XMLLINT_PROGRAM )
+	SET( ENABLE_XMLLINT OFF )
+ENDIF( XMLLINT_PROGRAM )
+
+IF( DIFF_PROGRAM )
+	SET( ENABLE_DIFF ON )
+ELSE( DIFF_PROGRAM )
+	SET( ENABLE_DIFF OFF )
+ENDIF( DIFF_PROGRAM )
 
 OPTION( WBXML_LIB_VERBOSE "verbose mode" OFF )
 OPTION( WBXML_ENCODER_USE_STRTBL "enable string tables" ON )
@@ -162,6 +180,8 @@ INCLUDE( ShowStatus )
 MESSAGE( STATUS "==================================================" )
 SHOW_STATUS( WBXML_LIB_VERBOSE "verbose mode\t\t\t" )
 SHOW_STATUS( ENABLE_UNIT_TEST "unit tests\t\t\t" )
+SHOW_STATUS( ENABLE_XMLLINT "xmllint binary (test generated XML)" )
+SHOW_STATUS( ENABLE_DIFF "diff binary (test generated XML)" )
 SHOW_STATUS( WBXML_ENCODER_USE_STRTBL "enable string tables\t\t" )
 SHOW_STATUS( WBXML_SUPPORT_WML "enable WML support\t\t" )
 SHOW_STATUS( WBXML_SUPPORT_WTA "enable WTA support\t\t" )
