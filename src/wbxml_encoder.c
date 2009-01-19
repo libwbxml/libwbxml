@@ -330,8 +330,10 @@ static WB_BOOL wbxml_strtbl_add_element(WBXMLEncoder *encoder, WBXMLStringTableE
 /* XML Header Macros */
 #define WBXML_ENCODER_XML_HEADER "<?xml version=\"1.0\"?>"
 #define WBXML_ENCODER_XML_DOCTYPE "<!DOCTYPE "
-#define WBXML_ENCODER_XML_PUBLIC " PUBLIC \""
-#define WBXML_ENCODER_XML_DTD "\" \""
+#define WBXML_ENCODER_XML_PUBLIC_START " PUBLIC \""
+#define WBXML_ENCODER_XML_PUBLIC_END "\""
+#define WBXML_ENCODER_XML_SYSTEM " SYSTEM"
+#define WBXML_ENCODER_XML_DTD " \""
 #define WBXML_ENCODER_XML_END_DTD "\">"
 
 /* Global vars for XML Normalization */
@@ -3957,13 +3959,25 @@ static WBXMLError xml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     if (!wbxml_buffer_append_cstr(header, encoder->lang->publicID->xmlRootElt))
         return WBXML_ERROR_ENCODER_APPEND_DATA;
 
-    /*  PUBLIC " */
-    if (!wbxml_buffer_append_cstr(header, WBXML_ENCODER_XML_PUBLIC))
-        return WBXML_ERROR_ENCODER_APPEND_DATA;
+    if (encoder->lang->publicID->xmlPublicID &&
+        WBXML_STRLEN(encoder->lang->publicID->xmlPublicID)) {
 
-    /* Public ID */
-    if (!wbxml_buffer_append_cstr(header, encoder->lang->publicID->xmlPublicID))
-        return WBXML_ERROR_ENCODER_APPEND_DATA;
+        /*  PUBLIC " */
+        if (!wbxml_buffer_append_cstr(header, WBXML_ENCODER_XML_PUBLIC_START))
+            return WBXML_ERROR_ENCODER_APPEND_DATA;
+
+        /* Public ID */
+        if (!wbxml_buffer_append_cstr(header, encoder->lang->publicID->xmlPublicID))
+            return WBXML_ERROR_ENCODER_APPEND_DATA;
+
+        /* " */
+        if (!wbxml_buffer_append_cstr(header, WBXML_ENCODER_XML_PUBLIC_END))
+            return WBXML_ERROR_ENCODER_APPEND_DATA;
+    } else {
+	/*  SYSTEM */
+        if (!wbxml_buffer_append_cstr(header, WBXML_ENCODER_XML_SYSTEM))
+            return WBXML_ERROR_ENCODER_APPEND_DATA;
+    }
 
     /* DTD */
     if (!wbxml_buffer_append_cstr(header, WBXML_ENCODER_XML_DTD))
