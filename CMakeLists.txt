@@ -230,7 +230,13 @@ CONFIGURE_FILE( "tests/launchTests.sh" "${CMAKE_CURRENT_BINARY_DIR}/launchTests.
 CONFIGURE_FILE( "tests/normalize_xml.pl" "${CMAKE_CURRENT_BINARY_DIR}/normalize_xml.pl" @ONLY)
 SET( airsync_tests 1 )
 SET( ddf_tests 5 )
-SET( drmrel_tests  3 )
+# 2009-Jan-19 bellmich
+# All DRMREL 1.0 tests are switched off.
+# The background is the extremely bad specification.
+# DRMREL 1.0 hardcodes the XML namespace translation.
+# I never saw such a broken XML design before.
+#
+#SET( drmrel_tests  3 )
 SET( emn_tests    17 )
 SET( ota_tests     3 )
 SET( prov_tests    8 )
@@ -238,8 +244,8 @@ SET( si_tests     25 )
 SET( sl_tests     13 )
 SET( syncml_tests 14 )
 SET( wv_tests    105 )
-FOREACH( TESTDIR airsync ddf drmrel emn ota prov si sl syncml wv )
+FOREACH( TESTDIR airsync ddf emn ota prov si sl syncml wv )
 	FOREACH( ITEM RANGE 1 ${${TESTDIR}_tests} )
 		ADD_TEST( "${TESTDIR}_${ITEM}" launchTests.sh "${CMAKE_SOURCE_DIR}/tests" "${TESTDIR}" ${ITEM} )
 	ENDFOREACH( ITEM RANGE 1 ${${TESTDIR}_tests} )
-ENDFOREACH( TESTDIR airsync ddf drmrel emn ota prov si sl syncml wv )
+ENDFOREACH( TESTDIR airsync ddf emn ota prov si sl syncml wv )
