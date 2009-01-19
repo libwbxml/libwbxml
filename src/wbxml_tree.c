@@ -235,7 +235,7 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_xml(WB_UTINY *xml, WB_ULONG xml_len, W
     /* Parse the XML Document to WBXML Tree */
     if (XML_Parse(xml_parser, (WB_TINY*) xml, xml_len, TRUE) == 0)
     {
-        WBXML_ERROR((WBXML_CONV, "xml2wbxml convertion failed - expat error %i\n"
+        WBXML_ERROR((WBXML_CONV, "xml2wbxml conversion failed - expat error %i\n"
             "\tdescription: %s\n"
             "\tline: %i\n"
             "\tcolumn: %i\n"

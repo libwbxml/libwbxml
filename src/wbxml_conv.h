@@ -62,7 +62,7 @@ extern "C" {
  * @param xml       [out] Resulting XML Document
  * @param xml_len   [out] XML Document length
  * @param params    [in] Parameters (if NULL, default values are used)
- * @return WBXML_OK if convertion succeeded, an Error Code otherwise
+ * @return WBXML_OK if conversion succeeded, an Error Code otherwise
  */
 WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_withlen(WB_UTINY  *wbxml,
                                                        WB_ULONG   wbxml_len,
@@ -88,7 +88,7 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_withlen(WB_UTINY  *wbxml,
  * @param wbxml     [out] Resulting WBXML Document
  * @param wbxml_len [out] Length of resulting WBXML Document
  * @param params    [in] Parameters (if NULL, default values are used)
- * @return WBXML_OK if convertion succeeded, an Error Code otherwise
+ * @return WBXML_OK if conversion succeeded, an Error Code otherwise
  */
 WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_withlen(WB_UTINY  *xml,
                                                        WB_ULONG   xml_len,

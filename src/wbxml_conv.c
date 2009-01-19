@@ -62,7 +62,7 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_withlen(WB_UTINY  *wbxml,
     /* Parse WBXML to WBXML Tree */
     ret = wbxml_tree_from_wbxml(wbxml, wbxml_len, params ? params->lang : WBXML_LANG_UNKNOWN, &wbxml_tree);
     if (ret != WBXML_OK) {
-        WBXML_ERROR((WBXML_CONV, "wbxml2xml convertion failed - WBXML Parser Error: %s",
+        WBXML_ERROR((WBXML_CONV, "wbxml2xml conversion failed - WBXML Parser Error: %s",
                                  wbxml_errors_string(ret)));
 
         return ret;
@@ -71,7 +71,7 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_withlen(WB_UTINY  *wbxml,
         /* Convert Tree to XML */
         ret = wbxml_tree_to_xml(wbxml_tree, xml, xml_len, params);
         if (ret != WBXML_OK) {
-            WBXML_ERROR((WBXML_CONV, "wbxml2xml convertion failed - WBXML Encoder Error: %s",
+            WBXML_ERROR((WBXML_CONV, "wbxml2xml conversion failed - WBXML Encoder Error: %s",
                                      wbxml_errors_string(ret)));
         }
 
@@ -102,7 +102,7 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_withlen(WB_UTINY  *xml,
     /* Parse XML to WBXML Tree */
     ret = wbxml_tree_from_xml(xml, xml_len, &wbxml_tree);
     if (ret != WBXML_OK) {
-        WBXML_ERROR((WBXML_CONV, "xml2wbxml convertion failed - Error: %s",
+        WBXML_ERROR((WBXML_CONV, "xml2wbxml conversion failed - Error: %s",
                                   wbxml_errors_string(ret)));
 
         return ret;
@@ -111,7 +111,7 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_withlen(WB_UTINY  *xml,
         /* Convert Tree to WBXML */
         ret = wbxml_tree_to_wbxml(wbxml_tree, wbxml, wbxml_len, params);
         if (ret != WBXML_OK) {
-            WBXML_ERROR((WBXML_CONV, "xml2wbxml convertion failed - WBXML Encoder Error: %s",
+            WBXML_ERROR((WBXML_CONV, "xml2wbxml conversion failed - WBXML Encoder Error: %s",
                                      wbxml_errors_string(ret)));
         }
 
