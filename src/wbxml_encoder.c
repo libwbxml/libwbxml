@@ -1,7 +1,7 @@
 /*
  * libwbxml, the WBXML Library.
  * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
- * Copyright (C) 2008 Michael Bell <michael.bell@opensync.org>
+ * Copyright (C) 2008-2009 Michael Bell <michael.bell@opensync.org>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -2136,8 +2136,17 @@ static WBXMLError wbxml_encode_value_element_buffer(WBXMLEncoder *encoder, WB_UT
                     if (WBXML_STRLEN(encoder->lang->extValueTable[j].xmlName) < 2)
                         continue;
 
-                    /* Is this Extension Token contained in this Buffer ? */
-                    if (wbxml_buffer_search_cstr(elt->u.str, (WB_UTINY *) encoder->lang->extValueTable[j].xmlName, 0, &index))
+                    /* Is this Extension Token contained in this Buffer ?
+		     * 
+		     * The Extension Token must start at the beginning of
+		     * the buffer. Otherwise we can damage normal text
+		     * entities like 'My IM-application.' If 'IM' is an
+		     * Extension Token.
+		     *
+		     * Assumption: The buffer is already normalized.
+		     */
+                    // if (wbxml_buffer_search_cstr(elt->u.str, (WB_UTINY *) encoder->lang->extValueTable[j].xmlName, 0, &index))
+                    if (wbxml_buffer_compare_cstr(elt->u.str, (WB_UTINY *) encoder->lang->extValueTable[j].xmlName) == 0)
                     {
                         /* Create new Value Element */
                         if ((new_elt = wbxml_value_element_create()) == NULL) {
