@@ -236,7 +236,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
     params.indent = 1;
     params.keep_ignorable_ws = FALSE;
 
-    while ((opt = (WB_TINY) getopt(argc, argv, "kh?o:m:i:l:")) != EOF)
+    while ((opt = (WB_TINY) wbxml_getopt(argc, argv, "kh?o:m:i:l:")) != EOF)
     {
         switch (opt) {
         case 'k':

@@ -105,7 +105,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
     params.use_strtbl = TRUE;
     params.keep_ignorable_ws = FALSE;
 
-    while ((opt = (WB_TINY) getopt(argc, argv, "nkh?o:v:")) != EOF)
+    while ((opt = (WB_TINY) wbxml_getopt(argc, argv, "nkh?o:v:")) != EOF)
     {
         switch (opt) {
         case 'v':
