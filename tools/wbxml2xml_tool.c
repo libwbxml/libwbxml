@@ -127,6 +127,8 @@ static WBXMLLanguage get_lang(const WB_TINY *lang)
         return WBXML_LANG_SYNCML_DEVINF12;
     if (WBXML_STRCMP(lang, "METINF12") == 0)
         return WBXML_LANG_SYNCML_METINF12;
+    if (WBXML_STRCMP(lang, "DMDDF12") == 0)
+        return WBXML_LANG_SYNCML_DMDDF12;
 #endif /* WBXML_SUPPORT_SYNCML */
 
 #if defined( WBXML_SUPPORT_WV )
@@ -207,6 +209,7 @@ static void help(void)
     fprintf(stderr, "       SYNCML12 : SYNCML 1.2\n");
     fprintf(stderr, "       DEVINF12 : DEVINF 1.2\n");
     fprintf(stderr, "       METINF12 : METINF 1.2\n");
+    fprintf(stderr, "       DMDDF12  : DMDDF  1.2\n");
 #endif /* WBXML_SUPPORT_SYNCML */
 #if defined( WBXML_SUPPORT_WV )
     fprintf(stderr, "       CSP11 : WV CSP 1.1\n");

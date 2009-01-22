@@ -229,6 +229,7 @@ typedef enum WBXMLLanguage_e {
     WBXML_LANG_SYNCML_SYNCML12, /**< SYNCML 1.2 */
     WBXML_LANG_SYNCML_DEVINF12, /**< DEVINF 1.2 */
     WBXML_LANG_SYNCML_METINF12, /**< METINF 1.2 */
+    WBXML_LANG_SYNCML_DMDDF12,  /**< DMDDF  1.2 */
 #endif /* WBXML_SUPPORT_SYNCML */
 
     /* Wireless-Village */

@@ -106,6 +106,7 @@ const WBXMLPublicIDEntry sv_syncml_metinf11_public_id = { WBXML_PUBLIC_ID_SYNCML
 const WBXMLPublicIDEntry sv_syncml_syncml12_public_id = { WBXML_PUBLIC_ID_SYNCML_SYNCML12,    XML_PUBLIC_ID_SYNCML_SYNCML12,  "SyncML",               "http://www.openmobilealliance.org/tech/DTD/OMA-TS-SyncML_RepPro_DTD-V1_2.dtd"         };
 const WBXMLPublicIDEntry sv_syncml_devinf12_public_id = { WBXML_PUBLIC_ID_SYNCML_DEVINF12,    XML_PUBLIC_ID_SYNCML_DEVINF12,  "DevInf",               "http://www.openmobilealliance.org/tech/DTD/OMA-SyncML-Device_Information-DTD-1.2.dtd" };
 const WBXMLPublicIDEntry sv_syncml_metinf12_public_id = { WBXML_PUBLIC_ID_SYNCML_METINF12,    XML_PUBLIC_ID_SYNCML_METINF12,  "MetInf",               "http://www.openmobilealliance.org/tech/DTD/OMA-TS-SyncML_MetaInfo_DTD-V1_2.dtd"       };
+const WBXMLPublicIDEntry sv_syncml_dmddf12_public_id = { WBXML_PUBLIC_ID_SYNCML_DMDDF12,    XML_PUBLIC_ID_SYNCML_DMDDF12,     "MgmtTree",                "http://www.openmobilealliance.org/tech/DTD/dm_ddf-v1_2.dtd" };
 #endif /* WBXML_SUPPORT_SYNCML */
 
 #if defined( WBXML_SUPPORT_WV )
@@ -1865,7 +1866,7 @@ const WBXMLTagEntry sv_syncml_syncml12_tag_table[] = {
 
 
 /*********************************************************
- *    SyncML DevInf 1.2 ("??.pdf")
+ *    SyncML DevInf 1.2 ("OMA-TS-DS_DevInf-V1_2-20060710-A.pdf")
  */
 
 const WBXMLTagEntry sv_syncml_devinf12_tag_table[] = {
@@ -1950,6 +1951,75 @@ const WBXMLTagEntry sv_syncml_metinf12_tag_table[] = {
     { "MaxObjSize",     0x01, 0x15 },
     { "FieldLevel",     0x01, 0x16 },
     { NULL,             0x00, 0x00 }
+};
+
+/*********************************************************
+ *    SyncML DM DDF 1.2 ("OMA-TS-DM_TND-V1_2_1-20080617-A.pdf")
+ */
+
+const WBXMLTagEntry sv_syncml_dmddf12_tag_table[] = {
+    { "AccessType",     0x02, 0x05 },
+    { "ACL",            0x02, 0x06 },
+    { "Add",            0x02, 0x07 },
+    { "b64",            0x02, 0x08 },
+    { "bin",            0x02, 0x09 },
+    { "bool",           0x02, 0x0A },
+    { "chr",            0x02, 0x0B },
+    { "CaseSense",      0x02, 0x0C },
+    { "CIS",            0x02, 0x0D },
+    { "Copy",           0x02, 0x0E },
+    { "CS",             0x02, 0x0F },
+    { "data",           0x02, 0x10 },
+    { "DDFName",        0x02, 0x11 },
+    { "DefaultValue",   0x02, 0x12 },
+    { "Delete",         0x02, 0x13 },
+    { "Description",    0x02, 0x14 },
+    { "DFFormat",       0x02, 0x15 },
+    { "DFProperties",   0x02, 0x16 },
+    { "DFTitle",        0x02, 0x17 },
+    { "DFType",         0x02, 0x18 },
+    { "Dynamic",        0x02, 0x19 },
+    { "Exec",           0x02, 0x1A },
+    { "float",          0x02, 0x1B },
+    { "Format",         0x02, 0x1C },
+    { "Get",            0x02, 0x1D },
+    { "int",            0x02, 0x1E },
+    { "Man",            0x02, 0x1F },
+    { "MgmtTree",       0x02, 0x20 },
+    { "MIME",           0x02, 0x21 },
+    { "Mod",            0x02, 0x22 },
+    { "Name",           0x02, 0x23 },
+    { "Node",           0x02, 0x24 },
+    { "node",           0x02, 0x25 },
+    { "NodeName",       0x02, 0x26 },
+    { "null",           0x02, 0x27 },
+    { "Occurrence",     0x02, 0x28 },
+    { "One",            0x02, 0x29 },
+    { "OneOrMore",      0x02, 0x2A },
+    { "OneOrN",         0x02, 0x2B },
+    { "Path",           0x02, 0x2C },
+    { "Permanent",      0x02, 0x2D },
+    { "Replace",        0x02, 0x2E },
+    { "RTProperties",   0x02, 0x2F },
+    { "Scope",          0x02, 0x30 },
+    { "Size",           0x02, 0x31 },
+    { "time",           0x02, 0x32 },
+    { "Title",          0x02, 0x33 },
+    { "TStamp",         0x02, 0x34 },
+    { "Type",           0x02, 0x35 },
+    { "Value",          0x02, 0x36 },
+    { "VerDTD",         0x02, 0x37 },
+    { "VerNo",          0x02, 0x38 },
+    { "xml",            0x02, 0x39 },
+    { "ZeroOrMore",     0x02, 0x3A },
+    { "ZeroOrN",        0x02, 0x3B },
+    { "ZeroOrOne",      0x02, 0x3C },
+    { NULL,             0x00, 0x00 }
+};
+
+const WBXMLNameSpaceEntry sv_syncml_dmddf12_ns_table[] = {
+    { "MgmtTree",	0x02 },     /**< Code Page 2: DMDDF */
+    { NULL,             0x00 }
 };
 
 #endif /* WBXML_SUPPORT_SYNCML */
@@ -2909,6 +2979,7 @@ const WBXMLLangEntry sv_table_entry[] = {
     { WBXML_LANG_SYNCML_SYNCML12,   &sv_syncml_syncml12_public_id,  sv_syncml_syncml12_tag_table,   sv_syncml_syncml12_ns_table,    NULL,                       NULL,                           NULL },
     { WBXML_LANG_SYNCML_DEVINF12,   &sv_syncml_devinf12_public_id,  sv_syncml_devinf12_tag_table,   sv_syncml_devinf12_ns_table,    NULL,                       NULL,                           NULL },
     { WBXML_LANG_SYNCML_METINF12,   &sv_syncml_metinf12_public_id,  sv_syncml_metinf12_tag_table,   NULL,                           NULL,                       NULL,                           NULL },
+    { WBXML_LANG_SYNCML_DMDDF12,    &sv_syncml_dmddf12_public_id,   sv_syncml_dmddf12_tag_table,    sv_syncml_dmddf12_ns_table,     NULL,                       NULL,                           NULL },
 
     /* SyncML 1.1 */
     { WBXML_LANG_SYNCML_SYNCML11,   &sv_syncml_syncml11_public_id,  sv_syncml_syncml11_tag_table,   sv_syncml_syncml11_ns_table,    NULL,                       NULL,                           NULL },
