@@ -2018,8 +2018,8 @@ const WBXMLTagEntry sv_syncml_dmddf12_tag_table[] = {
 };
 
 const WBXMLNameSpaceEntry sv_syncml_dmddf12_ns_table[] = {
-    { "MgmtTree",	0x02 },     /**< Code Page 2: DMDDF */
-    { NULL,             0x00 }
+    { "syncml:dmddf1.2", 0x02 },     /**< Code Page 2: OMA DM DDF */
+    { NULL,              0x00 }
 };
 
 #endif /* WBXML_SUPPORT_SYNCML */

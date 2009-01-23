@@ -825,6 +825,16 @@ WBXML_DECLARE(WBXMLSyncMLDataType) wbxml_tree_node_get_syncml_data_type(WBXMLTre
                     return WBXML_SYNCML_DATA_TYPE_NORMAL;
                 }
 
+                /* application/vnd.syncml.dmtnds+wbxml */
+                if (wbxml_buffer_compare_cstr(tmp_node->children->content, "application/vnd.syncml.dmtnds+wbxml") == 0) {
+                    return WBXML_SYNCML_DATA_TYPE_WBXML;
+                }
+                
+                /* application/vnd.syncml.dmtnds+xml */
+                if (wbxml_buffer_compare_cstr(tmp_node->children->content, "application/vnd.syncml.dmtnds+xml") == 0) {
+                    return WBXML_SYNCML_DATA_TYPE_NORMAL;
+                }
+
                 /* text/clear */
                 if (wbxml_buffer_compare_cstr(tmp_node->children->content, "text/clear") == 0) {
                     return WBXML_SYNCML_DATA_TYPE_CLEAR;

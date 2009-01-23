@@ -143,8 +143,14 @@ void wbxml_tree_clb_xml_start_element(void           *ctx,
 
 #if defined( WBXML_SUPPORT_SYNCML )
 
-    /* If this is an embedded (not root) "DevInf" document, skip it */
-    if ((WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0) &&
+    /* If this is an embedded (not root) document, skip it
+     * Actually SyncML DevInf and DM DDF are known as such
+     * potentially embedded documents.
+     */
+    if ((
+         (WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0) ||
+         (WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0)
+        )&&
         (tree_ctx->current != NULL))
     {
         tree_ctx->skip_start = XML_GetCurrentByteIndex(tree_ctx->xml_parser);
@@ -174,7 +180,7 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 {
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
 #if defined( WBXML_SUPPORT_SYNCML )
-    WBXMLBuffer *devinf_doc = NULL;
+    WBXMLBuffer *embed_doc = NULL;
     WBXMLTree *tree = NULL;
     WBXMLError ret = WBXML_OK;
 #endif /* WBXML_SUPPORT_SYNCML */
@@ -194,26 +200,43 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
             /* End of skipped node */
 
 #if defined( WBXML_SUPPORT_SYNCML )
-            if (WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0) {
-                /* Get embedded DevInf Document */
-                devinf_doc = wbxml_buffer_create(tree_ctx->input_buff + tree_ctx->skip_start, 
+            if (WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0 ||
+	        WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0) {
+                /* Get embedded DevInf or DM DDF Document */
+                embed_doc = wbxml_buffer_create(tree_ctx->input_buff + tree_ctx->skip_start, 
                                                  XML_GetCurrentByteIndex(tree_ctx->xml_parser) - tree_ctx->skip_start,
                                                  XML_GetCurrentByteIndex(tree_ctx->xml_parser) - tree_ctx->skip_start + 10);
+                if (embed_doc == NULL) {
+                    tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+                    wbxml_buffer_destroy(embed_doc);
+                    return;
+                }
 
                 if (tree_ctx->expat_utf16) {
                     /** @todo Convert from UTF-16 to UTF-8 */
                 }
 
-                /* Check Buffer Creation and addd </DevInf> ending tag */
-                if ((devinf_doc == NULL) || (!wbxml_buffer_append_cstr(devinf_doc, "</DevInf>")))
+                /* Check Buffer Creation and add the closing tag */
+		if ((WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0 &&
+		     (!wbxml_buffer_append_cstr(embed_doc, "</DevInf>")))
+                    ||
+		    (WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0 &&
+		     (!wbxml_buffer_append_cstr(embed_doc, "</MgmtTree>"))))
                 {
                     tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
-                    wbxml_buffer_destroy(devinf_doc);
+                    wbxml_buffer_destroy(embed_doc);
                     return;
                 }
 
                 /* Add doctype to give the XML parser a chance */
 		const WBXMLLangEntry *lang;
+		if (WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0 &&
+		    tree_ctx->tree->lang->langID != WBXML_LANG_SYNCML_SYNCML12)
+		{
+                    tree_ctx->error = WBXML_ERROR_UNKNOWN_XML_LANGUAGE;
+                    wbxml_buffer_destroy(embed_doc);
+                    return;
+		}
 		switch(tree_ctx->tree->lang->langID)
 		{
 			case WBXML_LANG_SYNCML_SYNCML10:
@@ -223,7 +246,11 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 				lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DEVINF11);
 				break;
 			case WBXML_LANG_SYNCML_SYNCML12:
-				lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DEVINF12);
+				if (WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0) {
+					lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DMDDF12);
+				} else {
+					lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DEVINF12);
+				}
 				break;
 			default:
 				tree_ctx->error = WBXML_ERROR_UNKNOWN_XML_LANGUAGE;
@@ -231,28 +258,28 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 		}
 
 		/* DOCTYPE in reverse order */
-		if (!wbxml_buffer_insert_cstr(devinf_doc,(WB_UTINY *) "\">\n", 0) ||                     /* > */
-		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) lang->publicID->xmlDTD, 0) ||      /* DTD */
-		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) "\" \"", 0) ||                     /* DTD */
-		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) lang->publicID->xmlPublicID, 0) || /* Public ID */
-		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) " PUBLIC \"", 0) ||                /*  PUBLIC " */
-		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) lang->publicID->xmlRootElt, 0) ||  /* Root Element */
-		    !wbxml_buffer_insert_cstr(devinf_doc, (WB_UTINY *) "<!DOCTYPE ", 0))                  /* <!DOCTYPE */
+		if (!wbxml_buffer_insert_cstr(embed_doc,(WB_UTINY *) "\">\n", 0) ||                     /* > */
+		    !wbxml_buffer_insert_cstr(embed_doc, (WB_UTINY *) lang->publicID->xmlDTD, 0) ||      /* DTD */
+		    !wbxml_buffer_insert_cstr(embed_doc, (WB_UTINY *) "\" \"", 0) ||                     /* DTD */
+		    !wbxml_buffer_insert_cstr(embed_doc, (WB_UTINY *) lang->publicID->xmlPublicID, 0) || /* Public ID */
+		    !wbxml_buffer_insert_cstr(embed_doc, (WB_UTINY *) " PUBLIC \"", 0) ||                /*  PUBLIC " */
+		    !wbxml_buffer_insert_cstr(embed_doc, (WB_UTINY *) lang->publicID->xmlRootElt, 0) ||  /* Root Element */
+		    !wbxml_buffer_insert_cstr(embed_doc, (WB_UTINY *) "<!DOCTYPE ", 0))                  /* <!DOCTYPE */
 		{
 			tree_ctx->error = WBXML_ERROR_ENCODER_APPEND_DATA;
-                	wbxml_buffer_destroy(devinf_doc);
+                	wbxml_buffer_destroy(embed_doc);
 			return;
 		}
 
-                WBXML_DEBUG((WBXML_PARSER, "\t DevInf Doc : '%s'", wbxml_buffer_get_cstr(devinf_doc)));
+                WBXML_DEBUG((WBXML_PARSER, "\t Embedded Doc : '%s'", wbxml_buffer_get_cstr(embed_doc)));
 
                 /* Parse 'DevInf' Document */
-                if ((ret = wbxml_tree_from_xml(wbxml_buffer_get_cstr(devinf_doc),
-                                               wbxml_buffer_len(devinf_doc),
+                if ((ret = wbxml_tree_from_xml(wbxml_buffer_get_cstr(embed_doc),
+                                               wbxml_buffer_len(embed_doc),
                                                &tree)) != WBXML_OK)
                 {
                     tree_ctx->error = ret;
-                    wbxml_buffer_destroy(devinf_doc);
+                    wbxml_buffer_destroy(embed_doc);
                     return;
                 }
 
@@ -264,12 +291,12 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
                 {
                     tree_ctx->error = WBXML_ERROR_INTERNAL;
                     wbxml_tree_destroy(tree);
-                    wbxml_buffer_destroy(devinf_doc);
+                    wbxml_buffer_destroy(embed_doc);
                     return;
                 }
 
                 /* Clean-up */
-                wbxml_buffer_destroy(devinf_doc);
+                wbxml_buffer_destroy(embed_doc);
                 tree_ctx->skip_lvl = 0;
             }
 #endif /* WBXML_SUPPORT_SYNCML */

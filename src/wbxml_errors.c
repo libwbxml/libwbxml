@@ -94,6 +94,7 @@ static const WBXMLErrorCodeItem error_table [] = {
     /* WBXML Encoder Errors */
     { WBXML_ERROR_ENCODER_APPEND_DATA,          "Can't append data to output buffer" },
     { WBXML_ERROR_STRTBL_DISABLED,              "String Table generation disabled: can't encode Literal" },
+    { WBXML_ERROR_UNKNOWN_XML_LANGUAGE,		"The XML language is unknown." },
     { WBXML_ERROR_XML_NODE_NOT_ALLOWED,         "XML Node Type not allowed" },
     { WBXML_ERROR_XML_NULL_ATTR_NAME,           "NULL XML Attribute Name" },
     { WBXML_ERROR_XML_PARSING_FAILED,           "Parsing of XML Document Failed" },

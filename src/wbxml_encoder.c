@@ -2000,6 +2000,10 @@ static WBXMLError wbxml_encode_value_element_buffer(WBXMLEncoder *encoder, WB_UT
             if (WBXML_STRCASECMP(buffer, "application/vnd.syncml-devinf+xml") == 0) {
                 the_buffer = (WB_UTINY*) "application/vnd.syncml-devinf+wbxml";
             }
+            /* Change text in <Type> from "application/vnd.syncml.dmtnds+xml" to "application/vnd.syncml.dmtnds+wbxml" */
+            if (WBXML_STRCASECMP(buffer, "application/vnd.syncml.dmtnds+xml") == 0) {
+                the_buffer = (WB_UTINY*) "application/vnd.syncml.dmtnds+wbxml";
+            }
         }
 #endif /* WBXML_SUPPORT_SYNCML */
     }
@@ -4302,6 +4306,19 @@ static WBXMLError xml_encode_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
 
             /* Change Content */
             if ((tmp = wbxml_buffer_create_from_cstr("application/vnd.syncml-devinf+xml")) == NULL)
+                return WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        }
+        /* Change text in <Type> from "application/vnd.syncml.dmtnds+wbxml" to "application/vnd.syncml.dmtnds+xml" */
+        if ((encoder->lang->langID == WBXML_LANG_SYNCML_SYNCML12) &&
+            (encoder->current_tag != NULL) &&
+            (encoder->current_tag->wbxmlCodePage == 0x01 ) &&
+            (encoder->current_tag->wbxmlToken == 0x13 ) &&
+            (wbxml_buffer_compare_cstr(tmp, "application/vnd.syncml.dmtnds+wbxml") == 0))
+        {
+            wbxml_buffer_destroy(tmp);
+
+            /* Change Content */
+            if ((tmp = wbxml_buffer_create_from_cstr("application/vnd.syncml.dmtnds+xml")) == NULL)
                 return WBXML_ERROR_NOT_ENOUGH_MEMORY;
         }
 #endif /* WBXML_SUPPORT_SYNCML */
