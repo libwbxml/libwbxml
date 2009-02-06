@@ -1,3 +1,25 @@
+2009-02-06  Michael Bell <michael.bell@web.de>
+  * Released 0.10.2
+  * Added support for OMA DM DDF 1.2 (ticket #7).
+  * DRMREL 1.0 test cases were disabled because of the poor
+    specification (e.g. hard coded names for XML namespaces and
+    definition of such namespaces as (WB)XML attributes).
+  * The generated XML documents of the most tests (conversion from XML
+    to WBXML back to XML) are compared with the original documents.
+    Only special tests are not covered (e.g. hexadecimal number
+    conversion, SyncML CDATA usage). 
+  * If there is no PUBLIC ID then DOCTYPE must include PUBLIC "" or
+    SYSTEM. libwbxml always adds SYSTEM in this case.
+  * Fixed datetime support for Wireless Village (ticket #27).
+  * Extension tokens must not be replaced within normal text data
+    (ticket #26).
+  * Ticket #13 was rejected because the mentioned specification is only
+    a today outdated OMA change request. Perhaps a new specification
+    must be implemented in case of a new request. 
+  * Created a script to normalize XML documents.
+  * The getopt implementation was replaced because of a potential
+    license issue. This fixed a Solaris build issue too (ticket #25).
+
 2009-01-06  Michael Bell <michael.bell@web.de>
   * Released 0.10.1
   * Removed a useless buffer which only creates a memory leak.

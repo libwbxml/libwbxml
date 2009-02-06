@@ -33,10 +33,10 @@ To make a release of libwbxml, do the following:
    you have to "svn up" and run the tests again
 
  - once the commit succeeds, you have to create a new tag with
-   "mkdir tags/libwbxml-$MAJOR.$MINJOR.$PATCH",
-   "tar -C trunk --exclude=\"\\.svn\" -cf - . | tar -C tags/libwbxml-$MAJOR.$MINJOR.$PATCH -xf -"
-   "svn add tags/libwbxml-$MAJOR.$MINJOR.$PATCH" and
-   "svn commit tags/libwbxml-$MAJOR.$MINJOR.$PATCH"
+   "mkdir tags/libwbxml-$MAJOR.$MINOR.$PATCH",
+   "tar -C trunk --exclude=\"\\.svn\" -cf - . | tar -C tags/libwbxml-$MAJOR.$MINOR.$PATCH -xf -"
+   "svn add tags/libwbxml-$MAJOR.$MINOR.$PATCH" and
+   "svn commit tags/libwbxml-$MAJOR.$MINOR.$PATCH"
    (NEVER use "svn cp" because you must replace the external entities
    of the trunk directory with hard copies of the actual state.)
 
@@ -46,8 +46,8 @@ To make a release of libwbxml, do the following:
    same name like the tarballs without the tar and compression suffixes
    and plus a new suffix md5sum
    Example:
-     md5sum libwbxml-0.10.0.tar.* > libwbxml-0.10.0.md5sum
-     md5sum -c libwbxml-0.10.0.md5sum
+     md5sum libwbxml-$MAJOR.$MINOR.$PATCH.tar.* > libwbxml-$MAJOR.$MINOR.$PATCH.md5sum
+     md5sum -c libwbxml-$MAJOR.$MINOR.$PATCH.md5sum
 
  - upload the tarballs and the checksum file to releases.
    make sure the version numbers are the same!
