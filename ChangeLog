@@ -1,3 +1,9 @@
+2009-02-17  Michael Bell <michael.bell@web.de>
+  * Released 0.10.3
+  * Added support for SourceParent in SyncML 1.1.
+    This is a proprietary extension to support things like the SMS and
+    bookmark synchronization of Nokia.
+
 2009-02-06  Michael Bell <michael.bell@web.de>
   * Released 0.10.2
   * Added support for OMA DM DDF 1.2 (ticket #7).
