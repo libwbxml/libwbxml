@@ -1,0 +1,662 @@
+<?xml version="1.0"?>
+<!--
+    Copyright (C) 2002-2005 Aymerick Jehanne <aymerick@jehanne.org>
+    All Rights Reserved.
+    
+    Contact: libwbxml@aymerick.com
+    Home: http://libwbxml.aymerick.com
+-->
+<TESTSUITE PROFILE="WBXML Library Test Suite">
+<!-- EMN 1.0 -->
+<TESTCASES PROFILE="E-Mail Notification 1.0 [OMA-Push-EMN-v1_0-20020830-C]" xml:base="emn/>
+    <TEST URI="emn-001.xml" id="emn-001.xml" SECTIONS="B.2" OUTPUT-WBXML="wbxml/emn-001.wbxml" OUTPUT-XML="xml/emn-001.xml">
+        Specification Example
+    </TEST>
+    <TEST URI="emn-002.xml" id="emn-002.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/emn-002.wbxml" OUTPUT-XML="xml/emn-002.xml">
+        mailbox (Encoded: 0x06)
+    </TEST>
+    <TEST URI="emn-003.xml" id="emn-003.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/emn-003.wbxml" OUTPUT-XML="xml/emn-003.xml">
+        mailbox: mailat: (Encoded: 0x07)
+    </TEST>
+    <TEST URI="emn-004.xml" id="emn-004.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/emn-004.wbxml" OUTPUT-XML="xml/emn-004.xml">
+        mailbox: pop:// (Encoded: 0x08)
+    </TEST>
+    <TEST URI="emn-005.xml" id="emn-005.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/emn-005.wbxml" OUTPUT-XML="xml/emn-005.xml">
+        mailbox: imap:// (Encoded: 0x09)
+    </TEST>
+    <TEST URI="emn-006.xml" id="emn-006.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/emn-006.wbxml" OUTPUT-XML="xml/emn-006.xml">
+        mailbox: http:// (Encoded: 0x0a)
+    </TEST>
+    <TEST URI="emn-007.xml" id="emn-007.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/emn-007.wbxml" OUTPUT-XML="xml/emn-007.xml">
+        mailbox: http://www. (Encoded: 0x0b)
+    </TEST>
+    <TEST URI="emn-008.xml" id="emn-008.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/emn-008.wbxml" OUTPUT-XML="xml/emn-008.xml">
+        mailbox: https:// (Encoded: 0x0c)
+    </TEST>
+    <TEST URI="emn-009.xml" id="emn-009.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/emn-009.wbxml" OUTPUT-XML="xml/emn-009.xml">
+        mailbox: https://www. (Encoded: 0x0d)
+    </TEST>
+    <TEST URI="emn-010.xml" id="emn-010.xml" SECTIONS="9.3.3" OUTPUT-WBXML="wbxml/emn-010.wbxml" OUTPUT-XML="xml/emn-010.xml">
+        mailbox: .com (Encoded: 0x85)
+    </TEST>
+    <TEST URI="emn-011.xml" id="emn-011.xml" SECTIONS="9.3.3" OUTPUT-WBXML="wbxml/emn-011.wbxml" OUTPUT-XML="xml/emn-011.xml">
+        mailbox: .edu (Encoded: 0x86)
+    </TEST>
+    <TEST URI="emn-012.xml" id="emn-012.xml" SECTIONS="9.3.3" OUTPUT-WBXML="wbxml/emn-012.wbxml" OUTPUT-XML="xml/emn-012.xml">
+        mailbox: .net (Encoded: 0x87)
+    </TEST>
+    <TEST URI="emn-013.xml" id="emn-013.xml" SECTIONS="9.3.3" OUTPUT-WBXML="wbxml/emn-013.wbxml" OUTPUT-XML="xml/emn-013.xml">
+        mailbox: .org (Encoded: 0x88)
+    </TEST>
+    <TEST URI="emn-014.xml" id="emn-014.xml" SECTIONS="9.2.2" OUTPUT-WBXML="wbxml/emn-014.wbxml" OUTPUT-XML="xml/emn-014.xml">
+        timestamp: 2002-04-16T06:40:00Z
+    </TEST>
+    <TEST URI="emn-015.xml" id="emn-015.xml" SECTIONS="9.2.2" OUTPUT-WBXML="wbxml/emn-015.wbxml" OUTPUT-XML="xml/emn-015.xml">
+        timestamp: 2002-04-16T06:00:00Z
+    </TEST>
+    <TEST URI="emn-016.xml" id="emn-016.xml" SECTIONS="9.2.2" OUTPUT-WBXML="wbxml/emn-016.wbxml" OUTPUT-XML="xml/emn-016.xml">
+        timestamp: 2002-04-16T00:00:00Z
+    </TEST>
+    <TEST URI="emn-017.xml" id="emn-016.xml" SECTIONS="8.2" OUTPUT-WBXML="wbxml/emn-017.wbxml" OUTPUT-XML="xml/emn-017.xml">
+        Empty timestamp and mailbox attributes
+    </TEST>
+</TESTCASES>
+
+<!-- SI 1.0 -->
+<TESTCASES PROFILE="Service Indication 1.0 [WAP-167]" xml:base="si/>
+    <TEST URI="si-001.xml" id="si-001.xml" SECTIONS="9" OUTPUT-WBXML="wbxml/si-001.wbxml" OUTPUT-XML="xml/si-001.xml">
+        Specification Example
+    </TEST>
+    <TEST URI="si-002.xml" id="si-002.xml" SECTIONS="5.2.1" OUTPUT-WBXML="wbxml/si-002.wbxml" OUTPUT-XML="xml/si-002.xml">
+        Simpliest document: Empty Indication.
+    </TEST>
+    <TEST URI="si-003.xml" id="si-003.xml" SECTIONS="5.2" OUTPUT-WBXML="wbxml/si-003.wbxml" OUTPUT-XML="xml/si-003.xml">
+        Full document: All possible elements and attributes
+    </TEST>
+    <TEST URI="si-004.xml" id="si-004.xml" SECTIONS="5.2.1" OUTPUT-WBXML="wbxml/si-004.wbxml" OUTPUT-XML="xml/si-004.xml">
+        Indication attribute action: signal-none
+    </TEST>
+    <TEST URI="si-005.xml" id="si-005.xml" SECTIONS="5.2.1" OUTPUT-WBXML="wbxml/si-005.wbxml" OUTPUT-XML="xml/si-005.xml">
+        Indication attribute action: signal-low
+    </TEST>
+    <TEST URI="si-006.xml" id="si-006.xml" SECTIONS="5.2.1" OUTPUT-WBXML="wbxml/si-006.wbxml" OUTPUT-XML="xml/si-006.xml">
+        Indication attribute action: signal-medium
+    </TEST>
+    <TEST URI="si-007.xml" id="si-007.xml" SECTIONS="5.2.1" OUTPUT-WBXML="wbxml/si-007.wbxml" OUTPUT-XML="xml/si-007.xml">
+        Indication attribute action: signal-high
+    </TEST>
+    <TEST URI="si-008.xml" id="si-008.xml" SECTIONS="5.2.1" OUTPUT-WBXML="wbxml/si-008.wbxml" OUTPUT-XML="xml/si-008.xml">
+        Indication attribute action: delete
+    </TEST>
+    <TEST URI="si-009.xml" id="si-009.xml" SECTIONS="8.3.2" OUTPUT-WBXML="wbxml/si-009.wbxml" OUTPUT-XML="xml/si-009.xml">
+        Indication attribute href: wap.* (Encoded: 0x0B)
+    </TEST>
+    <TEST URI="si-010.xml" id="si-010.xml" SECTIONS="8.3.2" OUTPUT-WBXML="wbxml/si-010.wbxml" OUTPUT-XML="xml/si-010.xml">
+        Indication attribute href: http://wap.* (Encoded: 0x0C)
+    </TEST>
+    <TEST URI="si-011.xml" id="si-011.xml" SECTIONS="8.3.2" OUTPUT-WBXML="wbxml/si-011.wbxml" OUTPUT-XML="xml/si-011.xml">
+        Indication attribute href: http://www.* (Encoded: 0x0D)
+    </TEST>
+    <TEST URI="si-012.xml" id="si-012.xml" SECTIONS="8.3.2" OUTPUT-WBXML="wbxml/si-012.wbxml" OUTPUT-XML="xml/si-012.xml">
+        Indication attribute href: https://wap.* (Encoded: 0x0E)
+    </TEST>
+    <TEST URI="si-013.xml" id="si-013.xml" SECTIONS="8.3.2" OUTPUT-WBXML="wbxml/si-013.wbxml" OUTPUT-XML="xml/si-013.xml">
+        Indication attribute href: https://www.* (Encoded: 0x0F)
+    </TEST>
+    <TEST URI="si-014.xml" id="si-014.xml" SECTIONS="8.3.2" OUTPUT-WBXML="wbxml/si-014.wbxml" OUTPUT-XML="xml/si-014.xml">
+        Indication attribute si-id
+    </TEST>
+    <TEST URI="si-015.xml" id="si-015.xml" SECTIONS="8.3.2" OUTPUT-WBXML="wbxml/si-015.wbxml" OUTPUT-XML="xml/si-015.xml">
+        Indication attribute si-id empty
+    </TEST>
+    <TEST URI="si-016.xml" id="si-016.xml" SECTIONS="8.3.2" OUTPUT-WBXML="wbxml/si-016.wbxml" OUTPUT-XML="xml/si-016.xml">
+        Indication attribute created
+    </TEST>
+    <TEST URI="si-017.xml" id="si-017.xml" SECTIONS="8.3.2" OUTPUT-WBXML="wbxml/si-017.wbxml" OUTPUT-XML="xml/si-017.xml">
+        Indication attribute created empty
+    </TEST>
+    <TEST URI="si-018.xml" id="si-018.xml" SECTIONS=8.3.2"" OUTPUT-WBXML="wbxml/si-018.wbxml" OUTPUT-XML="xml/si-018.xml">
+        Indication attribute si-expires
+    </TEST>
+    <TEST URI="si-019.xml" id="si-019.xml" SECTIONS=8.3.2"" OUTPUT-WBXML="wbxml/si-019.wbxml" OUTPUT-XML="xml/si-019.xml">
+        Indication attribute si-expires empty
+    </TEST>
+    <TEST URI="si-020.xml" id="si-020.xml" SECTIONS="8.3" OUTPUT-WBXML="wbxml/si-020.wbxml" OUTPUT-XML="xml/si-020.xml">
+        Info element with one item
+    </TEST>
+    <TEST URI="si-021.xml" id="si-021.xml" SECTIONS="8.3" OUTPUT-WBXML="wbxml/si-021.wbxml" OUTPUT-XML="xml/si-021.xml">
+        Info element with several item
+    </TEST>
+    <TEST URI="si-022.xml" id="si-022.xml" SECTIONS="8.3.3" OUTPUT-WBXML="wbxml/si-022.wbxml" OUTPUT-XML="xml/si-022.xml">
+        Indication attribute href: https//www.yahoo.com/ ("https//www" and ".com/" encoded)
+    </TEST>
+    <TEST URI="si-023.xml" id="si-023.xml" SECTIONS="8.2.2" OUTPUT-WBXML="wbxml/si-023.wbxml" OUTPUT-XML="xml/si-023.xml">
+        Indication attribute created: 1999-06-25T15:23:00Z
+    </TEST>
+    <TEST URI="si-024.xml" id="si-024.xml" SECTIONS="8.2.2" OUTPUT-WBXML="wbxml/si-024.wbxml" OUTPUT-XML="xml/si-024.xml">
+        Indication attribute created: 1999-06-25T15:00:00Z
+    </TEST>    
+    <TEST URI="si-025.xml" id="si-025.xml" SECTIONS="8.2.2" OUTPUT-WBXML="wbxml/si-025.wbxml" OUTPUT-XML="xml/si-025.xml">
+        Indication attribute created: 1999-06-25T00:00:00Z
+    </TEST>    
+</TESTCASES>
+
+<!-- SL 1.0 -->
+<TESTCASES PROFILE="Service Loading 1.0 [WAP-168]" xml:base="sl/>
+    <TEST URI="sl-001.xml" id="sl-001.xml" SECTIONS="10" OUTPUT-WBXML="wbxml/sl-001.wbxml" OUTPUT-XML="xml/sl-001.xml">
+        Specification Example
+    </TEST>
+    <TEST URI="sl-002.xml" id="sl-002.xml" SECTIONS="5.2" OUTPUT-WBXML="wbxml/sl-002.wbxml" OUTPUT-XML="xml/sl-002.xml">
+        Empty href attribute value
+    </TEST>
+    <TEST URI="sl-003.xml" id="sl-003.xml" SECTIONS="5.2" OUTPUT-WBXML="wbxml/sl-003.wbxml" OUTPUT-XML="xml/sl-003.xml">
+        action : execute-low
+    </TEST>
+    <TEST URI="sl-004.xml" id="sl-004.xml" SECTIONS="5.2" OUTPUT-WBXML="wbxml/sl-004.wbxml" OUTPUT-XML="xml/sl-004.xml">
+        action : execute-high
+    </TEST>
+    <TEST URI="sl-005.xml" id="sl-005.xml" SECTIONS="5.2" OUTPUT-WBXML="wbxml/sl-005.wbxml" OUTPUT-XML="xml/sl-005.xml">
+        action : cache
+    </TEST>
+    <TEST URI="sl-006.xml" id="sl-006.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/sl-006.wbxml" OUTPUT-XML="xml/sl-006.xml">
+        href: http:// (Encoded: 0x09)
+    </TEST>
+    <TEST URI="sl-007.xml" id="sl-007.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/sl-007.wbxml" OUTPUT-XML="xml/sl-007.xml">
+        href: http://www. (Encoded: 0x0A)
+    </TEST>
+    <TEST URI="sl-008.xml" id="sl-008.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/sl-008.wbxml" OUTPUT-XML="xml/sl-008.xml">
+        href: https:// (Encoded: 0x0B)
+    </TEST>
+    <TEST URI="sl-009.xml" id="sl-009.xml" SECTIONS="9.3.2" OUTPUT-WBXML="wbxml/sl-009.wbxml" OUTPUT-XML="xml/sl-009.xml">
+        href: https://www. (Encoded: 0x0C)
+    </TEST>
+    <TEST URI="sl-010.xml" id="sl-010.xml" SECTIONS="9.3.3" OUTPUT-WBXML="wbxml/sl-010.wbxml" OUTPUT-XML="xml/sl-010.xml">
+        href: .com (Encoded: 0x85)
+    </TEST>
+    <TEST URI="sl-011.xml" id="sl-011.xml" SECTIONS="9.3.3" OUTPUT-WBXML="wbxml/sl-011.wbxml" OUTPUT-XML="xml/sl-011.xml">
+        href: .edu (Encoded: 0x86)
+    </TEST>
+    <TEST URI="sl-012.xml" id="sl-012.xml" SECTIONS="9.3.3" OUTPUT-WBXML="wbxml/sl-012.wbxml" OUTPUT-XML="xml/sl-012.xml">
+        href: .net (Encoded: 0x87)
+    </TEST>
+    <TEST URI="sl-013.xml" id="sl-013.xml" SECTIONS="9.3.3" OUTPUT-WBXML="wbxml/sl-013.wbxml" OUTPUT-XML="xml/sl-013.xml">
+        href: .org (Encoded: 0x88)
+    </TEST>
+</TESTCASES>
+
+<!-- Prov 1.0 -->
+<TESTCASES PROFILE="Provisioning 1.0 [OMA-WAP-ProvCont-v1_1-20021112-C]" xml:base="prov/>
+    <TEST URI="prov-001.xml" id="prov-001.xml" SECTIONS="6.1" OUTPUT-WBXML="wbxml/prov-001.wbxml" OUTPUT-XML="xml/prov-001.xml">
+        Specification Example 1
+    </TEST>
+    <TEST URI="prov-002.xml" id="prov-002.xml" SECTIONS="6.2" OUTPUT-WBXML="wbxml/prov-002.wbxml" OUTPUT-XML="xml/prov-002.xml">
+        Specification Example 2
+    </TEST>
+    <TEST URI="prov-003.xml" id="prov-003.xml" SECTIONS="6.3" OUTPUT-WBXML="wbxml/prov-003.wbxml" OUTPUT-XML="xml/prov-003.xml">
+        Specification Example 3
+    </TEST>
+    <TEST URI="prov-004.xml" id="prov-004.xml" SECTIONS="6.4" OUTPUT-WBXML="wbxml/prov-004.wbxml" OUTPUT-XML="xml/prov-004.xml">
+        Specification Example 4
+    </TEST>
+    <TEST URI="prov-005.xml" id="prov-005.xml" SECTIONS="6.5" OUTPUT-WBXML="wbxml/prov-005.wbxml" OUTPUT-XML="xml/prov-005.xml">
+        Specification Example 5
+    </TEST>
+    <TEST URI="prov-006.xml" id="prov-006.xml" SECTIONS="6.6" OUTPUT-WBXML="wbxml/prov-006.wbxml" OUTPUT-XML="xml/prov-006.xml">
+        Specification Example 6
+    </TEST>
+    <TEST URI="prov-007.xml" id="prov-007.xml" SECTIONS="6.7" OUTPUT-WBXML="wbxml/prov-007.wbxml" OUTPUT-XML="xml/prov-007.xml">
+        Specification Example 7
+    </TEST>
+    <TEST URI="prov-008.xml" id="prov-008.xml" SECTIONS="6.8" OUTPUT-WBXML="wbxml/prov-008.wbxml" OUTPUT-XML="xml/prov-008.xml">
+        Specification Example 8
+    </TEST>
+</TESTCASES>
+
+<!-- Ericsson / Nokia OTA Settings v7.0 -->
+<TESTCASES PROFILE="Ericsson / Nokia OTA Settings [OTA_settings_general_7_0.pdf]" xml:base="ota/>
+    <TEST URI="ota-001.xml" id="ota-001.xml" SECTIONS="14.1" OUTPUT-WBXML="wbxml/ota-001.wbxml" OUTPUT-XML="xml/ota-001.xml">
+        Specification GSM/CSD Settings Set
+    </TEST>
+    <TEST URI="ota-002.xml" id="ota-002.xml" SECTIONS="14.2" OUTPUT-WBXML="wbxml/ota-002.wbxml" OUTPUT-XML="xml/ota-002.xml">
+        Specification GSM/GPRS Settings Set
+    </TEST>    
+</TESTCASES>
+
+
+<!-- OMA Wireless-Village CSP 1.1 -->
+<TESTCASES PROFILE="Wireless-Village 1.1 [OMA-WV-CSP_DTD-V1_1-20021001-A.pdf]" xml:base="wv/>
+    <TEST URI="wv-001.xml" id="wv-001.xml" SECTIONS="7.1" OUTPUT-WBXML="wbxml/wv-001.wbxml" OUTPUT-XML="xml/wv-001.xml">
+        Specification Example: STATUS PRIMITIVE WITH DETAILS
+    </TEST>
+    <TEST URI="wv-002.xml" id="wv-002.xml" SECTIONS="7.2" OUTPUT-WBXML="wbxml/wv-002.wbxml" OUTPUT-XML="xml/wv-002.xml">
+        Specification Example: POLLING-REQUEST PRIMITIVE
+    </TEST>
+    <TEST URI="wv-003.xml" id="wv-003.xml" SECTIONS="7.3.1" OUTPUT-WBXML="wbxml/wv-003.wbxml" OUTPUT-XML="xml/wv-003.xml">
+        Specification Example: 2-WAY LOGIN TRANSACTION - Login-Request primitive
+    </TEST>
+    <TEST URI="wv-004.xml" id="wv-004.xml" SECTIONS="7.3.2" OUTPUT-WBXML="wbxml/wv-004.wbxml" OUTPUT-XML="xml/wv-004.xml">
+        Specification Example: 2-WAY LOGIN TRANSACTION - Login-Response primitive
+    </TEST>
+    <TEST URI="wv-005.xml" id="wv-005.xml" SECTIONS="7.4.1" OUTPUT-WBXML="wbxml/wv-005.wbxml" OUTPUT-XML="xml/wv-005.xml">
+        Specification Example: 4-WAY LOGIN TRANSACTION - Login-Request primitive
+    </TEST>
+    <TEST URI="wv-006.xml" id="wv-006.xml" SECTIONS="7.4.2" OUTPUT-WBXML="wbxml/wv-006.wbxml" OUTPUT-XML="xml/wv-006.xml">
+        Specification Example: 4-WAY LOGIN TRANSACTION - Login-Response primitive
+    </TEST>
+    <TEST URI="wv-007.xml" id="wv-007.xml" SECTIONS="7.4.3" OUTPUT-WBXML="wbxml/wv-007.wbxml" OUTPUT-XML="xml/wv-007.xml">
+        Specification Example: 4-WAY LOGIN TRANSACTION - Login-Request primitive
+    </TEST>
+    <TEST URI="wv-008.xml" id="wv-008.xml" SECTIONS="7.4.4" OUTPUT-WBXML="wbxml/wv-008.wbxml" OUTPUT-XML="xml/wv-008.xml">
+        Specification Example: 4-WAY LOGIN TRANSACTION - Login-Response primitive
+    </TEST>
+    <TEST URI="wv-009.xml" id="wv-009.xml" SECTIONS="7.5.1" OUTPUT-WBXML="wbxml/wv-009.wbxml" OUTPUT-XML="xml/wv-009.xml">
+        Specification Example: SERVICE NEGOTIATION TRANSACTION - Service-Request primitive
+    </TEST>
+    <TEST URI="wv-010.xml" id="wv-010.xml" SECTIONS="7.5.2" OUTPUT-WBXML="wbxml/wv-010.wbxml" OUTPUT-XML="xml/wv-010.xml">
+        Specification Example: SERVICE NEGOTIATION TRANSACTION - Service-Response primitive
+    </TEST>
+    <TEST URI="wv-011.xml" id="wv-011.xml" SECTIONS="7.6.1" OUTPUT-WBXML="wbxml/wv-011.wbxml" OUTPUT-XML="xml/wv-011.xml">
+        Specification Example: CLIENT CAPABILITY NEGOTATION TRANSACTION - ClientCapability-Request primitive
+    </TEST>
+    <TEST URI="wv-012.xml" id="wv-012.xml" SECTIONS="7.6.2" OUTPUT-WBXML="wbxml/wv-012.wbxml" OUTPUT-XML="xml/wv-012.xml">
+        Specification Example: CLIENT CAPABILITY NEGOTATION TRANSACTION - ClientCapability-Response primitive
+    </TEST>
+    <TEST URI="wv-013.xml" id="wv-013.xml" SECTIONS="7.7.1" OUTPUT-WBXML="wbxml/wv-013.wbxml" OUTPUT-XML="xml/wv-013.xml">
+        Specification Example: LOGOUT TRANSACTION - Logout-Request primitive
+    </TEST>
+    <TEST URI="wv-014.xml" id="wv-014.xml" SECTIONS="7.7.2" OUTPUT-WBXML="wbxml/wv-014.wbxml" OUTPUT-XML="xml/wv-014.xml">
+        Specification Example: LOGOUT TRANSACTION - Disconnect primitive
+    </TEST>
+    <TEST URI="wv-015.xml" id="wv-015.xml" SECTIONS="7.8.1" OUTPUT-WBXML="wbxml/wv-015.wbxml" OUTPUT-XML="xml/wv-015.xml">
+        Specification Example: SERVER INITIATED LOGOUT TRANSACTION - Disconnect primitive
+    </TEST>
+    <TEST URI="wv-016.xml" id="wv-016.xml" SECTIONS="7.9.1" OUTPUT-WBXML="wbxml/wv-016.wbxml" OUTPUT-XML="xml/wv-016.xml">
+        Specification Example: TIME-OUT RESET TRANSACTION - KeepAlive-Request primitive
+    </TEST>
+    <TEST URI="wv-017.xml" id="wv-017.xml" SECTIONS="7.9.2" OUTPUT-WBXML="wbxml/wv-017.wbxml" OUTPUT-XML="xml/wv-017.xml">
+        Specification Example: TIME-OUT RESET TRANSACTION - KeepAlive-Response primitive
+    </TEST>
+    <TEST URI="wv-018.xml" id="wv-018.xml" SECTIONS="7.10.1" OUTPUT-WBXML="wbxml/wv-018.wbxml" OUTPUT-XML="xml/wv-018.xml">
+        Specification Example: GET SERVICE PROVIDER INFO TRANSACTION - GetSPInfo-Request primitive
+    </TEST>
+    <TEST URI="wv-019.xml" id="wv-019.xml" SECTIONS="7.10.2" OUTPUT-WBXML="wbxml/wv-019.wbxml" OUTPUT-XML="xml/wv-019.xml">
+        Specification Example: GET SERVICE PROVIDER INFO TRANSACTION - GetSPInfo-Response primitive
+    </TEST>
+    <TEST URI="wv-020.xml" id="wv-020.xml" SECTIONS="7.11.1" OUTPUT-WBXML="wbxml/wv-020.wbxml" OUTPUT-XML="xml/wv-020.xml">
+        Specification Example: GENERAL SEARCH TRANSACTION - Search-Request (1st) primitive
+    </TEST>
+    <TEST URI="wv-021.xml" id="wv-021.xml" SECTIONS="7.11.2" OUTPUT-WBXML="wbxml/wv-021.wbxml" OUTPUT-XML="xml/wv-021.xml">
+        Specification Example: GENERAL SEARCH TRANSACTION - Search-Response (1st) primitive
+    </TEST>
+    <TEST URI="wv-022.xml" id="wv-022.xml" SECTIONS="7.11.3" OUTPUT-WBXML="wbxml/wv-022.wbxml" OUTPUT-XML="xml/wv-022.xml">
+        Specification Example: GENERAL SEARCH TRANSACTION - Search-Request (continued) primitive
+    </TEST>
+    <TEST URI="wv-023.xml" id="wv-023.xml" SECTIONS="7.11.4" OUTPUT-WBXML="wbxml/wv-023.wbxml" OUTPUT-XML="xml/wv-023.xml">
+        Specification Example: GENERAL SEARCH TRANSACTION - Search-Response (continued) primitive
+    </TEST>
+    <TEST URI="wv-024.xml" id="wv-024.xml" SECTIONS="7.11.5" OUTPUT-WBXML="wbxml/wv-024.wbxml" OUTPUT-XML="xml/wv-024.xml">
+        Specification Example: GENERAL SEARCH TRANSACTION - StopSearch-Request primitive
+    </TEST>
+    <TEST URI="wv-025.xml" id="wv-025.xml" SECTIONS="7.11.6" OUTPUT-WBXML="wbxml/wv-025.wbxml" OUTPUT-XML="xml/wv-025.xml">
+        Specification Example: GENERAL SEARCH TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-026.xml" id="wv-026.xml" SECTIONS="7.12.1" OUTPUT-WBXML="wbxml/wv-026.wbxml" OUTPUT-XML="xml/wv-026.xml">
+        Specification Example: GENERAL INVITATION TRANSACTION - Invite-Request primitive
+    </TEST>
+    <TEST URI="wv-027.xml" id="wv-027.xml" SECTIONS="7.12.2" OUTPUT-WBXML="wbxml/wv-027.wbxml" OUTPUT-XML="xml/wv-027.xml">
+        Specification Example: GENERAL INVITATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-028.xml" id="wv-028.xml" SECTIONS="7.12.3" OUTPUT-WBXML="wbxml/wv-028.wbxml" OUTPUT-XML="xml/wv-028.xml">
+        Specification Example: GENERAL INVITATION TRANSACTION - InviteUser-Request primitive
+    </TEST>
+    <TEST URI="wv-029.xml" id="wv-029.xml" SECTIONS="7.12.4" OUTPUT-WBXML="wbxml/wv-029.wbxml" OUTPUT-XML="xml/wv-029.xml">
+        Specification Example: GENERAL INVITATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-030.xml" id="wv-030.xml" SECTIONS="7.12.5" OUTPUT-WBXML="wbxml/wv-030.wbxml" OUTPUT-XML="xml/wv-030.xml">
+        Specification Example: GENERAL INVITATION TRANSACTION - InviteUser-Response primitive
+    </TEST>
+    <TEST URI="wv-031.xml" id="wv-031.xml" SECTIONS="7.12.6" OUTPUT-WBXML="wbxml/wv-031.wbxml" OUTPUT-XML="xml/wv-031.xml">
+        Specification Example: GENERAL INVITATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-032.xml" id="wv-032.xml" SECTIONS="7.12.7" OUTPUT-WBXML="wbxml/wv-032.wbxml" OUTPUT-XML="xml/wv-032.xml">
+        Specification Example: GENERAL INVITATION TRANSACTION - Invite-Response primitive
+    </TEST>
+    <TEST URI="wv-033.xml" id="wv-033.xml" SECTIONS="7.12.8" OUTPUT-WBXML="wbxml/wv-033.wbxml" OUTPUT-XML="xml/wv-033.xml">
+        Specification Example: GENERAL INVITATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-034.xml" id="wv-034.xml" SECTIONS="7.13.1" OUTPUT-WBXML="wbxml/wv-034.wbxml" OUTPUT-XML="xml/wv-034.xml">
+        Specification Example: RECALL INVITATION TRANSACTION - CancelInvite-Request primitive
+    </TEST>
+    <TEST URI="wv-035.xml" id="wv-035.xml" SECTIONS="7.13.2" OUTPUT-WBXML="wbxml/wv-035.wbxml" OUTPUT-XML="xml/wv-035.xml">
+        Specification Example: RECALL INVITATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-036.xml" id="wv-036.xml" SECTIONS="7.13.3" OUTPUT-WBXML="wbxml/wv-036.wbxml" OUTPUT-XML="xml/wv-036.xml">
+        Specification Example: RECALL INVITATION TRANSACTION - CancelInviteUser-Request primitive
+    </TEST>
+    <TEST URI="wv-037.xml" id="wv-037.xml" SECTIONS="7.13.4" OUTPUT-WBXML="wbxml/wv-037.wbxml" OUTPUT-XML="xml/wv-037.xml">
+        Specification Example: RECALL INVITATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-038.xml" id="wv-038.xml" SECTIONS="7.14.1" OUTPUT-WBXML="wbxml/wv-038.wbxml" OUTPUT-XML="xml/wv-038.xml">
+        Specification Example: SUBSCRIBE/UNSUBSCRIBE PRESENCE TRANSACTION - SubscribePresence-Request primitive
+    </TEST>
+    <TEST URI="wv-039.xml" id="wv-039.xml" SECTIONS="7.14.2" OUTPUT-WBXML="wbxml/wv-039.wbxml" OUTPUT-XML="xml/wv-039.xml">
+        Specification Example: SUBSCRIBE/UNSUBSCRIBE PRESENCE TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-040.xml" id="wv-040.xml" SECTIONS="7.14.3" OUTPUT-WBXML="wbxml/wv-040.wbxml" OUTPUT-XML="xml/wv-040.xml">
+        Specification Example: SUBSCRIBE/UNSUBSCRIBE PRESENCE TRANSACTION - PresenceNotification-Request primitive
+    </TEST>
+    <TEST URI="wv-041.xml" id="wv-041.xml" SECTIONS="7.14.4" OUTPUT-WBXML="wbxml/wv-041.wbxml" OUTPUT-XML="xml/wv-041.xml">
+        Specification Example: SUBSCRIBE/UNSUBSCRIBE PRESENCE TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-042.xml" id="wv-042.xml" SECTIONS="7.14.5" OUTPUT-WBXML="wbxml/wv-042.wbxml" OUTPUT-XML="xml/wv-042.xml">
+        Specification Example: SUBSCRIBE/UNSUBSCRIBE PRESENCE TRANSACTION - UnsubscribePresence-Request primitive
+    </TEST>
+    <TEST URI="wv-043.xml" id="wv-043.xml" SECTIONS="7.14.6" OUTPUT-WBXML="wbxml/wv-043.wbxml" OUTPUT-XML="xml/wv-043.xml">
+        Specification Example: SUBSCRIBE/UNSUBSCRIBE PRESENCE TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-044.xml" id="wv-044.xml" SECTIONS="7.15.1" OUTPUT-WBXML="wbxml/wv-044.wbxml" OUTPUT-XML="xml/wv-044.xml">
+        Specification Example: GET WATCHER LIST TRANSACTION - GetWatcherList-Request primitive
+    </TEST>
+    <TEST URI="wv-045.xml" id="wv-045.xml" SECTIONS="7.15.1" OUTPUT-WBXML="wbxml/wv-045.wbxml" OUTPUT-XML="xml/wv-045.xml">
+        Specification Example: GET WATCHER LIST TRANSACTION - GetWatcherList-Response primitive
+    </TEST>
+    <TEST URI="wv-046.xml" id="wv-046.xml" SECTIONS="7.16.1" OUTPUT-WBXML="wbxml/wv-046.wbxml" OUTPUT-XML="xml/wv-046.xml">
+        Specification Example: GET PRESENCE TRANSACTION - GetPresence-Request primitive
+    </TEST>
+    <TEST URI="wv-047.xml" id="wv-047.xml" SECTIONS="7.16.2" OUTPUT-WBXML="wbxml/wv-047.wbxml" OUTPUT-XML="xml/wv-047.xml">
+        Specification Example: GET PRESENCE TRANSACTION - GetPresence-Response primitive
+    </TEST>
+    <TEST URI="wv-048.xml" id="wv-048.xml" SECTIONS="7.17.1" OUTPUT-WBXML="wbxml/wv-048.wbxml" OUTPUT-XML="xml/wv-048.xml">
+        Specification Example: REACTIVE PRESENCE AUTHORIZATION TRANSACTION - PresenceAuth-Request primitive
+    </TEST>
+    <TEST URI="wv-049.xml" id="wv-049.xml" SECTIONS="7.17.2" OUTPUT-WBXML="wbxml/wv-049.wbxml" OUTPUT-XML="xml/wv-049.xml">
+        Specification Example: REACTIVE PRESENCE AUTHORIZATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-050.xml" id="wv-050.xml" SECTIONS="7.17.3" OUTPUT-WBXML="wbxml/wv-050.wbxml" OUTPUT-XML="xml/wv-050.xml">
+        Specification Example: REACTIVE PRESENCE AUTHORIZATION TRANSACTION - PresenceAuth-User primitive
+    </TEST>
+    <TEST URI="wv-051.xml" id="wv-051.xml" SECTIONS="7.17.4" OUTPUT-WBXML="wbxml/wv-051.wbxml" OUTPUT-XML="xml/wv-051.xml">
+        Specification Example: REACTIVE PRESENCE AUTHORIZATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-052.xml" id="wv-052.xml" SECTIONS="7.18.1" OUTPUT-WBXML="wbxml/wv-052.wbxml" OUTPUT-XML="xml/wv-052.xml">
+        Specification Example: CANCEL PRESENCE AUTHORIZATION TRANSACTION - CancelAuth-Request primitive
+    </TEST>
+    <TEST URI="wv-053.xml" id="wv-053.xml" SECTIONS="7.18.2" OUTPUT-WBXML="wbxml/wv-053.wbxml" OUTPUT-XML="xml/wv-053.xml">
+        Specification Example: CANCEL PRESENCE AUTHORIZATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-054.xml" id="wv-054.xml" SECTIONS="7.19.1" OUTPUT-WBXML="wbxml/wv-054.wbxml" OUTPUT-XML="xml/wv-054.xml">
+        Specification Example: UPDATE PRESENCE TRANSACTION - UpdatePresence-Request primitive
+    </TEST>
+    <TEST URI="wv-055.xml" id="wv-055.xml" SECTIONS="7.19.2" OUTPUT-WBXML="wbxml/wv-055.wbxml" OUTPUT-XML="xml/wv-055.xml">
+        Specification Example: UPDATE PRESENCE TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-056.xml" id="wv-056.xml" SECTIONS="7.20.1" OUTPUT-WBXML="wbxml/wv-056.wbxml" OUTPUT-XML="xml/wv-056.xml">
+        Specification Example: SEND MESSAGE TRANSACTION - SendMessage-Request primitive
+    </TEST>
+    <TEST URI="wv-057.xml" id="wv-057.xml" SECTIONS="7.20.2" OUTPUT-WBXML="wbxml/wv-057.wbxml" OUTPUT-XML="xml/wv-057.xml">
+        Specification Example: SEND MESSAGE TRANSACTION - SendMessage-Response primitive
+    </TEST>
+    <TEST URI="wv-058.xml" id="wv-058.xml" SECTIONS="7.21.1" OUTPUT-WBXML="wbxml/wv-058.wbxml" OUTPUT-XML="xml/wv-058.xml">
+        Specification Example: SET DELIVERY METHOD TRANSACTION - SetDeliveryMethod-Request primitive
+    </TEST>
+    <TEST URI="wv-059.xml" id="wv-059.xml" SECTIONS="7.21.2" OUTPUT-WBXML="wbxml/wv-059.wbxml" OUTPUT-XML="xml/wv-059.xml">
+        Specification Example: SET DELIVERY METHOD TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-060.xml" id="wv-060.xml" SECTIONS="7.22.1" OUTPUT-WBXML="wbxml/wv-060.wbxml" OUTPUT-XML="xml/wv-060.xml">
+        Specification Example: GET LIST OF UNDELIVERED MESSAGES TRANSACTION - GetMessageList-Request primitive
+    </TEST>
+    <TEST URI="wv-061.xml" id="wv-061.xml" SECTIONS="7.22.2" OUTPUT-WBXML="wbxml/wv-061.wbxml" OUTPUT-XML="xml/wv-061.xml">
+        Specification Example: GET LIST OF UNDELIVERED MESSAGES TRANSACTION - GetMessageList-Response primitive
+    </TEST>
+    <TEST URI="wv-062.xml" id="wv-062.xml" SECTIONS="7.23.1" OUTPUT-WBXML="wbxml/wv-062.wbxml" OUTPUT-XML="xml/wv-062.xml">
+        Specification Example: REJECTING A MESSAGE (NOTIFY/GET METHOD ONLY) TRANSACTION - RejectMessage-Request primitive
+    </TEST>
+    <TEST URI="wv-063.xml" id="wv-063.xml" SECTIONS="7.23.2" OUTPUT-WBXML="wbxml/wv-063.wbxml" OUTPUT-XML="xml/wv-063.xml">
+        Specification Example: REJECTING A MESSAGE (NOTIFY/GET METHOD ONLY) TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-064.xml" id="wv-064.xml" SECTIONS="7.24.1" OUTPUT-WBXML="wbxml/wv-064.wbxml" OUTPUT-XML="xml/wv-064.xml">
+        Specification Example: MESSAGE NOTIFICATION (NOTIFY/GET METHOD ONLY) TRANSACTION - MessageNotification primitive
+    </TEST>
+    <TEST URI="wv-065.xml" id="wv-065.xml" SECTIONS="7.24.2" OUTPUT-WBXML="wbxml/wv-065.wbxml" OUTPUT-XML="xml/wv-065.xml">
+        Specification Example: MESSAGE NOTIFICATION (NOTIFY/GET METHOD ONLY) TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-066.xml" id="wv-066.xml" SECTIONS="7.25.1" OUTPUT-WBXML="wbxml/wv-066.wbxml" OUTPUT-XML="xml/wv-066.xml">
+        Specification Example: RETRIEVING A MESSAGE (GET/NOTIFY METHOD) TRANSACTION - GetMessage-Request primitive
+    </TEST>
+    <TEST URI="wv-067.xml" id="wv-067.xml" SECTIONS="7.25.2" OUTPUT-WBXML="wbxml/wv-067.wbxml" OUTPUT-XML="xml/wv-067.xml">
+        Specification Example: RETRIEVING A MESSAGE (GET/NOTIFY METHOD) TRANSACTION - GetMessage-Response primtive
+    </TEST>
+    <TEST URI="wv-068.xml" id="wv-068.xml" SECTIONS="7.25.3" OUTPUT-WBXML="wbxml/wv-068.wbxml" OUTPUT-XML="xml/wv-068.xml">
+        Specification Example: RETRIEVING A MESSAGE (GET/NOTIFY METHOD) TRANSACTION - MessageDelivered primitive
+    </TEST>
+    <TEST URI="wv-069.xml" id="wv-069.xml" SECTIONS="7.25.4" OUTPUT-WBXML="wbxml/wv-069.wbxml" OUTPUT-XML="xml/wv-069.xml">
+        Specification Example: RETRIEVING A MESSAGE (GET/NOTIFY METHOD) TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-070.xml" id="wv-070.xml" SECTIONS="7.26.1" OUTPUT-WBXML="wbxml/wv-070.wbxml" OUTPUT-XML="xml/wv-070.xml">
+        Specification Example: DELIVERING A MESSAGE (PUSH METHOD) TRANSACTION - NewMessage primitive
+    </TEST>
+    <TEST URI="wv-071.xml" id="wv-071.xml" SECTIONS="7.26.2" OUTPUT-WBXML="wbxml/wv-071.wbxml" OUTPUT-XML="xml/wv-071.xml">
+        Specification Example: DELIVERING A MESSAGE (PUSH METHOD) TRANSACTION - MessageDelivered primitive
+    </TEST>
+    <TEST URI="wv-072.xml" id="wv-072.xml" SECTIONS="7.27.1" OUTPUT-WBXML="wbxml/wv-072.wbxml" OUTPUT-XML="xml/wv-072.xml">
+        Specification Example: DELIVERY REPORT TRANSACTION - DeliveryReport-Request primitive
+    </TEST>
+    <TEST URI="wv-073.xml" id="wv-073.xml" SECTIONS="7.27.2" OUTPUT-WBXML="wbxml/wv-073.wbxml" OUTPUT-XML="xml/wv-073.xml">
+        Specification Example: DELIVERY REPORT TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-074.xml" id="wv-074.xml" SECTIONS="7.28.1" OUTPUT-WBXML="wbxml/wv-074.wbxml" OUTPUT-XML="xml/wv-074.xml">
+        Specification Example: FORWARD UNDELIVERED MESSAGE TRANSACTION - ForwardMessage-Request primitive
+    </TEST>
+    <TEST URI="wv-075.xml" id="wv-075.xml" SECTIONS="7.28.2" OUTPUT-WBXML="wbxml/wv-075.wbxml" OUTPUT-XML="xml/wv-075.xml">
+        Specification Example: FORWARD UNDELIVERED MESSAGE TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-076.xml" id="wv-076.xml" SECTIONS="7.29.1" OUTPUT-WBXML="wbxml/wv-076.wbxml" OUTPUT-XML="xml/wv-076.xml">
+        Specification Example: GET BLOCKED USER LIST TRANSACTION - GetBlockedList-Request primitive
+    </TEST>
+    <TEST URI="wv-077.xml" id="wv-077.xml" SECTIONS="7.29.2" OUTPUT-WBXML="wbxml/wv-077.wbxml" OUTPUT-XML="xml/wv-077.xml">
+        Specification Example: GET BLOCKED USER LIST TRANSACTION - GetBlockedList-Response primitive
+    </TEST>
+    <TEST URI="wv-078.xml" id="wv-078.xml" SECTIONS="7.30.1" OUTPUT-WBXML="wbxml/wv-078.wbxml" OUTPUT-XML="xml/wv-078.xml">
+        Specification Example: BLOCK ENTITY TRANSACTION - BlockEntity-Request primitive
+    </TEST>
+    <TEST URI="wv-079.xml" id="wv-079.xml" SECTIONS="7.30.2" OUTPUT-WBXML="wbxml/wv-079.wbxml" OUTPUT-XML="xml/wv-079.xml">
+        Specification Example: BLOCK ENTITY TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-080.xml" id="wv-080.xml" SECTIONS="7.31.1" OUTPUT-WBXML="wbxml/wv-080.wbxml" OUTPUT-XML="xml/wv-080.xml">
+        Specification Example: GET LIST OF CONTACT LIST(S) TRANSACTION - GetList-Request primitive
+    </TEST>
+    <TEST URI="wv-081.xml" id="wv-081.xml" SECTIONS="7.31.2" OUTPUT-WBXML="wbxml/wv-081.wbxml" OUTPUT-XML="xml/wv-081.xml">
+        Specification Example: GET LIST OF CONTACT LIST(S) TRANSACTION - GetList-Response primitive
+    </TEST>
+    <TEST URI="wv-082.xml" id="wv-082.xml" SECTIONS="7.32.1" OUTPUT-WBXML="wbxml/wv-082.wbxml" OUTPUT-XML="xml/wv-082.xml">
+        Specification Example: CREATE CONTACT LIST TRANSACTION - CreateList-Request primitive
+    </TEST>
+    <TEST URI="wv-083.xml" id="wv-083.xml" SECTIONS="7.32.2" OUTPUT-WBXML="wbxml/wv-083.wbxml" OUTPUT-XML="xml/wv-083.xml">
+        Specification Example: CREATE CONTACT LIST TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-084.xml" id="wv-084.xml" SECTIONS="7.33.1" OUTPUT-WBXML="wbxml/wv-084.wbxml" OUTPUT-XML="xml/wv-084.xml">
+        Specification Example: DELETE CONTACT LIST TRANSACTION - DeleteList-Request primitive
+    </TEST>
+    <TEST URI="wv-085.xml" id="wv-085.xml" SECTIONS="7.33.2" OUTPUT-WBXML="wbxml/wv-085.wbxml" OUTPUT-XML="xml/wv-085.xml">
+        Specification Example: DELETE CONTACT LIST TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-086.xml" id="wv-086.xml" SECTIONS="7.34.1" OUTPUT-WBXML="wbxml/wv-086.wbxml" OUTPUT-XML="xml/wv-086.xml">
+        Specification Example: RETRIEVE CONTACT LIST TRANSACTION - ListManage-Request primitive
+    </TEST>
+    <TEST URI="wv-087.xml" id="wv-087.xml" SECTIONS="7.34.2" OUTPUT-WBXML="wbxml/wv-087.wbxml" OUTPUT-XML="xml/wv-087.xml">
+        Specification Example: RETRIEVE CONTACT LIST TRANSACTION - ListManage-Response primitive
+    </TEST>
+    <TEST URI="wv-088.xml" id="wv-088.xml" SECTIONS="7.35.1" OUTPUT-WBXML="wbxml/wv-088.wbxml" OUTPUT-XML="xml/wv-088.xml">
+        Specification Example: ADD USERS TO CONTACT LIST TRANSACTION - ListManage-Request primitive
+    </TEST>
+    <TEST URI="wv-089.xml" id="wv-089.xml" SECTIONS="7.35.2" OUTPUT-WBXML="wbxml/wv-089.wbxml" OUTPUT-XML="xml/wv-089.xml">
+        Specification Example: ADD USERS TO CONTACT LIST TRANSACTION - ListManage-Response primitive
+    </TEST>
+    <TEST URI="wv-090.xml" id="wv-090.xml" SECTIONS="7.36.1" OUTPUT-WBXML="wbxml/wv-090.wbxml" OUTPUT-XML="xml/wv-090.xml">
+        Specification Example: REMOVE USERS FROM CONTACT LIST TRANSACTION - ListManage-Request primitive
+    </TEST>
+    <TEST URI="wv-091.xml" id="wv-091.xml" SECTIONS="7.36.2" OUTPUT-WBXML="wbxml/wv-091.wbxml" OUTPUT-XML="xml/wv-091.xml">
+        Specification Example: REMOVE USERS FROM CONTACT LIST TRANSACTION - ListManage-Response primitive
+    </TEST>
+    <TEST URI="wv-092.xml" id="wv-092.xml" SECTIONS="7.37.1" OUTPUT-WBXML="wbxml/wv-092.wbxml" OUTPUT-XML="xml/wv-092.xml">
+        Specification Example: MODIFY PROPERTIES OF CONTACT LIST TRANSACTION - ListManage-Request primitive
+    </TEST>
+    <TEST URI="wv-093.xml" id="wv-093.xml" SECTIONS="7.37.2" OUTPUT-WBXML="wbxml/wv-093.wbxml" OUTPUT-XML="xml/wv-093.xml">
+        Specification Example: MODIFY PROPERTIES OF CONTACT LIST TRANSACTION - ListManage-Response primitive
+    </TEST>
+    <TEST URI="wv-094.xml" id="wv-094.xml" SECTIONS="7.38.1" OUTPUT-WBXML="wbxml/wv-094.wbxml" OUTPUT-XML="xml/wv-094.xml">
+        Specification Example: CREATE ATTRIBUTE LIST TRANSACTION - CreateAttributeList-Request primitive
+    </TEST>
+    <TEST URI="wv-095.xml" id="wv-095.xml" SECTIONS="7.38.2" OUTPUT-WBXML="wbxml/wv-095.wbxml" OUTPUT-XML="xml/wv-095.xml">
+        Specification Example: CREATE ATTRIBUTE LIST TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-096.xml" id="wv-096.xml" SECTIONS="7.39.1" OUTPUT-WBXML="wbxml/wv-096.wbxml" OUTPUT-XML="xml/wv-096.xml">
+        Specification Example: DELETE ATTRIBUTE LIST TRANSACTION - DeleteAttributeList-Request primitive
+    </TEST>
+    <TEST URI="wv-097.xml" id="wv-097.xml" SECTIONS="7.39.2" OUTPUT-WBXML="wbxml/wv-097.wbxml" OUTPUT-XML="xml/wv-097.xml">
+        Specification Example: DELETE ATTRIBUTE LIST TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-098.xml" id="wv-098.xml" SECTIONS="7.40.1" OUTPUT-WBXML="wbxml/wv-098.wbxml" OUTPUT-XML="xml/wv-098.xml">
+        Specification Example: GET ATTRIBUTE LIST TRANSACTION - GetAttributeList-Request primitive
+    </TEST>
+    <TEST URI="wv-099.xml" id="wv-099.xml" SECTIONS="7.40.2" OUTPUT-WBXML="wbxml/wv-096.wbxml" OUTPUT-XML="xml/wv-099.xml">
+        Specification Example: GET ATTRIBUTE LIST TRANSACTION - GetAttributeList-Response primitive
+    </TEST>
+    <TEST URI="wv-100.xml" id="wv-100.xml" SECTIONS="7.41.1" OUTPUT-WBXML="wbxml/wv-100.wbxml" OUTPUT-XML="xml/wv-100.xml">
+        Specification Example: CREATE GROUP TRANSACTION - CreateGroup-Request primitive
+    </TEST>
+    <TEST URI="wv-101.xml" id="wv-101.xml" SECTIONS="7.41.2" OUTPUT-WBXML="wbxml/wv-101.wbxml" OUTPUT-XML="xml/wv-101.xml">
+        Specification Example: CREATE GROUP TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-102.xml" id="wv-102.xml" SECTIONS="7.42.1" OUTPUT-WBXML="wbxml/wv-102.wbxml" OUTPUT-XML="xml/wv-102.xml">
+        Specification Example: DELETE GROUP TRANSACTION - DeleteGroup-Request primitive
+    </TEST>
+    <TEST URI="wv-103.xml" id="wv-103.xml" SECTIONS="7.42.2" OUTPUT-WBXML="wbxml/wv-103.wbxml" OUTPUT-XML="xml/wv-103.xml">
+        Specification Example: DELETE GROUP TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-104.xml" id="wv-104.xml" SECTIONS="7.43.1" OUTPUT-WBXML="wbxml/wv-104.wbxml" OUTPUT-XML="xml/wv-104.xml">
+        Specification Example: JOIN GROUP TRANSACTION - JoinGroup-Request primitive
+    </TEST>
+    <TEST URI="wv-105.xml" id="wv-105.xml" SECTIONS="7.43.2" OUTPUT-WBXML="wbxml/wv-105.wbxml" OUTPUT-XML="xml/wv-105.xml">
+        Specification Example: JOIN GROUP TRANSACTION - JoinGroup-Response primitive
+    </TEST>
+    <TEST URI="wv-106.xml" id="wv-106.xml" SECTIONS="7.44.1" OUTPUT-WBXML="wbxml/wv-106.wbxml" OUTPUT-XML="xml/wv-106.xml">
+        Specification Example: USER INITIATED LEAVE GROUP TRANSACTION - LeaveGroup-Request primitive
+    </TEST>
+    <TEST URI="wv-107.xml" id="wv-107.xml" SECTIONS="7.44.2" OUTPUT-WBXML="wbxml/wv-107.wbxml" OUTPUT-XML="xml/wv-107.xml">
+        Specification Example: USER INITIATED LEAVE GROUP TRANSACTION - LeaveGroup-Response primitive
+    </TEST>
+    <TEST URI="wv-108.xml" id="wv-108.xml" SECTIONS="7.45.1" OUTPUT-WBXML="wbxml/wv-108.wbxml" OUTPUT-XML="xml/wv-108.xml">
+        Specification Example: SERVER INITIATED LEAVE GROUP TRANSACTION - LeaveGroup-Response primitive
+    </TEST>
+    <TEST URI="wv-109.xml" id="wv-109.xml" SECTIONS="7.45.2" OUTPUT-WBXML="wbxml/wv-109.wbxml" OUTPUT-XML="xml/wv-109.xml">
+        Specification Example: SERVER INITIATED LEAVE GROUP TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-110.xml" id="wv-110.xml" SECTIONS="7.46.1" OUTPUT-WBXML="wbxml/wv-110.wbxml" OUTPUT-XML="xml/wv-110.xml">
+        Specification Example: GET GROUP MEMBER LIST TRANSACTION - GetGroupMembers-Request primitive
+    </TEST>
+    <TEST URI="wv-111.xml" id="wv-111.xml" SECTIONS="7.46.2" OUTPUT-WBXML="wbxml/wv-111.wbxml" OUTPUT-XML="xml/wv-111.xml">
+        Specification Example: GET GROUP MEMBER LIST TRANSACTION - GetGroupMemb ers-Response primitive
+    </TEST>
+    <TEST URI="wv-112.xml" id="wv-112.xml" SECTIONS="7.47.1" OUTPUT-WBXML="wbxml/wv-112.wbxml" OUTPUT-XML="xml/wv-112.xml">
+        Specification Example: ADD GROUP MEMBERS TO A GROUP TRANSACTION - AddGroupMembers-Request primitive
+    </TEST>
+    <TEST URI="wv-113.xml" id="wv-113.xml" SECTIONS="7.47.2" OUTPUT-WBXML="wbxml/wv-113.wbxml" OUTPUT-XML="xml/wv-113.xml">
+        Specification Example: ADD GROUP MEMBERS TO A GROUP TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-114.xml" id="wv-114.xml" SECTIONS="7.48.1" OUTPUT-WBXML="wbxml/wv-114.wbxml" OUTPUT-XML="xml/wv-114.xml">
+        Specification Example: REMOVE GROUP MEMBERS FROM A GROUP TRANSACTION - RemoveGroupMembers-Request primitive
+    </TEST>
+    <TEST URI="wv-115.xml" id="wv-115.xml" SECTIONS="7.48.2" OUTPUT-WBXML="wbxml/wv-115.wbxml" OUTPUT-XML="xml/wv-115.xml">
+        Specification Example: REMOVE GROUP MEMBERS FROM A GROUP TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-116.xml" id="wv-116.xml" SECTIONS="7.49.1" OUTPUT-WBXML="wbxml/wv-116.wbxml" OUTPUT-XML="xml/wv-116.xml">
+        Specification Example: CHANGING ACCESS RIGHTS IN A GROUP TRANSACTION - MemberAccess-Request primitive
+    </TEST>
+    <TEST URI="wv-117.xml" id="wv-117.xml" SECTIONS="7.49.2" OUTPUT-WBXML="wbxml/wv-117.wbxml" OUTPUT-XML="xml/wv-117.xml">
+        Specification Example: CHANGING ACCESS RIGHTS IN A GROUP TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-118.xml" id="wv-118.xml" SECTIONS="7.50.1" OUTPUT-WBXML="wbxml/wv-118.wbxml" OUTPUT-XML="xml/wv-118.xml">
+        Specification Example: MODIFY GROUP PROPERTIES TRANSACTION - GetGroupProps-Request primitive
+    </TEST>
+    <TEST URI="wv-119.xml" id="wv-119.xml" SECTIONS="7.50.2" OUTPUT-WBXML="wbxml/wv-119.wbxml" OUTPUT-XML="xml/wv-119.xml">
+        Specification Example: MODIFY GROUP PROPERTIES TRANSACTION - GetGroupProps-Response primitive
+    </TEST>
+    <TEST URI="wv-120.xml" id="wv-120.xml" SECTIONS="7.50.3" OUTPUT-WBXML="wbxml/wv-120.wbxml" OUTPUT-XML="xml/wv-120.xml">
+        Specification Example: MODIFY GROUP PROPERTIES TRANSACTION - SetGroupProps-Request primitive
+    </TEST>
+    <TEST URI="wv-121.xml" id="wv-121.xml" SECTIONS="7.50.4" OUTPUT-WBXML="wbxml/wv-121.wbxml" OUTPUT-XML="xml/wv-121.xml">
+        Specification Example: MODIFY GROUP PROPERTIES TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-122.xml" id="wv-122.xml" SECTIONS="7.51.1" OUTPUT-WBXML="wbxml/wv-122.wbxml" OUTPUT-XML="xml/wv-122.xml">
+        Specification Example: REJECT USER FROM GROUP TRANSACTION - RejectList-Request primitive
+    </TEST>
+    <TEST URI="wv-123.xml" id="wv-123.xml" SECTIONS="7.51.2" OUTPUT-WBXML="wbxml/wv-123.wbxml" OUTPUT-XML="xml/wv-123.xml">
+        Specification Example: REJECT USER FROM GROUP TRANSACTION - RejectList-Response primitive
+    </TEST>
+    <TEST URI="wv-124.xml" id="wv-124.xml" SECTIONS="7.52.1" OUTPUT-WBXML="wbxml/wv-124.wbxml" OUTPUT-XML="xml/wv-124.xml">
+        Specification Example: SUBSCRIBE GROUP CHANGE NOTIFICATION TRANSACTION - SubscribeGroupNotice-Request primitive (get)
+    </TEST>
+    <TEST URI="wv-125.xml" id="wv-125.xml" SECTIONS="7.52.2" OUTPUT-WBXML="wbxml/wv-125.wbxml" OUTPUT-XML="xml/wv-125.xml">
+        Specification Example: SUBSCRIBE GROUP CHANGE NOTIFICATION TRANSACTION - SubscribeGroupNotice-Response primitive
+    </TEST>
+    <TEST URI="wv-126.xml" id="wv-126.xml" SECTIONS="7.52.3" OUTPUT-WBXML="wbxml/wv-126.wbxml" OUTPUT-XML="xml/wv-126.xml">
+        Specification Example: SUBSCRIBE GROUP CHANGE NOTIFICATION TRANSACTION - SubscribeGroupNotice-Request primitive (set)
+    </TEST>
+    <TEST URI="wv-127.xml" id="wv-127.xml" SECTIONS="7.52.4" OUTPUT-WBXML="wbxml/wv-127.wbxml" OUTPUT-XML="xml/wv-127.xml">
+        Specification Example: SUBSCRIBE GROUP CHANGE NOTIFICATION TRANSACTION - Status primitive
+    </TEST>
+    <TEST URI="wv-128.xml" id="wv-128.xml" SECTIONS="7.52.5" OUTPUT-WBXML="wbxml/wv-128.wbxml" OUTPUT-XML="xml/wv-128.xml">
+        Specification Example: SUBSCRIBE GROUP CHANGE NOTIFICATION TRANSACTION - GroupChangeNotice primitive
+    </TEST>
+    <TEST URI="wv-129.xml" id="wv-129.xml" SECTIONS="7.52.6" OUTPUT-WBXML="wbxml/wv-129.wbxml" OUTPUT-XML="xml/wv-129.xml">
+        Specification Example: SUBSCRIBE GROUP CHANGE NOTIFICATION TRANSACTION - Status primitive
+    </TEST>    
+</TESTCASES>
+
+<!-- SyncML 1.1.1 -->
+<TESTCASES PROFILE="SyncML 1.1.1 [syncml_sync_protocol_v111_20021002.pdf]" xml:base="syncml/>
+    <TEST URI="syncml-001.xml" id="syncml-001.xml" SECTIONS="2.12.1.1" OUTPUT-WBXML="wbxml/syncml-001.wbxml" OUTPUT-XML="xml/syncml-001.xml">
+        Specification Example - Example of Busy Status
+    </TEST>
+    <TEST URI="syncml-002.xml" id="syncml-002.xml" SECTIONS="2.12.2.1" OUTPUT-WBXML="wbxml/syncml-002.wbxml" OUTPUT-XML="xml/syncml-002.xml">
+        Specification Example - Example of Result Alert
+    </TEST>
+    <TEST URI="syncml-003.xml" id="syncml-003.xml" SECTIONS="4.1.1" OUTPUT-WBXML="wbxml/syncml-003.wbxml" OUTPUT-XML="xml/syncml-003.xml">
+        Specification Example - Example of Sync Initialization Package from Client
+    </TEST>
+    <TEST URI="syncml-004.xml" id="syncml-004.xml" SECTIONS="4.2.1" OUTPUT-WBXML="wbxml/syncml-004.wbxml" OUTPUT-XML="xml/syncml-004.xml">
+        Specification Example - Example of Sync Initialization Package from Server
+    </TEST>
+    <TEST URI="syncml-005.xml" id="syncml-005.xml" SECTIONS="5.1.1" OUTPUT-WBXML="wbxml/syncml-005.wbxml" OUTPUT-XML="xml/syncml-005.xml">
+        Specification Example - Example of Sending Modifications to Server
+    </TEST>
+    <TEST URI="syncml-006.xml" id="syncml-006.xml" SECTIONS="5.2.1" OUTPUT-WBXML="wbxml/syncml-006.wbxml" OUTPUT-XML="xml/syncml-006.xml">
+        Specification Example - Example of Sending Modifications to Client
+    </TEST>
+    <TEST URI="syncml-007.xml" id="syncml-007.xml" SECTIONS="5.3.1" OUTPUT-WBXML="wbxml/syncml-007.wbxml" OUTPUT-XML="xml/syncml-007.xml">
+        Specification Example - Example of Data Update Status to Server
+    </TEST>
+    <TEST URI="syncml-008.xml" id="syncml-008.xml" SECTIONS="5.4.1" OUTPUT-WBXML="wbxml/syncml-008.wbxml" OUTPUT-XML="xml/syncml-008.xml">
+        Specification Example - Example of Map Acknowledge
+    </TEST>
+    <TEST URI="syncml-009.xml" id="syncml-009.xml" SECTIONS="11.4.2" OUTPUT-WBXML="wbxml/syncml-009.wbxml" OUTPUT-XML="xml/syncml-009.xml">
+        Specification Example - Example of Sync without Separate Initialization
+    </TEST>
+    <TEST URI="syncml-010.xml" id="syncml-010.xml" SECTIONS="11.4.2" OUTPUT-WBXML="wbxml/syncml-010.wbxml" OUTPUT-XML="xml/syncml-010.xml">
+        Specification Example - Example of Sync without Separate Initialization
+    </TEST>
+    <TEST URI="syncml-011.xml" id="syncml-011.xml" SECTIONS="9" OUTPUT-WBXML="wbxml/syncml-011.wbxml" OUTPUT-XML="xml/syncml-011.xml">
+        DevInf Specification Example
+    </TEST>
+    <TEST URI="syncml-012.xml" id="syncml-012.xml" SECTIONS="6.3.2" OUTPUT-WBXML="wbxml/syncml-012.wbxml" OUTPUT-XML="xml/syncml-012.xml">
+        SyncML DM Boot: Example bootstrap message
+    </TEST>
+    <TEST URI="syncml-013.xml" id="syncml-013.xml" SECTIONS="" OUTPUT-WBXML="wbxml/syncml-013.wbxml" OUTPUT-XML="xml/syncml-013.xml">
+        Test of VCard data, without CDATA
+    </TEST>
+    <TEST URI="syncml-014.xml" id="syncml-014.xml" SECTIONS="" OUTPUT-WBXML="wbxml/syncml-014.wbxml" OUTPUT-XML="xml/syncml-014.xml">
+        Test of VCard data, with CDATA
+    </TEST>
+</TESTCASES>
+</TESTSUITE>
