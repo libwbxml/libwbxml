@@ -1678,6 +1678,13 @@ const WBXMLTagEntry sv_syncml_syncml11_tag_table[] = {
     { "NumberOfChanges",0x00, 0x33 },
     { "MoreData",       0x00, 0x34 },
 
+    /* SourceParent is officially only specified for SyncML 1.2.
+     * Nevertheless Nokia uses this tag during the synchronization
+     * of SMS. So this is a proprietary extension to avoid that
+     * there is a tag called "unknown".
+     */
+    { "SourceParent",   0x00, 0x39 },
+
     /* Code Page 1: MetInf11 */
     { "Anchor",         0x01, 0x05 },
     { "EMI",            0x01, 0x06 },
