@@ -32,6 +32,9 @@ To make a release of libwbxml, do the following:
  - if someone else made changes and the commit fails,
    you have to "svn up" and run the tests again
 
+ - please run "svn status" before you continue to be 100 percent sure
+   that there is no forgotten commit and no unrevisioned file.
+
  - once the commit succeeds, you have to create a new tag with
    "mkdir tags/libwbxml-$MAJOR.$MINOR.$PATCH",
    "tar -C trunk --exclude=\"\\.svn\" -cf - . | tar -C tags/libwbxml-$MAJOR.$MINOR.$PATCH -xf -"
