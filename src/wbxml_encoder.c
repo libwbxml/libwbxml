@@ -2977,9 +2977,7 @@ static WBXMLError wbxml_encode_wv_content(WBXMLEncoder *encoder, WB_UTINY *buffe
         return wbxml_encode_wv_integer(encoder, buffer);
         break;
     case WBXML_WV_DATA_TYPE_DATE_AND_TIME:
-        /* Date and time can be encoded as OPAQUE data or as a string as specified in [ISO8601]. For now we
-         * keep the string... but if someone wants to code the Date and time encoding function :-)
-         */
+        /* Date and time can be encoded as OPAQUE data or as a string as specified in [ISO8601]. */
         return wbxml_encode_wv_datetime(encoder, buffer);
         break;
     case WBXML_WV_DATA_TYPE_BINARY:
@@ -3062,9 +3060,46 @@ static WBXMLError wbxml_encode_wv_integer(WBXMLEncoder *encoder, WB_UTINY *buffe
 
 
 /**
- * @brief Encode WV Date and Time content value
+ * @brief Encode inline WV Date and Time content value
  * @param encoder The WBXML Encoder
- * @param buffer The Date and Time value to encode
+ * @param buffer The ISO 8601 Date and Time value to encode
+ * @return WBXML_OK if encoded, another error code otherwise
+ * @note [WV] - 6.6 Date and Time
+ * @note
+ *  Encoded Format: 
+ *      - ISO 8601 string (see expected format)
+ *
+ *  Expected Format (ISO 8601):
+ *      20011019T0950Z
+ *      20011019T095031Z
+ *      2001-10-19T09:50:31Z (with number seperators)
+ *      2001-10-19T09:50:31+01:00 (with explicit positive time zone)
+ *      2001-10-19T09:50:31+05:00 (with explicit negative time zone)
+ */
+static WBXMLError wbxml_encode_wv_datetime_inline(WBXMLEncoder *encoder, WB_UTINY *buffer)
+{
+    WBXMLError result = WBXML_OK;
+    WBXMLBuffer *tmp = NULL;
+
+    /* Create temp Buffer */
+    if ((tmp = wbxml_buffer_create_from_cstr(buffer)) == NULL) {
+        return WBXML_ERROR_NOT_ENOUGH_MEMORY;
+    }
+
+    /* Add buffer to encoder */
+    result = wbxml_encode_inline_string(encoder, tmp);
+
+    /* Cleanup buffer */
+    wbxml_buffer_destroy(tmp);
+    
+    return result;
+}
+
+
+/**
+ * @brief Encode opaque WV Date and Time content value
+ * @param encoder The WBXML Encoder
+ * @param buffer The ISO 8601 Date and Time value to encode
  * @return WBXML_OK if encoded, another error code otherwise
  * @note [WV] - 6.6 Date and Time
  * @note
@@ -3082,10 +3117,14 @@ static WBXMLError wbxml_encode_wv_integer(WBXMLEncoder *encoder, WB_UTINY *buffe
  *          Binary:  00 011111010001 1010 10011 01001 110010 011111 01011010
  *          Octets:  (-------)(-------)(--------)(-------)(-------) (------)
  *
- *  Decoded Format:
- *      eg: 20011019T095031Z or 20011019T095031
+ *  Expected Format (ISO 8601):
+ *      20011019T0950 (missing seconds and time zone)
+ *      20011019T0950Z (missing seconds)
+ *      20011019T095031 (missing time zone)
+ *      20011019T095031Z
+ *      20011019T095031A (UTC+1)
  */
-static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buffer)
+static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTINY *buffer)
 {
     WBXMLError error;
     WBXMLBuffer *tmp = NULL;
@@ -3130,26 +3169,26 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
         goto error;
     }
 
-    /* Check position of 'Z' */
+    /* Check position of time zone */
     if (len == 16) {
         if (!wbxml_buffer_get_char(tmp, 15, &ch)) {
             error = WBXML_ERROR_INTERNAL;
             goto error;
         }
-        if (ch != 'Z') {
-            WBXML_ERROR((WBXML_CONV, "If the length of a WV datetime is 16 then the last character must be 'Z'."));
+        if (ch < 'A' || ch == 'J' || ch > 'Z') {
+            WBXML_ERROR((WBXML_CONV, "If the length of a WV datetime is 16 then the last character must be the time zone."));
             error = WBXML_ERROR_WV_DATETIME_FORMAT;
             goto error;
         }
 
-        /* This is an UTC format */
-        is_utc = TRUE;
+        /* There is a time zone. */
+        octets[5] = ch;
+
+        /* delete time zone */
+        wbxml_buffer_delete(tmp, 15, 1);
     }
 
-    /* Delete 'T' and 'Z' */
-    if (is_utc)
-        wbxml_buffer_delete(tmp, 15, 1);
-
+    /* delete 'T' */
     wbxml_buffer_delete(tmp, 8, 1);
 
     /* Check if you have only digits characters */
@@ -3249,9 +3288,6 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
     octets[4] <<=6;
     octets[4] += (WB_UTINY) (second & 0x3f); /* 6 bits */
 
-    /* Set Time Zone */
-    octets[5] = 0;
-
     WBXML_DEBUG((WBXML_CONV, "WV datetime: %x %x %x %x %x %x", octets[5], octets[4], octets[3], octets[2], octets[1], octets[0]));
 
     /* Encode it to Opaque */
@@ -3262,6 +3298,48 @@ error:
     if (tmp)
         wbxml_buffer_destroy(tmp);
     return error;
+}
+
+
+/**
+ * @brief Encode WV Date and Time content value
+ * @param encoder The WBXML Encoder
+ * @param buffer The ISO 8601 Date and Time value to encode
+ * @return WBXML_OK if encoded, another error code otherwise
+ * @note [WV] - 6.6 Date and Time
+ * @note This function only decides which kind of datetime
+ *       encoding should be used and calls the appropriate
+ *       function. Please see wbxml_encode_wv_datetime_opaque
+ *       and wbxml_encode_wv_datetime_inline for more details.
+ * @note Both encoding mechanisms were implemented to be able
+ *       to test the parsing of both encoding scheme. This is
+ *       necessary because other implementations can decide by
+ *       their own which encoding scheme they use.
+ */
+static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buffer)
+{
+    WB_BOOL use_inline = FALSE;
+    WB_ULONG len = WBXML_STRLEN(buffer);
+
+    /* long version of ISO 8601 should be inline encoded */
+    if (index(buffer, '-'))
+        use_inline = TRUE;
+    if (index(buffer, '+'))
+        use_inline = TRUE;
+    if (index(buffer, ':'))
+        use_inline = TRUE;
+
+    /* timezone Z should be inline encoded */
+    if (buffer[len - 1] == 'Z')
+        use_inline = TRUE;
+
+    if (use_inline) {
+        WBXML_DEBUG((WBXML_CONV, "WV datetime conversion: INLINE"));
+        return wbxml_encode_wv_datetime_inline(encoder, buffer);
+    } else {
+        WBXML_DEBUG((WBXML_CONV, "WV datetime conversion: OPAQUE"));
+        return wbxml_encode_wv_datetime_opaque(encoder, buffer);
+    }
 }
 
 #endif /* WBXML_SUPPORT_WV */
