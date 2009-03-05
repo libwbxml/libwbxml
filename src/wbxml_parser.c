@@ -2772,40 +2772,40 @@ static WBXMLError decode_wv_datetime(WBXMLBuffer **data)
     data_ptr = wbxml_buffer_get_cstr(*data);
   
     /* Get Year */
-    the_value = (WB_ULONG) (((data_ptr[5] & 0x3F) << 6) + ((data_ptr[4] >> 2) & 0x3F));
+    the_value = (WB_ULONG) (((data_ptr[0] & 0x3F) << 6) + ((data_ptr[1] >> 2) & 0x3F));
     sprintf(the_year, "%u", the_value);
   
     /* Get Month */
-    the_value = (WB_ULONG) (((data_ptr[4] & 0x03) << 2) | ((data_ptr[3] >> 6) & 0x03));
+    the_value = (WB_ULONG) (((data_ptr[1] & 0x03) << 2) | ((data_ptr[2] >> 6) & 0x03));
     sprintf(the_month, "%02u", the_value);
   
     /* Get Day */
-    the_value = (WB_ULONG) ((data_ptr[3] >> 1) & 0x1F);
+    the_value = (WB_ULONG) ((data_ptr[2] >> 1) & 0x1F);
     sprintf(the_date, "%02u", the_value);
   
     /* Get Hour */
-    the_value = (WB_ULONG) (((data_ptr[3] & 0x01) << 4) | ((data_ptr[2] >> 4) & 0x0F));
+    the_value = (WB_ULONG) (((data_ptr[2] & 0x01) << 4) | ((data_ptr[3] >> 4) & 0x0F));
     sprintf(the_hour, "%02u", the_value);
   
     /* Get Minute */
-    the_value = (WB_ULONG) (((data_ptr[2] & 0x0F) << 2) | ((data_ptr[1] >> 6) & 0x03));
+    the_value = (WB_ULONG) (((data_ptr[3] & 0x0F) << 2) | ((data_ptr[4] >> 6) & 0x03));
     sprintf(the_minute, "%02u", the_value);
   
     /* Get Second */
-    the_value = (WB_ULONG) (data_ptr[1] & 0x3F);
+    the_value = (WB_ULONG) (data_ptr[4] & 0x3F);
     sprintf(the_second, "%02u", the_value);
   
     /* Get Time Zone */
-    if (data_ptr[0] == 0) {
+    if (data_ptr[5] == 0) {
         /* This is a bug in the WBXML document.
          * If timezone UTC aka Zulu is used then a 'Z' must be set.
          */
         sprintf((WB_TINY *) result,
                 "%s%s%sT%s%s%sZ",
                 the_year, the_month, the_date, the_hour, the_minute, the_value ? the_second : "");
-    } else if (data_ptr[0] < 'A' ||
-               data_ptr[0] > 'Z' ||
-               data_ptr[0] == 'J')
+    } else if (data_ptr[5] < 'A' ||
+               data_ptr[5] > 'Z' ||
+               data_ptr[5] == 'J')
     {
 	/* This is a bug in the WBXML document.
 	 * The timezone byte is set and wrong.
@@ -2819,7 +2819,7 @@ static WBXMLError decode_wv_datetime(WBXMLBuffer **data)
     else {
         sprintf((WB_TINY *) result,
                 "%s%s%sT%s%s%s%c",
-                the_year, the_month, the_date, the_hour, the_minute, the_value ? the_second : "", data_ptr[0]);
+                the_year, the_month, the_date, the_hour, the_minute, the_value ? the_second : "", data_ptr[5]);
     }
   
     /* Reset buffer */

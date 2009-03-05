@@ -3179,8 +3179,8 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
     wbxml_buffer_delete(component, 4, 10);
     unsigned int year = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
-    octets[5] = (WB_UTINY) ((year & 0xfc0) >> 6); /* 6 bits */
-    octets[4] = (WB_UTINY) (year & 0x3f);  /* 6 bits */
+    octets[0] = (WB_UTINY) ((year & 0xfc0) >> 6); /* 6 bits */
+    octets[1] = (WB_UTINY) (year & 0x3f);  /* 6 bits */
 
     /* Set Month */
     component = wbxml_buffer_duplicate(tmp);
@@ -3192,9 +3192,9 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
     wbxml_buffer_delete(component, 2, 8);
     unsigned int month = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
-    octets[4] <<= 2;
-    octets[4] += (WB_UTINY) ((month & 0xc) >> 2); /* 2 bits */
-    octets[3] = (WB_UTINY) (month & 0x3); /* 2 bits */
+    octets[1] <<= 2;
+    octets[1] += (WB_UTINY) ((month & 0xc) >> 2); /* 2 bits */
+    octets[2] = (WB_UTINY) (month & 0x3); /* 2 bits */
 
     /* Set Day */
     component = wbxml_buffer_duplicate(tmp);
@@ -3206,8 +3206,8 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
     wbxml_buffer_delete(component, 2, 6);
     unsigned int day = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
-    octets[3] <<= 5;
-    octets[3] += (WB_UTINY) (day & 0x1f); /* 5 bits */
+    octets[2] <<= 5;
+    octets[2] += (WB_UTINY) (day & 0x1f); /* 5 bits */
 
     /* Set Hour */
     component = wbxml_buffer_duplicate(tmp);
@@ -3219,9 +3219,9 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
     wbxml_buffer_delete(component, 2, 4);
     unsigned int hour = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
-    octets[3] <<=1;
-    octets[3] += (WB_UTINY) ((hour & 0x10) >> 4); /* 1 bit */
-    octets[2] = (WB_UTINY) (hour & 0xf); /* 4 bits */
+    octets[2] <<=1;
+    octets[2] += (WB_UTINY) ((hour & 0x10) >> 4); /* 1 bit */
+    octets[3] = (WB_UTINY) (hour & 0xf); /* 4 bits */
 
     /* Set Minute */
     component = wbxml_buffer_duplicate(tmp);
@@ -3233,9 +3233,9 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
     wbxml_buffer_delete(component, 2, 2);
     unsigned int minute = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
-    octets[2] <<=4;
-    octets[2] += (WB_UTINY) ((minute & 0x3c) >> 2); /* 4 bits */
-    octets[1] = (WB_UTINY) (minute & 0x3); /* 2 bits */
+    octets[3] <<=4;
+    octets[3] += (WB_UTINY) ((minute & 0x3c) >> 2); /* 4 bits */
+    octets[4] = (WB_UTINY) (minute & 0x3); /* 2 bits */
 
     /* Set Second */
     component = wbxml_buffer_duplicate(tmp);
@@ -3246,11 +3246,11 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
     wbxml_buffer_delete(component, 0, 12);
     unsigned int second = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
-    octets[1] <<=6;
-    octets[1] += (WB_UTINY) (second & 0x3f); /* 6 bits */
+    octets[4] <<=6;
+    octets[4] += (WB_UTINY) (second & 0x3f); /* 6 bits */
 
     /* Set Time Zone */
-    octets[0] = 0;
+    octets[5] = 0;
 
     WBXML_DEBUG((WBXML_CONV, "WV datetime: %x %x %x %x %x %x", octets[5], octets[4], octets[3], octets[2], octets[1], octets[0]));
 
