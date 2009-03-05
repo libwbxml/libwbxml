@@ -2797,14 +2797,29 @@ static WBXMLError decode_wv_datetime(WBXMLBuffer **data)
   
     /* Get Time Zone */
     if (data_ptr[0] == 0) {
+        /* This is a bug in the WBXML document.
+         * If timezone UTC aka Zulu is used then a 'Z' must be set.
+         */
         sprintf((WB_TINY *) result,
                 "%s%s%sT%s%s%sZ",
+                the_year, the_month, the_date, the_hour, the_minute, the_value ? the_second : "");
+    } else if (data_ptr[0] < 'A' ||
+               data_ptr[0] > 'Z' ||
+               data_ptr[0] == 'J')
+    {
+	/* This is a bug in the WBXML document.
+	 * The timezone byte is set and wrong.
+         * There is no way to recover cleanly from this.
+         * Therefore no timezone is set.
+         */
+        sprintf((WB_TINY *) result,
+                "%s%s%sT%s%s%s",
                 the_year, the_month, the_date, the_hour, the_minute, the_value ? the_second : "");
     }
     else {
         sprintf((WB_TINY *) result,
-                "%s%s%sT%s%s%s",
-                the_year, the_month, the_date, the_hour, the_minute, the_value ? the_second : "");
+                "%s%s%sT%s%s%s%c",
+                the_year, the_month, the_date, the_hour, the_minute, the_value ? the_second : "", data_ptr[0]);
     }
   
     /* Reset buffer */
