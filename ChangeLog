@@ -1,3 +1,8 @@
+2009-03-30  Michael Bell <michael.bell@web.de>
+  * Released 0.10.5
+  * Fixed library installation path for win32 (ticket #31)
+    (The patch was supplied by Jeremy Laine.)
+
 2009-03-09  Michael Bell <michael.bell@web.de>
   * Released 0.10.4
   * Fixed the byte order of the WV datetime opaque encoding (the bytes
