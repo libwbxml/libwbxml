@@ -2,6 +2,7 @@
   * Fixed Sun Studio CC and GCC warnings.
   * Fixed Testing.cmake to not set GCC specific compiler and linker
     flags for other compilers.
+  * Fixed race condition in WV datetime opaque encoding
 
 2009-03-30  Michael Bell <michael.bell@web.de>
   * Released 0.10.5
