@@ -3184,6 +3184,9 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
 
         /* delete time zone */
         wbxml_buffer_delete(tmp, 15, 1);
+    } else {
+        /* There is no time zone. */
+        octets[5] = 0;
     }
 
     /* delete 'T' */
@@ -3286,7 +3289,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     octets[4] <<=6;
     octets[4] += (WB_UTINY) (second & 0x3f); /* 6 bits */
 
-    WBXML_DEBUG((WBXML_CONV, "WV datetime: %x %x %x %x %x %x", octets[5], octets[4], octets[3], octets[2], octets[1], octets[0]));
+    WBXML_DEBUG((WBXML_CONV, "WV datetime: %x %x %x %x %x %x", octets[0], octets[1], octets[2], octets[3], octets[4], octets[5]));
 
     /* Encode it to Opaque */
     ret = wbxml_encode_opaque_data(encoder, octets, 6);
