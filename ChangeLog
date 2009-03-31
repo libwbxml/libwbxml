@@ -1,3 +1,8 @@
+  * Fixed bashisms in launchTest.sh
+  * Fixed Sun Studio CC and GCC warnings.
+  * Fixed Testing.cmake to not set GCC specific compiler and linker
+    flags for other compilers.
+
 2009-03-30  Michael Bell <michael.bell@web.de>
   * Released 0.10.5
   * Fixed library installation path for win32 (ticket #31)
