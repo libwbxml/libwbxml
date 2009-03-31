@@ -2149,8 +2149,7 @@ static WBXMLError wbxml_encode_value_element_buffer(WBXMLEncoder *encoder, WB_UT
 		     *
 		     * Assumption: The buffer is already normalized.
 		     */
-                    // if (wbxml_buffer_search_cstr(elt->u.str, (WB_UTINY *) encoder->lang->extValueTable[j].xmlName, 0, &index))
-                    if (wbxml_buffer_compare_cstr(elt->u.str, (WB_UTINY *) encoder->lang->extValueTable[j].xmlName) == 0)
+                    if (wbxml_buffer_compare_cstr(elt->u.str, (WB_TINY *) encoder->lang->extValueTable[j].xmlName) == 0)
                     {
                         /* Create new Value Element */
                         if ((new_elt = wbxml_value_element_create()) == NULL) {
@@ -3131,7 +3130,6 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     WB_ULONG i = 0, len = 0;
     WB_UTINY ch = 0;
     WBXMLError ret = WBXML_OK;
-    WB_BOOL is_utc = FALSE;
     WB_UTINY octets[6];
     WBXMLBuffer *component = NULL;
 
@@ -3322,11 +3320,11 @@ static WBXMLError wbxml_encode_wv_datetime(WBXMLEncoder *encoder, WB_UTINY *buff
     WB_ULONG len = WBXML_STRLEN(buffer);
 
     /* long version of ISO 8601 should be inline encoded */
-    if (index(buffer, '-'))
+    if (strchr((WB_TINY *) buffer, '-'))
         use_inline = TRUE;
-    if (index(buffer, '+'))
+    if (strchr((WB_TINY *) buffer, '+'))
         use_inline = TRUE;
-    if (index(buffer, ':'))
+    if (strchr((WB_TINY *) buffer, ':'))
         use_inline = TRUE;
 
     /* timezone Z should be inline encoded */

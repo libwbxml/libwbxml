@@ -718,11 +718,23 @@ static WBXMLError parse_charset(WBXMLParser *parser)
     WB_ULONG startpos = parser->pos;
 #endif /* WBXML_LIB_VERBOSE */
 
-    WBXMLError ret = parse_mb_uint32(parser, &parser->charset);
+    unsigned int charset = 0;
+    WBXMLError ret = parse_mb_uint32(parser, &charset);
+
+    if (ret != WBXML_OK) {
+        WBXML_DEBUG((WBXML_PARSER, "(%d) failed to parse character set", startpos));
+        return ret;
+    }
+
+    const char *charset_name = NULL;
+    if (!wbxml_charset_get_name(charset, &charset_name)) {
+        return WBXML_ERROR_NO_CHARSET_CONV;
+    }
+    parser->charset = (WBXMLCharsetMIBEnum) charset;
 
     WBXML_DEBUG((WBXML_PARSER, "(%d) Parsed charset: '0x%X'", startpos, parser->charset));
 
-    return ret;
+    return WBXML_OK;
 }
 
 
@@ -1696,8 +1708,8 @@ static WBXMLError parse_entity(WBXMLParser *parser, WBXMLBuffer **result)
     }
     else
     {
-        WB_TINY masks[5] = {0xFC, 0xF8, 0xF0, 0xE0, 0xC0};
-        WB_TINY entity[7] = {0, 0, 0, 0, 0, 0, 0};
+        WB_UTINY masks[5] = {0xFC, 0xF8, 0xF0, 0xE0, 0xC0};
+        WB_UTINY entity[7] = {0, 0, 0, 0, 0, 0, 0};
 
         int index = 5;
         while (code >= 0x40)
@@ -1708,7 +1720,7 @@ static WBXMLError parse_entity(WBXMLParser *parser, WBXMLBuffer **result)
         entity[index] = masks[index] | code;
 
         /* Create result buffer */
-        if ( (*result = wbxml_buffer_create_from_cstr(entity + index)) == NULL ) {
+        if ( (*result = wbxml_buffer_create_from_cstr((WB_TINY *) entity + index)) == NULL ) {
             return WBXML_ERROR_NOT_ENOUGH_MEMORY;
         }
       
