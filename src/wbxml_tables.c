@@ -2583,6 +2583,9 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "SoftDelete",             0x00, 0x21 },
     { "MIMESupport",            0x00, 0x22 },
     { "MIMETruncation",         0x00, 0x23 },
+    { "Wait",                   0x00, 0x24 },
+    { "Limit",                  0x00, 0x25 },
+    { "Partial",                0x00, 0x26 },
 
     /* Code Page: "POOMCONTACTS" */
     { "Anniversary",            0x01, 0x05 },
@@ -2696,6 +2699,11 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "MIMETruncated",          0x02, 0x37 },
     { "MIMESize",               0x02, 0x38 },
     { "InternetCPID",           0x02, 0x39 },
+    { "Flag",                   0x02, 0x3a },
+    { "FlagStatus",             0x02, 0x3b },
+    { "ContentClass",           0x02, 0x3c },
+    { "FlagType",               0x02, 0x3d },
+    { "CompleteTime",           0x02, 0x3e },
 
     /* Code Page: "AirNotify" */
     { "Notify",                 0x03, 0x05 },
@@ -2717,6 +2725,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Id",                     0x03, 0x14 },
     { "Expiry",                 0x03, 0x15 },
     { "NotifyGUID",             0x03, 0x16 },
+    { "DeviceFriendlyName",     0x03, 0x17 },
 
     /* Code Page: "POOMCAL" */
     { "Timezone",               0x04, 0x05 },
@@ -2755,6 +2764,8 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Subject",                0x04, 0x26 },
     { "StartTime",              0x04, 0x27 },
     { "UID",                    0x04, 0x28 },
+    { "AttendeeStatus",         0x04, 0x29 },
+    { "AttendeeType",           0x04, 0x2a },
 
     /* Code Page: "Move" */
     { "Moves",                  0x05, 0x05 },
@@ -2841,6 +2852,8 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "UtcStartDate",           0x09, 0x1f },
     { "Subject",                0x09, 0x20 },
     { "Rtf",                    0x09, 0x21 },
+    { "OrdinalDate",            0x09, 0x22 },
+    { "SubOrdinalDate",         0x09, 0x23 },
 
     /* Code Page: "ResolveRecipients" */
     { "ResolveRecipients",      0x0a, 0x05 },
@@ -2881,7 +2894,187 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "NickName",               0x0c, 0x0d },
     { "MMS",                    0x0c, 0x0e },
 
-    { NULL,                     0x00, 0x00 }
+    /* Code Page: "Ping" */
+    { "Ping",                   0x0d, 0x05 },
+    { "AutdState",              0x0d, 0x06 },
+    { "Status",                 0x0d, 0x07 },
+    { "HeartbeatInterval",      0x0d, 0x08 },
+    { "Folders",                0x0d, 0x09 },
+    { "Folder",                 0x0d, 0x0a },
+    { "Id",                     0x0d, 0x0b },
+    { "Class",                  0x0d, 0x0c },
+    { "MaxFolders",             0x0d, 0x0d },
+
+    /* Code Page: "Provision" */
+    { "Provision",                                0x0e, 0x05 },
+    { "Policies",                                 0x0e, 0x06 },
+    { "Policy",                                   0x0e, 0x07 },
+    { "PolicyType",                               0x0e, 0x08 },
+    { "PolicyKey",                                0x0e, 0x09 },
+    { "Data",                                     0x0e, 0x0a },
+    { "Status",                                   0x0e, 0x0b },
+    { "RemoteWipe",                               0x0e, 0x0c },
+    { "EASProvisionDoc",                          0x0e, 0x0d },
+    { "DevicePasswordEnabled",                    0x0e, 0x0e },
+    { "AlphanumericDevicePasswordRequired",       0x0e, 0x0f },
+    { "DeviceEncryptionEnabled",                  0x0e, 0x10 },
+    { "PasswordRecoveryEnabled",                  0x0e, 0x11 },
+    { "DocumentBrowseEnabled",                    0x0e, 0x12 },
+    { "AttachmentsEnabled",                       0x0e, 0x13 },
+    { "MinDevicePasswordLength",                  0x0e, 0x14 },
+    { "MaxInactivityTimeDeviceLock",              0x0e, 0x15 },
+    { "MaxDevicePasswordFailedAttempts",          0x0e, 0x16 },
+    { "MaxAttachmentSize",                        0x0e, 0x17 },
+    { "AllowSimpleDevicePassword",                0x0e, 0x18 },
+    { "DevicePasswordExpiration",                 0x0e, 0x19 },
+    { "DevicePasswordHistory",                    0x0e, 0x1a },
+    { "AllowStorageCard",                         0x0e, 0x1b },
+    { "AllowCamera",                              0x0e, 0x1c },
+    { "RequireDeviceEncryption",                  0x0e, 0x1d },
+    { "AllowUnsignedApplications",                0x0e, 0x1e },
+    { "AllowUnsignedInstallationPackages",        0x0e, 0x1f },
+    { "MinDevicePasswordComplexCharacters",       0x0e, 0x20 },
+    { "AllowWiFi",                                0x0e, 0x21 },
+    { "AllowTextMessaging",                       0x0e, 0x22 },
+    { "AllowPOPIMAPEmail",                        0x0e, 0x23 },
+    { "AllowBluetooth",                           0x0e, 0x24 },
+    { "AllowIrDA",                                0x0e, 0x25 },
+    { "RequireManualSyncWhenRoaming",             0x0e, 0x26 },
+    { "AllowDesktopSync",                         0x0e, 0x27 },
+    { "MaxCalendarAgeFilter",                     0x0e, 0x28 },
+    { "AllowHTMLEmail",                           0x0e, 0x29 },
+    { "MaxEmailAgeFilter",                        0x0e, 0x2a },
+    { "MaxEmailBodyTruncationSize",               0x0e, 0x2b },
+    { "MaxEmailHTMLBodyTruncationSize",           0x0e, 0x2c },
+    { "RequireSignedSMIMEMessages",               0x0e, 0x2d },
+    { "RequireEncryptedSMIMEMessages",            0x0e, 0x2e },
+    { "RequireSignedSMIMEAlgorithm",              0x0e, 0x2f },
+    { "RequireEncryptionSMIMEAlgorithm",          0x0e, 0x30 },
+    { "AllowSMIMEEncryptionAlgorithmNegotiation", 0x0e, 0x31 },
+    { "AllowSMIMESoftCerts",                      0x0e, 0x32 },
+    { "AllowBrowser",                             0x0e, 0x33 },
+    { "AllowConsumerEmail",                       0x0e, 0x34 },
+    { "AllowRemoteDesktop",                       0x0e, 0x35 },
+    { "AllowInternetSharing",                     0x0e, 0x36 },
+    { "UnapprovedInROMApplicationList",           0x0e, 0x37 },
+    { "ApplicationName",                          0x0e, 0x38 },
+    { "ApprovedApplicationList",                  0x0e, 0x39 },
+    { "Hash",                                     0x0e, 0x3a },
+
+    /* Code Page: "Search" */
+    { "Search",                 0x0f, 0x05 },
+    { "Store",                  0x0f, 0x07 },
+    { "Name",                   0x0f, 0x08 },
+    { "Query",                  0x0f, 0x09 },
+    { "Options",                0x0f, 0x0a },
+    { "Range",                  0x0f, 0x0b },
+    { "Status",                 0x0f, 0x0c },
+    { "Response",               0x0f, 0x0d },
+    { "Result",                 0x0f, 0x0e },
+    { "Properties",             0x0f, 0x0f },
+    { "Total",                  0x0f, 0x10 },
+    { "EqualTo",                0x0f, 0x11 },
+    { "Value",                  0x0f, 0x12 },
+    { "And",                    0x0f, 0x13 },
+    { "Or",                     0x0f, 0x14 },
+    { "FreeText",               0x0f, 0x15 },
+    { "DeepTraversal",          0x0f, 0x17 },
+    { "LongId",                 0x0f, 0x18 },
+    { "RebuildResults",         0x0f, 0x19 },
+    { "LessThan",               0x0f, 0x1a },
+    { "GreaterThan",            0x0f, 0x1b },
+    { "Schema",                 0x0f, 0x1c },
+    { "Supported",              0x0f, 0x1d },
+
+    /* Code Page: "GAL" */
+    { "DisplayName",            0x10, 0x05 },
+    { "Phone",                  0x10, 0x06 },
+    { "Office",                 0x10, 0x07 },
+    { "Title",                  0x10, 0x08 },
+    { "Company",                0x10, 0x09 },
+    { "Alias",                  0x10, 0x0a },
+    { "FirstName",              0x10, 0x0b },
+    { "LastName",               0x10, 0x0c },
+    { "HomePhone",              0x10, 0x0d },
+    { "MobilePhone",            0x10, 0x0e },
+    { "EmailAddress",           0x10, 0x0f },
+
+    /* Code Page: "AirSyncBase" */
+    { "BodyPreference",         0x11, 0x05 },
+    { "Type",                   0x11, 0x06 },
+    { "TruncationSize",         0x11, 0x07 },
+    { "AllOrNone",              0x11, 0x08 },
+    { "Body",                   0x11, 0x0a },
+    { "Data",                   0x11, 0x0b },
+    { "EstimatedDataSize",      0x11, 0x0c },
+    { "Truncated",              0x11, 0x0d },
+    { "Attachments",            0x11, 0x0e },
+    { "Attachment",             0x11, 0x0f },
+    { "DisplayName",            0x11, 0x10 },
+    { "FileReference",          0x11, 0x11 },
+    { "Method",                 0x11, 0x12 },
+    { "ContentId",              0x11, 0x13 },
+    { "ContentLocation",        0x11, 0x14 },
+    { "IsInline",               0x11, 0x15 },
+    { "NativeBodyType",         0x11, 0x16 },
+    { "ContentType",            0x11, 0x17 },
+
+    /* Code Page: "Settings" */
+    { "Settings",                   0x12, 0x05 },
+    { "Status",                     0x12, 0x06 },
+    { "Get",                        0x12, 0x07 },
+    { "Set",                        0x12, 0x08 },
+    { "Oof",                        0x12, 0x09 },
+    { "OofState",                   0x12, 0x0a },
+    { "StartTime",                  0x12, 0x0b },
+    { "EndTime",                    0x12, 0x0c },
+    { "OofMessage",                 0x12, 0x0d },
+    { "AppliesToInternal",          0x12, 0x0e },
+    { "AppliesToExternalKnown",     0x12, 0x0f },
+    { "AppliesToExternalUnknown",   0x12, 0x10 },
+    { "Enabled",                    0x12, 0x11 },
+    { "ReplyMessage",               0x12, 0x12 },
+    { "BodyType",                   0x12, 0x13 },
+    { "DevicePassword",             0x12, 0x14 },
+    { "Password",                   0x12, 0x15 },
+    { "DeviceInformaton",           0x12, 0x16 },
+    { "Model",                      0x12, 0x17 },
+    { "IMEI",                       0x12, 0x18 },
+    { "FriendlyName",               0x12, 0x19 },
+    { "OS",                         0x12, 0x1a },
+    { "OSLanguage",                 0x12, 0x1b },
+    { "PhoneNumber",                0x12, 0x1c },
+    { "UserInformation",            0x12, 0x1d },
+    { "EmailAddresses",             0x12, 0x1e },
+    { "SmtpAddress",                0x12, 0x1f },
+
+    /* Code Page: "DocumentLibrary" */
+    { "LinkId",             0x13, 0x05 },
+    { "DisplayName",        0x13, 0x06 },
+    { "IsFolder",           0x13, 0x07 },
+    { "CreationDate",       0x13, 0x08 },
+    { "LastModifiedDate",   0x13, 0x09 },
+    { "IsHidden",           0x13, 0x0a },
+    { "ContentLength",      0x13, 0x0b },
+    { "ContentType",        0x13, 0x0c },
+
+    /* Code Page: "ItemOperations" */
+    { "ItemOperations",      0x14, 0x05 },
+    { "Fetch",               0x14, 0x06 },
+    { "Store",               0x14, 0x07 },
+    { "Options",             0x14, 0x08 },
+    { "Range",               0x14, 0x09 },
+    { "Total",               0x14, 0x0a },
+    { "Properties",          0x14, 0x0b },
+    { "Data",                0x14, 0x0c },
+    { "Status",              0x14, 0x0d },
+    { "Response",            0x14, 0x0e },
+    { "Version",             0x14, 0x0f },
+    { "Schema",              0x14, 0x10 },
+    { "Part",                0x14, 0x11 },
+    { "EmptyFolderContents", 0x14, 0x12 },
+    { "DeleteSubFolders",    0x14, 0x13 },
+    { NULL,                  0x00, 0x00 }
 };
 
 /* NOTE:
@@ -2905,6 +3098,14 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
  *   ResolveRecipients:   http://synce.org/formats/airsync_wm5/resolverecipients
  *   ValidateCert:        http://synce.org/formats/airsync_wm5/validatecert
  *   POOMCONTACTS2:       http://synce.org/formats/airsync_wm5/contacts2
+ *   Ping:                http://synce.org/formats/airsync_wm5/ping
+ *   Provision:           http://synce.org/formats/airsync_wm5/provision
+ *   Search:              http://synce.org/formats/airsync_wm5/search
+ *   GAL:                 http://synce.org/formats/airsync_wm5/gal
+ *   AirSyncBase:         http://synce.org/formats/airsync_wm5/airsyncbase
+ *   Settings:            http://synce.org/formats/airsync_wm5/settings
+ *   DocumentLibrary:     http://synce.org/formats/airsync_wm5/documentlibrary
+ *   ItemOperations:      http://synce.org/formats/airsync_wm5/itemoperations
  *
  */
 const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
@@ -2921,6 +3122,14 @@ const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
     { "http://synce.org/formats/airsync_wm5/resolverecipients", 0x0a },     /**< Code Page 10 */
     { "http://synce.org/formats/airsync_wm5/validatecert",      0x0b },     /**< Code Page 11 */
     { "http://synce.org/formats/airsync_wm5/contacts2",         0x0c },     /**< Code Page 12 */
+    { "http://synce.org/formats/airsync_wm5/ping",              0x0d },     /**< Code Page 13 */
+    { "http://synce.org/formats/airsync_wm5/provision",         0x0e },     /**< Code Page 14 */
+    { "http://synce.org/formats/airsync_wm5/search",            0x0f },     /**< Code Page 15 */
+    { "http://synce.org/formats/airsync_wm5/gal",               0x10 },     /**< Code Page 16 */
+    { "http://synce.org/formats/airsync_wm5/airsyncbase",       0x11 },     /**< Code Page 17 */
+    { "http://synce.org/formats/airsync_wm5/settings",          0x12 },     /**< Code Page 18 */
+    { "http://synce.org/formats/airsync_wm5/documentlibrary",   0x13 },     /**< Code Page 19 */
+    { "http://synce.org/formats/airsync_wm5/itemoperations",    0x14 },     /**< Code Page 20 */
     { NULL,                                                     0x00 }
 };
 
