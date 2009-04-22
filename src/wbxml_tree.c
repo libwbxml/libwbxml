@@ -989,11 +989,38 @@ WBXML_DECLARE(WB_BOOL) wbxml_tree_add_node(WBXMLTree *tree, WBXMLTreeNode *paren
             /* Add this Node to end of Sibbling Node list of Parent */
             tmp = parent->children;
 
+            /* !!! WARNING !!!
+             * EXPAT splits &lt;html&gt; into three separate text nodes.
+             * Therefore it is necessary to scan for splitted text nodes and
+             * join them to get consistent text nodes.
+             */
+
+            /* If the handled node is a text node and the last node is a text node
+             * then the last node must be replace.
+             * Otherwise the node will be appended.
+             */
             while (tmp->next != NULL)
                 tmp = tmp->next;
             
-            node->prev = tmp;
-            tmp->next = node;
+	    if (node->type == WBXML_TREE_TEXT_NODE &&
+                tmp->type == WBXML_TREE_TEXT_NODE) {
+                /* join the two text nodes and replace the present text node */
+                if (!wbxml_buffer_insert(node->content, tmp->content, 0))
+                    return FALSE;
+		if (tmp->prev == NULL) {
+                    /* tmp is first child */
+                    parent->children = node;
+                } else {
+                    /* tmp is not first child */
+                    tmp->prev->next = node;
+                    node->prev = tmp->prev;
+                }
+                wbxml_tree_node_destroy(tmp);
+            } else {
+                /* normal situation => append node */
+                node->prev = tmp;
+                tmp->next = node;
+            }
         }
         else {
             /* No previous sibbling element */
