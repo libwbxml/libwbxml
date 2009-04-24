@@ -1,3 +1,10 @@
+2009-04-24  Michael Bell <michael.bell@web.de>
+  * Extended (updated) tables for Microsoft AirSync
+    (The patch was supplied by Ossi Jormakka from Ixonos Plc.)
+  * Expat splits &lt;html&gt; into three separate text nodes.
+    Therefore it is necessary to scan for splitted text nodes
+    and merge them into a single consistent text node. 
+  * Normalize encoding with normalize_xml.pl 
   * Fixed bashisms in launchTest.sh
   * Fixed Sun Studio CC and GCC warnings.
   * Fixed Testing.cmake to not set GCC specific compiler and linker
