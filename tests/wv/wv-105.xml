@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE WV-CSP-Message PUBLIC "-//OMA//DTD WV-CSP 1.1//EN" "http://www.openmobilealliance.org/DTD/WV-CSP.XML">
+<WV-CSP-Message xmlns="http://www.wireless-village.org/CSP1.1">
+   <Session>
+      <SessionDescriptor>
+         <SessionType>Inband</SessionType>
+
+         <SessionID>im.user.com#48815@server.com</SessionID>
+      </SessionDescriptor>
+
+      <Transaction>
+         <TransactionDescriptor>
+            <TransactionMode>Response</TransactionMode>
+
+            <TransactionID>IMApp01#12345@NOK5110</TransactionID>
+
+            <Poll>F</Poll>
+         </TransactionDescriptor>
+
+         <TransactionContent xmlns="http://www.wireless-village.org/TRC1.1">
+            <JoinGroup-Response>
+               <UserList>
+                  <ScreenName>
+                     <SName>Johnny</SName>
+
+                     <GroupID>wv:john/partygroup@there.com</GroupID>
+                  </ScreenName>
+
+                  <ScreenName>
+                     <SName>He</SName>
+
+                     <GroupID>wv:john/partygroup@there.com</GroupID>
+                  </ScreenName>
+
+                  <ScreenName>
+                     <SName>She</SName>
+
+                     <GroupID>wv:john/partygroup@there.com</GroupID>
+                  </ScreenName>
+
+                  <ScreenName>
+                     <SName>Francisco</SName>
+
+                     <GroupID>wv:john/partygroup@there.com</GroupID>
+                  </ScreenName>
+
+                  <ScreenName>
+                     <SName>Matthias</SName>
+
+                     <GroupID>wv:john/partygroup@there.com</GroupID>
+                  </ScreenName>
+               </UserList>
+
+               <WelcomeNote>
+                  <ContentType>text/plain</ContentType>
+
+                  <ContentData>Welcome to WVs party house</ContentData>
+               </WelcomeNote>
+            </JoinGroup-Response>
+         </TransactionContent>
+      </Transaction>
+   </Session>
+</WV-CSP-Message>
+

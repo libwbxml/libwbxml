@@ -1,0 +1,9 @@
+committed patch from Ossi Jormakka (Ixonos Plc)
+
+  - extended tables for AIRSYNC (Microsoft)
+  - added two new tests for AIRSYNC
+--This line, and those below, will be ignored--
+
+M    src/wbxml_tables.c
+A    tests/airsync/airsync-002-search_query_for_exchange.xml
+A    tests/airsync/airsync-003-search_response_from_exchange.xml

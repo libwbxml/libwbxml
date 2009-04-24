@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE WV-CSP-Message PUBLIC "-//OMA//DTD WV-CSP 1.1//EN" "http://www.openmobilealliance.org/DTD/WV-CSP.XML">
+<WV-CSP-Message xmlns="http://www.wireless-village.org/CSP1.1">
+   <Session>
+      <SessionDescriptor>
+         <SessionType>Inband</SessionType>
+
+         <SessionID>im.user.com#48815@server.com</SessionID>
+      </SessionDescriptor>
+
+      <Transaction>
+         <TransactionDescriptor>
+            <TransactionMode>Request</TransactionMode>
+
+            <TransactionID>IMApp01#12345@NOK5110</TransactionID>
+         </TransactionDescriptor>
+
+         <TransactionContent xmlns="http://www.wireless-village.org/TRC1.1">
+            <DeleteAttributeList-Request>
+               <UserID>somebody@nowhere.com</UserID>
+
+               <UserID>another_one@nowhere.com</UserID>
+
+               <ContactList>wv:john/My_friends@smith.com</ContactList>
+
+               <ContactList>wv:john/My_family@smith.com</ContactList>
+
+               <DefaultList>T</DefaultList>
+            </DeleteAttributeList-Request>
+         </TransactionContent>
+      </Transaction>
+   </Session>
+</WV-CSP-Message>
+
