@@ -27,7 +27,9 @@
 #include <string.h>
 
 int optind = 1;
+/* useless variable
 int optopt;
+*/
 char *optarg;
 
 int
@@ -55,7 +57,10 @@ wbxml_getopt(int argc, char **argv, char *opts)
 		
 	}
 	
+	/* useless variable: optopt
 	optopt = c = argv[optind][sp];
+	*/
+	c = argv[optind][sp];
 
 	/* Check for invalid option */
 	if (c == ':' || (cp = strchr(opts, c)) == NULL) {

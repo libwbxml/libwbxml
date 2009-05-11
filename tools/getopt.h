@@ -11,7 +11,9 @@
 
 int wbxml_getopt(int argc, char **argv, char *opts);
 extern int optind;
+/* useless variable
 extern int optopt;
+*/
 extern char *optarg;
 
 #endif
