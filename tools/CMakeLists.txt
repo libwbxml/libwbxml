@@ -6,7 +6,15 @@ if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
 
-ADD_EXECUTABLE( wbxml2xml wbxml2xml_tool.c attgetopt.c )
+CONFIGURE_FILE( "config.h.cmake" "${CMAKE_CURRENT_BINARY_DIR}/config.h")
+
+IF( LIBWBXML_POSIX_GETOPT )
+	SET( ATTGETOPT "" )
+ELSE( LIBWBXML_POSIX_GETOPT )
+	SET( ATTGETOPT "attgetopt.c" )
+ENDIF( LIBWBXML_POSIX_GETOPT )
+
+ADD_EXECUTABLE( wbxml2xml wbxml2xml_tool.c ${ATTGETOPT} )
 	TARGET_LINK_LIBRARIES( wbxml2xml wbxml2 )
 	INSTALL( TARGETS wbxml2xml DESTINATION ${LIBWBXML_BIN_DIR} )
 

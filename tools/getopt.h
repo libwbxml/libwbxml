@@ -9,11 +9,22 @@
 #ifndef WBXML_GETOPT_H
 #define WBXML_GETOPT_H
 
+#include "tools/config.h"
+
+#ifdef FOUND_POSIX_GETOPT
+
+#include <unistd.h>
+#define wbxml_getopt getopt
+
+#else /* FOUND_POSIX_GETOPT */
+
 int wbxml_getopt(int argc, char **argv, char *opts);
 extern int optind;
 /* useless variable
 extern int optopt;
 */
 extern char *optarg;
+
+#endif /* FOUND_POSIX_GETOPT */
 
 #endif
