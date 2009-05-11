@@ -18,7 +18,7 @@ ADD_EXECUTABLE( wbxml2xml wbxml2xml_tool.c ${ATTGETOPT} )
 	TARGET_LINK_LIBRARIES( wbxml2xml wbxml2 )
 	INSTALL( TARGETS wbxml2xml DESTINATION ${LIBWBXML_BIN_DIR} )
 
-ADD_EXECUTABLE( xml2wbxml xml2wbxml_tool.c attgetopt.c )
+ADD_EXECUTABLE( xml2wbxml xml2wbxml_tool.c ${ATTGETOPT} )
 	TARGET_LINK_LIBRARIES( xml2wbxml wbxml2 )
 	INSTALL( TARGETS xml2wbxml DESTINATION ${LIBWBXML_BIN_DIR} )
 
