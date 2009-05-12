@@ -2,7 +2,7 @@ PROJECT( libwbxml C )
 
 SET( LIBWBXML_VERSION_MAJOR "0" )
 SET( LIBWBXML_VERSION_MINOR "10" )
-SET( LIBWBXML_VERSION_PATCH "6" )
+SET( LIBWBXML_VERSION_PATCH "7" )
 SET( LIBWBXML_VERSION "${LIBWBXML_VERSION_MAJOR}.${LIBWBXML_VERSION_MINOR}.${LIBWBXML_VERSION_PATCH}" )
 
 # The most recent interface number that this library implements.
@@ -15,7 +15,7 @@ SET( LIBWBXML_LIBVERSION_CURRENT 0 )
 # UPDATE: last release.
 # UPDATE: Set REVISION to 0 if any interface have been added, removed or
 # UPDATE: changed since the last update.
-SET( LIBWBXML_LIBVERSION_REVISION 15 )
+SET( LIBWBXML_LIBVERSION_REVISION 16 )
 
 # The difference between the newest and the oldest interfaces.
 # UPDATE: If any interface have been added since the last public

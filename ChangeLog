@@ -1,3 +1,12 @@
+2009-05-12  Michael Bell <michael.bell@web.de>
+  * Fixed a Debian MIPS port build issue (ticket #34)
+    If the operating system environment has a built-in getopt
+    implementation then the cmake environment disables the internal
+    implementation of libwbxml and uses the getopt function of the
+    operating system. This avoids clashes with variables which are
+    declared extern and explicit but already exists in the default
+    POSIX header files (e.g. optopt).
+
 2009-04-24  Michael Bell <michael.bell@web.de>
   * Extended (updated) tables for Microsoft AirSync
     (The patch was supplied by Ossi Jormakka from Ixonos Plc.)
