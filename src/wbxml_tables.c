@@ -119,6 +119,10 @@ const WBXMLPublicIDEntry sv_wv_csp12_public_id        = { WBXML_PUBLIC_ID_WV_CSP
 const WBXMLPublicIDEntry sv_airsync_public_id         = { WBXML_PUBLIC_ID_AIRSYNC,            XML_PUBLIC_ID_AIRSYNC,          "AirSync",              "http://www.microsoft.com/"};
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
+#if defined( WBXML_SUPPORT_CONML )
+const WBXMLPublicIDEntry sv_conml_public_id         = { WBXML_PUBLIC_ID_CONML,                XML_PUBLIC_ID_CONML,            "ConML",                "http://www.nokia.com/"};
+#endif /* WBXML_SUPPORT_CONML */
+
 
 /**************************************
  * Languages Tables
@@ -3136,6 +3140,54 @@ const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
 
+#if defined( WBXML_SUPPORT_CONML )
+
+/*************************************************
+ *    ConML
+ */
+ 
+const WBXMLTagEntry sv_conml_tag_table[] = {
+    /* Code Page: "ConML" */
+    { "All",                  0x00, 0x05 },
+    { "Application",          0x00, 0x06 },
+    { "Applications",         0x00, 0x07 },
+    { "Cancel",               0x00, 0x09 },
+    { "Complete",             0x00, 0x0a },
+    { "ConML",                0x00, 0x0b },
+    { "Data",                 0x00, 0x0c },
+    { "DeviceInfo",           0x00, 0x10 },
+    { "Drives",               0x00, 0x12 },
+    { "Execute",              0x00, 0x13 },
+    { "GetDataSize",          0x00, 0x17 },
+    { "GetStatus",            0x00, 0x18 },
+    { "HasFiles",             0x00, 0x19 },
+    { "ID",                   0x00, 0x1a },
+    { "IncType",              0x00, 0x1b },
+    { "Install",              0x00, 0x1c },
+    { "InstParams",           0x00, 0x1d },
+    { "ListInstalledApps",    0x00, 0x1f },
+    { "MaxObjectSize",        0x00, 0x21 },
+    { "Modified",             0x00, 0x22 },
+    { "MoreData",             0x00, 0x23 },
+    { "Name",                 0x00, 0x24 },
+    { "PackageInfo",          0x00, 0x25 },
+    { "Param",                0x00, 0x26 },
+    { "PartialType",          0x00, 0x27 },
+    { "Progress",             0x00, 0x28 },
+    { "Reboot",               0x00, 0x29 },
+    { "Results",              0x00, 0x2c },
+    { "Status",               0x00, 0x31 },
+    { "Task",                 0x00, 0x35 },
+    { "Type",                 0x00, 0x37 },
+    { "UID",                  0x00, 0x38 },
+    { "UnInstall",            0x00, 0x39 },
+    { "Value",                0x00, 0x3c },
+    { "Version",              0x00, 0x3d },
+    { NULL,                   0x00, 0x00 }
+};
+
+#endif /* WBXML_SUPPORT_CONML */
+
 
 /******************************
  *    Main Table
@@ -3215,6 +3267,10 @@ const WBXMLLangEntry sv_table_entry[] = {
 #if defined( WBXML_SUPPORT_AIRSYNC )
     { WBXML_LANG_AIRSYNC,           &sv_airsync_public_id,          sv_airsync_tag_table,           sv_airsync_ns_table,            NULL,                       NULL,                           NULL },
 #endif /* WBXML_SUPPORT_AIRSYNC */
+
+#if defined( WBXML_SUPPORT_CONML )
+    { WBXML_LANG_CONML,             &sv_conml_public_id,            sv_conml_tag_table,             NULL,                           NULL,                       NULL,                           NULL },
+#endif /* WBXML_SUPPORT_CONML */
 
     { WBXML_LANG_UNKNOWN,           NULL,                           NULL,                           NULL,                           NULL,                       NULL,                           NULL }
 };

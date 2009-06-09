@@ -25,5 +25,6 @@
 #cmakedefine WBXML_SUPPORT_SYNCML
 #cmakedefine WBXML_SUPPORT_WV
 #cmakedefine WBXML_SUPPORT_AIRSYNC
+#cmakedefine WBXML_SUPPORT_CONML
 
 #endif /* WBXML_CONFIG_H */

@@ -126,6 +126,9 @@ extern "C" {
 #define WBXML_PUBLIC_ID_AIRSYNC WBXML_PUBLIC_ID_UNKNOWN
 #define XML_PUBLIC_ID_AIRSYNC "-//AIRSYNC//DTD AirSync//EN"
 
+/* Nokia ConML */
+#define WBXML_PUBLIC_ID_CONML 0x8F
+#define XML_PUBLIC_ID_CONML "-//CONML//DTD ConML//EN"
 
 /****************************************************
  *    WBXML Tables Structures
