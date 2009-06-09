@@ -143,6 +143,11 @@ static WBXMLLanguage get_lang(const WB_TINY *lang)
         return WBXML_LANG_AIRSYNC;
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
+#if defined( WBXML_SUPPORT_CONML )
+    if (WBXML_STRCMP(lang, "CONML") == 0)
+        return WBXML_LANG_CONML;
+#endif /* WBXML_SUPPORT_CONML */
+
     return WBXML_LANG_UNKNOWN;
 }
 
@@ -218,6 +223,9 @@ static void help(void)
 #if defined( WBXML_SUPPORT_AIRSYNC )
     fprintf(stderr, "       AIRSYNC : Microsoft AirSync\n");
 #endif /* WBXML_SUPPORT_AIRSYNC */
+#if defined( WBXML_SUPPORT_CONML )
+    fprintf(stderr, "       CONML : Nokia ConML\n");
+#endif /* WBXML_SUPPORT_CONML */
     fprintf(stderr, "\nNote: '-' can be used to mean stdin on input or stdout on output\n\n");
 }
 
