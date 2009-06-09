@@ -3143,7 +3143,10 @@ const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
 #if defined( WBXML_SUPPORT_CONML )
 
 /*************************************************
- *    ConML
+ *    Nokia ConML
+ *
+ *    This is no official markup language from Nokia.
+ *    It is used for example by Nokia PC Suite to install software.
  */
  
 const WBXMLTagEntry sv_conml_tag_table[] = {
@@ -3151,13 +3154,34 @@ const WBXMLTagEntry sv_conml_tag_table[] = {
     { "All",                  0x00, 0x05 },
     { "Application",          0x00, 0x06 },
     { "Applications",         0x00, 0x07 },
+    { "Unknown_0x08",         0x00, 0x08 },
     { "Cancel",               0x00, 0x09 },
     { "Complete",             0x00, 0x0a },
     { "ConML",                0x00, 0x0b },
     { "Data",                 0x00, 0x0c },
-    { "DeviceInfo",           0x00, 0x10 },
+    /* Candidates from SyncML:
+         DataType     *
+         DefaultValue
+         Delete
+         Description  *
+         DevID        *
+     */
+    { "Unknown_0x0d",         0x00, 0x0d },
+    { "Unknown_0x0e",         0x00, 0x0e },
+    { "Unknown_0x0f",         0x00, 0x0f },
+    { "DevInf",               0x00, 0x10 },
+    /* Candidates from SyncML:
+         DevTyp
+     */
+    { "Unknown_0x11",         0x00, 0x11 },
     { "Drives",               0x00, 0x12 },
     { "Execute",              0x00, 0x13 },
+    /* Candidates from SyncML:
+         Final
+     */
+    { "Unknown_0x14",         0x00, 0x14 },
+    { "Unknown_0x15",         0x00, 0x15 },
+    { "Unknown_0x16",         0x00, 0x16 },
     { "GetDataSize",          0x00, 0x17 },
     { "GetStatus",            0x00, 0x18 },
     { "HasFiles",             0x00, 0x19 },
@@ -3166,21 +3190,67 @@ const WBXMLTagEntry sv_conml_tag_table[] = {
     { "Install",              0x00, 0x1c },
     { "InstParams",           0x00, 0x1d },
     { "ListInstalledApps",    0x00, 0x1f },
-    { "MaxObjectSize",        0x00, 0x21 },
+    /* Candidates from SyncML:
+         MaxMsgSize
+     */
+    { "Unknown_0x20",         0x00, 0x20 },
+    { "MaxObjSize",           0x00, 0x21 },
     { "Modified",             0x00, 0x22 },
     { "MoreData",             0x00, 0x23 },
+    /* The content of the element Name is originally encoded as opaque data.
+       The mobiles accepts the element data also as a normal string.
+       Therefore the data will be encoded as a string.
+       If there is a requirement for the original behavior
+       then it is necessary to add some code to wbxml_encoder.c.
+     */
     { "Name",                 0x00, 0x24 },
     { "PackageInfo",          0x00, 0x25 },
     { "Param",                0x00, 0x26 },
     { "PartialType",          0x00, 0x27 },
     { "Progress",             0x00, 0x28 },
     { "Reboot",               0x00, 0x29 },
+    /* Candidates from SyncML:
+         Replace
+         RespURI
+     */
+    { "Unknown_0x2a",         0x00, 0x2a },
+    { "Unknown_0x2b",         0x00, 0x2b },
     { "Results",              0x00, 0x2c },
+    /* Candidates from SyncML:
+         Search
+         Sequence
+         SessionID
+         SftDel
+         Source
+         SourceRef
+     */
+    { "Unknown_0x2d",         0x00, 0x2d },
+    { "Unknown_0x2e",         0x00, 0x2e },
+    { "Unknown_0x2f",         0x00, 0x2f },
+    { "Unknown_0x30",         0x00, 0x30 },
     { "Status",               0x00, 0x31 },
+    /* Candidates from SyncML:
+         Target
+         TargetRef
+     */
+    { "Unknown_0x32",         0x00, 0x32 },
+    { "Unknown_0x33",         0x00, 0x33 },
+    { "Unknown_0x34",         0x00, 0x34 },
     { "Task",                 0x00, 0x35 },
+    /* Candidates from SyncML:
+         Time
+         TStamp
+         Title
+     */
+    { "Unknown_0x36",         0x00, 0x36 },
     { "Type",                 0x00, 0x37 },
     { "UID",                  0x00, 0x38 },
     { "UnInstall",            0x00, 0x39 },
+    /* Candidates from SyncML:
+         ValEnum
+     */
+    { "Unknown_0x3a",         0x00, 0x3a },
+    { "Unknown_0x3b",         0x00, 0x3b },
     { "Value",                0x00, 0x3c },
     { "Version",              0x00, 0x3d },
     { NULL,                   0x00, 0x00 }
