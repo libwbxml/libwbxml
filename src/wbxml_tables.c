@@ -3169,7 +3169,7 @@ const WBXMLTagEntry sv_conml_tag_table[] = {
     { "Unknown_0x0d",         0x00, 0x0d },
     { "Unknown_0x0e",         0x00, 0x0e },
     { "Unknown_0x0f",         0x00, 0x0f },
-    { "DevInf",               0x00, 0x10 },
+    { "DeviceInfo",           0x00, 0x10 },
     /* Candidates from SyncML:
          DevTyp
      */
@@ -3194,7 +3194,7 @@ const WBXMLTagEntry sv_conml_tag_table[] = {
          MaxMsgSize
      */
     { "Unknown_0x20",         0x00, 0x20 },
-    { "MaxObjSize",           0x00, 0x21 },
+    { "MaxObjectSize",        0x00, 0x21 },
     { "Modified",             0x00, 0x22 },
     { "MoreData",             0x00, 0x23 },
     /* The content of the element Name is originally encoded as opaque data.
