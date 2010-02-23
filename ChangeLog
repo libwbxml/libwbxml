@@ -1,3 +1,8 @@
+  * Removed OMA DM tests because the OMA did not grant a permission
+    for the inclusion (ticket #36).
+  * Added a fix for the broken vFormat handling in the SyncML
+    specification. All LFs are replaced by CRLFs in every vFormat
+    object inside a SyncML message.
   * Added Nokia ConML support (ticket #35).
     There is no public documentation available from Nokia. The
     transformation tables were created from sniffed WBXML documents.
