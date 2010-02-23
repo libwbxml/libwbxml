@@ -405,11 +405,31 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
 #if defined ( WBXML_SUPPORT_SYNCML )
     /* Specific treatment for SyncML */
     switch (wbxml_tree_node_get_syncml_data_type(tree_ctx->current)) {
-    case WBXML_SYNCML_DATA_TYPE_CLEAR:
     case WBXML_SYNCML_DATA_TYPE_DIRECTORY_VCARD:
     case WBXML_SYNCML_DATA_TYPE_VCALENDAR:
     case WBXML_SYNCML_DATA_TYPE_VCARD:
     case WBXML_SYNCML_DATA_TYPE_VOBJECT:
+        /* SyncML has some real design bugs
+         * because the authors of the specification did not understand XML.
+         *
+         * There must be a hack to preserve the CRLFs of vFormat objects.
+         * The only chance to do this is the detection of the vFormat itself
+         * and the conversion of every LF to a CRLF.
+         *
+         * The line breaks are always in a single text node.
+         * So a CR is appended to get a CRLF at the end.
+         */
+
+        if (len == 1 && ch[0] == '\n') /* line break - LF */
+        {
+            ch = "\r\n";
+            len = 2;
+        }
+
+        /* Do not break here.
+         * The CDATA handling is required for vFormat objects too.
+         */
+    case WBXML_SYNCML_DATA_TYPE_CLEAR:
         /*
          * Add a missing CDATA section node
          *
@@ -472,7 +492,7 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
          *     </Data>
          *  ...
          *
-         * In this example, the spaces beetwen "]]>" and "</Data>" mustn't be added
+         * In this example, the spaces beetwen "]]>" and "</Data>" must not be added
          * to a CDATA section. 
          */
         if ((tree_ctx->current != NULL) && 

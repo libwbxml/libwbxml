@@ -793,6 +793,10 @@ WBXML_DECLARE(WBXMLSyncMLDataType) wbxml_tree_node_get_syncml_data_type(WBXMLTre
     if (node == NULL)
         return WBXML_SYNCML_DATA_TYPE_NORMAL;
 
+    /* If we are in a CDATA node then we must look into the parent node. */
+    if (node->type == WBXML_TREE_CDATA_NODE)
+        node = node->parent;
+
     /* Are we in a <Data> ? */
     if ((node->type == WBXML_TREE_ELEMENT_NODE) &&
         (node->name != NULL) &&
