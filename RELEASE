@@ -59,10 +59,7 @@ To make a release of libwbxml, do the following:
      md5sum -c libwbxml-$MAJOR.$MINOR.$PATCH.md5sum
 
  - upload the tarballs and the checksum file to the File Release System
-   of SourceForge
-   "sftp $USER@frs.sf.net",
-   "cd uploads",
-   "put libwbxml-$MAJOR.$MINOR.$PATCH.*"
+   of SourceForge via the web interface
 
  - Annouce the release on the mailing list
    Tips: 
