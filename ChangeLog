@@ -1,5 +1,7 @@
-  * Fixed MS VisualStudio 2008 issue with variable definitions
-    (committed changes from ticket #42)
+  * Fixed unsigned integer overflow (patch from ticket #41)
+    The overflow causes crashs or wrong wbxml messages.
+  * Fixed location of variable definitions (changes from ticket #42)
+    This fixes some compiler errors from MS VisualStudio 2008.
 
 2010-03-29  Michael Bell <michael.bell@web.de>
   * Released 0.10.8

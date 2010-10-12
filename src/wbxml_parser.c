@@ -763,7 +763,7 @@ static WBXMLError parse_strtbl(WBXMLParser *parser)
 
     if (strtbl_len > 0) {
         /* Check this string table length */
-        if (parser->pos + strtbl_len > wbxml_buffer_len(parser->wbxml))
+        if (strtbl_len > wbxml_buffer_len(parser->wbxml) - parser->pos)
             return WBXML_ERROR_STRTBL_LENGTH;
 
         /* Get String Table */
