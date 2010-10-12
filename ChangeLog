@@ -1,3 +1,6 @@
+  * Fixed MS VisualStudio 2008 issue with variable definitions
+    (committed changes from ticket #42)
+
 2010-03-29  Michael Bell <michael.bell@web.de>
   * Released 0.10.8
   * Removed OMA DM tests because the OMA did not grant a permission

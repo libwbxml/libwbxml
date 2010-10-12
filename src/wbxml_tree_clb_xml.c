@@ -202,6 +202,9 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 #if defined( WBXML_SUPPORT_SYNCML )
             if (WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0 ||
 	        WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0) {
+		/* definitions first ... or some compilers don't like it */
+		const WBXMLLangEntry *lang;
+
                 /* Get embedded DevInf or DM DDF Document */
                 embed_doc = wbxml_buffer_create(tree_ctx->input_buff + tree_ctx->skip_start, 
                                                  XML_GetCurrentByteIndex(tree_ctx->xml_parser) - tree_ctx->skip_start,
@@ -229,7 +232,6 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
                 }
 
                 /* Add doctype to give the XML parser a chance */
-		const WBXMLLangEntry *lang;
 		if (WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0 &&
 		    tree_ctx->tree->lang->langID != WBXML_LANG_SYNCML_SYNCML12)
 		{

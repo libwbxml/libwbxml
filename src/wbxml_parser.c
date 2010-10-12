@@ -714,6 +714,9 @@ static WBXMLError parse_publicid(WBXMLParser *parser)
  */
 static WBXMLError parse_charset(WBXMLParser *parser)
 {
+    /* definitions first ... or some compilers don't like it */
+    const char *charset_name = NULL;
+
 #if defined( WBXML_LIB_VERBOSE )
     WB_ULONG startpos = parser->pos;
 #endif /* WBXML_LIB_VERBOSE */
@@ -726,7 +729,6 @@ static WBXMLError parse_charset(WBXMLParser *parser)
         return ret;
     }
 
-    const char *charset_name = NULL;
     if (!wbxml_charset_get_name(charset, &charset_name)) {
         return WBXML_ERROR_NO_CHARSET_CONV;
     }
