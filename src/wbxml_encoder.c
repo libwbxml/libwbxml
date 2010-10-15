@@ -625,10 +625,14 @@ WBXML_DECLARE(WBXMLError) wbxml_encoder_set_flow_mode(WBXMLEncoder *encoder, WB_
     if (encoder == NULL)
         return WBXML_ERROR_BAD_PARAMETER;
     
-    encoder->flow_mode = TRUE;
+    encoder->flow_mode = flow_mode;
     
-    /* Don't use String Tables */
-    wbxml_encoder_set_use_strtbl(encoder, FALSE);
+    /* The string tables must only be disabled during flow mode. */
+    if (flow_mode)
+    {
+        /* Don't use String Tables */
+        wbxml_encoder_set_use_strtbl(encoder, FALSE);
+    }
     
     return WBXML_OK;
 }
@@ -3023,7 +3027,8 @@ static WBXMLError wbxml_encode_wv_content(WBXMLEncoder *encoder, WB_UTINY *buffe
 static WBXMLError wbxml_encode_wv_integer(WBXMLEncoder *encoder, WB_UTINY *buffer)
 {
     WB_UTINY octets[4];
-    WB_ULONG the_int = 0, i = 0, start = 0;
+    WB_ULONG the_int = 0, start = 0;
+    WB_LONG i = 0;
 
     if ((encoder == NULL) || (buffer == NULL))
         return WBXML_ERROR_INTERNAL;

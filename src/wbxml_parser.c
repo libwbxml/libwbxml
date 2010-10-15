@@ -242,8 +242,9 @@ WBXML_DECLARE(WBXMLError) wbxml_parser_parse(WBXMLParser *parser, WB_UTINY *wbxm
     ret = parse_version(parser);
     CHECK_ERROR
 
-    if ((WB_UTINY)parser->version > WBXML_VERSION_13)
+    if ((WB_UTINY)parser->version > WBXML_VERSION_13) {
         WBXML_WARNING((WBXML_PARSER, "This library only supports WBXML " WBXML_VERSION_TEXT_13));
+    }
 
     /* WBXML Public ID */
     ret = parse_publicid(parser);
@@ -1094,8 +1095,9 @@ static WBXMLError parse_switch_page(WBXMLParser *parser, WBXMLTokenType code_spa
 {
     WBXML_DEBUG((WBXML_PARSER, "(%d) Parsing switchPage", parser->pos));
 
-    if ((WB_UTINY) parser->version < (WB_UTINY) WBXML_VERSION_12)
+    if ((WB_UTINY) parser->version < (WB_UTINY) WBXML_VERSION_12) {
         WBXML_WARNING((WBXML_PARSER, "No Switch Page mecanism possible in WBXML < %s (current: %d)", WBXML_VERSION_TEXT_12, (WB_UTINY) parser->version));
+    }
 
     /* Skip SWITCH_PAGE token */
     parser->pos++;
@@ -1746,8 +1748,9 @@ static WBXMLError parse_opaque(WBXMLParser *parser, WBXMLBuffer **result)
   
     WBXML_DEBUG((WBXML_PARSER, "(%d) Parsing opaque", parser->pos));
   
-    if (parser->version < WBXML_VERSION_11)
+    if (parser->version < WBXML_VERSION_11) {
         WBXML_WARNING((WBXML_PARSER, "No 'opaque' support in WBXML < %s", WBXML_VERSION_TEXT_11));
+    }
   
     /* Skip OPAQUE */
     parser->pos++;

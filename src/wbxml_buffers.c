@@ -167,7 +167,7 @@ WBXML_DECLARE(WB_ULONG) wbxml_buffer_len(WBXMLBuffer *buffer)
 
 WBXML_DECLARE(WB_BOOL) wbxml_buffer_get_char(WBXMLBuffer *buffer, WB_ULONG pos, WB_UTINY *result)
 {
-    if ((buffer == NULL) || (pos >= buffer->len) || (pos < 0))
+    if ((buffer == NULL) || (pos >= buffer->len))
         return FALSE;
         
     *result = buffer->data[pos];
@@ -359,8 +359,7 @@ WBXML_DECLARE(void) wbxml_buffer_strip_blanks(WBXMLBuffer *buffer)
     if ((len = wbxml_buffer_len(buffer)) > 0) {
         end = len = len - 1;
         while (wbxml_buffer_get_char(buffer, end, &ch) &&
-            isspace(ch) && 
-            end >= 0) 
+            isspace(ch)) 
         {
             end--;
         }
@@ -706,7 +705,7 @@ WBXML_DECLARE(void) wbxml_buffer_remove_trailing_zeros(WBXMLBuffer **buffer)
  */
 static WB_BOOL grow_buff(WBXMLBuffer *buffer, WB_ULONG size)
 {
-    if ((buffer == NULL) || buffer->is_static || (size < 0))
+    if ((buffer == NULL) || buffer->is_static)
         return FALSE;
         
     /* Make room for the invisible terminating NUL */
