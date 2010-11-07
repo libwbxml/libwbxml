@@ -1,7 +1,7 @@
 /*
  * libwbxml, the WBXML Library.
  * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
- * Copyright (C) 2008-2009 Michael Bell <michael.bell@opensync.org>
+ * Copyright (C) 2008-2010 Michael Bell <michael.bell@opensync.org>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -752,34 +752,42 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_node_add_xml_attrs(const WBXMLLangEntry *la
 WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_node_elt_get_from_name(WBXMLTreeNode *node, const char *name, WB_BOOL recurs)
 {
     WBXMLTreeNode *current_node = NULL;
-    WB_BOOL node_found = FALSE;
+    WBXMLTreeNode *recurs_node = NULL;
 
     if ((node == NULL) || (name == NULL))
         return NULL;
-
-    /** @todo Handle 'recurs' TRUE */
 
     /* Let's go through the tree */
     current_node = node;
 
     while (current_node != NULL)
     {
-        /* Is this the Node we searched ? */
-        if ((current_node->type == WBXML_TREE_ELEMENT_NODE) && 
-            (WBXML_STRCMP(wbxml_tag_get_xml_name(current_node->name), name) == 0))
+        /* Is this a normal node? */
+        if (current_node->type == WBXML_TREE_ELEMENT_NODE)
         {
-            node_found = TRUE;
-            break;
+            /* Is this the Node we searched ? */
+            if (WBXML_STRCMP(wbxml_tag_get_xml_name(current_node->name), name) == 0)
+            {
+                return current_node;
+            }
+
+            /* Sould we start a recursive search? */
+            if (recurs && current_node->children)
+            {
+                recurs_node = wbxml_tree_node_elt_get_from_name(current_node->children, name, TRUE);
+                /* Is this the Node we searched ? */
+                if (recurs_node)
+                {
+                    return recurs_node;
+                }
+            }
         }
-        else {
-            /* Go to next Sibbling Node */
-            current_node = current_node->next;
-        }
+
+        /* Go to next Sibbling Node */
+        current_node = current_node->next;
     }
 
-    if (node_found)
-        return current_node;
-
+    /* A node with the specified name could not be found. */
     return NULL;
 }
 

@@ -2,6 +2,8 @@
     The overflow causes crashs or wrong wbxml messages.
   * Fixed location of variable definitions (changes from ticket #42)
     This fixes some compiler errors from MS VisualStudio 2008.
+  * Added support for recursion in wbxml_tree_node_elt_get_from_name
+    (ticket #46)
 
 2010-03-29  Michael Bell <michael.bell@web.de>
   * Released 0.10.8
