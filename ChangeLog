@@ -1,3 +1,4 @@
+  * Fixed wrong WBXML table token for OMA DM DDF (ticket #51)
   * Fixed unsigned integer overflow (patch from ticket #41)
     The overflow causes crashs or wrong wbxml messages.
   * Fixed location of variable definitions (changes from ticket #42)

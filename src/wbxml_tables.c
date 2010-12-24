@@ -1980,7 +1980,7 @@ const WBXMLTagEntry sv_syncml_dmddf12_tag_table[] = {
     { "CIS",            0x02, 0x0D },
     { "Copy",           0x02, 0x0E },
     { "CS",             0x02, 0x0F },
-    { "data",           0x02, 0x10 },
+    { "date",           0x02, 0x10 },
     { "DDFName",        0x02, 0x11 },
     { "DefaultValue",   0x02, 0x12 },
     { "Delete",         0x02, 0x13 },
