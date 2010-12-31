@@ -1,8 +1,9 @@
   * Fixed wrong WBXML table token for OMA DM DDF (ticket #51)
   * Fixed unsigned integer overflow (patch from ticket #41)
     The overflow causes crashs or wrong wbxml messages.
-  * Fixed location of variable definitions (changes from ticket #42)
-    This fixes some compiler errors from MS VisualStudio 2008.
+  * Fixed locations of variable definitions and replaced strtoull by
+    strtoul (changes from ticket #42 and #50).
+    This fixes some compiler errors from MS VisualStudio 2008 and 9.0.
   * Added support for recursion in wbxml_tree_node_elt_get_from_name
     (ticket #46)
 

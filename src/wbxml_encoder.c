@@ -3139,8 +3139,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     WBXMLBuffer *component = NULL;
 
     /* definitions first ... or some compilers don't like it */
-    unsigned int year;
-    unsigned int month;
+    unsigned int year, month, day, hour, minute, second;
 
     len = WBXML_STRLEN(buffer);
 
@@ -3226,7 +3225,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
         goto error;
     }
     wbxml_buffer_delete(component, 4, 10);
-    year = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
+    year = strtoul((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
     octets[0] = (WB_UTINY) ((year & 0xfc0) >> 6); /* 6 bits */
     octets[1] = (WB_UTINY) (year & 0x3f);  /* 6 bits */
@@ -3239,7 +3238,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     }
     wbxml_buffer_delete(component, 0, 4);
     wbxml_buffer_delete(component, 2, 8);
-    month = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
+    month = strtoul((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
     octets[1] <<= 2;
     octets[1] += (WB_UTINY) ((month & 0xc) >> 2); /* 2 bits */
@@ -3253,7 +3252,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     }
     wbxml_buffer_delete(component, 0, 6);
     wbxml_buffer_delete(component, 2, 6);
-    unsigned int day = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
+    day = strtoul((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
     octets[2] <<= 5;
     octets[2] += (WB_UTINY) (day & 0x1f); /* 5 bits */
@@ -3266,7 +3265,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     }
     wbxml_buffer_delete(component, 0, 8);
     wbxml_buffer_delete(component, 2, 4);
-    unsigned int hour = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
+    hour = strtoul((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
     octets[2] <<=1;
     octets[2] += (WB_UTINY) ((hour & 0x10) >> 4); /* 1 bit */
@@ -3280,7 +3279,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     }
     wbxml_buffer_delete(component, 0, 10);
     wbxml_buffer_delete(component, 2, 2);
-    unsigned int minute = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
+    minute = strtoul((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
     octets[3] <<=4;
     octets[3] += (WB_UTINY) ((minute & 0x3c) >> 2); /* 4 bits */
@@ -3293,7 +3292,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
         goto error;
     }
     wbxml_buffer_delete(component, 0, 12);
-    unsigned int second = strtoull((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
+    second = strtoul((const char *)wbxml_buffer_get_cstr(component), NULL, 10);
     wbxml_buffer_destroy(component);
     octets[4] <<=6;
     octets[4] += (WB_UTINY) (second & 0x3f); /* 6 bits */
