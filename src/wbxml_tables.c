@@ -2551,7 +2551,12 @@ const WBXMLExtValueEntry sv_wv_csp_ext_table[] = {
 #if defined( WBXML_SUPPORT_AIRSYNC )
 
 /*************************************************
- *    Exchange ActiveSync (aka AirSync)
+ *    Microsoft ActiveSync (aka AirSync)
+ *
+ *    Actually the table represent [MS-ASWBXML] 8.0.
+ * 
+ *    mainly used by Microsoft Exchange and
+ *    modern mobiles from all vendors
  */
  
 const WBXMLTagEntry sv_airsync_tag_table[] = {
@@ -2568,7 +2573,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Status",                 0x00, 0x0e },
     { "Collection",             0x00, 0x0f },
     { "Class",                  0x00, 0x10 },
-    { "Version",                0x00, 0x11 },
+    { "Version",                0x00, 0x11 }, /* not defined in [MS-ASWBXML] 8.0 */
     { "CollectionId",           0x00, 0x12 },
     { "GetChanges",             0x00, 0x13 },
     { "MoreAvailable",          0x00, 0x14 },
@@ -2576,13 +2581,13 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Commands",               0x00, 0x16 },
     { "Options",                0x00, 0x17 },
     { "FilterType",             0x00, 0x18 },
-    { "Truncation",             0x00, 0x19 },
-    { "RtfTruncation",          0x00, 0x1a },
+    { "Truncation",             0x00, 0x19 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "RtfTruncation",          0x00, 0x1a }, /* not defined in [MS-ASWBXML] 8.0 */
     { "Conflict",               0x00, 0x1b },
     { "Collections",            0x00, 0x1c },
     { "ApplicationData",        0x00, 0x1d },
     { "DeletesAsMoves",         0x00, 0x1e },
-    { "NotifyGUID",             0x00, 0x1f },
+    { "NotifyGUID",             0x00, 0x1f }, /* not defined in [MS-ASWBXML] 8.0 */
     { "Supported",              0x00, 0x20 },
     { "SoftDelete",             0x00, 0x21 },
     { "MIMESupport",            0x00, 0x22 },
@@ -2590,18 +2595,18 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Wait",                   0x00, 0x24 },
     { "Limit",                  0x00, 0x25 },
     { "Partial",                0x00, 0x26 },
-    { "ConversationMode",       0x00, 0x27 },
-    { "MaxItems",               0x00, 0x28 },
-    { "HeartbeatInterval",      0x00, 0x29 },
+    { "ConversationMode",       0x00, 0x27 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "MaxItems",               0x00, 0x28 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "HeartbeatInterval",      0x00, 0x29 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
 
     /* Code Page: Contacts */
     { "Anniversary",            0x01, 0x05 },
     { "AssistantName",          0x01, 0x06 },
-    { "AssistnamePhoneNumber",  0x01, 0x07 },
+    { "AssistnamePhoneNumber",  0x01, 0x07 }, /* [MS-ASWBXML] 8.0: AssistantTelephoneNumber */
     { "Birthday",               0x01, 0x08 },
-    { "Body",                   0x01, 0x09 },
-    { "BodySize",               0x01, 0x0a },
-    { "BodyTruncated",          0x01, 0x0b },
+    { "Body",                   0x01, 0x09 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "BodySize",               0x01, 0x0a }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "BodyTruncated",          0x01, 0x0b }, /* not defined in [MS-ASWBXML] 8.0 */
     { "Business2PhoneNumber",   0x01, 0x0c },
     { "BusinessCity",           0x01, 0x0d },
     { "BusinessCountry",        0x01, 0x0e },
@@ -2649,24 +2654,24 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "YomiCompanyName",        0x01, 0x38 },
     { "YomiFirstName",          0x01, 0x39 },
     { "YomiLastName",           0x01, 0x3a },
-    { "Rtf",                    0x01, 0x3b },
+    { "Rtf",                    0x01, 0x3b }, /* not defined in [MS-ASWBXML] 8.0 */
     { "Picture",                0x01, 0x3c },
-    { "Alias",                  0x01, 0x3d },
-    { "WeightedRank",           0x01, 0x3e },
+    { "Alias",                  0x01, 0x3d }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "WeightedRank",           0x01, 0x3e }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
 
     /* Code Page: Email */
-    { "Attachment",             0x02, 0x05 },
-    { "Attachments",            0x02, 0x06 },
-    { "AttName",                0x02, 0x07 },
-    { "AttSize",                0x02, 0x08 },
-    { "AttOid",                 0x02, 0x09 },
-    { "AttMethod",              0x02, 0x0a },
-    { "AttRemoved",             0x02, 0x0b },
-    { "Body",                   0x02, 0x0c },
-    { "BodySize",               0x02, 0x0d },
-    { "BodyTruncated",          0x02, 0x0e },
+    { "Attachment",             0x02, 0x05 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "Attachments",            0x02, 0x06 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "AttName",                0x02, 0x07 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "AttSize",                0x02, 0x08 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "AttOid",                 0x02, 0x09 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "AttMethod",              0x02, 0x0a }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "AttRemoved",             0x02, 0x0b }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "Body",                   0x02, 0x0c }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "BodySize",               0x02, 0x0d }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "BodyTruncated",          0x02, 0x0e }, /* not defined in [MS-ASWBXML] 8.0 */
     { "DateReceived",           0x02, 0x0f },
-    { "DisplayName",            0x02, 0x10 },
+    { "DisplayName",            0x02, 0x10 }, /* not defined in [MS-ASWBXML] 8.0 */
     { "DisplayTo",              0x02, 0x11 },
     { "Importance",             0x02, 0x12 },
     { "MessageClass",           0x02, 0x13 },
@@ -2677,9 +2682,9 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "From",                   0x02, 0x18 },
     { "Reply-To",               0x02, 0x19 },
     { "AllDayEvent",            0x02, 0x1a },
-    { "Categories",             0x02, 0x1b },
-    { "Category",               0x02, 0x1c },
-    { "DtStamp",                0x02, 0x1d },
+    { "Categories",             0x02, 0x1b }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "Category",               0x02, 0x1c }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "DtStamp",                0x02, 0x1d }, /* [MS-ASWBXML] 8.0: DTStamp */
     { "EndTime",                0x02, 0x1e },
     { "InstanceType",           0x02, 0x1f },
     { "BusyStatus",             0x02, 0x20 },
@@ -2691,22 +2696,22 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "ResponseRequested",      0x02, 0x26 },
     { "Recurrences",            0x02, 0x27 },
     { "Recurrence",             0x02, 0x28 },
-    { "Type",                   0x02, 0x29 },
-    { "Until",                  0x02, 0x2a },
-    { "Occurrences",            0x02, 0x2b },
-    { "Interval",               0x02, 0x2c },
-    { "DayOfWeek",              0x02, 0x2d },
-    { "DayOfMonth",             0x02, 0x2e },
-    { "WeekOfMonth",            0x02, 0x2f },
-    { "MonthOfYear",            0x02, 0x30 },
+    { "Type",                   0x02, 0x29 }, /* [MS-ASWBXML] 8.0: Recurrence_Type */
+    { "Until",                  0x02, 0x2a }, /* [MS-ASWBXML] 8.0: Recurrence_Until */
+    { "Occurrences",            0x02, 0x2b }, /* [MS-ASWBXML] 8.0: Recurrence_Occurences */
+    { "Interval",               0x02, 0x2c }, /* [MS-ASWBXML] 8.0: Recurrence_Interval */
+    { "DayOfWeek",              0x02, 0x2d }, /* [MS-ASWBXML] 8.0: Recurrence_DayOfWeek */
+    { "DayOfMonth",             0x02, 0x2e }, /* [MS-ASWBXML] 8.0: Recurrence_DayOfMonth */
+    { "WeekOfMonth",            0x02, 0x2f }, /* [MS-ASWBXML] 8.0: Recurrence_WeekOfMonth */
+    { "MonthOfYear",            0x02, 0x30 }, /* [MS-ASWBXML] 8.0: Recurrence_MonthOfYear */
     { "StartTime",              0x02, 0x31 },
     { "Sensitivity",            0x02, 0x32 },
     { "TimeZone",               0x02, 0x33 },
     { "GlobalObjId",            0x02, 0x34 },
     { "ThreadTopic",            0x02, 0x35 },
-    { "MIMEData",               0x02, 0x36 },
-    { "MIMETruncated",          0x02, 0x37 },
-    { "MIMESize",               0x02, 0x38 },
+    { "MIMEData",               0x02, 0x36 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "MIMETruncated",          0x02, 0x37 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "MIMESize",               0x02, 0x38 }, /* not defined in [MS-ASWBXML] 8.0 */
     { "InternetCPID",           0x02, 0x39 },
     { "Flag",                   0x02, 0x3a },
     { "FlagStatus",             0x02, 0x3b },
@@ -2716,79 +2721,85 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "DisallowNewTimeProposal",0x02, 0x3f },
 
     /* Code Page: "AirNotify" */
-    { "Notify",                 0x03, 0x05 },
-    { "Notification",           0x03, 0x06 },
-    { "Version",                0x03, 0x07 },
-    { "Lifetime",               0x03, 0x08 },
-    { "DeviceInfo",             0x03, 0x09 },
-    { "Enable",                 0x03, 0x0a },
-    { "Folder",                 0x03, 0x0b },
-    { "ServerId",               0x03, 0x0c },
-    { "DeviceAddress",          0x03, 0x0d },
-    { "ValidCarrierProfiles",   0x03, 0x0e },
-    { "CarrierProfile",         0x03, 0x0f },
-    { "Status",                 0x03, 0x10 },
-    { "Responses",              0x03, 0x11 },
-    { "Version='1.1'",          0x03, 0x05 },
-    { "Devices",                0x03, 0x12 },
-    { "Device",                 0x03, 0x13 },
-    { "Id",                     0x03, 0x14 },
-    { "Expiry",                 0x03, 0x15 },
-    { "NotifyGUID",             0x03, 0x16 },
-    { "DeviceFriendlyName",     0x03, 0x17 },
 
+    /* [MS-ASWBXML] 8.0: This code page is no longer in use.
+     * [MS-ASWBXML] 8.0: Tokens 05 to 17 have been defined.
+     */
+
+    { "Notify",                 0x03, 0x05 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Notification",           0x03, 0x06 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Version",                0x03, 0x07 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Lifetime",               0x03, 0x08 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "DeviceInfo",             0x03, 0x09 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Enable",                 0x03, 0x0a },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Folder",                 0x03, 0x0b },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "ServerId",               0x03, 0x0c },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "DeviceAddress",          0x03, 0x0d },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "ValidCarrierProfiles",   0x03, 0x0e },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "CarrierProfile",         0x03, 0x0f },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Status",                 0x03, 0x10 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Responses",              0x03, 0x11 },  /* not defined in [MS-ASWBXML] 8.0 */
+    /* WARNING: What's this!? */
+    /* FIXME: What's this!? */
+    /* { "Version='1.1'",          0x03, 0x05 }, */
+    { "Devices",                0x03, 0x12 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Device",                 0x03, 0x13 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Id",                     0x03, 0x14 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "Expiry",                 0x03, 0x15 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "NotifyGUID",             0x03, 0x16 },  /* not defined in [MS-ASWBXML] 8.0 */
+    { "DeviceFriendlyName",     0x03, 0x17 },  /* not defined in [MS-ASWBXML] 8.0 */
 
     /* Code Page: Calendar */
     { "Timezone",               0x04, 0x05 },
     { "AllDayEvent",            0x04, 0x06 },
     { "Attendees",              0x04, 0x07 },
     { "Attendee",               0x04, 0x08 },
-    { "Email",                  0x04, 0x09 },
-    { "Name",                   0x04, 0x0a },
-    { "Body",                   0x04, 0x0b },
-    { "BodyTruncated",          0x04, 0x0c },
+    { "Email",                  0x04, 0x09 }, /* [MS-ASWBXML] 8.0: Attendee_Email */
+    { "Name",                   0x04, 0x0a }, /* [MS-ASWBXML] 8.0: Attendee_Name */
+    { "Body",                   0x04, 0x0b }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "BodyTruncated",          0x04, 0x0c }, /* not defined in [MS-ASWBXML] 8.0 */
     { "BusyStatus",             0x04, 0x0d },
     { "Categories",             0x04, 0x0e },
     { "Category",               0x04, 0x0f },
-    { "Rtf",                    0x04, 0x10 },
-    { "DtStamp",                0x04, 0x11 },
+    { "Rtf",                    0x04, 0x10 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "DtStamp",                0x04, 0x11 }, /* [MS-ASWBXML] 8.0: DTStamp */
     { "EndTime",                0x04, 0x12 },
     { "Exception",              0x04, 0x13 },
     { "Exceptions",             0x04, 0x14 },
-    { "Deleted",                0x04, 0x15 },
-    { "ExceptionStartTime",     0x04, 0x16 },
+    { "Deleted",                0x04, 0x15 }, /* [MS-ASWBXML] 8.0: Exception_Deleted */
+    { "ExceptionStartTime",     0x04, 0x16 }, /* [MS-ASWBXML] 8.0: Exception_StartTime */
     { "Location",               0x04, 0x17 },
     { "MeetingStatus",          0x04, 0x18 },
-    { "OrganizerEmail",         0x04, 0x19 },
-    { "OrganizerName",          0x04, 0x1a },
+    { "OrganizerEmail",         0x04, 0x19 }, /* [MS-ASWBXML] 8.0: Organizer_Email */
+    { "OrganizerName",          0x04, 0x1a }, /* [MS-ASWBXML] 8.0: Organizer_Name */
     { "Recurrence",             0x04, 0x1b },
-    { "Type",                   0x04, 0x1c },
-    { "Until",                  0x04, 0x1d },
-    { "Occurrences",            0x04, 0x1e },
-    { "Interval",               0x04, 0x1f },
-    { "DayOfWeek",              0x04, 0x20 },
-    { "DayOfMonth",             0x04, 0x21 },
-    { "WeekOfMonth",            0x04, 0x22 },
-    { "MonthOfYear",            0x04, 0x23 },
+    { "Type",                   0x04, 0x1c }, /* [MS-ASWBXML] 8.0: Recurrence_Type */
+    { "Until",                  0x04, 0x1d }, /* [MS-ASWBXML] 8.0: Recurrence_Until */
+    { "Occurrences",            0x04, 0x1e }, /* [MS-ASWBXML] 8.0: Recurrence_Occurrences */
+    { "Interval",               0x04, 0x1f }, /* [MS-ASWBXML] 8.0: Recurrence_Interval */
+    { "DayOfWeek",              0x04, 0x20 }, /* [MS-ASWBXML] 8.0: Recurrence_DayOfWeek */
+    { "DayOfMonth",             0x04, 0x21 }, /* [MS-ASWBXML] 8.0: Recurrence_DayOfMonth */
+    { "WeekOfMonth",            0x04, 0x22 }, /* [MS-ASWBXML] 8.0: Recurrence_WeekOfMonth */
+    { "MonthOfYear",            0x04, 0x23 }, /* [MS-ASWBXML] 8.0: Recurrence_MonthOfYear */
     { "Reminder",               0x04, 0x24 },
     { "Sensitivity",            0x04, 0x25 },
     { "Subject",                0x04, 0x26 },
     { "StartTime",              0x04, 0x27 },
     { "UID",                    0x04, 0x28 },
-    { "AttendeeStatus",         0x04, 0x29 },
-    { "AttendeeType",           0x04, 0x2a },
-    { "DisallowNewTimeProposal",0x04, 0x33 },
-    { "ResponseRequested",      0x04, 0x34 },
-    { "AppointmentReplyTime",   0x04, 0x35 },
-    { "ResponseType",           0x04, 0x36 },
-    { "CalendarType",           0x04, 0x37 },
-    { "IsLeapMonth",            0x04, 0x38 },
-    { "FirstDayOfWeek",         0x04, 0x39 },
-    { "OnlineMeetingConfLink",  0x04, 0x3a },
-    { "OnlineMeetingExternalLink",0x04, 0x3b },
+    { "AttendeeStatus",         0x04, 0x29 }, /* [MS-ASWBXML] 8.0: Attendee_Status */
+    { "AttendeeType",           0x04, 0x2a }, /* [MS-ASWBXML] 8.0: Attendee_Type */
+    { "DisallowNewTimeProposal",0x04, 0x33 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "ResponseRequested",      0x04, 0x34 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "AppointmentReplyTime",   0x04, 0x35 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "ResponseType",           0x04, 0x36 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "CalendarType",           0x04, 0x37 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "IsLeapMonth",            0x04, 0x38 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "FirstDayOfWeek",         0x04, 0x39 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "OnlineMeetingConfLink",  0x04, 0x3a }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "OnlineMeetingExternalLink",0x04, 0x3b }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: "Move" */
-    { "Moves",                  0x05, 0x05 },
+    { "Moves",                  0x05, 0x05 }, /* [MS-ASWBXML] 8.0: MoveItems */
     { "Move",                   0x05, 0x06 },
     { "SrcMsgId",               0x05, 0x07 },
     { "SrcFldId",               0x05, 0x08 },
@@ -2799,26 +2810,26 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
 
     /* Code Page: ItemEstimate */
     { "GetItemEstimate",        0x06, 0x05 },
-    { "Version",                0x06, 0x06 },
+    { "Version",                0x06, 0x06 }, /* only supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "Collections",            0x06, 0x07 },
     { "Collection",             0x06, 0x08 },
-    { "Class",                  0x06, 0x09 },
+    { "Class",                  0x06, 0x09 }, /* only supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "CollectionId",           0x06, 0x0a },
-    { "DateTime",               0x06, 0x0b },
+    { "DateTime",               0x06, 0x0b }, /* only supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "Estimate",               0x06, 0x0c },
     { "Response",               0x06, 0x0d },
     { "Status",                 0x06, 0x0e },
 
     /* Code Page: "FolderHierarchy" */
-    { "Folders",                0x07, 0x05 },
-    { "Folder",                 0x07, 0x06 },
+    { "Folders",                0x07, 0x05 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "Folder",                 0x07, 0x06 }, /* not defined in [MS-ASWBXML] 8.0 */
     { "DisplayName",            0x07, 0x07 },
     { "ServerId",               0x07, 0x08 },
     { "ParentId",               0x07, 0x09 },
     { "Type",                   0x07, 0x0a },
-    { "Response",               0x07, 0x0b },
+    { "Response",               0x07, 0x0b }, /* not defined in [MS-ASWBXML] 8.0 */
     { "Status",                 0x07, 0x0c },
-    { "ContentClass",           0x07, 0x0d },
+    { "ContentClass",           0x07, 0x0d }, /* not defined in [MS-ASWBXML] 8.0 */
     { "Changes",                0x07, 0x0e },
     { "Add",                    0x07, 0x0f },
     { "Delete",                 0x07, 0x10 },
@@ -2829,7 +2840,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "FolderUpdate",           0x07, 0x15 },
     { "FolderSync",             0x07, 0x16 },
     { "Count",                  0x07, 0x17 },
-    { "Version",                0x07, 0x18 },
+    { "Version",                0x07, 0x18 }, /* not defined in [MS-ASWBXML] 8.0 */
 
     /* Code Page: "MeetingResponse" */
     { "CalendarId",             0x08, 0x05 },
@@ -2840,45 +2851,45 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Result",                 0x08, 0x0a },
     { "Status",                 0x08, 0x0b },
     { "UserResponse",           0x08, 0x0c },
-    { "Version",                0x08, 0x0d },
+    { "Version",                0x08, 0x0d }, /* not defined in [MS-ASWBXML] 8.0 */
     { "InstanceId",             0x08, 0x0e },
 
     /* Code Page: Tasks */
-    { "Body",                   0x09, 0x05 },
-    { "BodySize",               0x09, 0x06 },
-    { "BodyTruncated",          0x09, 0x07 },
+    { "Body",                   0x09, 0x05 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "BodySize",               0x09, 0x06 }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "BodyTruncated",          0x09, 0x07 }, /* not defined in [MS-ASWBXML] 8.0 */
     { "Categories",             0x09, 0x08 },
     { "Category",               0x09, 0x09 },
     { "Complete",               0x09, 0x0a },
     { "DateCompleted",          0x09, 0x0b },
     { "DueDate",                0x09, 0x0c },
-    { "UtcDueDate",             0x09, 0x0d },
+    { "UtcDueDate",             0x09, 0x0d }, /* [MS-ASWBXML] 8.0: UTCDueDate */
     { "Importance",             0x09, 0x0e },
     { "Recurrence",             0x09, 0x0f },
-    { "Type",                   0x09, 0x10 },
-    { "Start",                  0x09, 0x11 },
-    { "Until",                  0x09, 0x12 },
-    { "Occurrences",            0x09, 0x13 },
-    { "Interval",               0x09, 0x14 },
+    { "Type",                   0x09, 0x10 }, /* [MS-ASWBXML] 8.0: Recurrence_Type */
+    { "Start",                  0x09, 0x11 }, /* [MS-ASWBXML] 8.0: Recurrence_Start */
+    { "Until",                  0x09, 0x12 }, /* [MS-ASWBXML] 8.0: Recurrence_Until */
+    { "Occurrences",            0x09, 0x13 }, /* [MS-ASWBXML] 8.0: Recurrence_Occurrences */
+    { "Interval",               0x09, 0x14 }, /* [MS-ASWBXML] 8.0: Recurrence_Interval */
     { "Recurrence_DayOfMonth",  0x09, 0x15 },
-    { "DayOfWeek",              0x09, 0x16 },
-    { "DayOfMonth",             0x09, 0x15 },
-    { "WeekOfMonth",            0x09, 0x17 },
-    { "MonthOfYear",            0x09, 0x18 },
-    { "Regenerate",             0x09, 0x19 },
-    { "DeadOccur",              0x09, 0x1a },
+    { "DayOfWeek",              0x09, 0x16 }, /* [MS-ASWBXML] 8.0: Recurrence_DayOfWeek */
+    { "DayOfMonth",             0x09, 0x15 }, /* [MS-ASWBXML] 8.0: Recurrence_DayOfMonth */
+    { "WeekOfMonth",            0x09, 0x17 }, /* [MS-ASWBXML] 8.0: Recurrence_WeekOfMonth */
+    { "MonthOfYear",            0x09, 0x18 }, /* [MS-ASWBXML] 8.0: Recurrence_MonthOfYear */
+    { "Regenerate",             0x09, 0x19 }, /* [MS-ASWBXML] 8.0: Recurrence_Regenerate */
+    { "DeadOccur",              0x09, 0x1a }, /* [MS-ASWBXML] 8.0: Recurrence_DeadOccur */
     { "ReminderSet",            0x09, 0x1b },
     { "ReminderTime",           0x09, 0x1c },
     { "Sensitivity",            0x09, 0x1d },
     { "StartDate",              0x09, 0x1e },
-    { "UtcStartDate",           0x09, 0x1f },
+    { "UtcStartDate",           0x09, 0x1f }, /* [MS-ASWBXML] 8.0: UTCStartDate */
     { "Subject",                0x09, 0x20 },
-    { "Rtf",                    0x09, 0x21 },
+    { "Rtf",                    0x09, 0x21 }, /* not defined in [MS-ASWBXML] 8.0 */
     { "OrdinalDate",            0x09, 0x22 },
     { "SubOrdinalDate",         0x09, 0x23 },
-    { "CalendarType",           0x09, 0x24 },
-    { "IsLeapMonth",            0x09, 0x25 },
-    { "FirstDayOfWeek",         0x09, 0x26 },
+    { "CalendarType",           0x09, 0x24 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "IsLeapMonth",            0x09, 0x25 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "FirstDayOfWeek",         0x09, 0x26 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: "ResolveRecipients" */
     { "ResolveRecipients",      0x0a, 0x05 },
@@ -2898,14 +2909,14 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "MaxCertificates",        0x0a, 0x13 },
     { "MaxAmbiguousRecipients", 0x0a, 0x14 },
     { "CertificateCount",       0x0a, 0x15 },
-    { "Availability",           0x0a, 0x16 },
-    { "StartTime",              0x0a, 0x17 },
-    { "EndTime",                0x0a, 0x18 },
-    { "MergedFreeBusy",         0x0a, 0x19 },
-    { "Picture",                0x0a, 0x1a },
-    { "MaxSize",                0x0a, 0x1b },
-    { "Data",                   0x0a, 0x1c },
-    { "MaxPictures",            0x0a, 0x1d },
+    { "Availability",           0x0a, 0x16 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "StartTime",              0x0a, 0x17 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "EndTime",                0x0a, 0x18 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "MergedFreeBusy",         0x0a, 0x19 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "Picture",                0x0a, 0x1a }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "MaxSize",                0x0a, 0x1b }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "Data",                   0x0a, 0x1c }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "MaxPictures",            0x0a, 0x1d }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: "ValidateCert" */
     { "ValidateCert",           0x0b, 0x05 },
@@ -2929,7 +2940,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
 
     /* Code Page: "Ping" */
     { "Ping",                   0x0d, 0x05 },
-    { "AutdState",              0x0d, 0x06 },
+    { "AutdState",              0x0d, 0x06 }, /* not used by protocol */
     { "Status",                 0x0d, 0x07 },
     { "HeartbeatInterval",      0x0d, 0x08 },
     { "Folders",                0x0d, 0x09 },
@@ -2950,9 +2961,9 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "EASProvisionDoc",                          0x0e, 0x0d },
     { "DevicePasswordEnabled",                    0x0e, 0x0e },
     { "AlphanumericDevicePasswordRequired",       0x0e, 0x0f },
-    { "DeviceEncryptionEnabled",                  0x0e, 0x10 },
+    { "DeviceEncryptionEnabled",                  0x0e, 0x10 }, /* [MS-ASWBXML] 8.0: RequireStorageCardEncryption (equivalent to DeviceEncryptionEnabled) */
     { "PasswordRecoveryEnabled",                  0x0e, 0x11 },
-    { "DocumentBrowseEnabled",                    0x0e, 0x12 },
+    { "DocumentBrowseEnabled",                    0x0e, 0x12 }, /* not defined in [MS-ASWBXML] 8.0 */
     { "AttachmentsEnabled",                       0x0e, 0x13 },
     { "MinDevicePasswordLength",                  0x0e, 0x14 },
     { "MaxInactivityTimeDeviceLock",              0x0e, 0x15 },
@@ -2995,6 +3006,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Hash",                                     0x0e, 0x3a },
 
     /* Code Page: "Search" */
+    /* Token 06 and 16 are not supported. */
     { "Search",                 0x0f, 0x05 },
     { "Store",                  0x0f, 0x07 },
     { "Name",                   0x0f, 0x08 },
@@ -3009,21 +3021,21 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "EqualTo",                0x0f, 0x11 },
     { "Value",                  0x0f, 0x12 },
     { "And",                    0x0f, 0x13 },
-    { "Or",                     0x0f, 0x14 },
+    { "Or",                     0x0f, 0x14 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "FreeText",               0x0f, 0x15 },
     { "DeepTraversal",          0x0f, 0x17 },
     { "LongId",                 0x0f, 0x18 },
     { "RebuildResults",         0x0f, 0x19 },
     { "LessThan",               0x0f, 0x1a },
     { "GreaterThan",            0x0f, 0x1b },
-    { "Schema",                 0x0f, 0x1c },
-    { "Supported",              0x0f, 0x1d },
+    { "Schema",                 0x0f, 0x1c }, /* not defined in [MS-ASWBXML] 8.0 */
+    { "Supported",              0x0f, 0x1d }, /* not defined in [MS-ASWBXML] 8.0 */
     { "UserName",               0x0f, 0x1e },
     { "Password",               0x0f, 0x1f },
     { "ConversationId",         0x0f, 0x20 },
-    { "Picture",                0x0f, 0x21 },
-    { "MaxSize",                0x0f, 0x22 },
-    { "MaxPictures",            0x0f, 0x23 },
+    { "Picture",                0x0f, 0x21 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "MaxSize",                0x0f, 0x22 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "MaxPictures",            0x0f, 0x23 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: "GAL" */
     { "DisplayName",            0x10, 0x05 },
@@ -3037,9 +3049,9 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "HomePhone",              0x10, 0x0d },
     { "MobilePhone",            0x10, 0x0e },
     { "EmailAddress",           0x10, 0x0f },
-    { "Picture",                0x10, 0x10 },
-    { "Status",                 0x10, 0x11 },
-    { "Data",                   0x10, 0x12 },
+    { "Picture",                0x10, 0x10 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "Status",                 0x10, 0x11 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "Data",                   0x10, 0x12 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: "AirSyncBase" */
     { "BodyPreference",         0x11, 0x05 },
@@ -3056,14 +3068,14 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "FileReference",          0x11, 0x11 },
     { "Method",                 0x11, 0x12 },
     { "ContentId",              0x11, 0x13 },
-    { "ContentLocation",        0x11, 0x14 },
+    { "ContentLocation",        0x11, 0x14 }, /* not used */
     { "IsInline",               0x11, 0x15 },
     { "NativeBodyType",         0x11, 0x16 },
     { "ContentType",            0x11, 0x17 },
-    { "Preview",                0x11, 0x18 },
-    { "BodyPartPreference",     0x11, 0x19 },
-    { "BodyPart",               0x11, 0x1a },
-    { "Status",                 0x11, 0x1b },
+    { "Preview",                0x11, 0x18 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "BodyPartPreference",     0x11, 0x19 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 or 14 */
+    { "BodyPart",               0x11, 0x1a }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 or 14 */
+    { "Status",                 0x11, 0x1b }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 or 14 */
 
     /* Code Page: "Settings" */
     { "Settings",                   0x12, 0x05 },
@@ -3094,16 +3106,16 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "EmailAddresses",             0x12, 0x1e },
     { "SmtpAddress",                0x12, 0x1f },
     { "UserAgent",                  0x12, 0x20 },
-    { "EnableOutboundSMS",          0x12, 0x21 },
-    { "MobileOperator",             0x12, 0x22 },
-    { "PrimarySmtpAddress",         0x12, 0x23 },
-    { "Accounts",                   0x12, 0x24 },
-    { "Account",                    0x12, 0x25 },
-    { "AccountId",                  0x12, 0x26 },
-    { "AccountName",                0x12, 0x27 },
-    { "UserDisplayName",            0x12, 0x28 },
-    { "SendDisabled",               0x12, 0x29 },
-    { "ihsManagementInformation",   0x12, 0x2b },
+    { "EnableOutboundSMS",          0x12, 0x21 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "MobileOperator",             0x12, 0x22 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "PrimarySmtpAddress",         0x12, 0x23 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "Accounts",                   0x12, 0x24 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "Account",                    0x12, 0x25 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "AccountId",                  0x12, 0x26 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "AccountName",                0x12, 0x27 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "UserDisplayName",            0x12, 0x28 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "SendDisabled",               0x12, 0x29 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "ihsManagementInformation",   0x12, 0x2b }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: "DocumentLibrary" */
     { "LinkId",             0x13, 0x05 },
@@ -3133,12 +3145,13 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "DeleteSubFolders",    0x14, 0x13 },
     { "UserName",            0x14, 0x14 },
     { "Password",            0x14, 0x15 },
-    { "Move",                0x14, 0x16 },
-    { "DstFldId",            0x14, 0x17 },
-    { "ConversationId",      0x14, 0x18 },
-    { "MoveAlways",          0x14, 0x19 },
+    { "Move",                0x14, 0x16 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "DstFldId",            0x14, 0x17 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "ConversationId",      0x14, 0x18 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "MoveAlways",          0x14, 0x19 }, /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
 
     /* Code Page: ComposeMail */
+    /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "SendMail",               0x15, 0x05 },
     { "SmartForward",           0x15, 0x06 },
     { "SmartReply",             0x15, 0x07 },
@@ -3152,9 +3165,10 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "MIME",                   0x15, 0x10 },
     { "ClientId",               0x15, 0x11 },
     { "Status",                 0x15, 0x12 },
-    { "AccountId",              0x15, 0x13 },
+    { "AccountId",              0x15, 0x13 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: Email2 */
+    /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "UmCallerID",             0x16, 0x05 },
     { "UmUserNotes",            0x16, 0x06 },
     { "UmAttDuration",          0x16, 0x07 },
@@ -3167,11 +3181,12 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Sender",                 0x16, 0x0e },
     { "CalendarType",           0x16, 0x0f },
     { "IsLeapMonth",            0x16, 0x10 },
-    { "AccountId",              0x16, 0x11 },
-    { "FirstDayOfWeek",         0x16, 0x12 },
-    { "MeetingMessageType",     0x16, 0x13 },
+    { "AccountId",              0x16, 0x11 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "FirstDayOfWeek",         0x16, 0x12 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "MeetingMessageType",     0x16, 0x13 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: Notes */
+    /* not supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "Subject",                0x17, 0x05 },
     { "MessageClass",           0x17, 0x06 },
     { "LastModifiedDate",       0x17, 0x07 },
@@ -3179,6 +3194,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Category",               0x17, 0x09 },
 
     /* Code Page: RightsManagement */
+    /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "RightsManagementSupport",0x18, 0x05 },
     { "RightsManagementTemplates",0x18, 0x06 },
     { "RightsManagementTemplate",0x18, 0x07 },
@@ -3212,37 +3228,40 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
  *   Microsoft	          Ours
  *   ---------            ----
  *   AirSync:             http://synce.org/formats/airsync_wm5/airsync
- *   POOMCONTACTS:        http://synce.org/formats/airsync_wm5/contacts
- *   POOMMAIL:            http://synce.org/formats/airsync_wm5/mail
+ *   Contacts:            http://synce.org/formats/airsync_wm5/contacts
+ *   Email:               http://synce.org/formats/airsync_wm5/mail               FIXME !!!
  *   AirNotify:           http://synce.org/formats/airsync_wm5/airnotify
- *   POOMCAL:             http://synce.org/formats/airsync_wm5/calendar
+ *   Calendar:            http://synce.org/formats/airsync_wm5/calendar
  *   Move:                http://synce.org/formats/airsync_wm5/move
- *   GetItemEstimate:     http://synce.org/formats/airsync_wm5/getitemestimate
+ *   ItemEstimate:        http://synce.org/formats/airsync_wm5/getitemestimate    FIXME !!!
  *   FolderHierarchy:     http://synce.org/formats/airsync_wm5/folderhierarchy
  *   MeetingResponse:     http://synce.org/formats/airsync_wm5/meetingresponse
- *   POOMTASKS:           http://synce.org/formats/airsync_wm5/tasks
+ *   Tasks:               http://synce.org/formats/airsync_wm5/tasks
  *   ResolveRecipients:   http://synce.org/formats/airsync_wm5/resolverecipients
  *   ValidateCert:        http://synce.org/formats/airsync_wm5/validatecert
- *   POOMCONTACTS2:       http://synce.org/formats/airsync_wm5/contacts2
+ *   Contacts2:           http://synce.org/formats/airsync_wm5/contacts2
  *   Ping:                http://synce.org/formats/airsync_wm5/ping
  *   Provision:           http://synce.org/formats/airsync_wm5/provision
  *   Search:              http://synce.org/formats/airsync_wm5/search
- *   GAL:                 http://synce.org/formats/airsync_wm5/gal
+ *   Gal:                 http://synce.org/formats/airsync_wm5/gal
  *   AirSyncBase:         http://synce.org/formats/airsync_wm5/airsyncbase
  *   Settings:            http://synce.org/formats/airsync_wm5/settings
  *   DocumentLibrary:     http://synce.org/formats/airsync_wm5/documentlibrary
  *   ItemOperations:      http://synce.org/formats/airsync_wm5/itemoperations
- *   Etc. etc.
+ *   ComposeMail:         http://synce.org/formats/airsync_wm5/composemail
+ *   Email2:              http://synce.org/formats/airsync_wm5/email2
+ *   Notes:               http://synce.org/formats/airsync_wm5/notes
+ *   RightsManagement:    http://synce.org/formats/airsync_wm5/rightsmanagement
  *
  */
 const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
     { "http://synce.org/formats/airsync_wm5/airsync",           0x00 },     /**< Code Page 0 */
     { "http://synce.org/formats/airsync_wm5/contacts",          0x01 },     /**< Code Page 1 */
-    { "http://synce.org/formats/airsync_wm5/mail",              0x02 },     /**< Code Page 2 */
+    { "http://synce.org/formats/airsync_wm5/mail",              0x02 },     /**< Code Page 2 FIXME !!! */
     { "http://synce.org/formats/airsync_wm5/airnotify",         0x03 },     /**< Code Page 3 */
     { "http://synce.org/formats/airsync_wm5/calendar",          0x04 },     /**< Code Page 4 */
     { "http://synce.org/formats/airsync_wm5/move",              0x05 },     /**< Code Page 5 */
-    { "http://synce.org/formats/airsync_wm5/getitemestimate",   0x06 },     /**< Code Page 6 */
+    { "http://synce.org/formats/airsync_wm5/getitemestimate",   0x06 },     /**< Code Page 6 FIXME !!!*/
     { "http://synce.org/formats/airsync_wm5/folderhierarchy",   0x07 },     /**< Code Page 7 */
     { "http://synce.org/formats/airsync_wm5/meetingresponse",   0x08 },     /**< Code Page 8 */
     { "http://synce.org/formats/airsync_wm5/tasks",             0x09 },     /**< Code Page 9 */
@@ -3257,9 +3276,10 @@ const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
     { "http://synce.org/formats/airsync_wm5/settings",          0x12 },     /**< Code Page 18 */
     { "http://synce.org/formats/airsync_wm5/documentlibrary",   0x13 },     /**< Code Page 19 */
     { "http://synce.org/formats/airsync_wm5/itemoperations",    0x14 },     /**< Code Page 20 */
-    { "http://synce.org/formats/airsync_wm5/ComposeMail",       0x15 },     /**< Code Page 21 */
-    { "http://synce.org/formats/airsync_wm5/Email2",            0x16 },     /**< Code Page 22 */
-    { "http://synce.org/formats/airsync_wm5/Notes",             0x17 },     /**< Code Page 23 */
+    { "http://synce.org/formats/airsync_wm5/composemail",       0x15 },     /**< Code Page 21 */
+    { "http://synce.org/formats/airsync_wm5/email2",            0x16 },     /**< Code Page 22 */
+    { "http://synce.org/formats/airsync_wm5/notes",             0x17 },     /**< Code Page 23 */
+    { "http://synce.org/formats/airsync_wm5/rightsmanagement",  0x18 },     /**< Code Page 24 */
     { NULL,                                                     0x00 }
 };
 
