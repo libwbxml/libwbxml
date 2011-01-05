@@ -18,6 +18,9 @@
 /* Define to 1 if you have the `expat' library (-lexpat). */
 #cmakedefine HAVE_EXPAT
 
+/* Define to 1 if you have the `iconv' library (sometimes in libc). */
+#cmakedefine HAVE_ICONV
+
 /* Define to 1 if you have the <inttypes.h> header file. */
 #cmakedefine HAVE_INTTYPES_H
 

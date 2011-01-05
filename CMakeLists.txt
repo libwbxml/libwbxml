@@ -74,6 +74,7 @@ MACRO_ENSURE_OUT_OF_SOURCE_BUILD("${CMAKE_PROJECT_NAME} doesn't allow to build w
 
 FIND_PACKAGE( Expat REQUIRED )
 FIND_PACKAGE( Check )
+FIND_PACKAGE( Iconv )
 
 IF( EXPAT_FOUND )
     SET( HAVE_EXPAT 1 )
@@ -83,6 +84,12 @@ IF(CHECK_FOUND)
 	OPTION( ENABLE_UNIT_TEST "enable unit tests" ON )
 	INCLUDE( Testing )
 ENDIF(CHECK_FOUND)
+
+SET( WBXML_SUPPORT_ICONV OFF )
+IF( ICONV_FOUND )
+    SET( HAVE_ICONV 1 )
+    SET( WBXML_SUPPORT_ICONV ON )
+ENDIF( ICONV_FOUND )
 
 # look for getopt implementation in unistd.h
 
@@ -217,6 +224,7 @@ SHOW_STATUS( WBXML_SUPPORT_WV "enable WV support\t\t" )
 SHOW_STATUS( WBXML_SUPPORT_AIRSYNC "enable AIRSYNC support\t" )
 SHOW_STATUS( WBXML_SUPPORT_CONML "enable Nokia ConML support\t" )
 SHOW_STATUS( BUILD_DOCUMENTATION "build dynamic documentation\t" )
+SHOW_STATUS( WBXML_SUPPORT_ICONV "enable iconv support\t\t" )
 SHOW_STATUS( ENABLE_INSTALL_DOC "install documentation\t" )
 
 # fatal error detection

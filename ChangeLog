@@ -1,3 +1,4 @@
+  * Fixed iconv support (ticket #52)
   * Added several tokens for Microsoft ActiveSync r8.0 (ticket #53)
   * Fixed wrong WBXML table token for OMA DM DDF (ticket #51)
   * Fixed unsigned integer overflow (patch from ticket #41)
