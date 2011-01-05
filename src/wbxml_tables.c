@@ -2551,7 +2551,7 @@ const WBXMLExtValueEntry sv_wv_csp_ext_table[] = {
 #if defined( WBXML_SUPPORT_AIRSYNC )
 
 /*************************************************
- *    AirSync
+ *    Exchange ActiveSync (aka AirSync)
  */
  
 const WBXMLTagEntry sv_airsync_tag_table[] = {
@@ -2590,8 +2590,11 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Wait",                   0x00, 0x24 },
     { "Limit",                  0x00, 0x25 },
     { "Partial",                0x00, 0x26 },
+    { "ConversationMode",       0x00, 0x27 },
+    { "MaxItems",               0x00, 0x28 },
+    { "HeartbeatInterval",      0x00, 0x29 },
 
-    /* Code Page: "POOMCONTACTS" */
+    /* Code Page: Contacts */
     { "Anniversary",            0x01, 0x05 },
     { "AssistantName",          0x01, 0x06 },
     { "AssistnamePhoneNumber",  0x01, 0x07 },
@@ -2648,8 +2651,10 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "YomiLastName",           0x01, 0x3a },
     { "Rtf",                    0x01, 0x3b },
     { "Picture",                0x01, 0x3c },
+    { "Alias",                  0x01, 0x3d },
+    { "WeightedRank",           0x01, 0x3e },
 
-    /* Code Page: "POOMMAIL" */
+    /* Code Page: Email */
     { "Attachment",             0x02, 0x05 },
     { "Attachments",            0x02, 0x06 },
     { "AttName",                0x02, 0x07 },
@@ -2708,6 +2713,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "ContentClass",           0x02, 0x3c },
     { "FlagType",               0x02, 0x3d },
     { "CompleteTime",           0x02, 0x3e },
+    { "DisallowNewTimeProposal",0x02, 0x3f },
 
     /* Code Page: "AirNotify" */
     { "Notify",                 0x03, 0x05 },
@@ -2731,7 +2737,8 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "NotifyGUID",             0x03, 0x16 },
     { "DeviceFriendlyName",     0x03, 0x17 },
 
-    /* Code Page: "POOMCAL" */
+
+    /* Code Page: Calendar */
     { "Timezone",               0x04, 0x05 },
     { "AllDayEvent",            0x04, 0x06 },
     { "Attendees",              0x04, 0x07 },
@@ -2770,6 +2777,15 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "UID",                    0x04, 0x28 },
     { "AttendeeStatus",         0x04, 0x29 },
     { "AttendeeType",           0x04, 0x2a },
+    { "DisallowNewTimeProposal",0x04, 0x33 },
+    { "ResponseRequested",      0x04, 0x34 },
+    { "AppointmentReplyTime",   0x04, 0x35 },
+    { "ResponseType",           0x04, 0x36 },
+    { "CalendarType",           0x04, 0x37 },
+    { "IsLeapMonth",            0x04, 0x38 },
+    { "FirstDayOfWeek",         0x04, 0x39 },
+    { "OnlineMeetingConfLink",  0x04, 0x3a },
+    { "OnlineMeetingExternalLink",0x04, 0x3b },
 
     /* Code Page: "Move" */
     { "Moves",                  0x05, 0x05 },
@@ -2781,7 +2797,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Status",                 0x05, 0x0b },
     { "DstMsgId",               0x05, 0x0c },
 
-    /* Code Page: "GetItemEstimate" */
+    /* Code Page: ItemEstimate */
     { "GetItemEstimate",        0x06, 0x05 },
     { "Version",                0x06, 0x06 },
     { "Collections",            0x06, 0x07 },
@@ -2825,8 +2841,9 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Status",                 0x08, 0x0b },
     { "UserResponse",           0x08, 0x0c },
     { "Version",                0x08, 0x0d },
+    { "InstanceId",             0x08, 0x0e },
 
-    /* Code Page: "POOMTASKS" */
+    /* Code Page: Tasks */
     { "Body",                   0x09, 0x05 },
     { "BodySize",               0x09, 0x06 },
     { "BodyTruncated",          0x09, 0x07 },
@@ -2843,6 +2860,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Until",                  0x09, 0x12 },
     { "Occurrences",            0x09, 0x13 },
     { "Interval",               0x09, 0x14 },
+    { "Recurrence_DayOfMonth",  0x09, 0x15 },
     { "DayOfWeek",              0x09, 0x16 },
     { "DayOfMonth",             0x09, 0x15 },
     { "WeekOfMonth",            0x09, 0x17 },
@@ -2858,6 +2876,9 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Rtf",                    0x09, 0x21 },
     { "OrdinalDate",            0x09, 0x22 },
     { "SubOrdinalDate",         0x09, 0x23 },
+    { "CalendarType",           0x09, 0x24 },
+    { "IsLeapMonth",            0x09, 0x25 },
+    { "FirstDayOfWeek",         0x09, 0x26 },
 
     /* Code Page: "ResolveRecipients" */
     { "ResolveRecipients",      0x0a, 0x05 },
@@ -2877,6 +2898,14 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "MaxCertificates",        0x0a, 0x13 },
     { "MaxAmbiguousRecipients", 0x0a, 0x14 },
     { "CertificateCount",       0x0a, 0x15 },
+    { "Availability",           0x0a, 0x16 },
+    { "StartTime",              0x0a, 0x17 },
+    { "EndTime",                0x0a, 0x18 },
+    { "MergedFreeBusy",         0x0a, 0x19 },
+    { "Picture",                0x0a, 0x1a },
+    { "MaxSize",                0x0a, 0x1b },
+    { "Data",                   0x0a, 0x1c },
+    { "MaxPictures",            0x0a, 0x1d },
 
     /* Code Page: "ValidateCert" */
     { "ValidateCert",           0x0b, 0x05 },
@@ -2886,7 +2915,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "CheckCRL",               0x0b, 0x09 },
     { "Status",                 0x0b, 0x0a },
 
-    /* Code Page: "POOMCONTACTS2" */
+    /* Code Page: Contacts2 */
     { "CustomerId",             0x0c, 0x05 },
     { "GovernmentId",           0x0c, 0x06 },
     { "IMAddress",              0x0c, 0x07 },
@@ -2989,6 +3018,12 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "GreaterThan",            0x0f, 0x1b },
     { "Schema",                 0x0f, 0x1c },
     { "Supported",              0x0f, 0x1d },
+    { "UserName",               0x0f, 0x1e },
+    { "Password",               0x0f, 0x1f },
+    { "ConversationId",         0x0f, 0x20 },
+    { "Picture",                0x0f, 0x21 },
+    { "MaxSize",                0x0f, 0x22 },
+    { "MaxPictures",            0x0f, 0x23 },
 
     /* Code Page: "GAL" */
     { "DisplayName",            0x10, 0x05 },
@@ -3002,6 +3037,9 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "HomePhone",              0x10, 0x0d },
     { "MobilePhone",            0x10, 0x0e },
     { "EmailAddress",           0x10, 0x0f },
+    { "Picture",                0x10, 0x10 },
+    { "Status",                 0x10, 0x11 },
+    { "Data",                   0x10, 0x12 },
 
     /* Code Page: "AirSyncBase" */
     { "BodyPreference",         0x11, 0x05 },
@@ -3022,6 +3060,10 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "IsInline",               0x11, 0x15 },
     { "NativeBodyType",         0x11, 0x16 },
     { "ContentType",            0x11, 0x17 },
+    { "Preview",                0x11, 0x18 },
+    { "BodyPartPreference",     0x11, 0x19 },
+    { "BodyPart",               0x11, 0x1a },
+    { "Status",                 0x11, 0x1b },
 
     /* Code Page: "Settings" */
     { "Settings",                   0x12, 0x05 },
@@ -3051,6 +3093,17 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "UserInformation",            0x12, 0x1d },
     { "EmailAddresses",             0x12, 0x1e },
     { "SmtpAddress",                0x12, 0x1f },
+    { "UserAgent",                  0x12, 0x20 },
+    { "EnableOutboundSMS",          0x12, 0x21 },
+    { "MobileOperator",             0x12, 0x22 },
+    { "PrimarySmtpAddress",         0x12, 0x23 },
+    { "Accounts",                   0x12, 0x24 },
+    { "Account",                    0x12, 0x25 },
+    { "AccountId",                  0x12, 0x26 },
+    { "AccountName",                0x12, 0x27 },
+    { "UserDisplayName",            0x12, 0x28 },
+    { "SendDisabled",               0x12, 0x29 },
+    { "ihsManagementInformation",   0x12, 0x2b },
 
     /* Code Page: "DocumentLibrary" */
     { "LinkId",             0x13, 0x05 },
@@ -3078,6 +3131,75 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Part",                0x14, 0x11 },
     { "EmptyFolderContents", 0x14, 0x12 },
     { "DeleteSubFolders",    0x14, 0x13 },
+    { "UserName",            0x14, 0x14 },
+    { "Password",            0x14, 0x15 },
+    { "Move",                0x14, 0x16 },
+    { "DstFldId",            0x14, 0x17 },
+    { "ConversationId",      0x14, 0x18 },
+    { "MoveAlways",          0x14, 0x19 },
+
+    /* Code Page: ComposeMail */
+    { "SendMail",               0x15, 0x05 },
+    { "SmartForward",           0x15, 0x06 },
+    { "SmartReply",             0x15, 0x07 },
+    { "SaveInSentItems",        0x15, 0x08 },
+    { "ReplaceMime",            0x15, 0x09 },
+    { "Source",                 0x15, 0x0b },
+    { "FolderId",               0x15, 0x0c },
+    { "ItemId",                 0x15, 0x0d },
+    { "LongId",                 0x15, 0x0e },
+    { "InstanceId",             0x15, 0x0f },
+    { "MIME",                   0x15, 0x10 },
+    { "ClientId",               0x15, 0x11 },
+    { "Status",                 0x15, 0x12 },
+    { "AccountId",              0x15, 0x13 },
+
+    /* Code Page: Email2 */
+    { "UmCallerID",             0x16, 0x05 },
+    { "UmUserNotes",            0x16, 0x06 },
+    { "UmAttDuration",          0x16, 0x07 },
+    { "UmAttOrder",             0x16, 0x08 },
+    { "ConversationId",         0x16, 0x09 },
+    { "ConversationIndex",      0x16, 0x0a },
+    { "LastVerbExecuted",       0x16, 0x0b },
+    { "LastVerbExecutionTime",  0x16, 0x0c },
+    { "ReceivedAsBcc",          0x16, 0x0d },
+    { "Sender",                 0x16, 0x0e },
+    { "CalendarType",           0x16, 0x0f },
+    { "IsLeapMonth",            0x16, 0x10 },
+    { "AccountId",              0x16, 0x11 },
+    { "FirstDayOfWeek",         0x16, 0x12 },
+    { "MeetingMessageType",     0x16, 0x13 },
+
+    /* Code Page: Notes */
+    { "Subject",                0x17, 0x05 },
+    { "MessageClass",           0x17, 0x06 },
+    { "LastModifiedDate",       0x17, 0x07 },
+    { "Categories",             0x17, 0x08 },
+    { "Category",               0x17, 0x09 },
+
+    /* Code Page: RightsManagement */
+    { "RightsManagementSupport",0x18, 0x05 },
+    { "RightsManagementTemplates",0x18, 0x06 },
+    { "RightsManagementTemplate",0x18, 0x07 },
+    { "RightsManagementLicense",0x18, 0x08 },
+    { "EditAllowed",            0x18, 0x09 },
+    { "ReplyAllowed",           0x18, 0x0a },
+    { "ReplyAllAllowed",        0x18, 0x0b },
+    { "ForwardAllowed",         0x18, 0x0c },
+    { "ModifyRecipientsAllowed",0x18, 0x0d },
+    { "ExtractAllowed",         0x18, 0x0e },
+    { "PrintAllowed",           0x18, 0x0f },
+    { "ExportAllowed",          0x18, 0x10 },
+    { "ProgrammaticAccessAllowed",0x18, 0x11 },
+    { "RMOwner",                0x18, 0x12 },
+    { "ContentExpiryDate",      0x18, 0x13 },
+    { "TemplateID",             0x18, 0x14 },
+    { "TemplateName",           0x18, 0x15 },
+    { "TemplateDescription",    0x18, 0x16 },
+    { "ContentOwner",           0x18, 0x17 },
+    { "RemoveRightsManagementDistribution",0x18, 0x18 },
+
     { NULL,                  0x00, 0x00 }
 };
 
@@ -3110,6 +3232,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
  *   Settings:            http://synce.org/formats/airsync_wm5/settings
  *   DocumentLibrary:     http://synce.org/formats/airsync_wm5/documentlibrary
  *   ItemOperations:      http://synce.org/formats/airsync_wm5/itemoperations
+ *   Etc. etc.
  *
  */
 const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
@@ -3134,6 +3257,9 @@ const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
     { "http://synce.org/formats/airsync_wm5/settings",          0x12 },     /**< Code Page 18 */
     { "http://synce.org/formats/airsync_wm5/documentlibrary",   0x13 },     /**< Code Page 19 */
     { "http://synce.org/formats/airsync_wm5/itemoperations",    0x14 },     /**< Code Page 20 */
+    { "http://synce.org/formats/airsync_wm5/ComposeMail",       0x15 },     /**< Code Page 21 */
+    { "http://synce.org/formats/airsync_wm5/Email2",            0x16 },     /**< Code Page 22 */
+    { "http://synce.org/formats/airsync_wm5/Notes",             0x17 },     /**< Code Page 23 */
     { NULL,                                                     0x00 }
 };
 
