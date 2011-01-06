@@ -1760,7 +1760,7 @@ static WBXMLError parse_opaque(WBXMLParser *parser, WBXMLBuffer **result)
     }
 
     /* Check that length specified in OPAQUE doesn't overflow wbxml length */
-    if (parser->pos + len > wbxml_buffer_len(parser->wbxml)) {
+    if (len > wbxml_buffer_len(parser->wbxml) - parser->pos) {
         return WBXML_ERROR_BAD_OPAQUE_LENGTH;
     }
 

@@ -1,6 +1,8 @@
+  * Fixed integer overflow in opaque data parsing (ticket #54).
+    The patch was supplied by Amnon Aaronsohn.
   * Fixed iconv support (ticket #52)
   * Added several tokens for Microsoft ActiveSync v14.0 revision 8.0
-    (ticket #53). The patch was supllied by Amnon Aaronsohn.
+    (ticket #53). The patch was supplied by Amnon Aaronsohn.
   * Fixed wrong WBXML table token for OMA DM DDF (ticket #51)
   * Fixed unsigned integer overflow (patch from ticket #41)
     The overflow causes crashs or wrong wbxml messages.
