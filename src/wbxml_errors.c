@@ -99,12 +99,15 @@ static const WBXMLErrorCodeItem error_table [] = {
     { WBXML_ERROR_XML_NULL_ATTR_NAME,           "NULL XML Attribute Name" },
     { WBXML_ERROR_XML_PARSING_FAILED,           "Parsing of XML Document Failed" },
 #if defined( WBXML_SUPPORT_SYNCML )
-    { WBXML_ERROR_XML_DEVINF_CONV_FAILED,       "Convertion of XML DevInf document Failed" },
+    { WBXML_ERROR_XML_DEVINF_CONV_FAILED,       "The conversion of a XML DevInf document failed" },
 #endif /* WBXML_SUPPORT_WV */
     { WBXML_ERROR_NO_XMLPARSER,                 "Can't parse XML (Compiled without Expat): XML to WBXML conversion not possible" },
     { WBXML_ERROR_XMLPARSER_OUTPUT_UTF16,       "XML Parser (Expat) is outputting UTF-16, so you have two choices :\n"
                                               "  - Get the iconv library (http://www.gnu.org/software/libiconv/)\n"
-                                              "  - Use a version of Expat that output UTF-8" }
+                                              "  - Use a version of Expat that output UTF-8" },
+    { WBXML_ERROR_CHARSET_UNKNOWN,              "The character set is unknown."},
+    { WBXML_ERROR_CHARSET_CONV_INIT,            "The converter for the character set cannot be initialized."},
+    { WBXML_ERROR_CHARSET_CONV,                 "The character conversion failed."}
 };
 
 #define ERROR_TABLE_SIZE ((WB_ULONG) (sizeof(error_table) / sizeof(error_table[0])))
