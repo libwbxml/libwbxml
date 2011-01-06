@@ -33,6 +33,7 @@
  */
 
 #include "wbxml.h"
+#include "wbxml_config_internals.h"
 
 
 /* Structures */
@@ -156,6 +157,8 @@ WBXML_DECLARE(WBXMLError) wbxml_charset_conv(const WB_TINY        *in_buf,
          * The iconv way
          */
     
+        const WB_TINY * inbuf_pos    = NULL;
+        WB_TINY      **__restrict__ inbuf_ref = NULL;
         const WB_TINY * charset_to   = NULL;
         const WB_TINY * charset_from = NULL;
         WB_TINY       * tmp_buf      = NULL;
@@ -191,10 +194,16 @@ WBXML_DECLARE(WBXMLError) wbxml_charset_conv(const WB_TINY        *in_buf,
         }
 
         tmp_ptr = tmp_buf;
+
+        /* The input buffer is const but not the pointer itself.
+           The original const *inbuf should not be modified for a potential later usage.
+         */
+        inbuf_pos = in_buf;
+        inbuf_ref = (WB_TINY **__restrict__) &inbuf_pos;
     
         /* Convert ! */
         (void) iconv(cd,
-                     &in_buf,
+                     inbuf_ref,
                      (size_t*)io_bytes,
                      &tmp_buf,
                      (size_t*)&tmp_len_left);
