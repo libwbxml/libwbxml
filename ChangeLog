@@ -1,3 +1,7 @@
+  * Added correct default behaviour to parse_charset. If no character
+    set is specified in a WBXML document then UTF-8 is assumed until
+    there is another specification in the transport meta-information.
+    (ticket #52)
   * Fixed integer overflow in opaque data parsing (ticket #54).
     The patch was supplied by Amnon Aaronsohn.
   * Fixed iconv support (ticket #52)

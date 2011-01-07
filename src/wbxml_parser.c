@@ -730,8 +730,17 @@ static WBXMLError parse_charset(WBXMLParser *parser)
         return ret;
     }
 
+    if (charset == 0) {
+        /* zero => encoding should be taken from transport meta-information
+         *      => default encoding is UTF-8
+         */
+        WBXML_DEBUG((WBXML_PARSER, "The character set is zero. Enabling the default ... UTF-8."));
+        charset = WBXML_CHARSET_UTF_8;
+    }
+
     if (!wbxml_charset_get_name(charset, &charset_name)) {
-        return WBXML_ERROR_NO_CHARSET_CONV;
+        WBXML_DEBUG((WBXML_PARSER, "(%d) failed to get character set name", charset));
+        return WBXML_ERROR_CHARSET_NOT_FOUND;
     }
     parser->charset = (WBXMLCharsetMIBEnum) charset;
 
