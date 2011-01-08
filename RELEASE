@@ -1,5 +1,5 @@
 Making a release
-===
+================
 
 To make a release of libwbxml, do the following:
 
@@ -22,7 +22,7 @@ To make a release of libwbxml, do the following:
 
    LIBWBXML_LIBVERSION_AGE
     * Reset to 0 if any interface has been removed since last release.
-      If any interface has been added incremnt.
+      If any interface has been added then increment.
 
 
  - Run "make test" again several times to try to see race conditions.
