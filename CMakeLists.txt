@@ -8,14 +8,14 @@ SET( LIBWBXML_VERSION "${LIBWBXML_VERSION_MAJOR}.${LIBWBXML_VERSION_MINOR}.${LIB
 # The most recent interface number that this library implements.
 #UPDATE: If any interface have been added, removed or changed since
 #UPDATE: the last update increment CURRENT.
-SET( LIBWBXML_LIBVERSION_CURRENT 0 )
+SET( LIBWBXML_LIBVERSION_CURRENT 1 )
 
 # The implementation number of the CURRENT interface.
 # UPDATE: Increment only if the library code has changed at all, since
 # UPDATE: last release.
 # UPDATE: Set REVISION to 0 if any interface have been added, removed or
 # UPDATE: changed since the last update.
-SET( LIBWBXML_LIBVERSION_REVISION 18 )
+SET( LIBWBXML_LIBVERSION_REVISION 0 )
 
 # The difference between the newest and the oldest interfaces.
 # UPDATE: If any interface have been added since the last public
