@@ -543,6 +543,7 @@ static WB_BOOL check_public_id(WBXMLParser *parser)
 {
     WBXMLBuffer *public_id = NULL;
     WB_LONG          index = 0;
+    WBXMLError         ret;
 
     WBXML_DEBUG((WBXML_PARSER, "\t  Checking PublicID"));
 
@@ -604,8 +605,9 @@ static WB_BOOL check_public_id(WBXMLParser *parser)
     if (parser->public_id_index != -1) {
         WBXML_DEBUG((WBXML_PARSER, "\t  PublicID is in String Table (index: 0x%X)", parser->public_id_index));
 
-        if (get_strtbl_reference(parser, (WB_ULONG) parser->public_id_index, &public_id) != WBXML_OK) {
-            WBXML_ERROR((WBXML_PARSER, "Bad publicID reference in string table"));
+        ret = get_strtbl_reference(parser, (WB_ULONG) parser->public_id_index, &public_id);
+        if (ret != WBXML_OK) {
+            WBXML_ERROR((WBXML_PARSER, "Bad publicID reference in string table. %s", wbxml_errors_string(ret)));
             return FALSE;
         }
 
@@ -679,21 +681,26 @@ static WBXMLError parse_version(WBXMLParser *parser)
 static WBXMLError parse_publicid(WBXMLParser *parser)
 {
     WB_UTINY public_id;
+    WBXMLError ret;
 
     if (!wbxml_buffer_get_char(parser->wbxml, parser->pos, &public_id))
         return WBXML_ERROR_END_OF_BUFFER;
 
-    WBXML_DEBUG((WBXML_PARSER, "(%d) Parsed publicid: '0x%X'", parser->pos, public_id));
+    WBXML_DEBUG((WBXML_PARSER, "(%d) Parsed public id value: '0x%X'", parser->pos, public_id));
 
     if (public_id == 0x00) {
         parser->pos++;
 
-        /* Get index (we will retreive the Public ID latter) */
-        return parse_mb_uint32(parser, (WB_ULONG *)&parser->public_id_index);
+        /* Get index (we will retrieve the Public ID later from string table) */
+        ret = parse_mb_uint32(parser, (WB_ULONG *)&parser->public_id_index);
+        WBXML_DEBUG((WBXML_PARSER, "(%d) Parsed public id index: '0x%x'", parser->pos-1, parser->public_id_index));
+        return ret;
     }
     else {
         /* Get Public ID */
-        return parse_mb_uint32(parser, &parser->public_id);        
+        ret = parse_mb_uint32(parser, &parser->public_id);        
+        WBXML_DEBUG((WBXML_PARSER, "(%d) Parsed public id: '0x%x'", parser->pos-1, parser->public_id));
+        return ret;
     }
 }
 
@@ -796,8 +803,27 @@ static WBXMLError parse_strtbl(WBXMLParser *parser)
             return WBXML_ERROR_INTERNAL;
         }
 
+        /* If there is a correctly terminated string
+         * then there is no reason to do anything.
+         */
         if (end_char != '\0') {
-            /* Append NULL char to end of String Table */
+            WBXML_DEBUG((WBXML_PARSER, "    Adding NULL bytes to strtbl."));
+            /* A terminating NULL byte is not enough today.
+             * There exists character sets with a fixed length of bytes.
+             * Such strings must be terminated with a complete NULL character.
+             * ASCII  => 1 byte
+             * UTF-8  => 1 byte
+             * UTF-16 => 2 bytes
+             * UTF-32 => 4 bytes (I hope so)
+             * UCS-2  => 2 bytes
+             * I hope four NULL bytes are enough for all cases.
+             */
+            if (!wbxml_buffer_append_char(parser->strstbl, '\0'))
+                return WBXML_ERROR_NOT_ENOUGH_MEMORY;
+            if (!wbxml_buffer_append_char(parser->strstbl, '\0'))
+                return WBXML_ERROR_NOT_ENOUGH_MEMORY;
+            if (!wbxml_buffer_append_char(parser->strstbl, '\0'))
+                return WBXML_ERROR_NOT_ENOUGH_MEMORY;
             if (!wbxml_buffer_append_char(parser->strstbl, '\0'))
                 return WBXML_ERROR_NOT_ENOUGH_MEMORY;
         }
@@ -2173,7 +2199,7 @@ static WBXMLError get_strtbl_reference(WBXMLParser  *parser,
 
     /* Get max possible string length */
     max_len = wbxml_buffer_len(parser->strstbl) - index;
-  
+
     /* Convert to UTF-8 Buffer */
     if ((ret = wbxml_charset_conv_term((const WB_TINY *) (wbxml_buffer_get_cstr(parser->strstbl) + index),
                                        &max_len,
@@ -2182,9 +2208,9 @@ static WBXMLError get_strtbl_reference(WBXMLParser  *parser,
                                        WBXML_CHARSET_UTF_8)) != WBXML_OK) {
         return ret;
     }
-  
+
     WBXML_DEBUG((WBXML_PARSER, "(%d) String Table Reference: %s", parser->pos, wbxml_buffer_get_cstr(*result)));
-  
+
     return WBXML_OK;
 }
 

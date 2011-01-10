@@ -1,3 +1,5 @@
+  * Added new parameter -c for character set specification to wbxml2xml
+    (ticket #52)
   * Added support for setting the character set in the transport
     meta-information. This means that it is possible to set the
     character set via the interface. Please note that you cannot

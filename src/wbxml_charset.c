@@ -72,11 +72,10 @@ static const WBXMLCharsetEntry wbxml_charset_entries[] =
 
 
 /* Private Functions Prototypes */
-static WB_BOOL binary_search(const WB_TINY *in_buf,
-                             WB_ULONG       in_buf_len,
-                             const WB_TINY *in_seq,
-                             WB_ULONG       in_seq_len,
-                             WB_ULONG      *out_pos);
+static WB_BOOL search_null_block(const WB_TINY *in_buf,
+                                 WB_ULONG       in_buf_len,
+                                 WB_ULONG       block_len,
+                                 WB_ULONG      *out_pos);
 
 
 /***************************************************
@@ -271,7 +270,7 @@ WBXML_DECLARE(WBXMLError) wbxml_charset_conv_term(const WB_TINY        *in_buf,
         /* Terminated by two NULL char ("\0\0") */
         term_len = 2;
 
-        if (!binary_search(in_buf, *io_bytes, "\0\0", 2, &buf_len)) {
+        if (!search_null_block(in_buf, *io_bytes, 2, &buf_len)) {
             return WBXML_ERROR_CHARSET_STR_LEN;
         }
 
@@ -314,22 +313,34 @@ WBXML_DECLARE(WBXMLError) wbxml_charset_conv_term(const WB_TINY        *in_buf,
  */
 
 /**
- * Binary search of a sequence of bytes into a buffer
+ * Binary search of a sequence of NULL bytes in a buffer
  *
  * @param in_buf     Buffer to search in
  * @param in_buf_len Length of input buffer
- * @param in_seq     Sequence to search
- * @param in_seq_len Length of sequence
+ * @param block_len  Length of the NULL sequence
  * @param out_pos    Index of Sequence into Buffer
  * @return TRUE if found, FALSE otherwise
  */
-static WB_BOOL binary_search(const WB_TINY *in_buf,
-                             WB_ULONG       in_buf_len,
-                             const WB_TINY *in_seq,
-                             WB_ULONG       in_seq_len,
-                             WB_ULONG      *out_pos)
+static WB_BOOL search_null_block(const WB_TINY *in_buf,
+                                 WB_ULONG       in_buf_len,
+                                 WB_ULONG       block_len,
+                                 WB_ULONG      *out_pos)
 {
-    /** @todo binary_search() / See wbxml_buffer_search() */
+    WB_ULONG pos = 0;
+    WB_ULONG i = 0;
+
+    for (pos = 0; pos + block_len <= in_buf_len; pos += block_len) {
+        for (i = 0; i < block_len; i++) {
+            if (memcmp(in_buf + pos + i, "\0", 1)) {
+                i = block_len;
+            } else {
+                if (i == block_len -1) {
+                    *out_pos = pos;
+                    return TRUE;
+                }
+            }
+        }
+    }
 
     return FALSE;
 }
