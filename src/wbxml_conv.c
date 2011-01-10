@@ -60,7 +60,10 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_withlen(WB_UTINY  *wbxml,
     *xml_len = 0;
 
     /* Parse WBXML to WBXML Tree */
-    ret = wbxml_tree_from_wbxml(wbxml, wbxml_len, params ? params->lang : WBXML_LANG_UNKNOWN, &wbxml_tree);
+    ret = wbxml_tree_from_wbxml(wbxml, wbxml_len,
+                                params ? params->lang : WBXML_LANG_UNKNOWN,
+                                params ? params->charset : WBXML_CHARSET_UNKNOWN,
+                                &wbxml_tree);
     if (ret != WBXML_OK) {
         WBXML_ERROR((WBXML_CONV, "wbxml2xml conversion failed - WBXML Parser Error: %s",
                                  wbxml_errors_string(ret)));

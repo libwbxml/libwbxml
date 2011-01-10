@@ -1,3 +1,8 @@
+  * Added support for setting the character set in the transport
+    meta-information. This means that it is possible to set the
+    character set via the interface. Please note that you cannot
+    enforce a character set. (ticket #52)
+
 2011-01-08  Michael Bell <michael.bell@web.de>
   * Added correct default behaviour to parse_charset. If no character
     set is specified in a WBXML document then UTF-8 is assumed until

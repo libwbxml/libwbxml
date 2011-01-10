@@ -154,6 +154,7 @@ typedef enum WBXMLSyncMLDataType_e {
 WBXML_DECLARE(WBXMLError) wbxml_tree_from_wbxml(WB_UTINY *wbxml,
                                                 WB_ULONG wbxml_len,
                                                 WBXMLLanguage lang,
+                                                WBXMLCharsetMIBEnum charset,
                                                 WBXMLTree **tree);
 
 /**

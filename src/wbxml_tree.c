@@ -42,7 +42,11 @@
  *    Public Functions
  */
 
-WBXML_DECLARE(WBXMLError) wbxml_tree_from_wbxml(WB_UTINY *wbxml, WB_ULONG wbxml_len, WBXMLLanguage lang, WBXMLTree **tree)
+WBXML_DECLARE(WBXMLError) wbxml_tree_from_wbxml(WB_UTINY *wbxml,
+                                                WB_ULONG wbxml_len,
+                                                WBXMLLanguage lang,
+                                                WBXMLCharsetMIBEnum charset,
+                                                WBXMLTree **tree)
 {
     WBXMLParser *wbxml_parser = NULL;
     WB_LONG error_index = 0;
@@ -84,7 +88,9 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_wbxml(WB_UTINY *wbxml, WB_ULONG wbxml_
     if (lang != WBXML_LANG_UNKNOWN)
         wbxml_parser_set_language(wbxml_parser, lang);
 
-    /** @todo Use wbxml_parser_set_meta_charset() */
+    /* Give the user the possibility to force the document character set */
+    if (charset != WBXML_CHARSET_UNKNOWN)
+        wbxml_parser_set_meta_charset(wbxml_parser, charset);
 
     /* Parse the WBXML document to WBXML Tree */
     ret = wbxml_parser_parse(wbxml_parser, wbxml, wbxml_len);
