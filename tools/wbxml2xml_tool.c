@@ -50,7 +50,6 @@
 
 #define INPUT_BUFFER_SIZE 1000
 
-
 static WBXMLLanguage get_lang(const WB_TINY *lang)
 {
 #if defined( WBXML_SUPPORT_WML )
@@ -152,6 +151,57 @@ static WBXMLLanguage get_lang(const WB_TINY *lang)
 }
 
 
+static WBXMLCharsetMIBEnum get_charset(const WB_TINY *charset)
+{
+    /* The good old ASCII */
+
+    if (WBXML_STRCMP(charset, "ASCII") == 0)
+        return WBXML_CHARSET_US_ASCII;
+
+    /* ISO-8859 character sets */
+
+    if (WBXML_STRCMP(charset, "ISO-8859-1") == 0)
+        return WBXML_CHARSET_ISO_8859_1;
+    if (WBXML_STRCMP(charset, "ISO-8859-2") == 0)
+        return WBXML_CHARSET_ISO_8859_2;
+    if (WBXML_STRCMP(charset, "ISO-8859-3") == 0)
+        return WBXML_CHARSET_ISO_8859_3;
+    if (WBXML_STRCMP(charset, "ISO-8859-4") == 0)
+        return WBXML_CHARSET_ISO_8859_4;
+    if (WBXML_STRCMP(charset, "ISO-8859-5") == 0)
+        return WBXML_CHARSET_ISO_8859_5;
+    if (WBXML_STRCMP(charset, "ISO-8859-6") == 0)
+        return WBXML_CHARSET_ISO_8859_6;
+    if (WBXML_STRCMP(charset, "ISO-8859-7") == 0)
+        return WBXML_CHARSET_ISO_8859_7;
+    if (WBXML_STRCMP(charset, "ISO-8859-8") == 0)
+        return WBXML_CHARSET_ISO_8859_8;
+    if (WBXML_STRCMP(charset, "ISO-8859-9") == 0)
+        return WBXML_CHARSET_ISO_8859_9;
+    if (WBXML_STRCMP(charset, "ISO-10646-UCS-2") == 0)
+        return WBXML_CHARSET_ISO_10646_UCS_2;
+
+    /* Chinese character set */
+
+    if (WBXML_STRCMP(charset, "SHIFT_JIS") == 0)
+        return WBXML_CHARSET_SHIFT_JIS;
+
+    /* Japanese character set */
+
+    if (WBXML_STRCMP(charset, "BIG5") == 0)
+        return WBXML_CHARSET_BIG5;
+
+    /* Unicode character sets */
+
+    if (WBXML_STRCMP(charset, "UTF-8") == 0)
+        return WBXML_CHARSET_UTF_8;
+    if (WBXML_STRCMP(charset, "UTF-16") == 0)
+        return WBXML_CHARSET_UTF_16;
+
+    return WBXML_CHARSET_UNKNOWN;
+}
+
+
 static void help(void)
 {
     fprintf(stderr, "wbxml2xml [libwbxml %s] by Aymerick Jehanne <aymerick@jehanne.org>\n", WBXML_LIB_VERSION);
@@ -226,6 +276,22 @@ static void help(void)
 #if defined( WBXML_SUPPORT_CONML )
     fprintf(stderr, "       CONML : Nokia ConML\n");
 #endif /* WBXML_SUPPORT_CONML */
+    fprintf(stderr, "    -c X (Set character set if the document does not specify one)\n");
+    fprintf(stderr, "       ASCII           : US ASCII\n");
+    fprintf(stderr, "       ISO-8859-1      : ISO-8859-1 (Western European)\n");
+    fprintf(stderr, "       ISO-8859-2      : ISO-8859-2 (Central European)\n");
+    fprintf(stderr, "       ISO-8859-3      : ISO-8859-3 (South European)\n");
+    fprintf(stderr, "       ISO-8859-4      : ISO-8859-4 (North European)\n");
+    fprintf(stderr, "       ISO-8859-5      : ISO-8859-5 (Latin/Cyrillic)\n");
+    fprintf(stderr, "       ISO-8859-6      : ISO-8859-6 (Latin/Arabic)\n");
+    fprintf(stderr, "       ISO-8859-7      : ISO-8859-7 (Latin/Greek)\n");
+    fprintf(stderr, "       ISO-8859-8      : ISO-8859-8 (Latin/Hebrew)\n");
+    fprintf(stderr, "       ISO-8859-9      : ISO-8859-9 (Latin/Turkish)\n");
+    fprintf(stderr, "       ISO-10646-UCS-2 : UCS-2\n");
+    fprintf(stderr, "       SHIFT_JIS       : Shift JIS (Japanese character set)\n");
+    fprintf(stderr, "       BIG5            : Big5 (Chinese character set)\n");
+    fprintf(stderr, "       UTF-8           : UTF-8\n");
+    fprintf(stderr, "       UTF-16          : UTF-16\n");
     fprintf(stderr, "\nNote: '-' can be used to mean stdin on input or stdout on output\n\n");
 }
 
@@ -243,11 +309,12 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
 
     /* Init Default Parameters */
     params.lang = WBXML_LANG_UNKNOWN;
+    params.charset = WBXML_CHARSET_UNKNOWN;
     params.gen_type = WBXML_GEN_XML_INDENT;
     params.indent = 1;
     params.keep_ignorable_ws = FALSE;
 
-    while ((opt = (WB_TINY) wbxml_getopt(argc, argv, "kh?o:m:i:l:")) != EOF)
+    while ((opt = (WB_TINY) wbxml_getopt(argc, argv, "kh?o:m:i:l:c:")) != EOF)
     {
         switch (opt) {
         case 'k':
@@ -258,6 +325,9 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
             break;
         case 'l':
             params.lang = get_lang((const WB_TINY*)optarg);
+            break;
+        case 'c':
+            params.charset = get_charset((const WB_TINY*)optarg);
             break;
         case 'm':
             switch (atoi((const WB_TINY*)optarg)) {
