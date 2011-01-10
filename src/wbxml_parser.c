@@ -417,7 +417,6 @@ static void wbxml_parser_reinit(WBXMLParser *parser)
     parser->public_id       = WBXML_PUBLIC_ID_UNKNOWN;    
     parser->public_id_index = -1;
     parser->charset         = WBXML_CHARSET_UNKNOWN;
-    parser->meta_charset    = WBXML_CHARSET_UNKNOWN;
     parser->version         = WBXML_VERSION_UNKNOWN;    
   
     parser->pos             = 0;
@@ -731,11 +730,16 @@ static WBXMLError parse_charset(WBXMLParser *parser)
     }
 
     if (charset == 0) {
-        /* zero => encoding should be taken from transport meta-information
-         *      => default encoding is UTF-8
-         */
-        WBXML_DEBUG((WBXML_PARSER, "The character set is zero. Enabling the default ... UTF-8."));
-        charset = WBXML_CHARSET_UTF_8;
+        WBXML_DEBUG((WBXML_PARSER, "(%d) The character set is zero.", startpos));
+        if (parser->meta_charset != WBXML_CHARSET_UNKNOWN) {
+            /* use character set from transport meta-information */
+            WBXML_DEBUG((WBXML_PARSER, "(%d) Using charset from meta-info ...%d.", startpos, parser->meta_charset));
+            charset = parser->meta_charset;
+        } else {
+            /* default encoding is UTF-8 */
+            WBXML_DEBUG((WBXML_PARSER, "(%d) Enabling the default character set ... UTF-8.", startpos));
+            charset = WBXML_CHARSET_UTF_8;
+        }
     }
 
     if (!wbxml_charset_get_name(charset, &charset_name)) {
