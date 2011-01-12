@@ -257,7 +257,7 @@ INCLUDE( CPack )
 ENABLE_TESTING()
 CONFIGURE_FILE( "tests/launchTests.sh" "${CMAKE_CURRENT_BINARY_DIR}/launchTests.sh")
 CONFIGURE_FILE( "tests/normalize_xml.pl" "${CMAKE_CURRENT_BINARY_DIR}/normalize_xml.pl" @ONLY)
-SET( airsync_tests 3 )
+SET( airsync_tests 4 )
 SET( ddf_tests 2 )
 # 2009-Jan-19 bellmich
 # All DRMREL 1.0 tests are switched off.
