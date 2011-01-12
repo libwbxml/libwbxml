@@ -112,8 +112,15 @@ WBXML_DECLARE(WB_UTINY *) wbxml_base64_encode(const WB_UTINY *buffer, WB_LONG le
 /* Function adapted from APR library (http://apr.apache.org/) */
 WBXML_DECLARE(WB_LONG) wbxml_base64_decode(const WB_UTINY *buffer, WB_UTINY **result)
 {
+	return wbxml_base64_decode_with_len(buffer, -1, result);
+}
+
+WBXML_DECLARE(WB_LONG) wbxml_base64_decode_with_len(const WB_UTINY *buffer, WB_LONG len,
+													WB_UTINY **result)
+{
     WB_LONG nbytesdecoded = 0, nprbytes = 0;
     const WB_UTINY *bufin = NULL;
+	const WB_UTINY *end = (len >= 0) ? (buffer + len) : NULL;
     WB_UTINY *bufout = NULL;
 
     if ((buffer == NULL) || (result == NULL))
@@ -123,9 +130,11 @@ WBXML_DECLARE(WB_LONG) wbxml_base64_decode(const WB_UTINY *buffer, WB_UTINY **re
     *result = NULL;
 
     bufin = buffer;   
-    while (pr2six[*(bufin++)] <= 63);
+    while (bufin != end && pr2six[*bufin] <= 63)
+		bufin++;
     
-    nprbytes = (bufin - buffer) - 1;
+	nprbytes = bufin - buffer;
+
     nbytesdecoded = ((nprbytes + 3) / 4) * 3;
     
     /* Malloc result buffer */

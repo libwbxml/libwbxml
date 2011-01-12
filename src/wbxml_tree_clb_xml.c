@@ -519,6 +519,42 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
     } /* switch */
 #endif /* WBXML_SUPPORT_SYNCML */
 
+    /* We expect that "byte array" or BLOB types are 
+     * encoded in Base 64 in the XML code, since they may contain binary data.
+     *
+     * The Expat documentation says the character data may be split across
+     * callback invocations. In that case the decoding will fail. Let's just
+     * hope it doesn't happen.
+     */
+
+    WBXMLTreeNode *node = tree_ctx->current;
+    if (node && node->type == WBXML_TREE_ELEMENT_NODE &&
+        node->name->type == WBXML_VALUE_TOKEN &&
+        wbxml_tables_is_binary_tag(tree_ctx->tree->lang->langID, node->name->u.token))
+    {
+        unsigned char *decoded_buf;
+        WB_LONG decoded_len = wbxml_base64_decode_with_len((const unsigned char*)ch, len, &decoded_buf);
+        if (!decoded_len) {
+            tree_ctx->error = WBXML_ERROR_B64_ENC;
+            return;
+        }
+        /* Add the buffer as a regular string node (since libwbxml doesn't
+        * offer a way to specify an opaque data node). The WBXML
+        * encoder is responsible for generating correct opaque data for
+        * nodes like this.
+        */
+        if (wbxml_tree_add_text(tree_ctx->tree,
+                                tree_ctx->current,
+                                (const WB_UTINY*)decoded_buf,
+                                decoded_len) == NULL)
+        {
+            tree_ctx->error = WBXML_ERROR_INTERNAL;
+        }
+
+        wbxml_free(decoded_buf);
+        return;
+    }
+
     /* Add Text Node */
     if (wbxml_tree_add_text(tree_ctx->tree,
                             tree_ctx->current,

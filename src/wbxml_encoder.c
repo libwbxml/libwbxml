@@ -1277,6 +1277,14 @@ static WBXMLError parse_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
 {
     WBXMLError ret = WBXML_OK;
     
+    /* Some elements should be transferred as opaque data */
+    if (encoder->output_type == WBXML_ENCODER_OUTPUT_WBXML &&
+        encoder->current_tag != NULL &&
+        wbxml_tables_is_binary_tag(encoder->lang->langID, encoder->current_tag))
+    {
+        return wbxml_encode_opaque(encoder, node->content);
+    }
+
     /* Do not modify text inside a CDATA section */
     if (!encoder->in_cdata) {
         /* If Canonical Form: "Ignorable white space is considered significant and is treated equivalently to data" */
@@ -4335,6 +4343,39 @@ static WBXMLError xml_encode_end_attrs(WBXMLEncoder *encoder, WBXMLTreeNode *nod
     return WBXML_OK;
 }
 
+/**
+ * @brief encode the buffer in Base64
+ * @param data [in/out]The buffer to encode
+ * @return WBXML_OK if OK, another error code otherwise
+ */
+static WBXMLError buffer_to_base64(WBXMLBuffer *data)
+{
+    WB_UTINY   *result = NULL;
+    WBXMLError  ret    = WBXML_OK;
+    
+    if (data == NULL) {
+        return WBXML_ERROR_INTERNAL;
+    }
+    
+    if ((result = wbxml_base64_encode((const WB_UTINY *) wbxml_buffer_get_cstr(data),
+                                      wbxml_buffer_len(data))) == NULL)
+    {
+        return WBXML_ERROR_B64_ENC;
+    }
+    
+    /* Reset buffer */
+    wbxml_buffer_delete(data, 0, wbxml_buffer_len(data));
+    
+    /* Set data */
+    if (!wbxml_buffer_append_cstr(data, result)) {
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+    }
+    
+    wbxml_free(result);
+    
+    return ret;
+}
+
 
 /**
  * @brief Encode an XML Text
@@ -4409,6 +4450,20 @@ static WBXMLError xml_encode_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
                 return WBXML_ERROR_NOT_ENOUGH_MEMORY;
         }
 #endif /* WBXML_SUPPORT_SYNCML */
+
+        /* Some elements are transferred as WBXML opaque data. They contain
+         * binary data that isn't necessary valid in XML, so return them in Base
+         * 64.
+         */
+        if (encoder->current_tag != NULL &&
+            wbxml_tables_is_binary_tag(encoder->lang->langID, encoder->current_tag))
+        {
+            WBXMLError ret;
+            if ((ret = buffer_to_base64(tmp)) != WBXML_OK) {
+                wbxml_buffer_destroy(tmp);
+                return ret;
+            }
+        }
 
         /* Fix text */
         xml_fix_text(tmp, (WB_BOOL) (encoder->xml_gen_type == WBXML_GEN_XML_CANONICAL));

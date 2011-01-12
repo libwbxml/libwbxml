@@ -3796,3 +3796,24 @@ WBXML_DECLARE(WB_UTINY) wbxml_tables_get_code_page(const WBXMLNameSpaceEntry *ns
 
     return 0;
 }
+
+WBXML_DECLARE(WB_BOOL) wbxml_tables_is_binary_tag(const WBXMLLanguage langID, const WBXMLTagEntry *tag)
+{
+    WB_ULONG pos = 0;
+    const WB_ULONG binary[][3] = {
+#if defined( WBXML_SUPPORT_AIRSYNC )
+        {WBXML_LANG_AIRSYNC, 0x16, 0x09}, /* Email2:ConversationId */
+        {WBXML_LANG_AIRSYNC, 0x16, 0x0a}, /* Email2:ConversationIndex */
+#endif /* WBXML_SUPPORT_AIRSYNC */
+        {WBXML_LANG_UNKNOWN, 0x00, 0x00}};
+
+    for (pos = 0; binary[pos][0] != WBXML_LANG_UNKNOWN; pos++) {
+        if (binary[pos][0] == langID &&
+            binary[pos][1] == tag->wbxmlCodePage &&
+            binary[pos][2] == tag->wbxmlToken) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
