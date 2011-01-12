@@ -64,6 +64,8 @@ void wbxml_tree_clb_wbxml_start_element(void *ctx, WBXMLTag *element, WBXMLAttri
 {
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
 
+    (void) empty; /* avoid warning about unused parameter */
+
     if (tree_ctx->error != WBXML_OK)
         return;
 
@@ -81,6 +83,8 @@ void wbxml_tree_clb_wbxml_start_element(void *ctx, WBXMLTag *element, WBXMLAttri
 void wbxml_tree_clb_wbxml_end_element(void *ctx, WBXMLTag *element, WB_BOOL empty)
 {
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
+
+    (void) empty; /* avoid warning about unused parameter */
 
     if (tree_ctx->error != WBXML_OK)
         return;
