@@ -1,3 +1,4 @@
+  * Fixed unused parameter warning of expat callback. (ticket #48)
   * Fixed wrong detection of WBXML language table list end.
     (ticket #44 and #45)
   * Added support for opaque tokens (e.g. byte arrays from Microsoft

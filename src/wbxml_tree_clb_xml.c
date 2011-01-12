@@ -50,6 +50,8 @@ void wbxml_tree_clb_xml_decl(void           *ctx,
 {
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
 
+    (void) standalone; /* avoid warning about unused parameter */
+
     if (tree_ctx->expat_utf16) {
         /** @todo Convert from UTF-16 to UTF-8 */
     }
