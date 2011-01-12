@@ -1,4 +1,4 @@
-  * Fixed wrong detection of WBXML language table list end. (ticket #54)
+  * Fixed wrong detection of WBXML language table list end. (ticket #45)
   * Added support for opaque tokens (e.g. byte arrays from Microsoft
     ActiveSync, code page Email2 ConversationId and ConversationIndex)
     (ticket #55). The original patch was supplied by Amnon Aaronsohn.
