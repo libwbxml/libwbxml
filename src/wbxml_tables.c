@@ -3586,7 +3586,7 @@ WBXML_DECLARE(WB_ULONG) wbxml_tables_get_wbxml_publicid(const WBXMLLangEntry *ma
     if (main_table == NULL)
         return WBXML_PUBLIC_ID_UNKNOWN;
 
-    while (main_table[i].langID != -1) {
+    while (main_table[i].langID != WBXML_LANG_UNKNOWN) {
         if (main_table[i].langID == lang_id) {
             if (main_table[i].publicID != NULL)
                 return main_table[i].publicID->wbxmlPublicID;
