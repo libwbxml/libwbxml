@@ -80,6 +80,9 @@ void wbxml_tree_clb_xml_doctype_decl(void           *ctx,
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
     const WBXMLLangEntry *lang_table = NULL;
 
+    (void) doctypeName;         /* avoid warning about unused parameter */
+    (void) has_internal_subset; /* avoid warning about unused parameter */
+
     if (tree_ctx->expat_utf16) {
         /** @todo Convert from UTF-16 to UTF-8 */
     }
