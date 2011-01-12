@@ -562,7 +562,7 @@ static WB_BOOL check_public_id(WBXMLParser *parser)
 
     if (parser->lang_forced != WBXML_LANG_UNKNOWN) {
         /* Search Language Entry */
-        while (parser->mainTable[index].langID != -1) {
+        while (parser->mainTable[index].langID != WBXML_LANG_UNKNOWN) {
             if (parser->mainTable[index].langID == parser->lang_forced) {
                 parser->langTable = &(parser->mainTable[index]);
 
