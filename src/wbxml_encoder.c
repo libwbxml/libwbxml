@@ -1284,7 +1284,7 @@ static WBXMLError parse_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
     /* Some elements should be transferred as opaque data */
     if (encoder->output_type == WBXML_ENCODER_OUTPUT_WBXML &&
         encoder->current_tag != NULL &&
-        wbxml_tables_is_binary_tag(encoder->lang->langID, encoder->current_tag))
+        encoder->current_tag->options & WBXML_TAG_OPTION_BINARY)
     {
         return wbxml_encode_opaque(encoder, node->content);
     }
@@ -4461,7 +4461,7 @@ static WBXMLError xml_encode_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
          * 64.
          */
         if (encoder->current_tag != NULL &&
-            wbxml_tables_is_binary_tag(encoder->lang->langID, encoder->current_tag))
+            encoder->current_tag->options & WBXML_TAG_OPTION_BINARY)
         {
             WBXMLError ret;
             if ((ret = buffer_to_base64(tmp)) != WBXML_OK) {

@@ -3797,7 +3797,3 @@ WBXML_DECLARE(WB_UTINY) wbxml_tables_get_code_page(const WBXMLNameSpaceEntry *ns
     return 0;
 }
 
-WBXML_DECLARE(WB_BOOL) wbxml_tables_is_binary_tag(const WBXMLLanguage langID, const WBXMLTagEntry *tag)
-{
-    return (tag->options & WBXML_TAG_OPTION_BINARY) ? TRUE : FALSE;
-}

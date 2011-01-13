@@ -535,7 +535,7 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
     WBXMLTreeNode *node = tree_ctx->current;
     if (node && node->type == WBXML_TREE_ELEMENT_NODE &&
         node->name->type == WBXML_VALUE_TOKEN &&
-        wbxml_tables_is_binary_tag(tree_ctx->tree->lang->langID, node->name->u.token))
+        node->name->u.token->options & WBXML_TAG_OPTION_BINARY)
     {
         unsigned char *decoded_buf;
         WB_LONG decoded_len = wbxml_base64_decode_with_len((const unsigned char*)ch, len, &decoded_buf);

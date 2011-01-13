@@ -333,15 +333,6 @@ WBXML_DECLARE(const WB_TINY *) wbxml_tables_get_xmlns(const WBXMLNameSpaceEntry 
 WBXML_DECLARE(WB_UTINY) wbxml_tables_get_code_page(const WBXMLNameSpaceEntry *ns_table,
                                                    const WB_TINY* xmlns);
 
-/**
- * @brief Check if a token belongs to an element which may
- *        contain binary data (a byte array or BLOB type)
- * @param langID The WBXML language
- * @param tag    The tag
- * @return TRUE if this tag belongs to a binary element, FALSE otherwise
- */
-WBXML_DECLARE(WB_BOOL) wbxml_tables_is_binary_tag(const WBXMLLanguage langID, const WBXMLTagEntry *tag);
-
 /** @} */
 
 #ifdef __cplusplus
