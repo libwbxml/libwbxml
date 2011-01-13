@@ -171,7 +171,7 @@ typedef struct WBXMLTagEntry_s
     const WB_TINY *xmlName;       /**< XML Tag Name */    
     WB_UTINY       wbxmlCodePage; /**< WBXML Code Page */
     WB_UTINY       wbxmlToken;    /**< WBXML Tag Token */
-    WB_ULONG       options;       /**< WBXML (Encoding) Options (optional bit field)*/
+    WB_ULONG       options;       /**< (WB)XML (Encoding) Options (optional bit mask)*/
 } WBXMLTagEntry;
 
 
