@@ -1,3 +1,5 @@
+  * Removed unused parameter node from parse_cdata in wbxml_encoder.c.
+    (ticket #43)
   * Fixed unused parameter warnings from expat callbacks.
     (ticket #47, #48 and #49)
   * Fixed wrong detection of WBXML language table list end.

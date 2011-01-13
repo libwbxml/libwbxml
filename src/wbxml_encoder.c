@@ -243,7 +243,7 @@ static WBXMLError parse_element(WBXMLEncoder *encoder, WBXMLTreeNode *node, WB_B
 static WBXMLError parse_element_end(WBXMLEncoder *encoder, WBXMLTreeNode *node, WB_BOOL has_content);
 static WBXMLError parse_attribute(WBXMLEncoder *encoder, WBXMLAttribute *attribute);
 static WBXMLError parse_text(WBXMLEncoder *encoder, WBXMLTreeNode *node);
-static WBXMLError parse_cdata(WBXMLEncoder *encoder, WBXMLTreeNode *node);
+static WBXMLError parse_cdata(WBXMLEncoder *encoder);
 static WBXMLError parse_pi(WBXMLEncoder *encoder, WBXMLTreeNode *node);
 static WBXMLError parse_tree(WBXMLEncoder *encoder, WBXMLTreeNode *node);
 
@@ -1008,7 +1008,7 @@ static WBXMLError parse_node(WBXMLEncoder *encoder, WBXMLTreeNode *node, WB_BOOL
             ret = parse_text(encoder, node);
             break;
         case WBXML_TREE_CDATA_NODE:
-            ret = parse_cdata(encoder, node);
+            ret = parse_cdata(encoder);
             break;
         case WBXML_TREE_PI_NODE:
             ret = parse_pi(encoder, node);
@@ -1088,6 +1088,10 @@ static WBXMLError parse_node(WBXMLEncoder *encoder, WBXMLTreeNode *node, WB_BOOL
             }
 
             /* Encode CDATA Buffer into Opaque */
+            /* NOTE: A CDATA section is not necessarily opaque data.
+             * NOTE: CDATA is only character data which can be NULL terminated.
+             * NOTE: Nevertheless it is not wrong to handle it like opaque data.
+             */
             if (wbxml_buffer_len(encoder->cdata) > 0) {
                 if ((ret = wbxml_encode_opaque(encoder, encoder->cdata)) != WBXML_OK)
                     return ret;
@@ -1352,10 +1356,11 @@ static WBXMLError parse_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
 /**
  * @brief Parse an XML CDATA
  * @param encoder The WBXML Encoder
- * @param node The CDATA to parse
  * @return WBXML_OK if parsing is OK, an error code otherwise
+ * @note There is no node parameter because the content is not
+ *       handled by this function and CDATA has no "attributes". 
  */
-static WBXMLError parse_cdata(WBXMLEncoder *encoder, WBXMLTreeNode *node)
+static WBXMLError parse_cdata(WBXMLEncoder *encoder)
 {
     WBXML_DEBUG((WBXML_ENCODER, "CDATA Begin"));
 
