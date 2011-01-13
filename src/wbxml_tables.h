@@ -131,6 +131,20 @@ extern "C" {
 #define XML_PUBLIC_ID_CONML "-//CONML//DTD ConML//EN"
 
 /****************************************************
+ *    WBXML Encoding options
+ */
+
+#define WBXML_TAG_OPTION_UNKNOWN 0x0
+#define WBXML_TAG_OPTION_BINARY  0x1
+#define WBXML_TAG_OPTION_OPAQUE  0x2
+#define WBXML_TAG_OPTION_CDATA   0x4
+
+/* Example: CDATA|OPAQUE
+ *   => XML:   <![CDATA ... ]]>
+ *   => WBXML: create opaque encoding
+ */
+
+/****************************************************
  *    WBXML Tables Structures
  */
 
@@ -149,12 +163,15 @@ typedef struct WBXMLPublicIDEntry_s
 
 /**
  * @brief WBXML Application Token structure: Tag token
+ *        The options are used to optionally define the
+ *        handling of content.
  */
 typedef struct WBXMLTagEntry_s
 {    
     const WB_TINY *xmlName;       /**< XML Tag Name */    
     WB_UTINY       wbxmlCodePage; /**< WBXML Code Page */
     WB_UTINY       wbxmlToken;    /**< WBXML Tag Token */
+    WB_ULONG       options;       /**< WBXML (Encoding) Options (optional bit field)*/
 } WBXMLTagEntry;
 
 

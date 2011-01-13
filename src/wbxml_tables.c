@@ -3036,7 +3036,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Supported",              0x0f, 0x1d }, /* supported since v12.0, r8.0: not defined in r8.0 but in r1.0 */
     { "UserName",               0x0f, 0x1e }, /* since 8.0? */
     { "Password",               0x0f, 0x1f }, /* since 8.0? */
-    { "ConversationId",         0x0f, 0x20 }, /* since 8.0? */
+    { "ConversationId",         0x0f, 0x20, WBXML_TAG_OPTION_BINARY }, /* since 8.0? */
     { "Picture",                0x0f, 0x21 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "MaxSize",                0x0f, 0x22 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "MaxPictures",            0x0f, 0x23 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
@@ -3151,7 +3151,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Password",            0x14, 0x15 }, /* since r8.0? */
     { "Move",                0x14, 0x16 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "DstFldId",            0x14, 0x17 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 */
-    { "ConversationId",      0x14, 0x18 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 */
+    { "ConversationId",      0x14, 0x18, WBXML_TAG_OPTION_BINARY }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "MoveAlways",          0x14, 0x19 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 */
 
     /* Code Page: ComposeMail (since v14.0 and r8.0?) */
@@ -3177,8 +3177,8 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "UmUserNotes",            0x16, 0x06 }, /* since r8.0? */
     { "UmAttDuration",          0x16, 0x07 }, /* since r8.0? */
     { "UmAttOrder",             0x16, 0x08 }, /* since r8.0? */
-    { "ConversationId",         0x16, 0x09 }, /* since r8.0? */
-    { "ConversationIndex",      0x16, 0x0a }, /* since r8.0? */
+    { "ConversationId",         0x16, 0x09, WBXML_TAG_OPTION_BINARY }, /* since r8.0? */
+    { "ConversationIndex",      0x16, 0x0a, WBXML_TAG_OPTION_BINARY }, /* since r8.0? */
     { "LastVerbExecuted",       0x16, 0x0b }, /* since r8.0? */
     { "LastVerbExecutionTime",  0x16, 0x0c }, /* since r8.0? */
     { "ReceivedAsBcc",          0x16, 0x0d }, /* since r8.0? */
@@ -3799,23 +3799,5 @@ WBXML_DECLARE(WB_UTINY) wbxml_tables_get_code_page(const WBXMLNameSpaceEntry *ns
 
 WBXML_DECLARE(WB_BOOL) wbxml_tables_is_binary_tag(const WBXMLLanguage langID, const WBXMLTagEntry *tag)
 {
-    WB_ULONG pos = 0;
-    const WB_ULONG binary[][3] = {
-#if defined( WBXML_SUPPORT_AIRSYNC )
-        {WBXML_LANG_AIRSYNC, 0x0f, 0x20}, /* Search:ConversationId */
-        {WBXML_LANG_AIRSYNC, 0x14, 0x18}, /* ItemOperations:ConversationId */
-        {WBXML_LANG_AIRSYNC, 0x16, 0x09}, /* Email2:ConversationId */
-        {WBXML_LANG_AIRSYNC, 0x16, 0x0a}, /* Email2:ConversationIndex */
-#endif /* WBXML_SUPPORT_AIRSYNC */
-        {WBXML_LANG_UNKNOWN, 0x00, 0x00}};
-
-    for (pos = 0; binary[pos][0] != WBXML_LANG_UNKNOWN; pos++) {
-        if (binary[pos][0] == langID &&
-            binary[pos][1] == tag->wbxmlCodePage &&
-            binary[pos][2] == tag->wbxmlToken) {
-            return TRUE;
-        }
-    }
-
-    return FALSE;
+    return (tag->options & WBXML_TAG_OPTION_BINARY) ? TRUE : FALSE;
 }
