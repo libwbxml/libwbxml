@@ -3802,6 +3802,8 @@ WBXML_DECLARE(WB_BOOL) wbxml_tables_is_binary_tag(const WBXMLLanguage langID, co
     WB_ULONG pos = 0;
     const WB_ULONG binary[][3] = {
 #if defined( WBXML_SUPPORT_AIRSYNC )
+        {WBXML_LANG_AIRSYNC, 0x0f, 0x20}, /* Search:ConversationId */
+        {WBXML_LANG_AIRSYNC, 0x14, 0x18}, /* ItemOperations:ConversationId */
         {WBXML_LANG_AIRSYNC, 0x16, 0x09}, /* Email2:ConversationId */
         {WBXML_LANG_AIRSYNC, 0x16, 0x0a}, /* Email2:ConversationIndex */
 #endif /* WBXML_SUPPORT_AIRSYNC */
