@@ -36,6 +36,7 @@
 #ifndef WBXML_TABLES_H
 #define WBXML_TABLES_H
 
+#include "wbxml.h"
 
 #ifdef __cplusplus
 extern "C" {

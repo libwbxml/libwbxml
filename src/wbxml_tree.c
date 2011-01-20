@@ -34,7 +34,12 @@
  */
 
 #include "wbxml_config_internals.h"
-#include "wbxml.h"
+#include "wbxml_tree.h"
+#include "wbxml_log.h"
+#include "wbxml_parser.h"
+#include "wbxml_encoder.h"
+#include "wbxml_tree_clb_xml.h"
+#include "wbxml_tree_clb_wbxml.h"
 
 #define WBXML_NAMESPACE_SEPARATOR ':'
 

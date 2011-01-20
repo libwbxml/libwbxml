@@ -32,7 +32,8 @@
  * @brief WBXML Error Codes Handling
  */
 
-#include "wbxml.h"
+#include "wbxml_errors.h"
+#include <stdio.h>
 
 
 /**

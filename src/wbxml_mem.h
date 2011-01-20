@@ -35,6 +35,7 @@
 #ifndef WBXML_MEM_H
 #define WBXML_MEM_H
 
+#include "wbxml.h"
 
 #ifdef WBXML_USE_LEAKTRACKER
 #include "leaktrack.h"

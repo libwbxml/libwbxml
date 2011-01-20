@@ -35,6 +35,8 @@
 #ifndef WBXML_CONV_H
 #define WBXML_CONV_H
 
+#include "wbxml.h"
+#include "wbxml_errors.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -35,6 +35,9 @@
 #ifndef WBXML_HANDLERS_H
 #define WBXML_HANDLERS_H
 
+#include "wbxml.h"
+#include "wbxml_tables.h"
+#include "wbxml_elt.h"
 
 #ifdef __cplusplus
 extern "C" {

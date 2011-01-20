@@ -37,7 +37,7 @@
 #include <limits.h>
 #include <ctype.h>
 
-#include "wbxml.h"
+#include "wbxml_buffers.h"
 
 
 /* Memory management define */

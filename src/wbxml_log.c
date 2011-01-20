@@ -32,7 +32,7 @@
  * @brief Log Functions
  */
 
-#include "wbxml.h"
+#include "wbxml_log.h"
 
 
 #if defined( WBXML_LIB_VERBOSE ) && !defined( WBXML_USE_LEAKTRACKER )

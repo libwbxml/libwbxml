@@ -37,7 +37,9 @@
 
 #if defined( HAVE_EXPAT )
 
-#include "wbxml.h"
+#include "wbxml_tree_clb_xml.h"
+#include "wbxml_tree.h"
+#include "wbxml_log.h"
 
 /************************************
  *  Public Functions

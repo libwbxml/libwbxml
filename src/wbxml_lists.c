@@ -33,7 +33,7 @@
  */
 
 #include "wbxml.h"
-
+#include "wbxml_lists.h"
 
 /** Element of this list */
 typedef struct WBXMLListElt_s

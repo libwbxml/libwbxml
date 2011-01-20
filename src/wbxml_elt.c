@@ -32,7 +32,7 @@
  * @brief WBXML Elements
  */
 
-#include "wbxml.h"
+#include "wbxml_elt.h"
 
 
 /** For an unknown XML Name */

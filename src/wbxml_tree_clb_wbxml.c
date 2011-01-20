@@ -32,7 +32,8 @@
  * @brief WBXML Tree Callbacks for WBXML Parser
  */
 
-#include "wbxml.h"
+#include "wbxml_tree_clb_wbxml.h"
+#include "wbxml_tree.h"
 
 
 /***************************************************

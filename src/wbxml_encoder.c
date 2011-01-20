@@ -53,7 +53,10 @@
 
 #include <ctype.h> /* For isdigit() */
 
-#include "wbxml.h"
+#include "wbxml_encoder.h"
+#include "wbxml_log.h"
+#include "wbxml_internals.h"
+#include "wbxml_base64.h"
 
 
 /**

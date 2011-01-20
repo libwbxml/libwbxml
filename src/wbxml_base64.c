@@ -34,7 +34,7 @@
  * @note Code adapted from APR library (http://apr.apache.org/) 
  */
 
-#include "wbxml.h"
+#include "wbxml_base64.h"
 
 
 /* aaaack but it's fast and const should make it shared text page. */

@@ -35,6 +35,7 @@
 #ifndef WBXML_LISTS_H
 #define WBXML_LISTS_H
 
+#include "wbxml_mem.h"
 
 #ifdef __cplusplus
 extern "C" {

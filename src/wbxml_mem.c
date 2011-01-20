@@ -32,7 +32,7 @@
  * @brief Memory Functions
  */
 
-#include "wbxml.h"
+#include "wbxml_mem.h"
 
 
 /***************************************************

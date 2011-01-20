@@ -43,7 +43,10 @@
  *                         - A strange 'body' rule description in BNF (just forget it).
  */
 
-#include "wbxml.h"
+#include "wbxml_parser.h"
+#include "wbxml_log.h"
+#include "wbxml_internals.h"
+#include "wbxml_base64.h"
 #include <assert.h>
 
 
@@ -243,7 +246,7 @@ WBXML_DECLARE(WBXMLError) wbxml_parser_parse(WBXMLParser *parser, WB_UTINY *wbxm
     CHECK_ERROR
 
     if ((WB_UTINY)parser->version > WBXML_VERSION_13) {
-        WBXML_WARNING((WBXML_PARSER, "This library only supports WBXML " WBXML_VERSION_TEXT_13));
+        WBXML_WARNING((WBXML_PARSER, "This library only supports WBXML %s.", WBXML_VERSION_TEXT_13));
     }
 
     /* WBXML Public ID */

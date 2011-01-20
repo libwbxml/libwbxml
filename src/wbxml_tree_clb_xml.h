@@ -35,6 +35,7 @@
 #ifndef WBXML_TREE_CLB_XML_H
 #define WBXML_TREE_CLB_XML_H
 
+#include "wbxml.h"
 #include <wbxml_config.h>
 
 #if defined( HAVE_EXPAT )

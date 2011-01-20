@@ -35,22 +35,8 @@ INSTALL( TARGETS wbxml2
 INSTALL( FILES
 	wbxml.h
 	${CMAKE_CURRENT_BINARY_DIR}/../wbxml_config.h
-	wbxml_base64.h
-	wbxml_buffers.h
-	wbxml_charset.h
 	wbxml_conv.h
-	wbxml_elt.h
-	wbxml_encoder.h
 	wbxml_errors.h
-	wbxml_handlers.h
-	wbxml_lists.h
-	wbxml_log.h
-	wbxml_mem.h
-	wbxml_parser.h
-	wbxml_tables.h
-	wbxml_tree.h
-	wbxml_tree_clb_wbxml.h
-	wbxml_tree_clb_xml.h
-	DESTINATION ${LIBWBXML_INCLUDE_DIR}
+	DESTINATION ${LIBWBXML_INCLUDE_DIR}/wbxml
 )
 

@@ -38,6 +38,12 @@
 #endif /* ! __SYMBIAN32__ */
 
 #include "src/wbxml.h" /* libwbxml2 */
+#include "src/wbxml_errors.h" /* libwbxml2 */
+
+#ifdef WBXML_USE_LEAKTRACKER
+#include "src/wbxml_mem.h"
+#endif
+
 #include "getopt.h"
 
 /*
@@ -163,12 +169,20 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
             if (input_file != stdin)
                 fclose(input_file);
             if (xml != NULL)
+#ifdef WBXML_USE_LEAKTRACKER
                 wbxml_free(xml);
+#else
+                free(xml);
+#endif
             goto clean_up;
         }
 
         total += count;
+#ifdef WBXML_USE_LEAKTRACKER
         xml = wbxml_realloc(xml, total + 1);
+#else
+        xml = realloc(xml, total + 1);
+#endif
         if (xml == NULL) {
             fprintf(stderr, "Not enought memory\n");
             if (input_file != stdin)

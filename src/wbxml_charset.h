@@ -35,6 +35,10 @@
 #ifndef WBXML_CHARSET_H
 #define WBXML_CHARSET_H
 
+#include "wbxml.h"
+#include "wbxml_errors.h"
+#include "wbxml_buffers.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */

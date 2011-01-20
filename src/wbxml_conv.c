@@ -32,7 +32,9 @@
  * @brief WBXML Convertion Library (XML to WBXML, and WBXML to XML)
  */
 
-#include "wbxml.h"
+#include "wbxml_conv.h"
+#include "wbxml_tree.h"
+#include "wbxml_log.h"
 
 
 /************************************

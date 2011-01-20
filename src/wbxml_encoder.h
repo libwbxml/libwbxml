@@ -35,6 +35,8 @@
 #ifndef WBXML_ENCODER_H
 #define WBXML_ENCODER_H
 
+#include "wbxml.h"
+#include "wbxml_tree.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -35,6 +35,7 @@
 #ifndef WBXML_LOG_H
 #define WBXML_LOG_H
 
+#include "wbxml.h"
 
 #ifdef WBXML_USE_LEAKTRACKER
 #include "leaktrack.h"

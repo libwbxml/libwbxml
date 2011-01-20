@@ -32,9 +32,8 @@
  * @brief Charset Functions
  */
 
-#include "wbxml.h"
-#include "wbxml_config_internals.h"
-
+#include "wbxml_charset.h"
+#include "wbxml_internals.h"
 
 /* Structures */
 

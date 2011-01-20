@@ -37,6 +37,7 @@
 #ifndef WBXML_BASE64_H
 #define WBXML_BASE64_H
 
+#include "wbxml.h"
 
 #ifdef __cplusplus
 extern "C" {

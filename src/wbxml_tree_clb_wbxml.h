@@ -35,6 +35,8 @@
 #ifndef WBXML_TREE_CLB_WBXML_H
 #define WBXML_TREE_CLB_WBXML_H
 
+#include "wbxml.h"
+#include "wbxml_elt.h"
 
 #ifdef __cplusplus
 extern "C" {

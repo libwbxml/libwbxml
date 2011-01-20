@@ -33,7 +33,8 @@
  * @brief WBXML Tables
  */
 
-#include "wbxml.h"
+#include "wbxml_tables.h"
+#include "wbxml_internals.h"
 
 /** 
  * @brief If undefined, only the WML 1.3 tables are used for all WML versions (WML 1.0 / WML 1.1 / WML 1.2 / WML 1.3).

@@ -39,6 +39,8 @@
 
 #include <stdio.h>
 
+#include "wbxml.h"
+#include "wbxml_lists.h"
 
 #ifdef __cplusplus
 extern "C" {
