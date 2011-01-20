@@ -542,7 +542,7 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
         node->name->u.token->options & WBXML_TAG_OPTION_BINARY)
     {
         unsigned char *decoded_buf;
-        WB_LONG decoded_len = wbxml_base64_decode_with_len((const unsigned char*)ch, len, &decoded_buf);
+        WB_LONG decoded_len = wbxml_base64_decode((const unsigned char*)ch, len, &decoded_buf);
         if (!decoded_len) {
             tree_ctx->error = WBXML_ERROR_B64_ENC;
             return;

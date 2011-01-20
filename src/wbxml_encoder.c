@@ -3406,7 +3406,7 @@ static WBXMLError wbxml_encode_drmrel_content(WBXMLEncoder *encoder, WB_UTINY *b
             /* <ds:KeyValue> content: "Encoded in binary format, i.e., no base64 encoding" */
 
             /* Decode Base64 */
-            if ((data_len = wbxml_base64_decode(buffer, &data)) < 0)
+            if ((data_len = wbxml_base64_decode(buffer, -1, &data)) < 0)
                 return WBXML_NOT_ENCODED;
 
             /* Add WBXML_OPAQUE */
@@ -3492,7 +3492,7 @@ static WBXMLError wbxml_encode_ota_nokia_icon(WBXMLEncoder *encoder, WB_UTINY *b
                 WB_LONG data_len = 0;
                 
                 /* Decode Base64 */
-                if ((data_len = wbxml_base64_decode(buffer, &data)) < 0)
+                if ((data_len = wbxml_base64_decode(buffer, -1, &data)) < 0)
                     return WBXML_NOT_ENCODED;
             
                 /* Encode opaque */

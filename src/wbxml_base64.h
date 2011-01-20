@@ -58,16 +58,6 @@ WBXML_DECLARE(WB_UTINY *) wbxml_base64_encode(const WB_UTINY *buffer, WB_LONG le
 /**
  * @brief Decode a Base64 encoded buffer
  * @param buffer The buffer to decode
- * @param result Resulting decoded buffer
- * @return Length of resulting decoded buffer ('0' if no decoded)
- * @note Be aware that if return value is '0', then 'result' param will be NULL, else 'result' param
- *       has to be freed by caller.
- */
-WBXML_DECLARE(WB_LONG) wbxml_base64_decode(const WB_UTINY *buffer, WB_UTINY **result);
-
-/**
- * @brief Decode a Base64 encoded buffer
- * @param buffer The buffer to decode
  * @param len    Buffer length. If len is negative, assume buffer is terminated
  *               by a non-Base64 character (such as NUL).
  * @param result Resulting decoded buffer
@@ -75,8 +65,7 @@ WBXML_DECLARE(WB_LONG) wbxml_base64_decode(const WB_UTINY *buffer, WB_UTINY **re
  * @note Be aware that if return value is '0', then 'result' param will be NULL, else 'result' param
  *       has to be freed by caller.
  */
-WBXML_DECLARE(WB_LONG) wbxml_base64_decode_with_len(const WB_UTINY *buffer, WB_LONG len,
-													WB_UTINY **result);
+WBXML_DECLARE(WB_LONG) wbxml_base64_decode(const WB_UTINY *buffer, WB_LONG len, WB_UTINY **result);
 
 /** @} */
 
