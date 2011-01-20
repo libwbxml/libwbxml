@@ -15,14 +15,14 @@ SET( LIBWBXML_LIBVERSION_CURRENT 1 )
 # UPDATE: last release.
 # UPDATE: Set REVISION to 0 if any interface have been added, removed or
 # UPDATE: changed since the last update.
-SET( LIBWBXML_LIBVERSION_REVISION 0 )
+SET( LIBWBXML_LIBVERSION_REVISION 1 )
 
 # The difference between the newest and the oldest interfaces.
 # UPDATE: If any interface have been added since the last public
 # UPDATE: release, then increment.
 # UPDATE: If any interface have been removed since the last release
 # UPDATE: reset to 0.
-SET( LIBWBXML_LIBVERSION_AGE 1 )
+SET( LIBWBXML_LIBVERSION_AGE 0 )
 
 # The range of implemention CURRENT - AGE is the SOVERSION
 MATH( EXPR LIBWBXML_LIBVERSION_SOVERSION "${LIBWBXML_LIBVERSION_CURRENT} - ${LIBWBXML_LIBVERSION_AGE}" )
