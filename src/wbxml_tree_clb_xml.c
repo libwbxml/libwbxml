@@ -40,6 +40,8 @@
 #include "wbxml_tree_clb_xml.h"
 #include "wbxml_tree.h"
 #include "wbxml_log.h"
+#include "wbxml_charset.h"
+#include "wbxml_base64.h"
 
 /************************************
  *  Public Functions

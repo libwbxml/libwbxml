@@ -35,6 +35,7 @@
  */
 
 #include "wbxml_base64.h"
+#include "wbxml_mem.h"
 
 
 /* aaaack but it's fast and const should make it shared text page. */

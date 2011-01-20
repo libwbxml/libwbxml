@@ -47,6 +47,7 @@
 #include "wbxml_log.h"
 #include "wbxml_internals.h"
 #include "wbxml_base64.h"
+#include "wbxml_charset.h"
 #include <assert.h>
 
 

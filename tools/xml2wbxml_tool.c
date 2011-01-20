@@ -39,6 +39,7 @@
 
 #include "src/wbxml.h" /* libwbxml2 */
 #include "src/wbxml_errors.h" /* libwbxml2 */
+#include "src/wbxml_conv.h" /* libwbxml2 */
 
 #ifdef WBXML_USE_LEAKTRACKER
 #include "src/wbxml_mem.h"
@@ -235,11 +236,19 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
 
         /* Clean-up */
         if (wbxml != NULL)
+#ifdef WBXML_USE_LEAKTRACKER
             wbxml_free(wbxml);
+#else
+            free(wbxml);
+#endif
     }
 
     if (xml != NULL)
+#ifdef WBXML_USE_LEAKTRACKER
         wbxml_free(xml);
+#else
+       free(xml);
+#endif
 
 clean_up:
 

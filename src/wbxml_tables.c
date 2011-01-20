@@ -2729,7 +2729,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     /* There are conflicting version informations.
      *
      * r1.0: supported by v2.5, v12.0 and v12.1
-    /* r8.0: This code page is no longer in use.
+     * r8.0: This code page is no longer in use.
      * r8.0: Tokens 05 to 17 have been defined.
      */
 
