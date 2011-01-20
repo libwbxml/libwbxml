@@ -1,3 +1,5 @@
+2011-01-20  Michael Bell <michael.bell@web.de>
+  * Released 0.11.beta1
   * Changed the location of the header files including the installation
     path to support several versions of the library at the same host
   * Header files are installed to separate directory wbxml/
@@ -19,6 +21,7 @@
     enforce a character set. (ticket #52)
 
 2011-01-08  Michael Bell <michael.bell@web.de>
+  * Released 0.10.9
   * Added correct default behaviour to parse_charset. If no character
     set is specified in a WBXML document then UTF-8 is assumed until
     there is another specification in the transport meta-information.
