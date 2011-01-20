@@ -138,78 +138,78 @@ typedef enum WBXMLLanguage_e {
 
     /* WAP */
 #if defined( WBXML_SUPPORT_WML )
-    WBXML_LANG_WML10,           /**< WML 1.0 */
-    WBXML_LANG_WML11,           /**< WML 1.1 */
-    WBXML_LANG_WML12,           /**< WML 1.2 */
-    WBXML_LANG_WML13,           /**< WML 1.3 */
+    WBXML_LANG_WML10 = 1101,           /**< WML 1.0 */
+    WBXML_LANG_WML11 = 1102,           /**< WML 1.1 */
+    WBXML_LANG_WML12 = 1103,           /**< WML 1.2 */
+    WBXML_LANG_WML13 = 1104,           /**< WML 1.3 */
 #endif /* WBXML_SUPPORT_WML */
 
 #if defined( WBXML_SUPPORT_WTA )
-    WBXML_LANG_WTA10,           /**< WTA 1.0 */
-    WBXML_LANG_WTAWML12,        /**< WTAWML 1.2 */
-    WBXML_LANG_CHANNEL11,       /**< CHANNEL 1.1 */
-    WBXML_LANG_CHANNEL12,       /**< CHANNEL 1.2 */ 
+    WBXML_LANG_WTA10     = 1201,           /**< WTA 1.0 */
+    WBXML_LANG_WTAWML12  = 1202,        /**< WTAWML 1.2 */
+    WBXML_LANG_CHANNEL11 = 1203,       /**< CHANNEL 1.1 */
+    WBXML_LANG_CHANNEL12 = 1204,       /**< CHANNEL 1.2 */ 
 #endif /* WBXML_SUPPORT_WTA */
 
 #if defined( WBXML_SUPPORT_SI )
-    WBXML_LANG_SI10,            /**< SI 1.0 */
+    WBXML_LANG_SI10 = 1301,            /**< SI 1.0 */
 #endif /* WBXML_SUPPORT_SI */
 
 #if defined( WBXML_SUPPORT_SL )
-    WBXML_LANG_SL10,            /**< SL 1.0 */
+    WBXML_LANG_SL10 = 1401,            /**< SL 1.0 */
 #endif /* WBXML_SUPPORT_SL */
 
 #if defined( WBXML_SUPPORT_CO )
-    WBXML_LANG_CO10,            /**< CO 1.0 */
+    WBXML_LANG_CO10 = 1501,            /**< CO 1.0 */
 #endif /* WBXML_SUPPORT_CO */
 
 #if defined( WBXML_SUPPORT_PROV )
-    WBXML_LANG_PROV10,          /**< PROV 1.0 */
+    WBXML_LANG_PROV10 = 1601,          /**< PROV 1.0 */
 #endif /* WBXML_SUPPORT_PROV */
 
 #if defined( WBXML_SUPPORT_EMN )
-    WBXML_LANG_EMN10,           /**< EMN 1.0 */
+    WBXML_LANG_EMN10 = 1701,           /**< EMN 1.0 */
 #endif /* WBXML_SUPPORT_EMN */
 
 #if defined( WBXML_SUPPORT_DRMREL )
-    WBXML_LANG_DRMREL10,        /**< DRMREL 1.0 */
+    WBXML_LANG_DRMREL10 = 1801,        /**< DRMREL 1.0 */
 #endif /* WBXML_SUPPORT_DRMREL */
 
 #if defined( WBXML_SUPPORT_OTA_SETTINGS )
     /* Ericsson / Nokia OTA Settings v7.0 */
-    WBXML_LANG_OTA_SETTINGS,    /**< OTA Settings */
+    WBXML_LANG_OTA_SETTINGS = 1901,    /**< OTA Settings */
 #endif /* WBXML_SUPPORT_OTA_SETTINGS */
 
     /* SyncML */
 #if defined( WBXML_SUPPORT_SYNCML )
-    WBXML_LANG_SYNCML_SYNCML10, /**< SYNCML 1.0 */
-    WBXML_LANG_SYNCML_DEVINF10, /**< DEVINF 1.0 */
-    WBXML_LANG_SYNCML_METINF10, /**< METINF 1.0 */    
+    WBXML_LANG_SYNCML_SYNCML10 = 2001, /**< SYNCML 1.0 */
+    WBXML_LANG_SYNCML_DEVINF10 = 2002, /**< DEVINF 1.0 */
+    WBXML_LANG_SYNCML_METINF10 = 2003, /**< METINF 1.0 */    
     
-    WBXML_LANG_SYNCML_SYNCML11, /**< SYNCML 1.1 */
-    WBXML_LANG_SYNCML_DEVINF11, /**< DEVINF 1.1 */
-    WBXML_LANG_SYNCML_METINF11, /**< METINF 1.1 */
+    WBXML_LANG_SYNCML_SYNCML11 = 2101, /**< SYNCML 1.1 */
+    WBXML_LANG_SYNCML_DEVINF11 = 2102, /**< DEVINF 1.1 */
+    WBXML_LANG_SYNCML_METINF11 = 2103, /**< METINF 1.1 */
     
-    WBXML_LANG_SYNCML_SYNCML12, /**< SYNCML 1.2 */
-    WBXML_LANG_SYNCML_DEVINF12, /**< DEVINF 1.2 */
-    WBXML_LANG_SYNCML_METINF12, /**< METINF 1.2 */
-    WBXML_LANG_SYNCML_DMDDF12,  /**< DMDDF  1.2 */
+    WBXML_LANG_SYNCML_SYNCML12 = 2201, /**< SYNCML 1.2 */
+    WBXML_LANG_SYNCML_DEVINF12 = 2202, /**< DEVINF 1.2 */
+    WBXML_LANG_SYNCML_METINF12 = 2203, /**< METINF 1.2 */
+    WBXML_LANG_SYNCML_DMDDF12  = 2204, /**< DMDDF  1.2 */
 #endif /* WBXML_SUPPORT_SYNCML */
 
     /* Wireless-Village */
 #if defined( WBXML_SUPPORT_WV )
-    WBXML_LANG_WV_CSP11,        /**< WV CSP 1.1 */
-    WBXML_LANG_WV_CSP12,        /**< WV CSP 1.2 */
+    WBXML_LANG_WV_CSP11 = 2301,        /**< WV CSP 1.1 */
+    WBXML_LANG_WV_CSP12 = 2302,        /**< WV CSP 1.2 */
 #endif /* WBXML_SUPPORT_WV */
 
     /* Microsoft AirSync */
 #if defined( WBXML_SUPPORT_AIRSYNC )
-    WBXML_LANG_AIRSYNC,         /**< AirSync */
+    WBXML_LANG_AIRSYNC = 2401,         /**< AirSync */
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
     /* Nokia ConML */
 #if defined( WBXML_SUPPORT_CONML )
-    WBXML_LANG_CONML            /**< ConML */
+    WBXML_LANG_CONML = 2501            /**< ConML */
 #endif /* WBXML_SUPPORT_CONML */
 } WBXMLLanguage;
 
@@ -240,9 +240,9 @@ typedef enum WBXMLCharsetMIBEnum_e {
  * @note Canonical Form is defined here: http://www.jclark.com/xml/canonxml.html
  */
 typedef enum WBXMLGenXMLType_e {
-    WBXML_GEN_XML_COMPACT = 0,  /**< Compact XML generation */
-    WBXML_GEN_XML_INDENT,       /**< Indented XML generation */
-    WBXML_GEN_XML_CANONICAL     /**< Canonical XML generation */
+    WBXML_GEN_XML_COMPACT   = 0,  /**< Compact XML generation */
+    WBXML_GEN_XML_INDENT    = 1,  /**< Indented XML generation */
+    WBXML_GEN_XML_CANONICAL = 2   /**< Canonical XML generation */
 } WBXMLGenXMLType;
 
 
