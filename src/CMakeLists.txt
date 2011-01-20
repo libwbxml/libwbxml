@@ -18,7 +18,6 @@ SET( libwbxml_LIB_SRCS
 	wbxml_tree.c
 	wbxml_tree_clb_wbxml.c
 	wbxml_tree_clb_xml.c
-	wbxml_wrap_syncml.c
 )
 
 ADD_LIBRARY( wbxml2 SHARED ${libwbxml_LIB_SRCS} )

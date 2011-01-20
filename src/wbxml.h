@@ -420,10 +420,6 @@ typedef struct WBXMLGenWBXMLParams_s {
 #include "wbxml_encoder.h"
 #include "wbxml_conv.h"
 
-#if defined( WBXML_WRAPPERS )
-#include "wbxml_wrap_syncml.h"
-#endif /* WBXML_WRAPPERS */
-
 /** @} */
 
 #endif /* WBXML_H */
