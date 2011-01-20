@@ -1,3 +1,7 @@
+  * Changed the location of the header files including the installation
+    path to support several versions of the library at the same host
+  * Header files are installed to separate directory wbxml/
+  * Reduced API (removed 14 header files from installation)
   * Removed unused parameter node from parse_cdata in wbxml_encoder.c.
     (ticket #43)
   * Fixed unused parameter warnings from expat callbacks.
