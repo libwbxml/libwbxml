@@ -1,6 +1,7 @@
 /*
  * libwbxml, the WBXML Library.
  * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
+ * Copyright (C) 2011 Michael Bell <michael.bell@opensync.org>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -37,9 +38,9 @@
 #include <memory.h>
 #endif /* ! __SYMBIAN32__ */
 
-#include "src/wbxml.h" /* libwbxml2 */
-#include "src/wbxml_errors.h" /* libwbxml2 */
-#include "src/wbxml_conv.h" /* libwbxml2 */
+#include <wbxml/wbxml.h> /* libwbxml2 */
+#include <wbxml/wbxml_errors.h> /* libwbxml2 */
+#include <wbxml/wbxml_conv.h> /* libwbxml2 */
 
 #ifdef WBXML_USE_LEAKTRACKER
 #include "src/wbxml_mem.h"
