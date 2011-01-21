@@ -1,3 +1,9 @@
+  * Added workaround for Nokia bug. Some Nokia software does not only
+    encode the name space in the public ID. It also stores the name
+    space in the root element as an attribute with an attribute name
+    as literal reference zero but without a string table and the name
+    space as an inline string.
+    (Example: 04 00 03 string 00 => LITERAL index[0] STR_I string \0)
   * Every enum element has a fixed number.
   * Fixed SO-naming.
 

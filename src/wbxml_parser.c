@@ -2191,6 +2191,32 @@ static WBXMLError get_strtbl_reference(WBXMLParser  *parser,
 {
     WB_ULONG   max_len = 0;
     WBXMLError ret     = WBXML_OK;
+
+    /* WORKAROUND: 2011-Jan-21 Michael Bell
+     * WORKAROUND:
+     * WORKAROUND: Nokia encodes the name space not only in the publicid.
+     * WORKAROUND: Some Nokia software encodes the SyncML name space
+     * WORKAROUND: as an attribute without a name and without a string
+     * WORKAROUND: table but with a LITAERAL and an index.
+     * WORKAROUND:
+     * WORKAROUND: Example:  ED 04 00 03 SYNCML:SYNCML1.2 00
+     * WORKAROUND:   ED => 2D => SyncML
+     * WORKAROUND:   04 => LITERAL (incl. ATTRSTART)
+     * WORKAROUND:   00 => index 0 (without string table)
+     * WORKAROUND:   03 => TOKEN_STR_I (inline sring)
+     * WORKAROUND:
+     * WORKAROUND: If this mistake is detected then "xmlns" is returned.
+     */
+    if (parser->strstbl == NULL && index == 0) {
+        WBXML_DEBUG((WBXML_PARSER, "(%d) Workaround Nokia: NO string table, index 0 => encoded xmlns", parser->pos));
+
+        /* UTF-8 xmlns */
+        if ((*result = wbxml_buffer_create_from_cstr("xmlns")) == NULL) {
+            return WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        }
+        
+        return WBXML_OK;
+    }
   
     /* Check if strtbl is NULL */
     if (parser->strstbl == NULL) {
