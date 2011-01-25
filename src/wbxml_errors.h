@@ -36,13 +36,12 @@
 #ifndef WBXML_ERRORS_H
 #define WBXML_ERRORS_H
 
-#include "wbxml.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
 
 #include "wbxml_config.h"
+#include "wbxml_defines.h"
 
 /** @addtogroup wbxml_errors
  *  @{ 

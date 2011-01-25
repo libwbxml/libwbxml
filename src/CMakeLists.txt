@@ -36,6 +36,7 @@ INSTALL( FILES
 	wbxml.h
 	${CMAKE_CURRENT_BINARY_DIR}/../wbxml_config.h
 	wbxml_conv.h
+	wbxml_defines.h
 	wbxml_errors.h
 	DESTINATION ${LIBWBXML_INCLUDE_DIR}/wbxml
 )

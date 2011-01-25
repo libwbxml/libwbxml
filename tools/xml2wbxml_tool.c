@@ -38,17 +38,13 @@
 #include <memory.h>
 #endif /* ! __SYMBIAN32__ */
 
-/* Real libwbxml includes are:
+/* The real libwbxml include is:
  *
  * #include <wbxml/wbxml.h>
- * #include <wbxml/wbxml_errors.h>
- * #include <wbxml/wbxml_conv.h>
  *
- * We must use direct references to enforce the correct includes.
+ * We must use a direct reference to enforce the correct include.
  */
 #include "../src/wbxml.h"
-#include "../src/wbxml_errors.h"
-#include "../src/wbxml_conv.h"
 
 #ifdef WBXML_USE_LEAKTRACKER
 #include "src/wbxml_mem.h"

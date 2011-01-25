@@ -38,7 +38,6 @@
 
 #include "wbxml.h"
 #include "wbxml_elt.h"
-#include "wbxml_errors.h"
 
 #ifdef __cplusplus
 extern "C" {

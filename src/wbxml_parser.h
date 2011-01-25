@@ -37,7 +37,6 @@
 #define WBXML_PARSER_H
 
 #include "wbxml.h"
-#include "wbxml_errors.h"
 #include "wbxml_handlers.h"
 
 #ifdef __cplusplus
