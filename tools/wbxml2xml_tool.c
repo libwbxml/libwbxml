@@ -220,9 +220,10 @@ static WBXMLCharsetMIBEnum get_charset(const WB_TINY *charset)
 
 static void help(void)
 {
-    fprintf(stderr, "wbxml2xml [libwbxml %s] by Aymerick Jehanne <aymerick@jehanne.org>\n", WBXML_LIB_VERSION);
-    fprintf(stderr, "If you use this tool, please send feedbacks to aymerick@jehanne.org\n");
-    fprintf(stderr, "http://libwbxml.aymerick.com/\n");
+    fprintf(stderr, "wbxml2xml [libwbxml %s] by OpenSync\n", WBXML_LIB_VERSION);
+    fprintf(stderr, "This library was originally written by Aymerick Jehanne <aymerick@jehanne.org>\n");
+    fprintf(stderr, "If you use this tool, please send feedbacks to opensync-users@opensync.org\n");
+    fprintf(stderr, "http://libwbxml.opensync.org/\n");
 #if defined( HAVE_EXPAT )
     fprintf(stderr, "This tool is linked with Expat (http://expat.sourceforge.net)\n\n");
 #endif /* HAVE_EXPAT */
