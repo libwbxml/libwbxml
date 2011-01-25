@@ -1,3 +1,5 @@
+  * The WBXML converter interface is now more robust in terms of new
+    parameters and binary downward compatibility.
   * Added workaround for Nokia bug. Some Nokia software does not only
     encode the name space in the public ID. It also stores the name
     space in the root element as an attribute with an attribute name

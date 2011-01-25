@@ -318,43 +318,43 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
     WB_TINY opt;
     WBXMLError ret = WBXML_OK;
     WB_UTINY input_buffer[INPUT_BUFFER_SIZE + 1];
-    WBXMLGenXMLParams params;
+    WBXMLConvWBXML2XML *conv = NULL;
 
-    /* Init Default Parameters */
-    params.lang = WBXML_LANG_UNKNOWN;
-    params.charset = WBXML_CHARSET_UNKNOWN;
-    params.gen_type = WBXML_GEN_XML_INDENT;
-    params.indent = 1;
-    params.keep_ignorable_ws = FALSE;
+    ret = wbxml_create_conv_wbxml2xml(&conv);
+    if (ret != WBXML_OK)
+    {
+        fprintf(stderr, "wbxml2xml failed: %s\n", wbxml_errors_string(ret));
+        goto clean_up;
+    }
 
     while ((opt = (WB_TINY) wbxml_getopt(argc, argv, "kh?o:m:i:l:c:")) != EOF)
     {
         switch (opt) {
         case 'k':
-            params.keep_ignorable_ws = TRUE;
+            wbxml_conv_wbxml2xml_enable_preserve_whitespaces(conv);
             break;
         case 'i':
-            params.indent = (WB_UTINY) atoi((const WB_TINY*)optarg);
+            wbxml_conv_wbxml2xml_set_indent(conv, (WB_TINY) atoi((const WB_TINY*)optarg));
             break;
         case 'l':
-            params.lang = get_lang((const WB_TINY*)optarg);
+            wbxml_conv_wbxml2xml_set_language(conv, get_lang((const WB_TINY*)optarg));
             break;
         case 'c':
-            params.charset = get_charset((const WB_TINY*)optarg);
+            wbxml_conv_wbxml2xml_set_charset(conv, get_charset((const WB_TINY*)optarg));
             break;
         case 'm':
             switch (atoi((const WB_TINY*)optarg)) {
             case 0:
-                params.gen_type = WBXML_GEN_XML_COMPACT;
+                wbxml_conv_wbxml2xml_set_gen_type(conv, WBXML_GEN_XML_COMPACT);
                 break;
             case 1:
-                params.gen_type = WBXML_GEN_XML_INDENT;
+                wbxml_conv_wbxml2xml_set_gen_type(conv, WBXML_GEN_XML_INDENT);
                 break;
             case 2:
-                params.gen_type = WBXML_GEN_XML_CANONICAL;
+                wbxml_conv_wbxml2xml_set_gen_type(conv, WBXML_GEN_XML_CANONICAL);
                 break;
             default:
-                params.gen_type = WBXML_GEN_XML_INDENT;
+                wbxml_conv_wbxml2xml_set_gen_type(conv, WBXML_GEN_XML_INDENT);
             }
             break;
         case 'o':
@@ -438,7 +438,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
         fclose(input_file);
 
     /* Convert WBXML document */
-    ret = wbxml_conv_wbxml2xml_withlen(wbxml, wbxml_len, &xml, &xml_len, &params);
+    ret = wbxml_run_conv_wbxml2xml(conv, wbxml, wbxml_len, &xml, &xml_len);
     if (ret != WBXML_OK) {
         fprintf(stderr, "wbxml2xml failed: %s\n", wbxml_errors_string(ret));
     }
@@ -485,6 +485,9 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
 #endif
 
 clean_up:
+
+    if (conv)
+        wbxml_destroy_conv_wbxml2xml(conv);
 
 #ifdef WBXML_USE_LEAKTRACKER
     lt_check_leaks();

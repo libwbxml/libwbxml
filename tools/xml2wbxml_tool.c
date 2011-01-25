@@ -111,24 +111,27 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
     WB_TINY opt;
     WBXMLError ret = WBXML_OK;
     WB_UTINY input_buffer[INPUT_BUFFER_SIZE + 1];
-    WBXMLGenWBXMLParams params;
+    WBXMLConvXML2WBXML *conv = NULL;
 
-    /* Init Default Parameters */
-    params.wbxml_version = WBXML_VERSION_13;
-    params.use_strtbl = TRUE;
-    params.keep_ignorable_ws = FALSE;
+    ret = wbxml_create_conv_xml2wbxml(&conv);
+    if (ret != WBXML_OK)
+    {
+        fprintf(stderr, "xml2wbxml failed: %s\n", wbxml_errors_string(ret));
+        goto clean_up;
+    }
+
 
     while ((opt = (WB_TINY) wbxml_getopt(argc, argv, "nkh?o:v:")) != EOF)
     {
         switch (opt) {
         case 'v':
-            params.wbxml_version = get_version((const WB_TINY*)optarg);
+            wbxml_conv_xml2wbxml_set_version(conv, get_version((const WB_TINY*)optarg));
             break;
         case 'n':
-            params.use_strtbl = FALSE;
+            wbxml_conv_xml2wbxml_disable_string_table(conv);
             break;
         case 'k':
-            params.keep_ignorable_ws = TRUE;
+            wbxml_conv_xml2wbxml_enable_preserve_whitespaces(conv);
             break;
         case 'o':
             output = (WB_UTINY*) optarg;
@@ -207,7 +210,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
     xml[xml_len] = '\0';
 
     /* Convert XML document */
-    ret = wbxml_conv_xml2wbxml_withlen(xml, xml_len, &wbxml, &wbxml_len, &params);
+    ret = wbxml_run_conv_xml2wbxml(conv, xml, xml_len, &wbxml, &wbxml_len);
     if (ret != WBXML_OK) {
         fprintf(stderr, "xml2wbxml failed: %s\n", wbxml_errors_string(ret));
     }
@@ -257,6 +260,9 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
 #endif
 
 clean_up:
+
+    if (conv != NULL)
+        wbxml_destroy_conv_xml2wbxml(conv);
 
 #ifdef WBXML_USE_LEAKTRACKER
     lt_check_leaks();

@@ -103,6 +103,19 @@
 #endif /* WIN32 */
 #endif /* __SYMBIAN32__ */
 
+#if __GNUC__ - 0 > 3 || (__GNUC__ - 0 == 3 && __GNUC_MINOR__ - 0 >= 2)
+  /* gcc >= 3.2 */
+# define LIBWBXML_DEPRECATED __attribute__ ((deprecated))
+#elif defined(_MSC_VER) && (_MSC_VER >= 1300) && (_MSC_VER < 1400)
+  /* msvc >= 7 */
+# define LIBWBXML_DEPRECATED __declspec(deprecated)
+#elif defined(_MSV_VER) && (_MSC_VER >= 1400)
+  /* MS Visual Studio 2005 */
+# define LIBWBXML_DEPRECATED
+#else
+# define LIBWBXML_DEPRECATED
+#endif
+
 /** @} */
 
 #endif /* WBXML_DEFINES_H */
