@@ -1,3 +1,8 @@
+  * If the XML root element must be used to identify the WBXML language
+    then the name space is scanned before the root element itself.
+    All SyncML versions use the same root element. Nevertheless it is
+    better to set the document type correctly.
+
 2011-01-25  Michael Bell <michael.bell@web.de>
   * Released 0.11.beta2
   * The WBXML converter interface is now more robust in terms of new

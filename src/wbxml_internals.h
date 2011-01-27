@@ -156,22 +156,7 @@ typedef enum WBXMLWVDataType_e {
 #pragma warning(error: 4761) /**< integral size mismatch in argument : conversion supplied */
 #endif /* WIN32 */
 
-/*
-  #include "wbxml_log.h"
-  #include "wbxml_mem.h"
-  #include "wbxml_lists.h"
-  #include "wbxml_buffers.h"
-  #include "wbxml_base64.h"
-  #include "wbxml_tables.h"
-  #include "wbxml_elt.h"
-  #include "wbxml_charset.h"
-  #include "wbxml_tree.h"
-  #include "wbxml_tree_clb_wbxml.h"
-  #include "wbxml_tree_clb_xml.h"
-  #include "wbxml_handlers.h"
-  #include "wbxml_parser.h"
-  #include "wbxml_encoder.h"
-*/
+#define WBXML_NAMESPACE_SEPARATOR ':'
 
 /** @} */
 

@@ -35,6 +35,7 @@
 
 #include "wbxml_tables.h"
 #include "wbxml_internals.h"
+#include "wbxml_log.h"
 
 /** 
  * @brief If undefined, only the WML 1.3 tables are used for all WML versions (WML 1.0 / WML 1.1 / WML 1.2 / WML 1.3).
@@ -3539,6 +3540,7 @@ WBXML_DECLARE(const WBXMLLangEntry *) wbxml_tables_search_table(const WBXMLLangE
                                                                 const WB_UTINY *root)
 {
     WB_ULONG index;
+    const WB_UTINY *sep = NULL;
 
     if (main_table == NULL)
         return NULL;
@@ -3569,6 +3571,24 @@ WBXML_DECLARE(const WBXMLLangEntry *) wbxml_tables_search_table(const WBXMLLangE
     if (root != NULL) {
         index = 0;
 
+        /* table scan for matching namespace element */
+        sep = (WB_UTINY *)strrchr((const WB_TINY *) root, WBXML_NAMESPACE_SEPARATOR);
+        if (sep != NULL) {
+            /* There is a namespace (from root to sep). */
+            while (main_table[index].publicID != NULL) {
+                /* It is only possible to evaluate the first entry in the table
+                 * because the second code page has often no unique name space name.
+                 * Example: SyncML Meta Information => syncml:metinf
+                 */
+                if (main_table[index].nsTable != NULL &&
+                    main_table[index].nsTable[0].xmlNameSpace && 
+                    strncasecmp(main_table[index].nsTable[0].xmlNameSpace, root, WBXML_STRLEN(main_table[index].nsTable[0].xmlNameSpace)) == 0) 
+                    return &main_table[index];
+                index++;
+            }
+        }
+
+        /* table scan for matching root element */
         while (main_table[index].publicID != NULL) {
             if (main_table[index].publicID->xmlRootElt && WBXML_STRCMP(main_table[index].publicID->xmlRootElt, root) == 0) 
                 return &main_table[index];

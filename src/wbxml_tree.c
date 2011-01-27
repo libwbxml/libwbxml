@@ -40,8 +40,7 @@
 #include "wbxml_encoder.h"
 #include "wbxml_tree_clb_xml.h"
 #include "wbxml_tree_clb_wbxml.h"
-
-#define WBXML_NAMESPACE_SEPARATOR ':'
+#include "wbxml_internals.h"
 
 /***************************************************
  *    Public Functions
