@@ -38,6 +38,6 @@ INSTALL( FILES
 	wbxml_conv.h
 	wbxml_defines.h
 	wbxml_errors.h
-	DESTINATION ${LIBWBXML_INCLUDE_DIR}/wbxml
+	DESTINATION ${LIBWBXML_INCLUDE_DIR}
 )
 
