@@ -1198,7 +1198,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_xml_elt(WBXMLTree *tree,
     }
     else {
         /* Not found : literal tag */
-        tag = wbxml_tag_create_literal(name);
+        tag = wbxml_tag_create_literal(element_name);
     }
 
     if (sep != NULL) {
