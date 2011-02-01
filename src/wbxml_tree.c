@@ -1167,7 +1167,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_add_xml_elt(WBXMLTree *tree,
     WBXMLTag *tag = NULL;
     WB_UTINY *sep = NULL;
     const WB_UTINY *namespace_name = NULL;
-    const WB_UTINY *element_name = NULL;
+    WB_UTINY *element_name = NULL;
 
     /* Separate the namespace from the element name */
     sep = (WB_UTINY *)strrchr((const WB_TINY *) name, WBXML_NAMESPACE_SEPARATOR);
