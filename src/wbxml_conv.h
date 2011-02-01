@@ -148,7 +148,8 @@ typedef enum WBXMLLanguage_e {
 
     /* Microsoft AirSync */
 #if defined( WBXML_SUPPORT_AIRSYNC )
-    WBXML_LANG_AIRSYNC = 2401,         /**< AirSync */
+    WBXML_LANG_AIRSYNC    = 2401,      /**< AirSync */
+    WBXML_LANG_ACTIVESYNC = 2402,      /**< ActiveSync */
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
     /* Nokia ConML */

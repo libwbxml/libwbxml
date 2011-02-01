@@ -119,6 +119,7 @@ const WBXMLPublicIDEntry sv_wv_csp12_public_id        = { WBXML_PUBLIC_ID_WV_CSP
 
 #if defined( WBXML_SUPPORT_AIRSYNC )
 const WBXMLPublicIDEntry sv_airsync_public_id         = { WBXML_PUBLIC_ID_AIRSYNC,            XML_PUBLIC_ID_AIRSYNC,          "AirSync",              "http://www.microsoft.com/"};
+const WBXMLPublicIDEntry sv_activesync_public_id      = { WBXML_PUBLIC_ID_ACTIVESYNC,         XML_PUBLIC_ID_ACTIVESYNC,       "ActiveSync",           "http://www.microsoft.com/"};
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
 #if defined( WBXML_SUPPORT_CONML )
@@ -3101,7 +3102,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "BodyType",                   0x12, 0x13 }, /* since r1.0 */
     { "DevicePassword",             0x12, 0x14 }, /* since r1.0 */
     { "Password",                   0x12, 0x15 }, /* since r1.0 */
-    { "DeviceInformaton",           0x12, 0x16 }, /* since r1.0 */
+    { "DeviceInformation",          0x12, 0x16 }, /* since r1.0 */
     { "Model",                      0x12, 0x17 }, /* since r1.0 */
     { "IMEI",                       0x12, 0x18 }, /* since r1.0 */
     { "FriendlyName",               0x12, 0x19 }, /* since r1.0 */
@@ -3292,6 +3293,35 @@ const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
     { "http://synce.org/formats/airsync_wm5/notes",             0x17 },     /**< Code Page 23 */
     { "http://synce.org/formats/airsync_wm5/rightsmanagement",  0x18 },     /**< Code Page 24 */
     { NULL,                                                     0x00 }
+};
+
+const WBXMLNameSpaceEntry sv_activesync_ns_table[] = {
+    { "AirSync:",           0x00 },     /**< Code Page 0 */
+    { "Contacts:",          0x01 },     /**< Code Page 1 */
+    { "Email:",             0x02 },     /**< Code Page 2 */
+    { "AirNotify:",         0x03 },     /**< Code Page 3 */
+    { "Calendar:",          0x04 },     /**< Code Page 4 */
+    { "Move:",              0x05 },     /**< Code Page 5 */
+    { "GetItemEstimate:",   0x06 },     /**< Code Page 6 */
+    { "FolderHierarchy:",   0x07 },     /**< Code Page 7 */
+    { "MeetingResponse:",   0x08 },     /**< Code Page 8 */
+    { "Tasks:",             0x09 },     /**< Code Page 9 */
+    { "ResolveRecipients:", 0x0a },     /**< Code Page 10 */
+    { "ValidateCert:",      0x0b },     /**< Code Page 11 */
+    { "Contacts2:",         0x0c },     /**< Code Page 12 */
+    { "Ping:",              0x0d },     /**< Code Page 13 */
+    { "Provision:",         0x0e },     /**< Code Page 14 */
+    { "Search:",            0x0f },     /**< Code Page 15 */
+    { "Gal:",               0x10 },     /**< Code Page 16 */
+    { "AirSyncBase:",       0x11 },     /**< Code Page 17 */
+    { "Settings:",          0x12 },     /**< Code Page 18 */
+    { "DocumentLibrary:",   0x13 },     /**< Code Page 19 */
+    { "ItemOperations:",    0x14 },     /**< Code Page 20 */
+    { "ComposeMail:",       0x15 },     /**< Code Page 21 */
+    { "Email2:",            0x16 },     /**< Code Page 22 */
+    { "Notes:",             0x17 },     /**< Code Page 23 */
+    { "RightsManagement:",  0x18 },     /**< Code Page 24 */
+    { NULL,                 0x00 }
 };
 
 #endif /* WBXML_SUPPORT_AIRSYNC */
@@ -3493,6 +3523,7 @@ const WBXMLLangEntry sv_table_entry[] = {
 
 #if defined( WBXML_SUPPORT_AIRSYNC )
     { WBXML_LANG_AIRSYNC,           &sv_airsync_public_id,          sv_airsync_tag_table,           sv_airsync_ns_table,            sv_airsync_attr_table,                       NULL,                           NULL },
+    { WBXML_LANG_ACTIVESYNC,        &sv_activesync_public_id,       sv_airsync_tag_table,           sv_activesync_ns_table,         sv_airsync_attr_table,                       NULL,                           NULL },
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
 #if defined( WBXML_SUPPORT_CONML )
