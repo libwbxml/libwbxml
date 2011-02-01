@@ -1,6 +1,5 @@
-  * The location of the header files was reverted to the old behaviour.
-    This is perhaps no perfect solution but it does not break old build
-    environments from other vendors (e.g libsyncml).
+  * Some defines were added again to support the old libwbxml 0.9.2
+    interface. This fixes mainly some names of parameter types.
   * If the XML root element must be used to identify the WBXML language
     then the name space is scanned before the root element itself.
     All SyncML versions use the same root element. Nevertheless it is
