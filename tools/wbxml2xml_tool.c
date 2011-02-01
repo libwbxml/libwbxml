@@ -152,6 +152,8 @@ static WBXMLLanguage get_lang(const WB_TINY *lang)
 #if defined( WBXML_SUPPORT_AIRSYNC )
     if (WBXML_STRCMP(lang, "AIRSYNC") == 0)
         return WBXML_LANG_AIRSYNC;
+    if (WBXML_STRCMP(lang, "ACTIVESYNC") == 0)
+        return WBXML_LANG_ACTIVESYNC;
 #endif /* WBXML_SUPPORT_AIRSYNC */
 
 #if defined( WBXML_SUPPORT_CONML )
@@ -284,7 +286,8 @@ static void help(void)
     fprintf(stderr, "       CSP12 : WV CSP 1.2\n");
 #endif /* WBXML_SUPPORT_WV */
 #if defined( WBXML_SUPPORT_AIRSYNC )
-    fprintf(stderr, "       AIRSYNC : Microsoft AirSync\n");
+    fprintf(stderr, "       AIRSYNC    : Microsoft AirSync    (SynCE namespaces) \n");
+    fprintf(stderr, "       ACTIVESYNC : Microsoft ActiveSync (original namespaces)\n");
 #endif /* WBXML_SUPPORT_AIRSYNC */
 #if defined( WBXML_SUPPORT_CONML )
     fprintf(stderr, "       CONML : Nokia ConML\n");
