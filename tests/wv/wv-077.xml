@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE WV-CSP-Message PUBLIC "-//OMA//DTD WV-CSP 1.1//EN" "http://www.openmobilealliance.org/DTD/WV-CSP.XML">
+<WV-CSP-Message xmlns="http://www.wireless-village.org/CSP1.1">
+   <Session>
+      <SessionDescriptor>
+         <SessionType>Inband</SessionType>
+
+         <SessionID>im.user.com#48815@server.com</SessionID>
+      </SessionDescriptor>
+
+      <Transaction>
+         <TransactionDescriptor>
+            <TransactionMode>Response</TransactionMode>
+
+            <TransactionID>IMApp01#12345@NOK5110</TransactionID>
+
+            <Poll>F</Poll>
+         </TransactionDescriptor>
+
+         <TransactionContent xmlns="http://www.wireless-village.org/TRC1.1">
+            <GetBlockedList-Response>
+               <BlockList>
+                  <InUse>F</InUse>
+
+                  <EntityList>
+                     <UserID>wv:he@there.com</UserID>
+
+                     <UserID>wv:she@there.com</UserID>
+
+                     <ScreenName>
+                        <SName>Billyboy</SName>
+
+                        <GroupID>wv:john/chatgroup@there.com</GroupID>
+                     </ScreenName>
+
+                     <GroupID>wv:/boringlist@server.com</GroupID>
+                  </EntityList>
+               </BlockList>
+
+               <GrantList>
+                  <InUse>T</InUse>
+
+                  <EntityList>
+                     <UserID>wv:matthias@salamander.com</UserID>
+
+                     <UserID>wv:francisco@don.com</UserID>
+
+                     <ScreenName>
+                        <SName>WV</SName>
+
+                        <GroupID>wv:john/chatgroup@there.com</GroupID>
+                     </ScreenName>
+
+                     <GroupID>wv:/wireless@village.com</GroupID>
+                  </EntityList>
+               </GrantList>
+            </GetBlockedList-Response>
+         </TransactionContent>
+      </Transaction>
+   </Session>
+</WV-CSP-Message>
+
