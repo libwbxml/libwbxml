@@ -373,7 +373,13 @@ WBXML_DECLARE(void) wbxml_conv_xml2wbxml_enable_preserve_whitespaces(WBXMLConvXM
 WBXML_DECLARE(void) wbxml_conv_xml2wbxml_disable_string_table(WBXMLConvXML2WBXML *conv);
 
 /**
- * @brief Disable public ID (default: TRUE/ENABLED).
+ * @desription: Disable public ID (default: TRUE/ENABLED).
+ *              Usually you don't want to produce WBXML documents which are
+ *              really anonymous. You want a known public ID or a DTD name
+ *              to determine the document type. Some specifications like
+ *              Microsoft's ActiveSync explicitely require fully anonymous
+ *              WBXML documents. If you need this then you must disable
+ *              the public ID mechanism.
  * @param conv     [in] the converter
  */
 WBXML_DECLARE(void) wbxml_conv_xml2wbxml_disable_public_id(WBXMLConvXML2WBXML *conv);
