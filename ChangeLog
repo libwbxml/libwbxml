@@ -1,3 +1,5 @@
+2011-04-14  Michael Bell <michael.bell@web.de>
+  * Released 0.11.beta2
   * Some defines were added again to support the old libwbxml 0.9.2
     interface. This fixes mainly some names of parameter types.
     You can compile libsyncml like follows:
@@ -6,6 +8,9 @@
     then the name space is scanned before the root element itself.
     All SyncML versions use the same root element. Nevertheless it is
     better to set the document type correctly.
+  * Fixed literal tag encoding. The element name and not the namespace
+    must be encoded.
+  * Added ActiveSync support with Microsoft's original namespaces.
 
 2011-01-25  Michael Bell <michael.bell@web.de>
   * Released 0.11.beta2
