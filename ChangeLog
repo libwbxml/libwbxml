@@ -1,5 +1,7 @@
+2011-04-19  Michael Bell <michael.bell@web.de>
   * Added option -a to xml2wbxml (anonymous format). The public ID is
     set to unknown and the DTD is not included.
+
 2011-04-14  Michael Bell <michael.bell@web.de>
   * Released 0.11.beta3
   * Some defines were added again to support the old libwbxml 0.9.2
