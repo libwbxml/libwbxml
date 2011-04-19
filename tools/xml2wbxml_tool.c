@@ -98,6 +98,8 @@ static void help(void) {
     fprintf(stderr, "       1.1 : WBXML 1.1\n");
     fprintf(stderr, "       1.2 : WBXML 1.2\n");
     fprintf(stderr, "       1.3 : WBXML 1.3\n");
+    fprintf(stderr, "    -a : anonymous format\n");
+    fprintf(stderr, "         do NOT include any format information (e.g. public ID or DTD)\n");
     fprintf(stderr, "\nNote: '-' can be used to mean stdin on input or stdout on output\n\n");
 }
 
@@ -132,6 +134,9 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
             break;
         case 'k':
             wbxml_conv_xml2wbxml_enable_preserve_whitespaces(conv);
+            break;
+        case 'a':
+            wbxml_conv_xml2wbxml_disable_public_id(conv);
             break;
         case 'o':
             output = (WB_UTINY*) optarg;
