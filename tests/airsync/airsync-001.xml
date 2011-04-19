@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE AirSync PUBLIC "-//AIRSYNC//DTD AirSync//EN"
+"http://www.microsoft.com/">
+<Sync>
+<Collections>
+  <Collection>
+    <Class>Contacts</Class>
+    <SyncKey>{F0A866C8-E590-42B9-830C-4CF4DFD545DF}12</SyncKey>
+    <CollectionId>{F0A866C8-E590-42B9-830C-4CF4DFD545DF}</CollectionId>
+    <DeletesAsMoves/>
+    <GetChanges/>
+    <WindowSize>100</WindowSize>
+    <Options>
+      <Truncation>4</Truncation>
+      <RTFTruncation>4</RTFTruncation> <!-- r8.0: no longer supported -->
+      <Conflict>1</Conflict>
+    </Options>
+    <Commands>
+      <Add>
+        <ClientId>2147483800</ClientId>
+        <ApplicationData>
+          <FileAs>Bue, Tryggve</FileAs>
+          <FirstName>Tryggve</FirstName>
+          <LastName>Bue</LastName>
+          <MobilePhoneNumber>12345678</MobilePhoneNumber>
+          <CompressedRTF/> <!-- r8.0: no longer supported -->
+          <Picture/>
+        </ApplicationData>
+      </Add>
+    </Commands>
+  </Collection>
+</Collections>
+</Sync>
