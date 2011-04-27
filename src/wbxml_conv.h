@@ -276,7 +276,7 @@ typedef struct WBXMLConvWBXML2XML_s WBXMLConvWBXML2XML;
  * @param conv [out] a reference to the pointer of the new converter
  * @return WBXML_OK if conversion succeeded, an Error Code otherwise
  */
-WBXML_DECLARE(WBXMLError) wbxml_create_conv_wbxml2xml(WBXMLConvWBXML2XML **conv);
+WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_create(WBXMLConvWBXML2XML **conv);
 
 /**
  * @brief Set the XML generation type (default: WBXML_GEN_XML_INDENT).
@@ -326,7 +326,7 @@ WBXML_DECLARE(void) wbxml_conv_wbxml2xml_enable_preserve_whitespaces(WBXMLConvWB
  * @param xml_len   [out] XML Document length
  * @return WBXML_OK if conversion succeeded, an Error Code otherwise
  */
-WBXML_DECLARE(WBXMLError) wbxml_run_conv_wbxml2xml(WBXMLConvWBXML2XML *conv,
+WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_run(WBXMLConvWBXML2XML *conv,
                                                    WB_UTINY  *xml,
                                                    WB_ULONG   xml_len,
                                                    WB_UTINY **wbxml,
@@ -336,7 +336,7 @@ WBXML_DECLARE(WBXMLError) wbxml_run_conv_wbxml2xml(WBXMLConvWBXML2XML *conv,
  * @brief Destroy the converter object.
  * @param [in] the converter
  */
-WBXML_DECLARE(void) wbxml_destroy_conv_wbxml2xml(WBXMLConvWBXML2XML *conv);
+WBXML_DECLARE(void) wbxml_conv_wbxml2xml_destroy(WBXMLConvWBXML2XML *conv);
 
 /**
  * @description This is a container for the XML to WBXML conversion parameters.
@@ -350,7 +350,7 @@ typedef struct WBXMLConvXML2WBXML_s WBXMLConvXML2WBXML;
  * @param conv [out] a reference to the pointer of the new converter
  * @return WBXML_OK if conversion succeeded, an Error Code otherwise
  */
-WBXML_DECLARE(WBXMLError) wbxml_create_conv_xml2wbxml(WBXMLConvXML2WBXML **conv);
+WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_create(WBXMLConvXML2WBXML **conv);
 
 /**
  * @brief Set the WBXML version (default: 1.3).
@@ -393,7 +393,7 @@ WBXML_DECLARE(void) wbxml_conv_xml2wbxml_disable_public_id(WBXMLConvXML2WBXML *c
  * @param wbxml_len [out] Length of resulting WBXML Document
  * @return WBXML_OK if conversion succeeded, an Error Code otherwise
  */
-WBXML_DECLARE(WBXMLError) wbxml_run_conv_xml2wbxml(WBXMLConvXML2WBXML *conv,
+WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_run(WBXMLConvXML2WBXML *conv,
                                                    WB_UTINY  *xml,
                                                    WB_ULONG   xml_len,
                                                    WB_UTINY **wbxml,
@@ -403,7 +403,7 @@ WBXML_DECLARE(WBXMLError) wbxml_run_conv_xml2wbxml(WBXMLConvXML2WBXML *conv,
  * @brief Destroy the converter object.
  * @param [in] the converter
  */
-WBXML_DECLARE(void) wbxml_destroy_conv_xml2wbxml(WBXMLConvXML2WBXML *conv);
+WBXML_DECLARE(void) wbxml_conv_xml2wbxml_destroy(WBXMLConvXML2WBXML *conv);
 
 /** @} */
 

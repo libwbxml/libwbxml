@@ -323,7 +323,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
     WB_UTINY input_buffer[INPUT_BUFFER_SIZE + 1];
     WBXMLConvWBXML2XML *conv = NULL;
 
-    ret = wbxml_create_conv_wbxml2xml(&conv);
+    ret = wbxml_conv_wbxml2xml_create(&conv);
     if (ret != WBXML_OK)
     {
         fprintf(stderr, "wbxml2xml failed: %s\n", wbxml_errors_string(ret));
@@ -441,7 +441,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
         fclose(input_file);
 
     /* Convert WBXML document */
-    ret = wbxml_run_conv_wbxml2xml(conv, wbxml, wbxml_len, &xml, &xml_len);
+    ret = wbxml_conv_wbxml2xml_run(conv, wbxml, wbxml_len, &xml, &xml_len);
     if (ret != WBXML_OK) {
         fprintf(stderr, "wbxml2xml failed: %s\n", wbxml_errors_string(ret));
     }
@@ -490,7 +490,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
 clean_up:
 
     if (conv)
-        wbxml_destroy_conv_wbxml2xml(conv);
+        wbxml_conv_wbxml2xml_destroy(conv);
 
 #ifdef WBXML_USE_LEAKTRACKER
     lt_check_leaks();

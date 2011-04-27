@@ -62,7 +62,7 @@ struct WBXMLConvXML2WBXML_s {
  ****************************
  */
 
-WBXML_DECLARE(WBXMLError) wbxml_create_conv_wbxml2xml(WBXMLConvWBXML2XML **conv)
+WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_create(WBXMLConvWBXML2XML **conv)
 {
     *conv = (WBXMLConvWBXML2XML *) wbxml_malloc(sizeof(WBXMLConvWBXML2XML));
     if (conv == NULL) {
@@ -141,7 +141,7 @@ WBXML_DECLARE(void) wbxml_conv_wbxml2xml_enable_preserve_whitespaces(WBXMLConvWB
  * @param xml_len   [out] XML Document length
  * @return WBXML_OK if conversion succeeded, an Error Code otherwise
  */
-WBXML_DECLARE(WBXMLError) wbxml_run_conv_wbxml2xml(WBXMLConvWBXML2XML *conv,
+WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_run(WBXMLConvWBXML2XML *conv,
                                                    WB_UTINY  *wbxml,
                                                    WB_ULONG   wbxml_len,
                                                    WB_UTINY **xml,
@@ -196,7 +196,7 @@ WBXML_DECLARE(WBXMLError) wbxml_run_conv_wbxml2xml(WBXMLConvWBXML2XML *conv,
  * @brief Destroy the converter object.
  * @param [in] the converter
  */
-WBXML_DECLARE(void) wbxml_destroy_conv_wbxml2xml(WBXMLConvWBXML2XML *conv)
+WBXML_DECLARE(void) wbxml_conv_wbxml2xml_destroy(WBXMLConvWBXML2XML *conv)
 {
     wbxml_free(conv);
 }
@@ -206,7 +206,7 @@ WBXML_DECLARE(void) wbxml_destroy_conv_wbxml2xml(WBXMLConvWBXML2XML *conv)
  * @param conv [out] a reference to the pointer of the new converter
  * @return WBXML_OK if conversion succeeded, an Error Code otherwise
  */
-WBXML_DECLARE(WBXMLError) wbxml_create_conv_xml2wbxml(WBXMLConvXML2WBXML **conv)
+WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_create(WBXMLConvXML2WBXML **conv)
 {
     *conv = (WBXMLConvXML2WBXML *) wbxml_malloc(sizeof(WBXMLConvXML2WBXML));
     if (conv == NULL) {
@@ -268,7 +268,7 @@ WBXML_DECLARE(void) wbxml_conv_xml2wbxml_disable_public_id(WBXMLConvXML2WBXML *c
  * @param wbxml_len [out] Length of resulting WBXML Document
  * @return WBXML_OK if conversion succeeded, an Error Code otherwise
  */
-WBXML_DECLARE(WBXMLError) wbxml_run_conv_xml2wbxml(WBXMLConvXML2WBXML *conv,
+WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_run(WBXMLConvXML2WBXML *conv,
                                                    WB_UTINY  *xml,
                                                    WB_ULONG   xml_len,
                                                    WB_UTINY **wbxml,
@@ -319,7 +319,7 @@ WBXML_DECLARE(WBXMLError) wbxml_run_conv_xml2wbxml(WBXMLConvXML2WBXML *conv,
  * @brief Destroy the converter object.
  * @param [in] the converter
  */
-WBXML_DECLARE(void) wbxml_destroy_conv_xml2wbxml(WBXMLConvXML2WBXML *conv)
+WBXML_DECLARE(void) wbxml_conv_xml2wbxml_destroy(WBXMLConvXML2WBXML *conv)
 {
     wbxml_free(conv);
 }
@@ -337,7 +337,7 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_withlen(WB_UTINY  *wbxml,
     WBXMLConvWBXML2XML *conv = NULL;
     WBXMLError ret = WBXML_OK;
 
-    ret = wbxml_create_conv_wbxml2xml(&conv);
+    ret = wbxml_conv_wbxml2xml_create(&conv);
     if (ret != WBXML_OK)
         return ret;
 
@@ -347,8 +347,8 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_withlen(WB_UTINY  *wbxml,
     wbxml_conv_wbxml2xml_set_indent(conv, params->indent);
     if (params->keep_ignorable_ws)
         wbxml_conv_wbxml2xml_enable_preserve_whitespaces(conv);
-    ret = wbxml_run_conv_wbxml2xml(conv, wbxml, wbxml_len, xml, xml_len);
-    wbxml_destroy_conv_wbxml2xml(conv);
+    ret = wbxml_conv_wbxml2xml_run(conv, wbxml, wbxml_len, xml, xml_len);
+    wbxml_conv_wbxml2xml_destroy(conv);
     return ret;
 }
 
@@ -361,7 +361,7 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_withlen(WB_UTINY  *xml,
     WBXMLConvXML2WBXML *conv = NULL;
     WBXMLError ret = WBXML_OK;
 
-    ret = wbxml_create_conv_xml2wbxml(&conv);
+    ret = wbxml_conv_xml2wbxml_create(&conv);
     if (ret != WBXML_OK)
         return ret;
 
@@ -372,7 +372,7 @@ WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_withlen(WB_UTINY  *xml,
         wbxml_conv_xml2wbxml_disable_string_table(conv);
     if (params->produce_anonymous)
         wbxml_conv_xml2wbxml_disable_public_id(conv);
-    ret = wbxml_run_conv_xml2wbxml(conv, xml, xml_len, wbxml, wbxml_len);
-    wbxml_destroy_conv_xml2wbxml(conv);
+    ret = wbxml_conv_xml2wbxml_run(conv, xml, xml_len, wbxml, wbxml_len);
+    wbxml_conv_xml2wbxml_destroy(conv);
     return ret;
 }

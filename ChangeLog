@@ -1,4 +1,7 @@
+  * Fixed inconsistency in naming convention of new functions.
+
 2011-04-19  Michael Bell <michael.bell@web.de>
+  * Released 0.11.beta4
   * Added option -a to xml2wbxml (anonymous format). The public ID is
     set to unknown and the DTD is not included.
 
