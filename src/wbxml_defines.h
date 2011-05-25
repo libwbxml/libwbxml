@@ -83,8 +83,10 @@
 #define WBXML_STRSTR(a,b) strstr((const WB_TINY*)a,(const WB_TINY*)b)
 #if defined( WIN32 )
 #define WBXML_STRCASECMP(a,b) _stricmp((const WB_TINY*)a,(const WB_TINY*)b)
+#define WBXML_STRNCASECMP(a,b,c) _strnicmp((const WB_TINY*)a,(const WB_TINY*)b,c)
 #else
 #define WBXML_STRCASECMP(a,b) strcasecmp((const WB_TINY*)a,(const WB_TINY*)b)
+#define WBXML_STRNCASECMP(a,b,c) strncasecmp((const WB_TINY*)a,(const WB_TINY*)b,c)
 #endif /* WIN32 */
 
 #define WBXML_ISDIGIT(a) isdigit(a)

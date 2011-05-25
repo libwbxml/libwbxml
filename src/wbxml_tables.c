@@ -3613,7 +3613,7 @@ WBXML_DECLARE(const WBXMLLangEntry *) wbxml_tables_search_table(const WBXMLLangE
                  */
                 if (main_table[index].nsTable != NULL &&
                     main_table[index].nsTable[0].xmlNameSpace && 
-                    strncasecmp(main_table[index].nsTable[0].xmlNameSpace, root, WBXML_STRLEN(main_table[index].nsTable[0].xmlNameSpace)) == 0) 
+                    WBXML_STRNCASECMP(main_table[index].nsTable[0].xmlNameSpace, root, WBXML_STRLEN(main_table[index].nsTable[0].xmlNameSpace)) == 0) 
                     return &main_table[index];
                 index++;
             }

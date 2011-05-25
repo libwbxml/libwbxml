@@ -399,6 +399,7 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
                                    const XML_Char *ch,
                                    int             len)
 {
+    WBXMLTreeNode *node;
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
 
     if (tree_ctx->expat_utf16) {
@@ -536,7 +537,7 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
      * hope it doesn't happen.
      */
 
-    WBXMLTreeNode *node = tree_ctx->current;
+    node = tree_ctx->current;
     if (node && node->type == WBXML_TREE_ELEMENT_NODE &&
         node->name->type == WBXML_VALUE_TOKEN &&
         node->name->u.token->options & WBXML_TAG_OPTION_BINARY)
