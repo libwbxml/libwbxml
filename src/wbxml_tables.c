@@ -3169,7 +3169,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "ItemId",                 0x15, 0x0d }, /* since r8.0? */
     { "LongId",                 0x15, 0x0e }, /* since r8.0? */
     { "InstanceId",             0x15, 0x0f }, /* since r8.0? */
-    { "MIME",                   0x15, 0x10 }, /* since r8.0? */
+    { "MIME",                   0x15, 0x10, WBXML_TAG_OPTION_BINARY }, /* since r8.0? */
     { "ClientId",               0x15, 0x11 }, /* since r8.0? */
     { "Status",                 0x15, 0x12 }, /* since r8.0? */
     { "AccountId",              0x15, 0x13 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
