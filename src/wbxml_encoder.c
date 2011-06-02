@@ -1293,7 +1293,9 @@ static WBXMLError parse_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
     }
 
     /* Do not modify text inside a CDATA section */
-    if (!encoder->in_cdata) {
+    /* Do not modify text inside a BINARY section */
+    if (!encoder->in_cdata &&
+        ! (encoder->current_tag != NULL && encoder->current_tag->options & WBXML_TAG_OPTION_BINARY)) {
         /* If Canonical Form: "Ignorable white space is considered significant and is treated equivalently to data" */
         if ((encoder->output_type != WBXML_ENCODER_OUTPUT_XML) || (encoder->xml_gen_type != WBXML_GEN_XML_CANONICAL)) {
             /* Ignore blank nodes */
