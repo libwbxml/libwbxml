@@ -123,7 +123,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
     }
 
 
-    while ((opt = (WB_TINY) wbxml_getopt(argc, argv, "nkh?o:v:")) != EOF)
+    while ((opt = (WB_TINY) wbxml_getopt(argc, argv, "nkah?o:v:")) != EOF)
     {
         switch (opt) {
         case 'v':
