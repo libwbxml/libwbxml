@@ -62,6 +62,7 @@ static const WBXMLErrorCodeItem error_table [] = {
     { WBXML_ERROR_NOT_IMPLEMENTED,              "Not Implemented" },
     { WBXML_ERROR_TAG_TABLE_UNDEFINED,          "Tag Table Undefined" },
     { WBXML_ERROR_B64_ENC,                      "Failed to encode Base64" },
+    { WBXML_ERROR_B64_DEC,                      "Failed to decode Base64" },
 #if defined( WBXML_SUPPORT_WV )
     { WBXML_ERROR_WV_DATETIME_FORMAT,           "Bad Wireless-Village Date and Time Format" },
 #endif /* WBXML_SUPPORT_WV */

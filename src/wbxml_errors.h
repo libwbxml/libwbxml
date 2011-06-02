@@ -63,6 +63,7 @@ typedef enum WBXMLError_e {
     WBXML_ERROR_NOT_IMPLEMENTED =      16,
     WBXML_ERROR_TAG_TABLE_UNDEFINED =  17,
     WBXML_ERROR_B64_ENC =              18,
+    WBXML_ERROR_B64_DEC =              19,
 #if defined( WBXML_SUPPORT_WV )
     WBXML_ERROR_WV_DATETIME_FORMAT = 20,
 #endif /* WBXML_SUPPORT_WV */
