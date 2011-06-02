@@ -1,3 +1,12 @@
+  * Failing tests do no longer remove their temporary data.
+  * Fixed wrong opaque conversion from WBXML to XML (never normalize
+    opaque/binary data).
+  * Added a new error code for the base64 decoder only. The decoder
+    used the same error code and message like the encoder until now.
+  * Added flag WBXML_TAG_OPTION_BINARY to tag MIME of ActiveSync code
+    page CompseMail:.
+  * Fixed otion -a of xml2wbxml (-a was not allowed as option).
+  * Added two tests for ActiveSync command SendMail.
   * Fixed usage of strncasecmp and location of a variable definition
     (changes from ticket #73).
     This fixes some compiler errors from MS VisualStudio C++ 2010.
