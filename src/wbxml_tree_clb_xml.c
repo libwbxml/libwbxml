@@ -545,7 +545,7 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
         unsigned char *decoded_buf;
         WB_LONG decoded_len = wbxml_base64_decode((const unsigned char*)ch, len, &decoded_buf);
         if (!decoded_len) {
-            tree_ctx->error = WBXML_ERROR_B64_ENC;
+            tree_ctx->error = WBXML_ERROR_B64_DEC;
             return;
         }
         /* Add the buffer as a regular string node (since libwbxml doesn't
