@@ -1,3 +1,4 @@
+  * Added test for ticket #75 (formatted base64 string in binary tag).
   * Failing tests do no longer remove their temporary data.
   * Fixed wrong opaque conversion from WBXML to XML (never normalize
     opaque/binary data).
