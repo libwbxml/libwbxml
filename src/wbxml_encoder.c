@@ -4354,40 +4354,6 @@ static WBXMLError xml_encode_end_attrs(WBXMLEncoder *encoder, WBXMLTreeNode *nod
 }
 
 /**
- * @brief encode the buffer in Base64
- * @param data [in/out]The buffer to encode
- * @return WBXML_OK if OK, another error code otherwise
- */
-static WBXMLError buffer_to_base64(WBXMLBuffer *data)
-{
-    WB_UTINY   *result = NULL;
-    WBXMLError  ret    = WBXML_OK;
-    
-    if (data == NULL) {
-        return WBXML_ERROR_INTERNAL;
-    }
-    
-    if ((result = wbxml_base64_encode((const WB_UTINY *) wbxml_buffer_get_cstr(data),
-                                      wbxml_buffer_len(data))) == NULL)
-    {
-        return WBXML_ERROR_B64_ENC;
-    }
-    
-    /* Reset buffer */
-    wbxml_buffer_delete(data, 0, wbxml_buffer_len(data));
-    
-    /* Set data */
-    if (!wbxml_buffer_append_cstr(data, result)) {
-        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
-    }
-    
-    wbxml_free(result);
-    
-    return ret;
-}
-
-
-/**
  * @brief Encode an XML Text
  * @param encoder The WBXML Encoder
  * @param node    The node containing XML Text to encode
@@ -4469,7 +4435,7 @@ static WBXMLError xml_encode_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
             encoder->current_tag->options & WBXML_TAG_OPTION_BINARY)
         {
             WBXMLError ret;
-            if ((ret = buffer_to_base64(tmp)) != WBXML_OK) {
+            if ((ret = wbxml_buffer_encode_base64(tmp)) != WBXML_OK) {
                 wbxml_buffer_destroy(tmp);
                 return ret;
             }

@@ -39,6 +39,7 @@
 #include <ctype.h>
 
 #include "wbxml_buffers.h"
+#include "wbxml_base64.h"
 
 
 /* Memory management define */
@@ -368,6 +369,24 @@ WBXML_DECLARE(void) wbxml_buffer_strip_blanks(WBXMLBuffer *buffer)
     }
 }
 
+WBXML_DECLARE(void) wbxml_buffer_no_spaces(WBXMLBuffer *buffer)
+{
+    WB_ULONG i = 0, j = 0, end = 0;
+    WB_UTINY ch = 0;
+    
+    if ((buffer == NULL) || buffer->is_static)
+        return;
+        
+    while (i < wbxml_buffer_len(buffer))
+    {
+        if (wbxml_buffer_get_char(buffer, i, &ch) && isspace(ch)) 
+        {
+             wbxml_buffer_delete(buffer, i, 1);
+        } else {
+             i++;
+        }
+    }
+}
 
 WBXML_DECLARE(WB_LONG) wbxml_buffer_compare(WBXMLBuffer *buff1, WBXMLBuffer *buff2)
 {
@@ -677,6 +696,64 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_binary_to_hex(WBXMLBuffer *buffer, WB_BOOL u
     return TRUE;
 }
 
+WBXML_DECLARE(WBXMLError) wbxml_buffer_decode_base64(WBXMLBuffer *buffer)
+{
+    WB_UTINY   *result = NULL;
+    WB_LONG     len    = 0;
+    WBXMLError  ret    = WBXML_OK;
+    
+    if (buffer == NULL) {
+        return WBXML_ERROR_INTERNAL;
+    }
+
+    wbxml_buffer_no_spaces(buffer);
+    
+    if ((len = wbxml_base64_decode((const WB_UTINY *) wbxml_buffer_get_cstr(buffer),
+                                   wbxml_buffer_len(buffer), &result)) <= 0)
+    {
+        return WBXML_ERROR_B64_DEC;
+    }
+    
+    /* Reset buffer */
+    wbxml_buffer_delete(buffer, 0, wbxml_buffer_len(buffer));
+    
+    /* Set binary data */
+    if (!wbxml_buffer_append_data(buffer, result, len)) {
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+    }
+    
+    wbxml_free(result);
+    
+    return ret;
+}
+
+WBXML_DECLARE(WBXMLError) wbxml_buffer_encode_base64(WBXMLBuffer *buffer)
+{
+    WB_UTINY   *result = NULL;
+    WBXMLError  ret    = WBXML_OK;
+    
+    if (buffer == NULL) {
+        return WBXML_ERROR_INTERNAL;
+    }
+    
+    if ((result = wbxml_base64_encode((const WB_UTINY *) wbxml_buffer_get_cstr(buffer),
+                                      wbxml_buffer_len(buffer))) == NULL)
+    {
+        return WBXML_ERROR_B64_ENC;
+    }
+    
+    /* Reset buffer */
+    wbxml_buffer_delete(buffer, 0, wbxml_buffer_len(buffer));
+    
+    /* Set data */
+    if (!wbxml_buffer_append_cstr(buffer, result)) {
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+    }
+    
+    wbxml_free(result);
+    
+    return ret;
+}
 
 WBXML_DECLARE(void) wbxml_buffer_remove_trailing_zeros(WBXMLBuffer **buffer)
 {

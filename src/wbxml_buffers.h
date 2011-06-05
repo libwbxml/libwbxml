@@ -313,6 +313,20 @@ WBXML_DECLARE(void) wbxml_buffer_hex_to_binary(WBXMLBuffer *buffer);
 WBXML_DECLARE(WB_BOOL) wbxml_buffer_binary_to_hex(WBXMLBuffer *buffer, WB_BOOL uppercase);
 
 /**
+ * @brief Convert base64 encoded data to binary data
+ * @param buffer The buffer to convert
+ * @return TRUE if converted, FALSE otherwise
+ */
+WBXML_DECLARE(WBXMLError) wbxml_buffer_decode_base64(WBXMLBuffer *buffer);
+
+/**
+ * @brief Convert binary data to base64 encoded data
+ * @param buffer The buffer to convert
+ * @return TRUE if converted, FALSE otherwise
+ */
+WBXML_DECLARE(WBXMLError) wbxml_buffer_encode_base64(WBXMLBuffer *buffer);
+
+/**
  * @brief Remove trailing Zeros from a dynamic Buffer
  * @param buffer The buffer
  */
