@@ -115,6 +115,8 @@ void wbxml_tree_clb_xml_start_element(void           *ctx,
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
     const WBXMLLangEntry *lang_table = NULL;
 
+    WBXML_DEBUG((WBXML_PARSER, "Expat element start callback ('%s')", localName));
+
     if (tree_ctx->expat_utf16) {
         /** @todo Convert from UTF-16 to UTF-8 */
     }
@@ -190,9 +192,55 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
 #if defined( WBXML_SUPPORT_SYNCML )
     WBXMLBuffer *embed_doc = NULL;
+    WBXMLBuffer *content = NULL;
     WBXMLTree *tree = NULL;
+    WBXMLTreeNode *node = NULL;
     WBXMLError ret = WBXML_OK;
 #endif /* WBXML_SUPPORT_SYNCML */
+
+    WBXML_DEBUG((WBXML_PARSER, "Expat element end callback ('%s')", localName));
+
+    /* If the node is flagged as binary node
+     * then the data is base64 encoded in the XML document
+     * and the data must be decoded in one step.
+     */
+
+    node = tree_ctx->current;
+    if (node && node->type == WBXML_TREE_ELEMENT_NODE &&
+        node->name->type == WBXML_VALUE_TOKEN &&
+        node->name->u.token->options & WBXML_TAG_OPTION_BINARY)
+    {
+        if (node->content == NULL)
+        {
+            WBXML_DEBUG((WBXML_PARSER, "    Binary tag: No content => no conversion!"));
+        } else {
+            WBXML_DEBUG((WBXML_PARSER, "    Binary tag: Convert base64 data"));
+            ret = wbxml_buffer_decode_base64(node->content);
+            if (ret != WBXML_OK)
+            {
+                WBXML_DEBUG((WBXML_PARSER, "    Binary tag: Base64 decoder failed!"));
+                tree_ctx->error = ret;
+            } else {
+                /* Add the buffer as a regular string node (since libwbxml doesn't
+                 * offer a way to specify an opaque data node). The WBXML
+                 * encoder is responsible for generating correct opaque data for
+                 * nodes like this.
+                 */
+                if (wbxml_tree_add_text(tree_ctx->tree,
+                                        tree_ctx->current,
+                                        (const WB_UTINY*)wbxml_buffer_get_cstr(node->content),
+                                        wbxml_buffer_len(node->content)) == NULL)
+                {
+                    WBXML_DEBUG((WBXML_PARSER, "    Binary tag: Cannot add base64 decoded node!"));
+                    tree_ctx->error = WBXML_ERROR_INTERNAL;
+                }
+            }
+            /* safe cleanup */
+            content = node->content;
+            node->content = NULL;
+            wbxml_buffer_destroy(content);
+        }
+    }
 
     if (tree_ctx->expat_utf16) {
         /** @todo Convert from UTF-16 to UTF-8 */
@@ -402,6 +450,8 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
     WBXMLTreeNode *node;
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
 
+    WBXML_DEBUG((WBXML_PARSER, "Expat text callback"));
+
     if (tree_ctx->expat_utf16) {
         /** @todo Convert from UTF-16 to UTF-8 */
     }
@@ -531,10 +581,6 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
 
     /* We expect that "byte array" or BLOB types are 
      * encoded in Base 64 in the XML code, since they may contain binary data.
-     *
-     * The Expat documentation says the character data may be split across
-     * callback invocations. In that case the decoding will fail. Let's just
-     * hope it doesn't happen.
      */
 
     node = tree_ctx->current;
@@ -542,26 +588,16 @@ void wbxml_tree_clb_xml_characters(void           *ctx,
         node->name->type == WBXML_VALUE_TOKEN &&
         node->name->u.token->options & WBXML_TAG_OPTION_BINARY)
     {
-        unsigned char *decoded_buf;
-        WB_LONG decoded_len = wbxml_base64_decode((const unsigned char*)ch, len, &decoded_buf);
-        if (!decoded_len) {
-            tree_ctx->error = WBXML_ERROR_B64_DEC;
-            return;
-        }
-        /* Add the buffer as a regular string node (since libwbxml doesn't
-        * offer a way to specify an opaque data node). The WBXML
-        * encoder is responsible for generating correct opaque data for
-        * nodes like this.
-        */
-        if (wbxml_tree_add_text(tree_ctx->tree,
-                                tree_ctx->current,
-                                (const WB_UTINY*)decoded_buf,
-                                decoded_len) == NULL)
+        WBXML_DEBUG((WBXML_PARSER, "    Binary tag: Caching base64 encoded data for later conversion."));
+        if (node->content == NULL)
         {
-            tree_ctx->error = WBXML_ERROR_INTERNAL;
+            node->content = wbxml_buffer_create(ch, len, 1);
+            if (node->content == NULL)
+                tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        } else {
+            if (!wbxml_buffer_append_data(node->content, ch, len))
+                tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
         }
-
-        wbxml_free(decoded_buf);
         return;
     }
 
