@@ -1,6 +1,6 @@
   * Fixed handling of base64 encoded data in elements which are flagged
-    as WBXML_TAG_OPTION_BINARY. The data is no longer decoded before all
-    data is present (ticket #75).
+    as WBXML_TAG_OPTION_BINARY. The base64 encoded data is only decoded
+    when all data is present (ticket #75).
   * Added two new internal functions for the encoding and decoding of
     base64 in a buffer (including cleanup of wbxml_encoder.c). The
     decoder function supports formatted base64 strings too
