@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE WV-CSP-Message PUBLIC "-//OMA//DTD WV-CSP 1.1//EN" "http://www.openmobilealliance.org/DTD/WV-CSP.XML">
+<WV-CSP-Message xmlns="http://www.wireless-village.org/CSP1.1">
+   <Session>
+      <SessionDescriptor>
+         <SessionType>Inband</SessionType>
+
+         <SessionID>im.user.com#48815@server.com</SessionID>
+      </SessionDescriptor>
+
+      <Transaction>
+         <TransactionDescriptor>
+            <TransactionMode>Response</TransactionMode>
+
+            <TransactionID>IMApp01#12345@NOK5110</TransactionID>
+
+            <Poll>F</Poll>
+         </TransactionDescriptor>
+
+         <TransactionContent xmlns="http://www.wireless-village.org/TRC1.1">
+            <Status>
+               <Result>
+                  <Code>201</Code>
+
+                  <Description>Partially successful.</Description>
+
+                  <DetailedResult>
+                     <Code>531</Code>
+
+                     <Description>Unknown user.</Description>
+
+                     <UserID>wv:bad_user1@im.com</UserID>
+
+                     <UserID>wv:bad_user2@im.com</UserID>
+                  </DetailedResult>
+
+                  <DetailedResult>
+                     <Code>532</Code>
+
+                     <Description>Blocked.</Description>
+
+                     <UserID>wv:bad_user3@im.com</UserID>
+
+                     <UserID>wv:bad_user4@im.com</UserID>
+                  </DetailedResult>
+               </Result>
+            </Status>
+         </TransactionContent>
+      </Transaction>
+   </Session>
+</WV-CSP-Message>
+
