@@ -1,14 +1,13 @@
 General
 -------
 - An automatic test tool
-- Add 'HAVE_EXPAT' to autoconf process... not directly in 'Makefile.am' files in 'src/' and 'tools/'
 
 Encoder:
 - Parse and encode XML CDDATA
 - Parse and encode XML PI
 - Generate ENTITY tokens
 - Handle Charsets Encoding
-- UCS4 convertion 
+- UCS4 conversion 
 
 Parser:
 - Handle Charsets Encoding
