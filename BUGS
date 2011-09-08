@@ -1,1 +1,18 @@
-Please have a look at TODO file, before flaming for a bug ;)
+1. Please read the TODO file for the limitations of the library.
+
+2. Please register to our ticket system (Trac):
+
+https://libwbxml.opensync.org/register
+
+3. Please check for an open/active ticket:
+
+https://libwbxml.opensync.org/report/1
+
+4. Please create a new ticket:
+
+https://libwbxml.opensync.org/newticket
+
+Please note that a ticket is the most reliable way of communication.
+If emails are ignored then a ticket still persists.
+The tickets are checked before every release at minimum.
+
