@@ -1,1 +1,26 @@
-Thanks to Pau Aliagas (http://www.smsarena.com) for his help.
+The original author of the library is:
+
+Aymerick Jehanne <aymerick@jehanne.org>
+
+The actual maintainer of the library is:
+
+Michael Bell <michael.bell@web.de>
+
+The following people helped to develop and maintain this library:
+
+Amnon Aaronsohn     (ActiveSync)
+Pau Aliagas         <pau@smsarena.com>
+Michael Banck       (Debian package maintainer, testing)
+Michael Bell        <michael.bell@web.de>
+Anton D. Kachalov   (Nokia ConML support)
+Benedykt Kroplewski <benedykt@age.pl>
+Aymerick Jehanne    <aymerick@jehanne.org>
+Ossi Jormakka       (Ixonos Plc., ActiveSync)
+Jeremy Lainé        (helped with cmake on Win32)
+Boaz Yaniv          (MS Visual Studio fixes)
+
+If you think your name is missing here
+then please feel free to create a ticket.
+Such a ticket is no offence.
+The missing name is an offence.
+
