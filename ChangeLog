@@ -1,3 +1,10 @@
+  * Added a trailing newline to the files THANKS and TODO (ticket #77).
+  * The tool xml2wbxml is now covered by LGPL v2.1 (or any later).
+    Petr Pisar discovered that wbxml2xml and xml2wbxml used different
+    licences.  This was a mistake. Aymerick Jehanne and Michael Bell
+    (the copyright holders) agreed on using LGPL as licence.
+    (ticket #76)
+
 2011-08-06  Michael Bell <michael.bell@web.de>
   * Released 0.11.0
   * This is an exact copy of 0.11.beta6.
