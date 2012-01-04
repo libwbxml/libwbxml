@@ -1,3 +1,6 @@
+  * Extract node breaks (null'ed) the previous node link to a next node
+    (too early cleanup in wbxml_tree_extract_node of wbxml_tree.c).
+    The patch was supplied by Mark Ostrer from Websense (ticket #79).
   * Added a trailing newline to the files THANKS and TODO (ticket #77).
   * The tool xml2wbxml is now covered by LGPL v2.1 (or any later).
     Petr Pisar discovered that wbxml2xml and xml2wbxml used different

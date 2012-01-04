@@ -1084,19 +1084,16 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_extract_node(WBXMLTree *tree,
         tree->root = node->next;
     }
 
-    /* Next link */
-    if (node->next != NULL) {
-        /* Link next node to previous node */
+    /* Link next node to previous node */
+    if (node->next != NULL)
         node->next->prev = node->prev;
-        node->next = NULL;
-    }
 
-    /* Previous link */
-    if (node->prev != NULL) {
-        /* Link previous node to next node */
+    /* Link previous node to next node */
+    if (node->prev != NULL)
         node->prev->next = node->next;
-        node->prev = NULL;
-    }
+
+	/* Cleanup pointers */
+	node->next = node->prev = NULL;
 
     return WBXML_OK;
 }
