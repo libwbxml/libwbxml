@@ -53,7 +53,6 @@ struct WBXMLBuffer_s
     WB_UTINY *data;             /**< The data */
     WB_ULONG  len;              /**< Length of data in buffer */
     WB_ULONG  malloced;         /**< Length of buffer */
-    WB_ULONG  malloc_block;     /**< Malloc Block Size */
     WB_BOOL   is_static;        /**< Is it a static buffer ?  */
 };
 
@@ -76,7 +75,6 @@ WBXML_DECLARE(WBXMLBuffer *) wbxml_buffer_create_real(const WB_UTINY *data, WB_U
     if (buffer == NULL)
         return NULL;
         
-    buffer->malloc_block = malloc_block;
     buffer->is_static    = FALSE;
 
     if ((len <= 0) || (data == NULL)) {        
@@ -114,7 +112,6 @@ WBXML_DECLARE(WBXMLBuffer *) wbxml_buffer_sta_create_real(const WB_UTINY *data, 
         return NULL;
     }
 
-    buffer->malloc_block = 0;
     buffer->is_static    = TRUE;
     buffer->data         = (WB_UTINY *) data;
     buffer->len          = len;

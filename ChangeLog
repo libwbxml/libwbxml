@@ -1,3 +1,7 @@
+  * The parameter malloc_block of the function wbxml_buffer_create_real
+    is only used now for the initial memory allocation. The patch for
+    ticket #80 introduced a more agressive algorithm for memory
+    re-allocation to support big files.
   * Fixed performance problem during the parsing of XML documents.
     Committed the original patch from ticket #80.
   * Extract node breaks (null'ed) the previous node link to a next node
