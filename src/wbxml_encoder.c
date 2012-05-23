@@ -361,8 +361,8 @@ static WBXMLError xml_encode_attr(WBXMLEncoder *encoder, WBXMLAttribute *attribu
 static WBXMLError xml_encode_end_attrs(WBXMLEncoder *encoder, WBXMLTreeNode *node);
 
 static WBXMLError xml_encode_text(WBXMLEncoder *encoder, WBXMLTreeNode *node);
+static WBXMLError xml_encode_text_entities(WBXMLEncoder *encoder, WBXMLBuffer *buff);
 static WB_BOOL xml_encode_new_line(WBXMLBuffer *buff);
-static WB_BOOL xml_fix_text(WBXMLBuffer *buff, WB_BOOL normalize);
 
 static WBXMLError xml_encode_cdata(WBXMLEncoder *encoder);
 static WBXMLError xml_encode_end_cdata(WBXMLEncoder *encoder);
@@ -4277,10 +4277,7 @@ static WBXMLError xml_encode_attr(WBXMLEncoder *encoder, WBXMLAttribute *attribu
             return WBXML_ERROR_NOT_ENOUGH_MEMORY;
 
         /* Fix text */
-        xml_fix_text(tmp, (WB_BOOL) (encoder->xml_gen_type == WBXML_GEN_XML_CANONICAL));
-
-        /* Append Attribute Value */
-        if (!wbxml_buffer_append(encoder->output, tmp)) {
+        if (xml_encode_text_entities(encoder, tmp)) {
             wbxml_buffer_destroy(tmp);
             return WBXML_ERROR_ENCODER_APPEND_DATA;
         }
@@ -4442,10 +4439,7 @@ static WBXMLError xml_encode_text(WBXMLEncoder *encoder, WBXMLTreeNode *node)
         }
 
         /* Fix text */
-        xml_fix_text(tmp, (WB_BOOL) (encoder->xml_gen_type == WBXML_GEN_XML_CANONICAL));
-
-        /* Append Text */
-        if (!wbxml_buffer_append(encoder->output, tmp)) {
+        if (xml_encode_text_entities(encoder, tmp)) {
             wbxml_buffer_destroy(tmp);
             return WBXML_ERROR_ENCODER_APPEND_DATA;
         }
@@ -4481,10 +4475,11 @@ static WB_BOOL xml_encode_new_line(WBXMLBuffer *buff)
  * @return WBXML_OK if ok, an Error Code otherwise
  * @note Reference: http://www.w3.org/TR/2004/REC-xml-20040204/#syntax
  */
-static WB_BOOL xml_fix_text(WBXMLBuffer *buff, WB_BOOL normalize)
+static WBXMLError xml_encode_text_entities(WBXMLEncoder *encoder, WBXMLBuffer *buff)
 {
     WB_ULONG i = 0;
     WB_UTINY ch;
+    WB_BOOL normalize = (WB_BOOL) (encoder->xml_gen_type == WBXML_GEN_XML_CANONICAL);
 
     for (i = 0; i < wbxml_buffer_len(buff); i++) {
         if (!wbxml_buffer_get_char(buff, i, &ch))
@@ -4492,90 +4487,69 @@ static WB_BOOL xml_fix_text(WBXMLBuffer *buff, WB_BOOL normalize)
 
         switch (ch) {
         case '<':
-            /* Remove it */
-            wbxml_buffer_delete(buff, i, 1);
-
             /* Write "&lt;" */
-            if (!wbxml_buffer_insert_cstr(buff, (WB_UTINY *) xml_lt, i))
+            if (!wbxml_buffer_append_cstr(encoder->output, (WB_UTINY *) xml_lt))
                 return WBXML_ERROR_NOT_ENOUGH_MEMORY;
 
             break;
 
         case '>':
-            /* Remove it */
-            wbxml_buffer_delete(buff, i, 1);
-
             /* Write "&gt;" */
-            if (!wbxml_buffer_insert_cstr(buff, (WB_UTINY *) xml_gt, i))
+            if (!wbxml_buffer_append_cstr(encoder->output, (WB_UTINY *) xml_gt))
                 return WBXML_ERROR_NOT_ENOUGH_MEMORY;
 
             break;
 
         case '&':
-            /* Remove it */
-            wbxml_buffer_delete(buff, i, 1);
-
             /* Write "&amp;" */
-            if (!wbxml_buffer_insert_cstr(buff, (WB_UTINY *) xml_amp, i))
+            if (!wbxml_buffer_append_cstr(encoder->output, (WB_UTINY *) xml_amp))
                 return WBXML_ERROR_NOT_ENOUGH_MEMORY;
 
             break;
 
         case '"':
-            /* Remove it */
-            wbxml_buffer_delete(buff, i, 1);
-
             /* Write "&quot;" */
-            if (!wbxml_buffer_insert_cstr(buff, (WB_UTINY *) xml_quot, i))
+            if (!wbxml_buffer_append_cstr(encoder->output, (WB_UTINY *) xml_quot))
                 return WBXML_ERROR_NOT_ENOUGH_MEMORY;
 
             break;
 
         case '\'':
-            /* Remove it */
-            wbxml_buffer_delete(buff, i, 1);
-
             /* Write "&apos;" */
-            if (!wbxml_buffer_insert_cstr(buff, (WB_UTINY *) xml_apos, i))
+            if (!wbxml_buffer_append_cstr(encoder->output, (WB_UTINY *) xml_apos))
                 return WBXML_ERROR_NOT_ENOUGH_MEMORY;
 
             break;
 
         case '\r':
             if (normalize) {
-                /* Remove it */
-                wbxml_buffer_delete(buff, i, 1);
-
                 /* Write "&#13;" */
-                if (!wbxml_buffer_insert_cstr(buff, (WB_UTINY *) xml_slashr, i))
+                if (!wbxml_buffer_append_cstr(encoder->output, (WB_UTINY *) xml_slashr))
                     return WBXML_ERROR_NOT_ENOUGH_MEMORY;
+
+                break;
             }
-            break;
 
         case '\n':
             if (normalize) {
-                /* Remove it */
-                wbxml_buffer_delete(buff, i, 1);
-
                 /* Write "&#10;" */
-                if (!wbxml_buffer_insert_cstr(buff, (WB_UTINY *) xml_slashn, i))
+                if (!wbxml_buffer_append_cstr(encoder->output, (WB_UTINY *) xml_slashn))
                     return WBXML_ERROR_NOT_ENOUGH_MEMORY;
+                break;
             }
-            break;
 
         case '\t':
             if (normalize) {
-                /* Remove it */
-                wbxml_buffer_delete(buff, i, 1);
-
                 /* Write "&#9;" */
-                if (!wbxml_buffer_insert_cstr(buff, (WB_UTINY *) xml_tab, i))
+                if (!wbxml_buffer_append_cstr(encoder->output, (WB_UTINY *) xml_tab))
                     return WBXML_ERROR_NOT_ENOUGH_MEMORY;
+                break;
             }
-            break;
 
         default:
-            /* Do Nothing */
+            if (!wbxml_buffer_append_char(encoder->output, ch))
+                return WBXML_ERROR_NOT_ENOUGH_MEMORY;
+
             break;
         }
     }
