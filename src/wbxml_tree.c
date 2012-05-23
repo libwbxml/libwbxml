@@ -1023,12 +1023,14 @@ WBXML_DECLARE(WB_BOOL) wbxml_tree_add_node(WBXMLTree *tree, WBXMLTreeNode *paren
              */
             while (tmp->next != NULL)
                 tmp = tmp->next;
-            
+
 	    if (node->type == WBXML_TREE_TEXT_NODE &&
                 tmp->type == WBXML_TREE_TEXT_NODE) {
+
                 /* join the two text nodes and replace the present text node */
-                if (!wbxml_buffer_insert(node->content, tmp->content, 0))
+                if (!wbxml_buffer_append(tmp->content, node->content))
                     return FALSE;
+
 		if (tmp->prev == NULL) {
                     /* tmp is first child */
                     parent->children = node;
@@ -1037,6 +1039,10 @@ WBXML_DECLARE(WB_BOOL) wbxml_tree_add_node(WBXMLTree *tree, WBXMLTreeNode *paren
                     tmp->prev->next = node;
                     node->prev = tmp->prev;
                 }
+
+                wbxml_buffer_destroy(node->content);
+                node->content = tmp->content;
+                tmp->content = NULL;
                 wbxml_tree_node_destroy(tmp);
             } else {
                 /* normal situation => append node */
@@ -1092,8 +1098,8 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_extract_node(WBXMLTree *tree,
     if (node->prev != NULL)
         node->prev->next = node->next;
 
-	/* Cleanup pointers */
-	node->next = node->prev = NULL;
+    /* Cleanup pointers */
+    node->next = node->prev = NULL;
 
     return WBXML_OK;
 }

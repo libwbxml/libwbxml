@@ -1,3 +1,5 @@
+  * Fixed performance problem during the parsing of XML documents.
+    Committed the original patch from ticket #80.
   * Extract node breaks (null'ed) the previous node link to a next node
     (too early cleanup in wbxml_tree_extract_node of wbxml_tree.c).
     The patch was supplied by Mark Ostrer from Websense (ticket #79).

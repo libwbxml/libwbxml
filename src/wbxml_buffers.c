@@ -790,10 +790,10 @@ static WB_BOOL grow_buff(WBXMLBuffer *buffer, WB_ULONG size)
     size++; 
 
     if ((buffer->len + size) > buffer->malloced) {
-        if ((buffer->malloced + buffer->malloc_block) < (buffer->len + size))
-            buffer->malloced = buffer->len + size + buffer->malloc_block;
+        if ((buffer->malloced * 2) < (buffer->len + size))
+            buffer->malloced = buffer->len + size;
         else
-            buffer->malloced = buffer->malloced + buffer->malloc_block;
+            buffer->malloced *= 2;
             
         buffer->data = wbxml_realloc(buffer->data, buffer->malloced);
         if (buffer->data == NULL)
