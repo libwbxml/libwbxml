@@ -26,6 +26,11 @@ To make a release of libwbxml, do the following:
 
 
  - Run "make test" again several times to try to see race conditions.
+   "cd trunk"
+   "cmake . -B/tmp/build/libwbxml"
+   "cd /tmp/build/libwbxml"
+   "make"
+   "make test"
 
  - Commit the increased version changes (and build fixes)
 

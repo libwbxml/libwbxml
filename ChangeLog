@@ -1,11 +1,15 @@
+2012-05-25  Michael Bell <michael.bell@web.de>
+  * Released 0.11.1
   * Fixed performance problem during the generation of XML documents.
     Committed the original patch from ticket #81.
+    The patch was supplied by Conrad Irwin.
   * The parameter malloc_block of the function wbxml_buffer_create_real
     is only used now for the initial memory allocation. The patch for
     ticket #80 introduced a more agressive algorithm for memory
     re-allocation to support big files.
   * Fixed performance problem during the parsing of XML documents.
     Committed the original patch from ticket #80.
+    The patch was supplied by Conrad Irwin.
   * Extract node breaks (null'ed) the previous node link to a next node
     (too early cleanup in wbxml_tree_extract_node of wbxml_tree.c).
     The patch was supplied by Mark Ostrer from Websense (ticket #79).
