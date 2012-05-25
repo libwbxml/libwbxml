@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE AirSync PUBLIC "-//AIRSYNC//DTD AirSync//EN" "http://www.microsoft.com/">
+<Search xmlns="http://synce.org/formats/airsync_wm5/search">
+ <Status>1</Status>
+ <Response>
+  <Store>
+   <Status>1</Status>
+   <Result>
+    <Class xmlns="http://synce.org/formats/airsync_wm5/airsync">Calendar</Class>
+    <LongId>RgAAAADi22n%2b5K6eSoH%2bdzl9mrUlBwAiJdrFeosuS5FQPukoeMhpAH7xbHCsAAAiJdrFeosuS5FQPukoeMhpAH7zrksUAAAP</LongId>
+    <CollectionId xmlns="http://synce.org/formats/airsync_wm5/airsync">3</CollectionId>
+    <Properties>
+     <TimeZone xmlns="http://synce.org/formats/airsync_wm5/calendar">iP///0YATABFACAAUwB0AGEAbgBkAGEAcgBkACAAVABpAG0AZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAFAAQAAAAAAAAAAAAAAEYATABFACAARABhAHkAbABpAGcAaAB0ACAAVABpAG0AZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAFAAMAAAAAAAAAxP///w==</TimeZone>
+     <DTStamp xmlns="http://synce.org/formats/airsync_wm5/calendar">20090417T112208Z</DTStamp>
+     <StartTime xmlns="http://synce.org/formats/airsync_wm5/calendar">20090417T090000Z</StartTime>
+     <Subject xmlns="http://synce.org/formats/airsync_wm5/calendar">hfjjf</Subject>
+     <UID xmlns="http://synce.org/formats/airsync_wm5/calendar">040000008200E00074C5B7101A82E00800000000F4BD10E469BEC901000000000000000010000000449579D4A72EED4EB3F70D04913F0277</UID>
+     <Organizer_Name xmlns="http://synce.org/formats/airsync_wm5/calendar">maemo</Organizer_Name>
+     <Organizer_Email xmlns="http://synce.org/formats/airsync_wm5/calendar">maemo@test.local</Organizer_Email>
+     <Attendees xmlns="http://synce.org/formats/airsync_wm5/calendar">
+      <Attendee>
+       <Attendee_Email>maemo@test.local</Attendee_Email>
+       <Attendee_Name>maemo</Attendee_Name>
+       <Attendee_Status>0</Attendee_Status>
+       <Attendee_Type>1</Attendee_Type>
+      </Attendee>
+     </Attendees>
+     <Location xmlns="http://synce.org/formats/airsync_wm5/calendar">meetingroom  testi</Location>
+     <EndTime xmlns="http://synce.org/formats/airsync_wm5/calendar">20090417T100000Z</EndTime>
+     <Body xmlns="http://synce.org/formats/airsync_wm5/airsyncbase">
+      <Type>2</Type>
+      <EstimatedDataSize>365</EstimatedDataSize>
+      <Data>&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;meta name=&quot;Generator&quot; content=&quot;Microsoft Exchange Server&quot;&gt;
+&lt;!-- converted from text --&gt;
+&lt;style&gt;.EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; }&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;font size=&quot;2&quot;&gt;&lt;div class=&quot;PlainText&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/font&gt;
+&lt;/body&gt;
+&lt;/html&gt;</Data>
+     </Body>
+     <Sensitivity xmlns="http://synce.org/formats/airsync_wm5/calendar">0</Sensitivity>
+     <BusyStatus xmlns="http://synce.org/formats/airsync_wm5/calendar">0</BusyStatus>
+     <AllDayEvent xmlns="http://synce.org/formats/airsync_wm5/calendar">0</AllDayEvent>
+     <Reminder xmlns="http://synce.org/formats/airsync_wm5/calendar">15</Reminder>
+     <MeetingStatus xmlns="http://synce.org/formats/airsync_wm5/calendar">5</MeetingStatus>
+     <NativeBodyType xmlns="http://synce.org/formats/airsync_wm5/airsyncbase">1</NativeBodyType>
+    </Properties>
+   </Result>
+   <Result>
+    <Class xmlns="http://synce.org/formats/airsync_wm5/airsync">Calendar</Class>
+    <LongId>RgAAAADi22n%2b5K6eSoH%2bdzl9mrUlBwAiJdrFeosuS5FQPukoeMhpAH7xbHCsAAAiJdrFeosuS5FQPukoeMhpAH7zrksSAAAP</LongId>
+    <CollectionId xmlns="http://synce.org/formats/airsync_wm5/airsync">3</CollectionId>
+    <Properties>
+     <TimeZone xmlns="http://synce.org/formats/airsync_wm5/calendar">iP///0YATABFACAAUwB0AGEAbgBkAGEAcgBkACAAVABpAG0AZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAFAAQAAAAAAAAAAAAAAEYATABFACAARABhAHkAbABpAGcAaAB0ACAAVABpAG0AZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAFAAMAAAAAAAAAxP///w==</TimeZone>
+     <DTStamp xmlns="http://synce.org/formats/airsync_wm5/calendar">20090417T105620Z</DTStamp>
+     <StartTime xmlns="http://synce.org/formats/airsync_wm5/calendar">20090417T110000Z</StartTime>
+     <Subject xmlns="http://synce.org/formats/airsync_wm5/calendar">tent</Subject>
+     <UID xmlns="http://synce.org/formats/airsync_wm5/calendar">040000008200E00074C5B7101A82E008000000002E1A5BA069BEC901000000000000000010000000F1BB45467D72B44F822E9686F1D18ED4</UID>
+     <Organizer_Name xmlns="http://synce.org/formats/airsync_wm5/calendar">maemo</Organizer_Name>
+     <Organizer_Email xmlns="http://synce.org/formats/airsync_wm5/calendar">maemo@test.local</Organizer_Email>
+     <Attendees xmlns="http://synce.org/formats/airsync_wm5/calendar">
+      <Attendee>
+       <Attendee_Email>meetingroomtest@test.local</Attendee_Email>
+       <Attendee_Name>meetingroom  testi</Attendee_Name>
+       <Attendee_Status>0</Attendee_Status>
+       <Attendee_Type>3</Attendee_Type>
+      </Attendee>
+      <Attendee>
+       <Attendee_Email>maemo@test.local</Attendee_Email>
+       <Attendee_Name>maemo</Attendee_Name>
+       <Attendee_Status>0</Attendee_Status>
+       <Attendee_Type>1</Attendee_Type>
+      </Attendee>
+     </Attendees>
+     <Location xmlns="http://synce.org/formats/airsync_wm5/calendar">meetingroom  testi</Location>
+     <EndTime xmlns="http://synce.org/formats/airsync_wm5/calendar">20090417T120000Z</EndTime>
+     <Body xmlns="http://synce.org/formats/airsync_wm5/airsyncbase">
+      <Type>2</Type>
+      <EstimatedDataSize>365</EstimatedDataSize>
+      <Data>&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;meta name=&quot;Generator&quot; content=&quot;Microsoft Exchange Server&quot;&gt;
+&lt;!-- converted from text --&gt;
+&lt;style&gt;.EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; }&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;font size=&quot;2&quot;&gt;&lt;div class=&quot;PlainText&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/font&gt;
+&lt;/body&gt;
+&lt;/html&gt;</Data>
+     </Body>
+     <Sensitivity xmlns="http://synce.org/formats/airsync_wm5/calendar">0</Sensitivity>
+     <BusyStatus xmlns="http://synce.org/formats/airsync_wm5/calendar">0</BusyStatus>
+     <AllDayEvent xmlns="http://synce.org/formats/airsync_wm5/calendar">0</AllDayEvent>
+     <Reminder xmlns="http://synce.org/formats/airsync_wm5/calendar">15</Reminder>
+     <MeetingStatus xmlns="http://synce.org/formats/airsync_wm5/calendar">5</MeetingStatus>
+     <NativeBodyType xmlns="http://synce.org/formats/airsync_wm5/airsyncbase">1</NativeBodyType>
+    </Properties>
+   </Result>
+   <Range>0-1</Range>
+   <Total>19</Total>
+  </Store>
+ </Response>
+</Search>
