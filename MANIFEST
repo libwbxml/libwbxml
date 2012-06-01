@@ -75,7 +75,6 @@ symbian/libwbxml.mmp
 symbian/libwbxmldll.cpp
 symbian/wbxml2xml.mmp
 symbian/xml2wbxml.mmp
-test/test_parser.c
 tools/Makefile.am
 tools/attgetopt.c
 tools/getopt.h
@@ -94,6 +93,5 @@ win32/leaktrack/leaktrack.lib
 win32/leaktrack/lt_log.h
 win32/libwbxml.dsw
 win32/libwbxml2/libwbxml2.dsp
-win32/test_parser/test_parser.dsp
 win32/wbxml2xml/wbxml2xml.dsp
 win32/xml2wbxml/xml2wbxml.dsp
