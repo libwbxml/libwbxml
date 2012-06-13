@@ -1,3 +1,4 @@
+  * Install FindLibWbxml2.cmake during "make install" (ticket #83)
   * Removed outdated test/test_parser.c (ticket #82)
 2012-05-25  Michael Bell <michael.bell@web.de>
   * Released 0.11.1
