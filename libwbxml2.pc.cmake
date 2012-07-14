@@ -6,6 +6,6 @@ includedir=@LIBWBXML_INCLUDE_DIR@
 Name: libwbxml2
 Description: C wbxml library
 Version: @LIBWBXML_VERSION@
-Requires: libxml-2.0 >= 2.6
+Requires: expat >= 2.0
 Libs: -L${libdir} -lwbxml2
 Cflags: -I${includedir}
