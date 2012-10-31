@@ -1,7 +1,13 @@
+  * The code of the function wbxml_tree_clb_xml_end_element to handle
+    binary tags used variables which were only defined if the SyncML
+    code is enabled. The file wbxml_tree_clb_xml.c was fixed
+    (ticket #85).
+
 2012-07-20  Michael Bell <michael.bell@web.de>
-  * libwbxml2.pc only depends on expat. It does not depend on libxml2.
-    The cmake module was fixed too.
-  * Install FindLibWbxml2.cmake during "make install" (ticket #83).
+  * Released 0.11.2
+  * libwbxml2 only depends on expat. It does not depend on libxml2.
+    The pkgconfig file and the cmake module were fixed.
+  * FindLibWbxml2.cmake is installed during "make install" (ticket #83).
     The external cmake modules are now included at cmake/modules
     because the cmake directory includes a CMakeLists.txt.
   * Removed outdated test/test_parser.c (ticket #82).

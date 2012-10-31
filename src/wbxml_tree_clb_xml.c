@@ -190,19 +190,16 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
                                     const XML_Char *localName)
 {
     WBXMLTreeClbCtx *tree_ctx = (WBXMLTreeClbCtx *) ctx;
-#if defined( WBXML_SUPPORT_SYNCML )
-    WBXMLBuffer *embed_doc = NULL;
     WBXMLBuffer *content = NULL;
-    WBXMLTree *tree = NULL;
     WBXMLTreeNode *node = NULL;
     WBXMLError ret = WBXML_OK;
-#endif /* WBXML_SUPPORT_SYNCML */
 
     WBXML_DEBUG((WBXML_PARSER, "Expat element end callback ('%s')", localName));
 
     /* If the node is flagged as binary node
      * then the data is base64 encoded in the XML document
      * and the data must be decoded in one step.
+     * Examples: Microsoft ActiveSync tags ConversationId or MIME
      */
 
     node = tree_ctx->current;
@@ -260,6 +257,8 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
             if (WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0 ||
 	        WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0) {
 		/* definitions first ... or some compilers don't like it */
+                WBXMLBuffer *embed_doc = NULL;
+                WBXMLTree *tree = NULL;
 		const WBXMLLangEntry *lang;
 
                 /* Get embedded DevInf or DM DDF Document */
