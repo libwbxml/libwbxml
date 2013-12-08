@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE AirSync PUBLIC "-//AIRSYNC//DTD AirSync//EN" "http://www.microsoft.com/">
+<Sync xmlns="http://synce.org/formats/airsync_wm5/airsync">
+ <Collections>
+  <Collection>
+   <SyncKey>16668481</SyncKey>
+   <CollectionId>14</CollectionId>
+   <Status>1</Status>
+   <Commands>
+    <Add>
+     <ServerId>14:4</ServerId>
+     <ApplicationData>
+      <To xmlns="http://synce.org/formats/airsync_wm5/email">&quot;Moti&quot; &lt;moti@example.com&gt;</To>
+      <From xmlns="http://synce.org/formats/airsync_wm5/email">&quot;Momo&quot; &lt;momo@example.org&gt;</From>
+      <Subject xmlns="http://synce.org/formats/airsync_wm5/email">Hello world!</Subject>
+      <Reply-To xmlns="http://synce.org/formats/airsync_wm5/email">&quot;Momo&quot; &lt;momo@example.org&gt;</Reply-To>
+      <DateReceived xmlns="http://synce.org/formats/airsync_wm5/email">2010-12-28T22:30:09.906Z</DateReceived>
+      <DisplayTo xmlns="http://synce.org/formats/airsync_wm5/email">Moti</DisplayTo>
+      <ThreadTopic xmlns="http://synce.org/formats/airsync_wm5/email">Hello world!</ThreadTopic>
+      <Importance xmlns="http://synce.org/formats/airsync_wm5/email">1</Importance>
+      <Read xmlns="http://synce.org/formats/airsync_wm5/email">1</Read>
+      <Body xmlns="http://synce.org/formats/airsync_wm5/airsyncbase">
+       <Type>2</Type>
+       <EstimatedDataSize>8224</EstimatedDataSize>
+       <Truncated>1</Truncated>
+       <Data>Bla bla bla</Data>
+       <Preview>Guten tag</Preview>
+      </Body>
+      <MessageClass xmlns="http://synce.org/formats/airsync_wm5/email">IPM.Note</MessageClass>
+      <InternetCPID xmlns="http://synce.org/formats/airsync_wm5/email">28591</InternetCPID>
+      <Flag xmlns="http://synce.org/formats/airsync_wm5/email"/>
+      <ContentClass xmlns="http://synce.org/formats/airsync_wm5/email">urn:content-classes:message</ContentClass>
+      <NativeBodyType xmlns="http://synce.org/formats/airsync_wm5/airsyncbase">2</NativeBodyType>
+      <!-- ConversationID and ConversationIndex are byte arrays. -->
+      <ConversationId xmlns="http://synce.org/formats/airsync_wm5/email2">bdpgj2qneuaae+o81xg/bQ==</ConversationId>
+      <ConversationIndex xmlns="http://synce.org/formats/airsync_wm5/email2">ACUM3SI=</ConversationIndex>
+      <Categories xmlns="http://synce.org/formats/airsync_wm5/email"/>
+     </ApplicationData>
+    </Add>
+   </Commands>
+  </Collection>
+ </Collections>
+</Sync>
