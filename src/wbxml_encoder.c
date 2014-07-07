@@ -1497,6 +1497,9 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     WB_BOOL pi_in_strtbl = FALSE;
     WBXMLError ret = WBXML_OK;
 
+    if ((encoder == NULL) || (encoder->lang == NULL) || (encoder->lang->publicID == NULL) || (header == NULL))
+        return WBXML_ERROR_BAD_PARAMETER;
+    
 #if defined( WBXML_ENCODER_USE_STRTBL )
     WBXMLStringTableElement *elt = NULL;
     WB_BOOL added = FALSE;
@@ -1504,9 +1507,6 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     strstbl_len = encoder->strstbl_len;
 #endif /* WBXML_ENCODER_USE_STRTBL */
 
-    if ((encoder == NULL) || (encoder->lang == NULL) || (encoder->lang->publicID == NULL) || (header == NULL))
-        return WBXML_ERROR_BAD_PARAMETER;
-    
     /* WBXML Public ID */
     public_id = encoder->lang->publicID->wbxmlPublicID;
 
