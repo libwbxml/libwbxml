@@ -3663,7 +3663,7 @@ static void wbxml_strtbl_collect_strings(WBXMLEncoder *encoder, WBXMLTreeNode *n
                     attr = wbxml_list_get(node->attrs, i);
 
                     /* Only add this string if it is big enought */
-                    if (wbxml_buffer_len(attr->value) > WBXML_ENCODER_STRING_TABLE_MIN) {
+                    if (attr && wbxml_buffer_len(attr->value) > WBXML_ENCODER_STRING_TABLE_MIN) {
                         /* This mustn't be a tokenisable Attribute Start */
                         attr_entry = wbxml_tables_get_attr_from_xml(encoder->lang,
                                                                    (WB_UTINY *) wbxml_attribute_get_xml_name(attr),
