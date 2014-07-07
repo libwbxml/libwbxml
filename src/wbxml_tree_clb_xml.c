@@ -312,7 +312,14 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 				break;
 			default:
 				tree_ctx->error = WBXML_ERROR_UNKNOWN_XML_LANGUAGE;
+				wbxml_buffer_destroy(embed_doc);
 				return;
+		}
+		
+		if (lang == NULL) {
+			tree_ctx->error = WBXML_ERROR_UNKNOWN_XML_LANGUAGE;
+			wbxml_buffer_destroy(embed_doc);
+			return;
 		}
 
 		/* DOCTYPE in reverse order */
