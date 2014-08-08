@@ -1,3 +1,14 @@
+  * Added the first test suite for a private API - src/wbxml_lists.h.
+    This includes a frame work for such test suites.
+  * Added a sanity check to make some tools happy in
+    wbxml_strtbl_collect_strings in src/wbxml_encoder.c.
+    The patch was supplied by Gaurav Gupta from Samsung.
+  * Fixed a memory leak of wbxml_tree_clb_xml_end_element in
+    src/wbxml_tree_clb_xml.c.
+    The patch was supplied by Gaurav Gupta from Samsung.
+  * Added some sanity checks to detect the wrong usage of
+    wbxml_fill_header in src/wbxml_encoder.c.
+    The patch was supplied by Gaurav Gupta from Samsung.
   * The code of the function wbxml_tree_clb_xml_end_element to handle
     binary tags used variables which were only defined if the SyncML
     code is enabled. The file wbxml_tree_clb_xml.c was fixed

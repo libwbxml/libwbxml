@@ -36,8 +36,6 @@
 #include "wbxml.h"
 #include "wbxml_lists.h"
 
-#include <assert.h>
-
 /** Element of this list */
 typedef struct WBXMLListElt_s
 {
@@ -109,9 +107,6 @@ WBXML_DECLARE(WB_ULONG) wbxml_list_len(WBXMLList *list)
 
 WBXML_DECLARE(WB_BOOL) wbxml_list_append(WBXMLList *list, void *item)
 {
-    assert(list != NULL);
-    assert(item != NULL);
-
     if (list == NULL)
         return FALSE;
 
@@ -143,9 +138,6 @@ WBXML_DECLARE(WB_BOOL) wbxml_list_insert(WBXMLList *list, void *item, WB_ULONG p
 {
     WBXMLListElt *elt = NULL, *prev = NULL, *new_elt = NULL;
     WB_ULONG i = 0;
-
-    assert(list != NULL);
-    assert(item != NULL);
 
     if (list == NULL)
         return FALSE;
@@ -209,9 +201,6 @@ WBXML_DECLARE(void *) wbxml_list_get(WBXMLList *list, WB_ULONG index)
     for (i=0; i<index; i++)
         elt = elt->next;
 
-    /* List items cannot be null. */
-    assert(elt->item);
-
     return elt->item;
 }
 
@@ -227,9 +216,6 @@ WBXML_DECLARE(void *) wbxml_list_extract_first(WBXMLList *list)
     elt = list->head;
     result = elt->item;
 
-    /* List items cannot be null. */
-    assert(result);
-    
     if ((list->head = list->head->next) == NULL)
         list->tail = NULL;
 
