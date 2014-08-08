@@ -5,8 +5,8 @@
 # setup correct path for binaries if they are not in $PATH
 if [ "${CMAKE_CURRENT_BINARY_DIR}" ]
 then
-	WBXML2XML="${CMAKE_CURRENT_BINARY_DIR}/tools/wbxml2xml"
-	XML2WBXML="${CMAKE_CURRENT_BINARY_DIR}/tools/xml2wbxml"
+	WBXML2XML="${CMAKE_CURRENT_BINARY_DIR}/../tools/wbxml2xml"
+	XML2WBXML="${CMAKE_CURRENT_BINARY_DIR}/../tools/xml2wbxml"
 else
 	WBXML2XML=`which wbxml2xml`
 	XML2WBXML=`which xml2wbxml`
@@ -45,7 +45,7 @@ fi
 # Debian does this by default
 if [ "${CMAKE_SKIP_RPATH}" ]
 then
-	LD_LIBRARY_PATH="${CMAKE_CURRENT_BINARY_DIR}/src"
+	LD_LIBRARY_PATH="${CMAKE_CURRENT_BINARY_DIR}/../src"
 	export LD_LIBRARY_PATH
 fi
 
