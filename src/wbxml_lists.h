@@ -1,7 +1,7 @@
 /*
  * libwbxml, the WBXML Library.
  * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
- * Copyright (C) 2011 Michael Bell <michael.bell@opensync.org>
+ * Copyright (C) 2011,2014 Michael Bell <michael.bell@web.de>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -83,7 +83,7 @@ WBXML_DECLARE(WB_ULONG) wbxml_list_len(WBXMLList *list);
 /**
  * @brief Append an element at end of list
  * @param list The List
- * @param elt The element to append
+ * @param elt The element to append which must be not null.
  * @return TRUE if element appended, FALSE if not enough memory
  */
 WBXML_DECLARE(WB_BOOL) wbxml_list_append(WBXMLList *list, void *elt);
@@ -91,7 +91,7 @@ WBXML_DECLARE(WB_BOOL) wbxml_list_append(WBXMLList *list, void *elt);
 /**
  * @brief Append an element to a list
  * @param list The List
- * @param elt The element to insert
+ * @param elt The element to insert which must be not null.
  * @param pos The index where to insert this element
  * @return TRUE if element appended, FALSE if not enough memory
  */

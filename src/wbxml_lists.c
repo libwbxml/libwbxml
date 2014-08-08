@@ -1,7 +1,7 @@
 /*
  * libwbxml, the WBXML Library.
  * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
- * Copyright (C) 2011 Michael Bell <michael.bell@opensync.org>
+ * Copyright (C) 2011,2014 Michael Bell <michael.bell@web.de>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -35,6 +35,8 @@
 
 #include "wbxml.h"
 #include "wbxml_lists.h"
+
+#include <assert.h>
 
 /** Element of this list */
 typedef struct WBXMLListElt_s
@@ -107,7 +109,13 @@ WBXML_DECLARE(WB_ULONG) wbxml_list_len(WBXMLList *list)
 
 WBXML_DECLARE(WB_BOOL) wbxml_list_append(WBXMLList *list, void *item)
 {
+    assert(list != NULL);
+    assert(item != NULL);
+
     if (list == NULL)
+        return FALSE;
+
+    if (item == NULL)
         return FALSE;
 
     if (list->head == NULL) {
@@ -136,7 +144,13 @@ WBXML_DECLARE(WB_BOOL) wbxml_list_insert(WBXMLList *list, void *item, WB_ULONG p
     WBXMLListElt *elt = NULL, *prev = NULL, *new_elt = NULL;
     WB_ULONG i = 0;
 
+    assert(list != NULL);
+    assert(item != NULL);
+
     if (list == NULL)
+        return FALSE;
+
+    if (item == NULL)
         return FALSE;
 
     if ((new_elt = wbxml_elt_create(item)) == NULL)
@@ -195,6 +209,9 @@ WBXML_DECLARE(void *) wbxml_list_get(WBXMLList *list, WB_ULONG index)
     for (i=0; i<index; i++)
         elt = elt->next;
 
+    /* List items cannot be null. */
+    assert(elt->item);
+
     return elt->item;
 }
 
@@ -210,13 +227,16 @@ WBXML_DECLARE(void *) wbxml_list_extract_first(WBXMLList *list)
     elt = list->head;
     result = elt->item;
 
+    /* List items cannot be null. */
+    assert(result);
+    
     if ((list->head = list->head->next) == NULL)
         list->tail = NULL;
 
     wbxml_elt_destroy(elt, NULL);
 
     list->len--;
-    
+
     return result;
 }
 
@@ -234,6 +254,9 @@ WBXML_DECLARE(void *) wbxml_list_extract_first(WBXMLList *list)
 static WBXMLListElt *wbxml_elt_create_real(void *item)
 {
     WBXMLListElt *elt = NULL;
+
+    if (item == NULL)
+        return NULL;
 
     if ((elt = (WBXMLListElt *) wbxml_malloc(sizeof(WBXMLListElt))) == NULL)
         return NULL;
