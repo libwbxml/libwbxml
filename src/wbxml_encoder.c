@@ -1496,10 +1496,12 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     WB_ULONG public_id = 0, public_id_index = 0, strstbl_len = 0;
     WB_BOOL pi_in_strtbl = FALSE;
     WBXMLError ret = WBXML_OK;
+
 #if defined( WBXML_ENCODER_USE_STRTBL )
     WBXMLStringTableElement *elt = NULL;
     WB_BOOL added = FALSE;
 #endif /* WBXML_ENCODER_USE_STRTBL */
+
     if ((encoder == NULL) || (encoder->lang == NULL) || (encoder->lang->publicID == NULL) || (header == NULL))
         return WBXML_ERROR_BAD_PARAMETER;
     
