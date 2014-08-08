@@ -1,6 +1,6 @@
 #include <check.h>
 
-#include "../src/wbxml_lists.h"
+#include "../../src/wbxml_lists.h"
 
 START_TEST (test_init_and_destroy)
 {

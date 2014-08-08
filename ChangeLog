@@ -1,3 +1,4 @@
+  * Introduced a single test directory.
   * Added the first test suite for a private API - src/wbxml_lists.h.
     This includes a frame work for such test suites.
   * Added a sanity check to make some tools happy in

@@ -261,5 +261,5 @@ INCLUDE( CPack )
 
 ### CTest ########################################
 
-ADD_SUBDIRECTORY( tests )
-ADD_SUBDIRECTORY( tests_api )
+ADD_SUBDIRECTORY( test/tools )
+ADD_SUBDIRECTORY( test/api )
