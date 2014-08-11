@@ -1,4 +1,4 @@
-#include <check.h>
+#include "api_test.h"
 
 #include "../../src/wbxml_lists.h"
 
@@ -141,41 +141,16 @@ START_TEST (test_destructor)
 }
 END_TEST
 
-Suite* wbxml_suite (void) {
-    Suite *suite = suite_create("wbxml_lists");
+BEGIN_TESTS(wbxml_lists)
 
-    TCase *tcase = tcase_create("test_init_and_destroy");
-    tcase_add_test(tcase, test_init_and_destroy);
-    suite_add_tcase(suite, tcase);
+    ADD_TEST(test_init_and_destroy);
+    ADD_TEST(test_append_not_null);
+    ADD_TEST(test_insert_not_null);
+    ADD_TEST(test_insert_wrong_pos);
+    ADD_TEST(test_append);
+    ADD_TEST(test_insert);
+    ADD_TEST(test_extract_first);
+    ADD_TEST(test_destructor);
 
-    tcase = tcase_create("test_append_not_null");
-    tcase_add_test(tcase, test_append_not_null);
-    suite_add_tcase(suite, tcase);
-
-    tcase = tcase_create("test_insert_not_null");
-    tcase_add_test(tcase, test_insert_not_null);
-    suite_add_tcase(suite, tcase);
-
-    tcase = tcase_create("test_insert_wrong_pos");
-    tcase_add_test(tcase, test_insert_wrong_pos);
-    suite_add_tcase(suite, tcase);
-
-    tcase = tcase_create("test_append");
-    tcase_add_test(tcase, test_append);
-    suite_add_tcase(suite, tcase);
-
-    tcase = tcase_create("test_insert");
-    tcase_add_test(tcase, test_insert);
-    suite_add_tcase(suite, tcase);
-
-    tcase = tcase_create("test_extract_first");
-    tcase_add_test(tcase, test_extract_first);
-    suite_add_tcase(suite, tcase);
-
-    tcase = tcase_create("test_destructor");
-    tcase_add_test(tcase, test_destructor);
-    suite_add_tcase(suite, tcase);
-
-    return suite;
-}
+END_TESTS
 
