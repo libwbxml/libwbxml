@@ -139,7 +139,7 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_get_char(WBXMLBuffer *buff, WB_ULONG pos, WB
  * @param pos Byte position in buffer
  * @param ch The character to set
  */
-WBXML_DECLARE(void) wbxml_buffer_set_char(WBXMLBuffer *buff, WB_ULONG pos, WB_UTINY ch);
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_set_char(WBXMLBuffer *buff, WB_ULONG pos, WB_UTINY ch);
 
 /**
  * @brief Get pointer to internal buffer data
@@ -164,7 +164,7 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_insert(WBXMLBuffer *to, WBXMLBuffer *buff, W
  * @param pos The position of insertion in 'to'
  * @return TRUE if data inserted, FALSE otherwise
  */
-WBXML_DECLARE(WB_BOOL) wbxml_buffer_insert_cstr(WBXMLBuffer *to, WB_UTINY *str, WB_ULONG pos);
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_insert_cstr(WBXMLBuffer *to, const WB_UTINY *str, WB_ULONG pos);
 
 /**
  * @brief Append a Buffer to a dynamic Buffer
@@ -221,20 +221,20 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_append_mb_uint_32(WBXMLBuffer *buff, WB_ULON
  * @param pos Position where to start deletion
  * @param len Number of bytes to delete
  */
-WBXML_DECLARE(void) wbxml_buffer_delete(WBXMLBuffer *buff, WB_ULONG pos, WB_ULONG len);
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_delete(WBXMLBuffer *buff, WB_ULONG pos, WB_ULONG len);
 
 /**
  * @brief Shrink all spaces in a  dynamicBuffer
  * @param buff The Buffer to shrink
  * @note Replace every consecutive sequence of spaces into one unique whitespace
  */
-WBXML_DECLARE(void) wbxml_buffer_shrink_blanks(WBXMLBuffer *buff);
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_shrink_blanks(WBXMLBuffer *buff);
 
 /**
  * @brief Remove whitespaces at beginning and end of a dynamic Buffer
  * @param buff The Buffer to strip
  */
-WBXML_DECLARE(void) wbxml_buffer_strip_blanks(WBXMLBuffer *buff);
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_strip_blanks(WBXMLBuffer *buff);
 
 /**
  * @brief Compare two Buffers
@@ -302,7 +302,7 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_contains_only_whitespaces(WBXMLBuffer *buffe
  * @brief Convert an Hexa dynamic buffer to Binary
  * @param buffer The buffer to convert
  */
-WBXML_DECLARE(void) wbxml_buffer_hex_to_binary(WBXMLBuffer *buffer);
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_hex_to_binary(WBXMLBuffer *buffer);
 
 /**
  * @brief Convert an Binary dynamic buffer to Hexa
@@ -330,7 +330,7 @@ WBXML_DECLARE(WBXMLError) wbxml_buffer_encode_base64(WBXMLBuffer *buffer);
  * @brief Remove trailing Zeros from a dynamic Buffer
  * @param buffer The buffer
  */
-WBXML_DECLARE(void) wbxml_buffer_remove_trailing_zeros(WBXMLBuffer **buffer);
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_remove_trailing_zeros(WBXMLBuffer *buffer);
 
 /** @} */
 

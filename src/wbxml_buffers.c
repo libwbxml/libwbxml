@@ -174,10 +174,14 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_get_char(WBXMLBuffer *buffer, WB_ULONG pos, 
 }
 
 
-WBXML_DECLARE(void) wbxml_buffer_set_char(WBXMLBuffer *buffer, WB_ULONG pos, WB_UTINY ch)
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_set_char(WBXMLBuffer *buffer, WB_ULONG pos, WB_UTINY ch)
 {
-    if ((buffer != NULL) && !buffer->is_static && (pos < buffer->len))
-        buffer->data[pos] = ch;
+    if ((buffer == NULL) || (buffer->is_static) || (pos >= buffer->len))
+        return FALSE;
+
+    buffer->data[pos] = ch;
+
+    return TRUE;
 }
 
 
@@ -199,7 +203,7 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_insert(WBXMLBuffer *to, WBXMLBuffer *buffer,
 }
 
 
-WBXML_DECLARE(WB_BOOL) wbxml_buffer_insert_cstr(WBXMLBuffer *to, WB_UTINY *str, WB_ULONG pos)
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_insert_cstr(WBXMLBuffer *to, const WB_UTINY *str, WB_ULONG pos)
 {
     if ((to != NULL) && (str != NULL) && !to->is_static)
         return insert_data(to, pos, str, WBXML_STRLEN(str));
@@ -284,34 +288,31 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_append_mb_uint_32(WBXMLBuffer *buffer, WB_UL
 }
 
 
-WBXML_DECLARE(void) wbxml_buffer_delete(WBXMLBuffer *buffer, WB_ULONG pos, WB_ULONG len)
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_delete(WBXMLBuffer *buffer, WB_ULONG pos, WB_ULONG len)
 {
-    if ((buffer == NULL) || buffer->is_static)
-        return;
+    if ((buffer == NULL) || (buffer->is_static))
+        return FALSE;
 
-    if (pos > buffer->len)
-        pos = buffer->len;
-        
-    if (pos + len > buffer->len)
-        len = buffer->len - pos;
-        
-    if (len > 0) {
-        memmove(buffer->data + pos, buffer->data + pos + len,
-                buffer->len - pos - len);
+    if ((pos >= buffer->len) || (len <= 0))
+        return FALSE;
+
+    memmove(buffer->data + pos, buffer->data + pos + len,
+            buffer->len - pos - len);
                 
-        buffer->len -= len;
-        buffer->data[buffer->len] = '\0';
-    }
+    buffer->len -= len;
+    buffer->data[buffer->len] = '\0';
+
+    return TRUE;
 }
 
 
-WBXML_DECLARE(void) wbxml_buffer_shrink_blanks(WBXMLBuffer *buffer)
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_shrink_blanks(WBXMLBuffer *buffer)
 {
     WB_ULONG i = 0, j = 0, end = 0;
     WB_UTINY ch = 0;
     
     if ((buffer == NULL) || buffer->is_static)
-        return;
+        return FALSE;
         
     end = wbxml_buffer_len(buffer);
 
@@ -332,16 +333,18 @@ WBXML_DECLARE(void) wbxml_buffer_shrink_blanks(WBXMLBuffer *buffer)
                 wbxml_buffer_delete(buffer, i, j - i);
         }
     }
+
+    return TRUE;
 }
 
 
-WBXML_DECLARE(void) wbxml_buffer_strip_blanks(WBXMLBuffer *buffer)
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_strip_blanks(WBXMLBuffer *buffer)
 {
     WB_ULONG start = 0, end = 0, len = 0;
     WB_UTINY ch = 0;
 
     if ((buffer == NULL) || buffer->is_static)
-        return;
+        return FALSE;
 
     /* Remove whitespaces at beginning of buffer... */
     while (wbxml_buffer_get_char(buffer, start, &ch) && 
@@ -364,6 +367,8 @@ WBXML_DECLARE(void) wbxml_buffer_strip_blanks(WBXMLBuffer *buffer)
         }
         wbxml_buffer_delete(buffer, end + 1, len - end);
     }
+
+    return TRUE;
 }
 
 WBXML_DECLARE(void) wbxml_buffer_no_spaces(WBXMLBuffer *buffer)
@@ -475,6 +480,9 @@ WBXML_DECLARE(WBXMLList *) wbxml_buffer_split_words_real(WBXMLBuffer *buff)
     WBXMLList *list = NULL;
     WBXMLBuffer *word = NULL;
     WB_ULONG i = 0, start = 0, end = 0;
+
+    if (buff == NULL)
+        return NULL;
 
     if ((list = wbxml_list_create()) == NULL)
         return NULL;
@@ -626,13 +634,13 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_contains_only_whitespaces(WBXMLBuffer *buffe
 }
 
 
-WBXML_DECLARE(void) wbxml_buffer_hex_to_binary(WBXMLBuffer *buffer)
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_hex_to_binary(WBXMLBuffer *buffer)
 {
     WB_UTINY *p = NULL;
     WB_ULONG i = 0, len = 0;
 
     if ((buffer == NULL) || buffer->is_static)
-        return;
+        return FALSE;
 
     p = buffer->data;
     len = wbxml_buffer_len(buffer);
@@ -659,6 +667,8 @@ WBXML_DECLARE(void) wbxml_buffer_hex_to_binary(WBXMLBuffer *buffer)
 
     buffer->len = len;
     buffer->data[len] = '\0';
+
+    return TRUE;
 }
 
 
@@ -699,7 +709,7 @@ WBXML_DECLARE(WBXMLError) wbxml_buffer_decode_base64(WBXMLBuffer *buffer)
     WB_LONG     len    = 0;
     WBXMLError  ret    = WBXML_OK;
     
-    if (buffer == NULL) {
+    if ( (buffer == NULL) || (buffer->is_static) ) {
         return WBXML_ERROR_INTERNAL;
     }
 
@@ -729,7 +739,7 @@ WBXML_DECLARE(WBXMLError) wbxml_buffer_encode_base64(WBXMLBuffer *buffer)
     WB_UTINY   *result = NULL;
     WBXMLError  ret    = WBXML_OK;
     
-    if (buffer == NULL) {
+    if ( (buffer == NULL) || (buffer->is_static) ) {
         return WBXML_ERROR_INTERNAL;
     }
     
@@ -752,19 +762,21 @@ WBXML_DECLARE(WBXMLError) wbxml_buffer_encode_base64(WBXMLBuffer *buffer)
     return ret;
 }
 
-WBXML_DECLARE(void) wbxml_buffer_remove_trailing_zeros(WBXMLBuffer **buffer)
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_remove_trailing_zeros(WBXMLBuffer *buffer)
 {
     WB_UTINY ch = 0;
 
-    if ((buffer == NULL) || (*buffer == NULL))
-        return;
+    if ((buffer == NULL) || (buffer->is_static))
+        return FALSE;
 
-    while ((*buffer)->len > 0) {
-        if (wbxml_buffer_get_char(*buffer, wbxml_buffer_len(*buffer) - 1, &ch) && (ch == '\0'))
-            wbxml_buffer_delete(*buffer, wbxml_buffer_len(*buffer) - 1, 1);
+    while (buffer->len > 0) {
+        if (wbxml_buffer_get_char(buffer, wbxml_buffer_len(buffer) - 1, &ch) && (ch == '\0'))
+            wbxml_buffer_delete(buffer, wbxml_buffer_len(buffer) - 1, 1);
         else
-            return;
+            return TRUE;
     }
+
+    return TRUE;
 }
 
 

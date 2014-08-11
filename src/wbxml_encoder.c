@@ -2744,7 +2744,7 @@ static WBXMLError wbxml_encode_datetime(WBXMLEncoder *encoder, WB_UTINY *buffer)
     wbxml_buffer_hex_to_binary(tmp);
 
     /* Remove trailing zero */
-    wbxml_buffer_remove_trailing_zeros(&tmp);
+    wbxml_buffer_remove_trailing_zeros(tmp);
 
     /* Encode it to Opaque */
     ret = wbxml_encode_opaque(encoder, tmp);

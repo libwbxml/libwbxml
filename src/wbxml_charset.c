@@ -220,7 +220,7 @@ WBXML_DECLARE(WBXMLError) wbxml_charset_conv(const WB_TINY        *in_buf,
             }
 
             /* Remove trailing NULL char */
-            wbxml_buffer_remove_trailing_zeros(out_buf);
+            wbxml_buffer_remove_trailing_zeros(*out_buf);
         }
         else
         {
