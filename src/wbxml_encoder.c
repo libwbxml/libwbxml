@@ -3415,15 +3415,24 @@ static WBXMLError wbxml_encode_drmrel_content(WBXMLEncoder *encoder, WB_UTINY *b
 
             /* Add WBXML_OPAQUE */
             if (!wbxml_buffer_append_char(encoder->output, WBXML_OPAQUE))
+            {
+                wbxml_free(data);
                 return WBXML_ERROR_ENCODER_APPEND_DATA;
+            }
 
             /* Add Data Length */
             if (!wbxml_buffer_append_mb_uint_32(encoder->output, (WB_ULONG) data_len))
+            {
+                wbxml_free(data);
                 return WBXML_ERROR_ENCODER_APPEND_DATA;
+            }
 
             /* Add Data */
             if (!wbxml_buffer_append_data(encoder->output, data, data_len))
+            {
+                wbxml_free(data);
                 return WBXML_ERROR_ENCODER_APPEND_DATA;
+            }
 
             /* Free Data */
             wbxml_free(data);
