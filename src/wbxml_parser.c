@@ -1697,6 +1697,7 @@ static WBXMLError parse_extension(WBXMLParser *parser, WBXMLTokenType code_space
     }
     else {
         if ((*result = wbxml_buffer_create(ext, len, len)) == NULL) {
+            wbxml_free(ext);
             return WBXML_ERROR_NOT_ENOUGH_MEMORY;
         }
 
