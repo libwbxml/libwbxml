@@ -1544,6 +1544,7 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
                                               &added))
                 {
                     wbxml_strtbl_element_destroy(elt);
+                    if (pid) wbxml_buffer_destroy(pid);
                     return WBXML_ERROR_NOT_ENOUGH_MEMORY;
                 }
 
@@ -1573,13 +1574,17 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
         if (!wbxml_buffer_append_char(header, 0x00) ||
             !wbxml_buffer_append_mb_uint_32(header, public_id_index))
         {
+            if (pid) wbxml_buffer_destroy(pid);	
             return WBXML_ERROR_NOT_ENOUGH_MEMORY;
         }
     }
     else {
         /* Encode WBXML Public ID */
         if (!wbxml_buffer_append_mb_uint_32(header, public_id))
+        {
+            if (pid) wbxml_buffer_destroy(pid);
             return WBXML_ERROR_ENCODER_APPEND_DATA;
+        }
     }
 
     /* Encode Charset (default: UTF-8) and String Table Length */
@@ -1587,6 +1592,7 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     if (!wbxml_buffer_append_mb_uint_32(header, WBXML_ENCODER_DEFAULT_CHARSET) ||
         !wbxml_buffer_append_mb_uint_32(header, strstbl_len))
     {
+        if (pid) wbxml_buffer_destroy(pid);
         return WBXML_ERROR_ENCODER_APPEND_DATA;
     }
 
@@ -1594,17 +1600,26 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
 #if defined( WBXML_ENCODER_USE_STRTBL )
     if (encoder->use_strtbl) {
         if ((ret = wbxml_strtbl_construct(header,(WBXMLList *) encoder->strstbl)) != WBXML_OK)
+        {
+            if (pid) wbxml_buffer_destroy(pid);
             return ret;
+        }
     }
     else {
 #endif /* WBXML_ENCODER_USE_STRTBL */
 
         if (pid != NULL) {
             if (!wbxml_buffer_append(header, pid))
+            {
+                wbxml_buffer_destroy(pid);
                 return WBXML_ERROR_ENCODER_APPEND_DATA;
+            }
             
             if (!wbxml_buffer_append_char(header, WBXML_STR_END))
+            {
+                wbxml_buffer_destroy(pid);
                 return WBXML_ERROR_ENCODER_APPEND_DATA;
+            }
 
             /* Clean up */
             wbxml_buffer_destroy(pid);
@@ -1612,6 +1627,7 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
             
 #if defined( WBXML_ENCODER_USE_STRTBL )
     }
+    if (pid) wbxml_buffer_destroy(pid);
 #endif /* WBXML_ENCODER_USE_STRTBL */
 
     return WBXML_OK;
