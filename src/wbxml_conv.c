@@ -209,7 +209,7 @@ WBXML_DECLARE(void) wbxml_conv_wbxml2xml_destroy(WBXMLConvWBXML2XML *conv)
 WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_create(WBXMLConvXML2WBXML **conv)
 {
     *conv = (WBXMLConvXML2WBXML *) wbxml_malloc(sizeof(WBXMLConvXML2WBXML));
-    if (conv == NULL) {
+    if (*conv == NULL) {
         return WBXML_ERROR_NOT_ENOUGH_MEMORY;
     }
 
