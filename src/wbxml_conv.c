@@ -65,7 +65,7 @@ struct WBXMLConvXML2WBXML_s {
 WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_create(WBXMLConvWBXML2XML **conv)
 {
     *conv = (WBXMLConvWBXML2XML *) wbxml_malloc(sizeof(WBXMLConvWBXML2XML));
-    if (conv == NULL) {
+    if (*conv == NULL) {
         return WBXML_ERROR_NOT_ENOUGH_MEMORY;
     }
 
