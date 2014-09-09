@@ -3994,7 +3994,8 @@ static WBXMLError xml_build_result(WBXMLEncoder *encoder, WB_UTINY **xml, WB_ULO
     WBXMLError   ret    = WBXML_OK;
     
     /* Init */
-    *xml_len = 0;
+    if (xml_len != NULL)
+        *xml_len = 0;
     
     if (encoder->flow_mode == TRUE) {
         /* Header already built */
