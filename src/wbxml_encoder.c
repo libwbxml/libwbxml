@@ -3849,6 +3849,13 @@ static WBXMLError wbxml_strtbl_check_references(WBXMLEncoder *encoder, WBXMLList
         for (j = 0; j < wbxml_list_len(referenced); j++)
         {
             ref = (WBXMLStringTableElement *) wbxml_list_get(referenced, j);
+            if (ref == NULL) 
+            {
+            	if (!stat_buff)
+                    wbxml_buffer_destroy(string);
+                string = NULL;
+                return WBXML_ERROR_INTERNAL;
+            }
 
             if (wbxml_buffer_compare(ref->string, string) == 0)
             {
