@@ -3851,6 +3851,9 @@ static WBXMLError wbxml_strtbl_check_references(WBXMLEncoder *encoder, WBXMLList
             ref = (WBXMLStringTableElement *) wbxml_list_get(referenced, j);
             if (ref == NULL) 
             {
+                /* This is a bug inside wbxml_strtbl_check_references.
+                   wbxml_list is used in a wrong way.
+                 */
             	if (!stat_buff)
                     wbxml_buffer_destroy(string);
                 string = NULL;
