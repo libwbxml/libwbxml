@@ -3753,8 +3753,12 @@ static WBXMLError wbxml_strtbl_collect_words(WBXMLList *elements, WBXMLList **re
     for (i = 0; i < wbxml_list_len(elements); i++)
     {
         elt = (WBXMLStringTableElement *) wbxml_list_get(elements, i);
-        if (elt == NULL)
+        if (elt == NULL) {
+            /* There is a bug inside the wbxml strtbl implementation.
+               wbxml_list must be used in a wrong way.
+             */
             return WBXML_ERROR_INTERNAL;
+        }
 
         if (list == NULL) {
             if ((list = wbxml_buffer_split_words(elt->string)) == NULL) {
@@ -3857,8 +3861,8 @@ static WBXMLError wbxml_strtbl_check_references(WBXMLEncoder *encoder, WBXMLList
             ref = (WBXMLStringTableElement *) wbxml_list_get(referenced, j);
             if (ref == NULL) 
             {
-                /* This is a bug inside wbxml_strtbl_check_references.
-                   wbxml_list is used in a wrong way.
+                /* There is a bug inside wbxml_strtbl_check_references.
+                   wbxml_list must be used in a wrong way.
                  */
             	if (!stat_buff)
                     wbxml_buffer_destroy(string);
