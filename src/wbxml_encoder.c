@@ -3753,6 +3753,8 @@ static WBXMLError wbxml_strtbl_collect_words(WBXMLList *elements, WBXMLList **re
     for (i = 0; i < wbxml_list_len(elements); i++)
     {
         elt = (WBXMLStringTableElement *) wbxml_list_get(elements, i);
+        if (elt == NULL)
+            return WBXML_ERROR_INTERNAL;
 
         if (list == NULL) {
             if ((list = wbxml_buffer_split_words(elt->string)) == NULL) {
