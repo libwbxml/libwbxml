@@ -1623,6 +1623,7 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
 
             /* Clean up */
             wbxml_buffer_destroy(pid);
+            pid = NULL;
         }
             
 #if defined( WBXML_ENCODER_USE_STRTBL )
