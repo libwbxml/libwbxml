@@ -1139,6 +1139,7 @@ static WBXMLError parse_element(WBXMLEncoder *encoder, WBXMLTreeNode *node, WB_B
 {
     WB_ULONG i = 0;
     WBXMLError ret = WBXML_OK;
+    WBXMLAttribute *attr = NULL;
 
     WBXML_DEBUG((WBXML_ENCODER, "Element: <%s>", wbxml_tag_get_xml_name(node->name)));
 
@@ -1167,7 +1168,10 @@ static WBXMLError parse_element(WBXMLEncoder *encoder, WBXMLTreeNode *node, WB_B
     {
         for (i = 0; i < wbxml_list_len(node->attrs); i++) {
             /* Parse: Attribute */
-            if ((ret = parse_attribute(encoder, wbxml_list_get(node->attrs, i))) != WBXML_OK)
+            attr = wbxml_list_get(node->attrs, i);
+            if (attr == NULL)
+            	return WBXML_ERROR_INTERNAL;
+            if ((ret = parse_attribute(encoder, attr)) != WBXML_OK)
                 return ret;
         }
     }
