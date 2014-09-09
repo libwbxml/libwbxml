@@ -1518,7 +1518,9 @@ static WBXMLError parse_extension(WBXMLParser *parser, WBXMLTokenType code_space
         return ret;
     }
 
-
+    if (parser->langTable == NULL) {
+            return WBXML_ERROR_LANG_TABLE_UNDEFINED;
+        }
     /* Language specific treatment */
     switch (parser->langTable->langID) {
 
@@ -1655,10 +1657,6 @@ static WBXMLError parse_extension(WBXMLParser *parser, WBXMLTokenType code_space
         }
 
         /* Search Token in Extension Value Table */
-        if (parser->langTable == NULL) {
-            return WBXML_ERROR_LANG_TABLE_UNDEFINED;
-        }
-    
         if (parser->langTable->extValueTable == NULL) {
             return WBXML_ERROR_EXT_VALUE_TABLE_UNDEFINED;
         }
