@@ -64,6 +64,10 @@ struct WBXMLConvXML2WBXML_s {
 
 WBXML_DECLARE(WBXMLError) wbxml_conv_wbxml2xml_create(WBXMLConvWBXML2XML **conv)
 {
+    if (conv == NULL) {
+        return WBXML_ERROR_BAD_PARAMETER;
+    }
+
     *conv = (WBXMLConvWBXML2XML *) wbxml_malloc(sizeof(WBXMLConvWBXML2XML));
     if (*conv == NULL) {
         return WBXML_ERROR_NOT_ENOUGH_MEMORY;
@@ -208,6 +212,10 @@ WBXML_DECLARE(void) wbxml_conv_wbxml2xml_destroy(WBXMLConvWBXML2XML *conv)
  */
 WBXML_DECLARE(WBXMLError) wbxml_conv_xml2wbxml_create(WBXMLConvXML2WBXML **conv)
 {
+    if (conv == NULL) {
+        return WBXML_ERROR_BAD_PARAMETER;
+    }
+
     *conv = (WBXMLConvXML2WBXML *) wbxml_malloc(sizeof(WBXMLConvXML2WBXML));
     if (*conv == NULL) {
         return WBXML_ERROR_NOT_ENOUGH_MEMORY;
