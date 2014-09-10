@@ -54,7 +54,7 @@ static const WBXMLErrorCodeItem error_table [] = {
     { WBXML_OK,                                 "No Error" },
     { WBXML_NOT_ENCODED,                        "Not Encoded" },
     { WBXML_ERROR_ATTR_TABLE_UNDEFINED,         "Attribute Table Undefined" },
-    { WBXML_ERROR_BAD_DATETIME,                 "Bad %Datetime Format" },
+    { WBXML_ERROR_BAD_DATETIME,                 "Bad Datetime Format" },
     { WBXML_ERROR_BAD_PARAMETER,                "Bad Parameter" },
     { WBXML_ERROR_INTERNAL,                     "Internal Error" },
     { WBXML_ERROR_LANG_TABLE_UNDEFINED,         "Languages Table Undefined" },
