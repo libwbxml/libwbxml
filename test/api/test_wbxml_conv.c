@@ -10,7 +10,7 @@ START_TEST (security_test_conv_init_null_reference)
 }
 END_TEST
 
-BEGIN_TESTS(wbxml_encoder_internals)
+BEGIN_TESTS(wbxml_conv)
 
     ADD_TEST(security_test_conv_init_null_reference);
 
