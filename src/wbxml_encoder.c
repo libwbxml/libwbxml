@@ -4038,6 +4038,9 @@ static WBXMLError xml_build_result(WBXMLEncoder *encoder, WB_UTINY **xml, WB_ULO
     WBXMLBuffer *header = NULL;
     WB_ULONG     len    = 0;
     WBXMLError   ret    = WBXML_OK;
+
+    if (xml == NULL)
+        return WBXML_ERROR_BAD_PARAMETER;
     
     /* Init */
     if (xml_len != NULL)
@@ -4123,6 +4126,10 @@ static WBXMLError xml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     /* <!DOCTYPE */
     if (!wbxml_buffer_append_cstr(header, WBXML_ENCODER_XML_DOCTYPE))
         return WBXML_ERROR_ENCODER_APPEND_DATA;
+
+    /* Check that the language is set */
+    if (encoder->lang == NULL)
+        return WBXML_ERROR_LANG_TABLE_UNDEFINED;
 
     /* Root Element */
     if (!wbxml_buffer_append_cstr(header, encoder->lang->publicID->xmlRootElt))
