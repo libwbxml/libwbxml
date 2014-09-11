@@ -32,7 +32,7 @@ START_TEST (test_errors_unknown_error_code)
 }
 END_TEST
 
-BEGIN_TESTS(wbxml_encoder_internals)
+BEGIN_TESTS(wbxml_errors)
 
     ADD_TEST(security_test_errors_datetime_without_percent);
     ADD_TEST(test_errors_ok);

@@ -58,7 +58,7 @@ START_TEST (test_encode_and_decode)
 }
 END_TEST
 
-BEGIN_TESTS(wbxml_lists)
+BEGIN_TESTS(wbxml_base64)
 
     ADD_TEST(test_encode);
     ADD_TEST(test_decode);
