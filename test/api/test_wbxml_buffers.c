@@ -588,6 +588,30 @@ START_TEST (test_remove_trailing_zeros)
 }
 END_TEST
 
+START_TEST (test_buffer_get_char_wrong_params)
+{
+    WBXMLBuffer *buf;
+    WB_UTINY result;
+
+    /* init buffer */
+
+    buf = wbxml_buffer_create("test", 4, 4);
+    ck_assert(buf != NULL);
+
+    /* test */
+
+    ck_assert(wbxml_buffer_get_char(NULL, 0, &result) == FALSE);
+    ck_assert(wbxml_buffer_get_char(buf, 0, &result) == TRUE);
+    ck_assert(wbxml_buffer_get_char(buf, 3, &result) == TRUE);
+    ck_assert(wbxml_buffer_get_char(buf, 4, &result) == FALSE);
+    ck_assert(wbxml_buffer_get_char(buf, 0, NULL) == FALSE);
+
+    /* cleanup buffer */
+
+    wbxml_buffer_destroy(buf);
+}
+END_TEST
+
 BEGIN_TESTS(wbxml_buffers)
 
     /* initialization */
@@ -618,6 +642,9 @@ BEGIN_TESTS(wbxml_buffers)
     ADD_TEST(test_shrink_blanks);
     ADD_TEST(test_strip_blanks);
     ADD_TEST(test_remove_trailing_zeros);
+
+    /* found bugs - test driven development */
+    ADD_TEST(test_buffer_get_char_wrong_params);
 
 END_TESTS
 

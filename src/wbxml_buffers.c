@@ -166,7 +166,7 @@ WBXML_DECLARE(WB_ULONG) wbxml_buffer_len(WBXMLBuffer *buffer)
 
 WBXML_DECLARE(WB_BOOL) wbxml_buffer_get_char(WBXMLBuffer *buffer, WB_ULONG pos, WB_UTINY *result)
 {
-    if ((buffer == NULL) || (pos >= buffer->len))
+    if ((buffer == NULL) || (pos >= buffer->len) || (result == NULL))
         return FALSE;
         
     *result = buffer->data[pos];
