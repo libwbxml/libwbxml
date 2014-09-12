@@ -2,6 +2,8 @@
 
 #include "../../src/wbxml_parser.c"
 
+#if ( defined( WBXML_SUPPORT_SI ) || defined( WBXML_SUPPORT_EMN ) )
+
 /* This test case verifies the standard compliance.
    The used timestamp is exactly the example from the OMA specification.
    2002-04-16T06:40:00Z
@@ -61,9 +63,13 @@ START_TEST (test_parser_decode_datetime)
 }
 END_TEST
 
+#endif /* WBXML_SUPPORT_SI || WBXML_SUPPORT_EMN */
+
 BEGIN_TESTS(wbxml_parser_internals)
 
+#if ( defined( WBXML_SUPPORT_SI ) || defined( WBXML_SUPPORT_EMN ) )
     ADD_TEST(test_parser_decode_datetime);
+#endif /* WBXML_SUPPORT_SI || WBXML_SUPPORT_EMN */
 
 END_TESTS
 
