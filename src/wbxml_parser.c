@@ -2466,13 +2466,8 @@ static WBXMLError decode_opaque_content(WBXMLParser  *parser,
         if ((parser->current_tag->wbxmlCodePage == 0x00) &&
             (parser->current_tag->wbxmlToken == 0x0C))
         {
-            WBXMLError ret = WBXML_OK;
-            
             /* Decode base64 value */ 
-            if ((ret = decode_base64_value(data)) != WBXML_OK)
-                return ret;
-
-            return WBXML_OK;
+            return decode_base64_value(data);
         }
         break;
 
@@ -2487,13 +2482,8 @@ static WBXMLError decode_opaque_content(WBXMLParser  *parser,
         if ((parser->current_tag->wbxmlCodePage == 0x01) &&
             (parser->current_tag->wbxmlToken == 0x10)) 
         {
-            WBXMLError ret = WBXML_OK;
-            
             /* Decode base64 value */ 
-            if ((ret = decode_base64_value(data)) != WBXML_OK)
-                return ret;
-                
-            return WBXML_OK;
+            return decode_base64_value(data);
         }
         break;
 
