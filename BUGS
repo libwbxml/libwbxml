@@ -1,18 +1,10 @@
 1. Please read the TODO file for the limitations of the library.
 
-2. Please register to our ticket system (Trac):
+2. Open an issue at GitHub:
 
-https://libwbxml.opensync.org/register
+https://github.com/libwbxml/libwbxml/issues
 
-3. Please check for an open/active ticket:
-
-https://libwbxml.opensync.org/report/1
-
-4. Please create a new ticket:
-
-https://libwbxml.opensync.org/newticket
-
-Please note that a ticket is the most reliable way of communication.
+Please note that an issue is the most reliable way of communication.
 If emails are ignored then a ticket still persists.
 The tickets are checked before every release at minimum.
 

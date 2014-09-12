@@ -1,3 +1,4 @@
+  * Replaced references to degraded OpenSync infrastructure
   * Introduced a single test directory.
   * Added the first test suite for a private API - src/wbxml_lists.h.
     This includes a frame work for such test suites.

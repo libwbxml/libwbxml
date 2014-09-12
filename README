@@ -147,5 +147,9 @@
     CONTACT:
     --------
 
-	OpenSync mailing list <opensync-users@lists.sf.net>
-	http://libwbxml.opensync.org
+        Please use GitHub to report bugs, ask questions or submit code:
+        https://github.com/libwbxml/libwbxml
+
+        Releases can be found on Sourceforge too:
+        https://sourceforge.net/projects/libwbxml/
+
