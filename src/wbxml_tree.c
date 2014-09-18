@@ -268,8 +268,10 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_xml(WB_UTINY *xml, WB_ULONG xml_len, W
             WBXML_ERROR((WBXML_CONV, "xml2wbxml conversion failed - context error %i", ret));
             wbxml_tree_destroy(wbxml_tree_clb_ctx.tree);
         }
-        else
-            *tree = wbxml_tree_clb_ctx.tree;
+        else {
+            if (tree != NULL)
+                *tree = wbxml_tree_clb_ctx.tree;
+        }
     }
 
     /* Clean-up */
