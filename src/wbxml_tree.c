@@ -197,6 +197,12 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_xml(WB_UTINY *xml, WB_ULONG xml_len, W
     WB_BOOL            expat_utf16  = FALSE;
     WBXMLTreeClbCtx    wbxml_tree_clb_ctx;
 
+    if ((xml == NULL) || (xml_len == 0) || (tree == NULL))
+        return WBXML_ERROR_BAD_PARAMETER;
+
+    /* Clean up pointer */
+    *tree = NULL;
+    
     /* First Check if Expat is outputing UTF-16 strings */
     feature_list = (const XML_Feature *)XML_GetFeatureList();
 
@@ -209,9 +215,6 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_xml(WB_UTINY *xml, WB_ULONG xml_len, W
         expat_utf16 = TRUE;
 #endif /* !HAVE_ICONV */
     }
-
-    if (tree != NULL)
-        *tree = NULL;
 
     /* Create Expat XML Parser */
     if ((xml_parser = XML_ParserCreateNS(NULL, WBXML_NAMESPACE_SEPARATOR)) == NULL)
