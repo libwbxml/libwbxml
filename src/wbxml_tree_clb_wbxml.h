@@ -66,17 +66,15 @@ void wbxml_tree_clb_wbxml_end_document(void *ctx);
  * @param ctx User data
  * @param element The Tag Element
  * @param atts The attributes attached to the element
- * @param empty Set to TRUE if this is an empty element
  */
-void wbxml_tree_clb_wbxml_start_element(void *ctx, WBXMLTag *element, WBXMLAttribute **atts, WB_BOOL empty);
+void wbxml_tree_clb_wbxml_start_element(void *ctx, WBXMLTag *element, WBXMLAttribute **atts);
 
 /**
  * @brief End Element Callback
  * @param ctx User data
  * @param element The Tag Element
- * @param empty Set to TRUE if this is an empty element
  */
-void wbxml_tree_clb_wbxml_end_element(void *ctx, WBXMLTag *element, WB_BOOL empty);
+void wbxml_tree_clb_wbxml_end_element(void *ctx, WBXMLTag *element);
 
 /**
  * @brief Characters Callback

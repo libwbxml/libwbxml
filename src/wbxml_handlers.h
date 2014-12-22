@@ -69,7 +69,7 @@ typedef void (*WBXMLEndDocumentHandler)(void *ctx);
  * @param atts The attributes attached to the element
  * @param empty Set to TRUE if this is an empty element
  */
-typedef void (*WBXMLStartElementHandler)(void *ctx, WBXMLTag *localName, WBXMLAttribute **atts, WB_BOOL empty);
+typedef void (*WBXMLStartElementHandler)(void *ctx, WBXMLTag *localName, WBXMLAttribute **atts);
 
 /**
  * @brief End Element handler
@@ -77,7 +77,7 @@ typedef void (*WBXMLStartElementHandler)(void *ctx, WBXMLTag *localName, WBXMLAt
  * @param localName The local tag name
  * @param empty Set to TRUE if this is an empty element
  */
-typedef void (*WBXMLEndElementHandler)(void *ctx, WBXMLTag *localName, WB_BOOL empty);
+typedef void (*WBXMLEndElementHandler)(void *ctx, WBXMLTag *localName);
 
 /**
  * @brief Characters handler

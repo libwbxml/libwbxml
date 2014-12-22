@@ -1046,8 +1046,7 @@ static WBXMLError parse_element(WBXMLParser *parser)
     {
         parser->content_hdl->start_element_clb(parser->user_data,
                                                element,
-                                               attrs,
-                                               is_empty);
+                                               attrs);
     }
     
     /* Free Attributes */
@@ -1093,8 +1092,7 @@ static WBXMLError parse_element(WBXMLParser *parser)
         (parser->content_hdl->end_element_clb != NULL))
     {
         parser->content_hdl->end_element_clb(parser->user_data,
-                                             element,
-                                             is_empty);
+                                             element);
     }
     
     WBXML_DEBUG((WBXML_PARSER, "</%s>", wbxml_tag_get_xml_name(element)));
