@@ -10,7 +10,7 @@ INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${CHECK_INCLUDE_DIR
 
 ## Test private API
 
-FOREACH( SRC_FILE lists buffers base64 conv encoder_internals errors parser_internals )
+FOREACH( SRC_FILE lists buffers base64 charset conv encoder_internals errors parser_internals )
 
     ADD_EXECUTABLE(test_wbxml_${SRC_FILE} test_wbxml_${SRC_FILE}.c api_test.c)
 
