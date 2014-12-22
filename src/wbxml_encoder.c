@@ -1520,7 +1520,7 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     if (!wbxml_buffer_append_char(header, (WB_UTINY) encoder->wbxml_version))
         return WBXML_ERROR_ENCODER_APPEND_DATA;
 
-    /* Encode Public ID */
+    /* Prepare string table - adding Public ID */
     /* If WBXML Public Id is '0x01' (unknown), or we forced it, add the XML Public ID in the String Table */
     if ((encoder->textual_publicid || (public_id == WBXML_PUBLIC_ID_UNKNOWN)) &&
         !encoder->produce_anonymous)
@@ -1552,6 +1552,9 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
                     return WBXML_ERROR_NOT_ENOUGH_MEMORY;
                 }
 
+                /* "added" means that pid was consumed by encoder.
+                 * So never free pid if added is TRUE.
+                 */
                 if (!added)
                     wbxml_strtbl_element_destroy(elt);
 
@@ -1572,13 +1575,14 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
         }
     }
 
+    /* Encode Public ID */
     /* publicid = mb_u_int32 | ( zero index ) */
     if (pi_in_strtbl) {
         /* Encode XML Public ID String Table index */
         if (!wbxml_buffer_append_char(header, 0x00) ||
             !wbxml_buffer_append_mb_uint_32(header, public_id_index))
         {
-            if (pid) wbxml_buffer_destroy(pid);	
+            if (pid && !added) wbxml_buffer_destroy(pid);	
             return WBXML_ERROR_NOT_ENOUGH_MEMORY;
         }
     }
@@ -1586,7 +1590,6 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
         /* Encode WBXML Public ID */
         if (!wbxml_buffer_append_mb_uint_32(header, public_id))
         {
-            if (pid) wbxml_buffer_destroy(pid);
             return WBXML_ERROR_ENCODER_APPEND_DATA;
         }
     }
@@ -1596,16 +1599,16 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
     if (!wbxml_buffer_append_mb_uint_32(header, WBXML_ENCODER_DEFAULT_CHARSET) ||
         !wbxml_buffer_append_mb_uint_32(header, strstbl_len))
     {
-        if (pid) wbxml_buffer_destroy(pid);
+        if (pid && !added) wbxml_buffer_destroy(pid);
         return WBXML_ERROR_ENCODER_APPEND_DATA;
     }
 
-    /* Copy WBXML String Table */
+    /* Encode WBXML String Table */
 #if defined( WBXML_ENCODER_USE_STRTBL )
     if (encoder->use_strtbl) {
         if ((ret = wbxml_strtbl_construct(header,(WBXMLList *) encoder->strstbl)) != WBXML_OK)
         {
-            if (pid) wbxml_buffer_destroy(pid);
+            if (pid && !added) wbxml_buffer_destroy(pid);
             return ret;
         }
     }
@@ -1632,7 +1635,7 @@ static WBXMLError wbxml_fill_header(WBXMLEncoder *encoder, WBXMLBuffer *header)
             
 #if defined( WBXML_ENCODER_USE_STRTBL )
     }
-    if (pid) wbxml_buffer_destroy(pid);
+    if (pid && !added) wbxml_buffer_destroy(pid);
 #endif /* WBXML_ENCODER_USE_STRTBL */
 
     return WBXML_OK;
