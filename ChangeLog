@@ -1,3 +1,5 @@
+  * Fixed RELEASE instructions for GitHub.
+
 2015-04-07  Michael Bell <michael.bell@web.de>
   * Released 0.11.3
   * Migrated the sources to github
