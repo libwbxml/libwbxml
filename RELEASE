@@ -3,7 +3,7 @@ Making a release
 
 To make a release of libwbxml, do the following:
 
- - check out a fresh copy from subversion
+ - check out a fresh copy from github
 
  - increment the version numbers in ./CMakeLists.txt: 
 
@@ -32,16 +32,13 @@ To make a release of libwbxml, do the following:
    "make"
    "make test"
 
- - Commit the increased version changes (and build fixes)
+ - Commit and push the increased version changes (and build fixes)
 
- - if someone else made changes and the commit fails,
-   you have to "svn up" and run the tests again
+ - if someone else made changes and the push fails,
+   you have to "git pull" and run the tests again
 
- - please run "svn status" before you continue to be 100 percent sure
+ - please run "git status" before you continue to be 100 percent sure
    that there is no forgotten commit and no unrevisioned file.
-
- - please run 'find . -name "svn-commit*.tmp" -print' to detect
-   waste from failed commits.
 
  - Check ChangeLog to be complete and add the new release name.
 
