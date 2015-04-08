@@ -1,3 +1,5 @@
+2015-04-09  Michael Bell <michael.bell@web.de>
+  * Released 0.11.4
   * Get rid of the useless file MANIFEST (cmake don't need it).
   * Fixed CMakeLists.txt to get rid of the files AUTHORS and NEWS
     (GitHub issue #17).
