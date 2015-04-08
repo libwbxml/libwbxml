@@ -1,3 +1,5 @@
+  * If there is no CHECK support then the API tests must not be
+    executed (GitHub issue #18).
   * Removed NEWS because the content is already in ChangeLog.
   * Fixed RELEASE instructions for GitHub.
 
