@@ -1,3 +1,5 @@
+  * Fixed CMakeLists.txt to get rid of the files AUTHORS and NEWS
+    (GitHub issue #17).
   * If there is no CHECK support then the API tests must not be
     executed (GitHub issue #18).
   * Removed NEWS because the content is already in ChangeLog.
