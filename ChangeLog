@@ -1,7 +1,10 @@
+  * Get rid of the useless file MANIFEST (cmake don't need it).
   * Fixed CMakeLists.txt to get rid of the files AUTHORS and NEWS
     (GitHub issue #17).
   * If there is no CHECK support then the API tests must not be
     executed (GitHub issue #18).
+  * Removed AUTHORS because the more complete information is in
+    the file THANKS.
   * Removed NEWS because the content is already in ChangeLog.
   * Fixed RELEASE instructions for GitHub.
 
