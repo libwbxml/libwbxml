@@ -3760,6 +3760,7 @@ static WBXMLError wbxml_strtbl_collect_words(WBXMLList *elements, WBXMLList **re
             /* There is a bug inside the wbxml strtbl implementation.
                wbxml_list must be used in a wrong way.
              */
+            wbxml_list_destroy(list, wbxml_buffer_destroy_item);
             return WBXML_ERROR_INTERNAL;
         }
 
