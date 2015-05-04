@@ -76,3 +76,6 @@
     WBXML_SUPPORT_WV : Support of Wireless-Village CSP 1.1 / CSP 1.2
     
     HAVE_EXPAT : Enable XML Parsing feature (needs Expat)
+    
+    BUILD_SHARED_LIBS : Build wbxml as shared library
+    BUILD_STATIC_LIBS : Build wbxml as static library
