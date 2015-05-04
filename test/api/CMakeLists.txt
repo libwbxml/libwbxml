@@ -14,7 +14,11 @@ FOREACH( SRC_FILE lists buffers base64 charset conv encoder_internals errors par
 
     ADD_EXECUTABLE(test_wbxml_${SRC_FILE} test_wbxml_${SRC_FILE}.c api_test.c)
 
+IF(BUILD_SHARED_LIBS)    
     TARGET_LINK_LIBRARIES(test_wbxml_${SRC_FILE} wbxml2)
+ELSE(BUILD_SHARED_LIBS)
+    TARGET_LINK_LIBRARIES(test_wbxml_${SRC_FILE} wbxml2_static)
+ENDIF()
 
     IF( PKG_CONFIG_FOUND )
     TARGET_LINK_LIBRARIES(test_wbxml_${SRC_FILE} ${CHECK_LDFLAGS})
