@@ -1,3 +1,7 @@
+  * Fixed memory leak in function wbxml_strtbl_collect_words
+    of wbxml_encoder (pull request #21 from Gaurav Gupta).
+  * Fixed memory leak in function wbxml_strtbl_check_references
+    of wbxml_encoder (pull request #20 from Gaurav Gupta).
   * Added support to build a static library
     (issue #22 and pull requests #23, #24, #25, #26 and #27
     from Gaurav Gupta).
