@@ -1,3 +1,9 @@
+  * Added support to build a static library
+    (issue #22 and pull requests #23, #24, #25, #26 and #27
+    from Gaurav Gupta).
+  * If pkg-config is used then use the provided ldflags
+    (pull request #19 from Jeroen Dekkers).
+
 2015-04-09  Michael Bell <michael.bell@web.de>
   * Released 0.11.4
   * Get rid of the useless file MANIFEST (cmake don't need it).
