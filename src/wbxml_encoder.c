@@ -3870,6 +3870,7 @@ static WBXMLError wbxml_strtbl_check_references(WBXMLEncoder *encoder, WBXMLList
             	if (!stat_buff)
                     wbxml_buffer_destroy(string);
                 string = NULL;
+                wbxml_list_destroy(referenced, wbxml_strtbl_element_destroy_item);
                 return WBXML_ERROR_INTERNAL;
             }
 
