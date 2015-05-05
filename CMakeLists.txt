@@ -134,6 +134,8 @@ ELSE( DIFF_PROGRAM )
 	SET( ENABLE_DIFF OFF )
 ENDIF( DIFF_PROGRAM )
 
+OPTION( BUILD_SHARED_LIBS "Build wbxml as shared library" ON )
+OPTION( BUILD_STATIC_LIBS "Build wbxml as static library" OFF )
 OPTION( WBXML_LIB_VERBOSE "verbose mode" OFF )
 OPTION( WBXML_ENCODER_USE_STRTBL "enable string tables" ON )
 OPTION( WBXML_SUPPORT_WML "enable WML support" ON )
