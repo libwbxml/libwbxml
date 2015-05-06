@@ -1,3 +1,4 @@
+  * Added support for automated testing with travis-ci.org
   * Fixed memory leak in function wbxml_strtbl_collect_words
     of wbxml_encoder (pull request #21 from Gaurav Gupta).
   * Fixed memory leak in function wbxml_strtbl_check_references
