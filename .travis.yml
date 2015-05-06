@@ -1,0 +1,15 @@
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq libexpat1-dev
+os:
+  - linux
+language: c
+compiler:
+  - gcc
+script: ./build_travis.sh
+env:
+  matrix:
+    - VERBOSE_MAKE=false
+notifications:
+  email:
+    - g.gupta@samsung.com
