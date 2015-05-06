@@ -5,6 +5,6 @@ os: linux
 before_install: sudo apt-get update -qq
 install: sudo apt-get install -qq libexpat1-dev
 
-before_script: cmake -Bbuild .
-script: cd build && make && make test
+before_script: cmake -B/build .
+script: cd /build && make && make test
 
