@@ -2803,6 +2803,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "FirstDayOfWeek",         0x04, 0x39 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "OnlineMeetingConfLink",  0x04, 0x3a }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "OnlineMeetingExternalLink",0x04, 0x3b }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "ClientUid",              0x04, 0x3c }, /* since 16.0 */
 
     /* Code Page: Move (since v2.5 and r1.0) */
     { "MoveItems",              0x05, 0x05 }, /* corrected in libwbxml 0.11.0, supported since v2.5 */
@@ -2859,6 +2860,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "UserResponse",           0x08, 0x0c }, /* since r1.0 */
     { "Version",                0x08, 0x0d }, /* not defined in r8.0 but in r1.0 */
     { "InstanceId",             0x08, 0x0e }, /* since r8.0? */
+    { "SendResponse",           0x08, 0x12 }, /* since 16.0 */
 
     /* Code Page: Tasks (since v2.5 and r1.0) */
     { "Body",                   0x09, 0x05 }, /* not defined in r8.0 but in r1.0, supported by v2.5, v12.0 and v12.1 */
@@ -3083,6 +3085,24 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "BodyPartPreference",     0x11, 0x19 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 or 14 */
     { "BodyPart",               0x11, 0x1a }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 or 14 */
     { "Status",                 0x11, 0x1b }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 or 14 */
+    { "Add",                    0x11, 0x1c }, /* since 16.0 */
+    { "Delete",                 0x11, 0x1d }, /* since 16.0 */
+    { "ClientId",               0x11, 0x1e }, /* since 16.0 */
+    { "Content",                0x11, 0x1f }, /* since 16.0 */
+    { "Location",               0x11, 0x20 }, /* since 16.0 */
+    { "Annotation",             0x11, 0x21 }, /* since 16.0 */
+    { "Street",                 0x11, 0x22 }, /* since 16.0 */
+    { "City",                   0x11, 0x23 }, /* since 16.0 */
+    { "State",                  0x11, 0x24 }, /* since 16.0 */
+    { "Country",                0x11, 0x25 }, /* since 16.0 */
+    { "PostalCode",             0x11, 0x26 }, /* since 16.0 */
+    { "Latitude",               0x11, 0x27 }, /* since 16.0 */
+    { "Longitude",              0x11, 0x28 }, /* since 16.0 */
+    { "Accuracy",               0x11, 0x29 }, /* since 16.0 */
+    { "Altitude",               0x11, 0x2a }, /* since 16.0 */
+    { "AltitudeAccuracy",       0x11, 0x2b }, /* since 16.0 */
+    { "LocationUri",            0x11, 0x2c }, /* since 16.0 */
+    { "InstanceId",             0x11, 0x2d }, /* since 16.0 */
 
     /* Code Page: Settings (since v12.1 and r1.0) */
     { "Settings",                   0x12, 0x05 }, /* since r1.0 */
@@ -3173,6 +3193,10 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "ClientId",               0x15, 0x11 }, /* since r8.0? */
     { "Status",                 0x15, 0x12 }, /* since r8.0? */
     { "AccountId",              0x15, 0x13 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "Forwardees",             0x15, 0x15 }, /* since 16.0 */
+    { "Forwardee",              0x15, 0x16 }, /* since 16.0 */
+    { "ForwardeeName",          0x15, 0x17 }, /* since 16.0 */
+    { "ForwardeeEmail",         0x15, 0x18 }, /* since 16.0 */
 
     /* Code Page: Email2 (since v14.0 and r8.0?) */
     /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 */
@@ -3191,6 +3215,9 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "AccountId",              0x16, 0x11 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "FirstDayOfWeek",         0x16, 0x12 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "MeetingMessageType",     0x16, 0x13 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "IsDraft",                0x16, 0x15 }, /* since 16.0 */
+    { "Bcc",                    0x16, 0x16 }, /* since 16.0 */
+    { "Send",                   0x16, 0x17 }, /* since 16.0 */
 
     /* Code Page: Notes (since v14.0 and r8.0?) */
     /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 */
