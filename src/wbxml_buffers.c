@@ -71,7 +71,7 @@ WBXML_DECLARE(WBXMLBuffer *) wbxml_buffer_create_real(const WB_UTINY *data, WB_U
 {
     WBXMLBuffer *buffer = NULL;
 
-    buffer = (WBXMLBuffer *) wbxml_malloc(sizeof(WBXMLBuffer));
+    buffer = wbxml_malloc(sizeof(WBXMLBuffer));
     if (buffer == NULL)
         return NULL;
         
@@ -88,7 +88,7 @@ WBXML_DECLARE(WBXMLBuffer *) wbxml_buffer_create_real(const WB_UTINY *data, WB_U
         else
             buffer->malloced = malloc_block + 1;
         
-        buffer->data = (WB_UTINY *) wbxml_malloc(buffer->malloced * sizeof(WB_UTINY));
+        buffer->data = wbxml_malloc(buffer->malloced * sizeof(WB_UTINY));
         if (buffer->data == NULL) {
             wbxml_free(buffer);
             return NULL;
@@ -107,7 +107,7 @@ WBXML_DECLARE(WBXMLBuffer *) wbxml_buffer_sta_create_real(const WB_UTINY *data, 
 {
     WBXMLBuffer *buffer = NULL;
   
-    buffer = (WBXMLBuffer *) wbxml_malloc(sizeof(WBXMLBuffer));
+    buffer = wbxml_malloc(sizeof(WBXMLBuffer));
     if (buffer == NULL) {
         return NULL;
     }
