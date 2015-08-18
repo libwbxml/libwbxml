@@ -187,7 +187,7 @@ WBXML_DECLARE(WBXMLError) wbxml_charset_conv(const WB_TINY        *in_buf,
         /* Allocate maximum result buffer (4 bytes unicode) */
         tmp_len_left = tmp_buf_len = 4 * (sizeof(WB_TINY) * (*io_bytes));
     
-        if ((tmp_buf = (WB_TINY *) wbxml_malloc(tmp_buf_len)) == NULL) {
+        if ((tmp_buf = wbxml_malloc(tmp_buf_len)) == NULL) {
             iconv_close(cd);
             return WBXML_ERROR_NOT_ENOUGH_MEMORY;
         }
