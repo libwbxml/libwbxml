@@ -79,7 +79,7 @@ WBXML_DECLARE(WB_UTINY *) wbxml_base64_encode(const WB_UTINY *buffer, WB_LONG le
         return NULL;
 
     /* Malloc result buffer */
-    if ((result = (WB_UTINY *) wbxml_malloc(((len + 2) / 3 * 4) + 1 + 1)) == NULL)
+    if ((result = wbxml_malloc(((len + 2) / 3 * 4) + 1 + 1)) == NULL)
         return NULL;
 
     p = result;
@@ -134,7 +134,7 @@ WBXML_DECLARE(WB_LONG) wbxml_base64_decode(const WB_UTINY *buffer, WB_LONG len, 
     nbytesdecoded = ((nprbytes + 3) / 4) * 3;
     
     /* Malloc result buffer */
-    if ((*result = (WB_UTINY*) wbxml_malloc(nbytesdecoded + 1)) == NULL)
+    if ((*result = wbxml_malloc(nbytesdecoded + 1)) == NULL)
         return 0;
 
     bufout = *result;
