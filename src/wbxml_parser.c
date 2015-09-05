@@ -182,7 +182,7 @@ WBXML_DECLARE(WBXMLParser *) wbxml_parser_create(void)
 {
     WBXMLParser *parser = NULL;
 
-    parser = (WBXMLParser *) wbxml_malloc(sizeof(WBXMLParser));
+    parser = wbxml_malloc(sizeof(WBXMLParser));
     if (parser == NULL) {
         return NULL;
     }
@@ -1582,7 +1582,7 @@ static WBXMLError parse_extension(WBXMLParser *parser, WBXMLTokenType code_space
         }
 
         /* Build Variable */
-        ext = (WB_UTINY*) wbxml_malloc(WBXML_STRLEN(var_begin) +
+        ext = wbxml_malloc(WBXML_STRLEN(var_begin) +
                                        wbxml_buffer_len(var_value) +
                                        WBXML_STRLEN(escape) +
                                        WBXML_STRLEN(var_end) + 1);
