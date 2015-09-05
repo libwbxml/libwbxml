@@ -378,7 +378,7 @@ WBXML_DECLARE(WBXMLEncoder *) wbxml_encoder_create_real(void)
 {
     WBXMLEncoder *encoder = NULL;
 
-    encoder = (WBXMLEncoder *) wbxml_malloc(sizeof(WBXMLEncoder));
+    encoder = wbxml_malloc(sizeof(WBXMLEncoder));
     if (encoder == NULL) {
         return NULL;
     }
@@ -1472,7 +1472,7 @@ static WBXMLError wbxml_build_result(WBXMLEncoder *encoder, WB_UTINY **wbxml, WB
     *wbxml_len = wbxml_buffer_len(header) + wbxml_buffer_len(encoder->output);
 
     /* Create Result Buffer */
-    *wbxml = (WB_UTINY *) wbxml_malloc(*wbxml_len * sizeof(WB_UTINY));
+    *wbxml = wbxml_malloc(*wbxml_len * sizeof(WB_UTINY));
     if (*wbxml == NULL) {
         if (encoder->flow_mode == FALSE)
             wbxml_buffer_destroy(header);
@@ -2617,7 +2617,7 @@ static WBXMLValueElement *wbxml_value_element_create(void)
 {
     WBXMLValueElement *elt = NULL;
 
-    if ((elt = (WBXMLValueElement*) wbxml_malloc(sizeof(WBXMLValueElement))) == NULL)
+    if ((elt = wbxml_malloc(sizeof(WBXMLValueElement))) == NULL)
         return NULL;
 
     elt->type = WBXML_VALUE_ELEMENT_STRING;
@@ -3568,7 +3568,7 @@ static WBXMLStringTableElement *wbxml_strtbl_element_create(WBXMLBuffer *string,
 {
     WBXMLStringTableElement *elt = NULL;
 
-    if ((elt = (WBXMLStringTableElement *) wbxml_malloc(sizeof(WBXMLStringTableElement))) == NULL)
+    if ((elt = wbxml_malloc(sizeof(WBXMLStringTableElement))) == NULL)
         return NULL;
 
     elt->string = string;
@@ -4073,7 +4073,7 @@ static WBXMLError xml_build_result(WBXMLEncoder *encoder, WB_UTINY **xml, WB_ULO
     len = wbxml_buffer_len(header) + wbxml_buffer_len(encoder->output);
 
     /* Create Result Buffer */
-    *xml = (WB_UTINY *) wbxml_malloc((len + 1) * sizeof(WB_UTINY));
+    *xml = wbxml_malloc((len + 1) * sizeof(WB_UTINY));
     if (*xml == NULL) {
         if (encoder->flow_mode == FALSE)
             wbxml_buffer_destroy(header);
