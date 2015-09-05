@@ -383,7 +383,7 @@ WBXML_DECLARE(WBXMLTreeNode *) wbxml_tree_node_create(WBXMLTreeNodeType type)
 {
     WBXMLTreeNode *result = NULL;
     
-    if ((result = (WBXMLTreeNode *) wbxml_malloc(sizeof(WBXMLTreeNode))) == NULL)
+    if ((result = wbxml_malloc(sizeof(WBXMLTreeNode))) == NULL)
         return NULL;
 
     result->type = type;
@@ -972,7 +972,7 @@ WBXML_DECLARE(WBXMLTree *) wbxml_tree_create(WBXMLLanguage lang,
 {
     WBXMLTree *result = NULL;
     
-    if ((result = (WBXMLTree *) wbxml_malloc(sizeof(WBXMLTree))) == NULL)
+    if ((result = wbxml_malloc(sizeof(WBXMLTree))) == NULL)
         return NULL;
 
     result->lang = wbxml_tables_get_table(lang);
