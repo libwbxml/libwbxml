@@ -66,7 +66,7 @@ WBXML_DECLARE(WBXMLList *) wbxml_list_create_real(void)
 {
     WBXMLList *list = NULL;
     
-    if ((list = (WBXMLList *) wbxml_malloc(sizeof(WBXMLList))) == NULL)
+    if ((list = wbxml_malloc(sizeof(WBXMLList))) == NULL)
         return NULL;
 
     list->head = NULL;
@@ -244,7 +244,7 @@ static WBXMLListElt *wbxml_elt_create_real(void *item)
     if (item == NULL)
         return NULL;
 
-    if ((elt = (WBXMLListElt *) wbxml_malloc(sizeof(WBXMLListElt))) == NULL)
+    if ((elt = wbxml_malloc(sizeof(WBXMLListElt))) == NULL)
         return NULL;
 
     elt->item = item;
