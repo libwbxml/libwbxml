@@ -51,7 +51,7 @@ WBXML_DECLARE(WBXMLTag *) wbxml_tag_create(WBXMLValueType type)
 {
     WBXMLTag *result = NULL;
     
-    if ((result = (WBXMLTag *) wbxml_malloc(sizeof(WBXMLTag))) == NULL)
+    if ((result = wbxml_malloc(sizeof(WBXMLTag))) == NULL)
         return NULL;
 
     result->type = type;
@@ -115,7 +115,7 @@ WBXML_DECLARE(WBXMLTag *) wbxml_tag_duplicate(WBXMLTag *tag)
     if (tag == NULL)
         return NULL;
 
-    if ((result = (WBXMLTag *) wbxml_malloc(sizeof(WBXMLTag))) == NULL)
+    if ((result = wbxml_malloc(sizeof(WBXMLTag))) == NULL)
         return NULL;
 
     result->type = tag->type;
@@ -160,7 +160,7 @@ WBXML_DECLARE(WBXMLAttributeName *) wbxml_attribute_name_create(WBXMLValueType t
 {
     WBXMLAttributeName *result = NULL;
     
-    if ((result = (WBXMLAttributeName *) wbxml_malloc(sizeof(WBXMLAttributeName))) == NULL)
+    if ((result = wbxml_malloc(sizeof(WBXMLAttributeName))) == NULL)
         return NULL;
 
     result->type = type;
@@ -224,7 +224,7 @@ WBXML_DECLARE(WBXMLAttributeName *) wbxml_attribute_name_duplicate(WBXMLAttribut
     if (name == NULL)
         return NULL;
 
-    if ((result = (WBXMLAttributeName *) wbxml_malloc(sizeof(WBXMLAttributeName))) == NULL)
+    if ((result = wbxml_malloc(sizeof(WBXMLAttributeName))) == NULL)
         return NULL;
 
     result->type = name->type;
@@ -269,7 +269,7 @@ WBXML_DECLARE(WBXMLAttribute *) wbxml_attribute_create(void)
 {
     WBXMLAttribute *result = NULL;
     
-    if ((result = (WBXMLAttribute *) wbxml_malloc(sizeof(WBXMLAttribute))) == NULL)
+    if ((result = wbxml_malloc(sizeof(WBXMLAttribute))) == NULL)
         return NULL;
 
     result->name = NULL;
@@ -304,7 +304,7 @@ WBXML_DECLARE(WBXMLAttribute *) wbxml_attribute_duplicate(WBXMLAttribute *attr)
     if (attr == NULL)
         return NULL;
 
-    if ((result = (WBXMLAttribute *) wbxml_malloc(sizeof(WBXMLAttribute))) == NULL)
+    if ((result = wbxml_malloc(sizeof(WBXMLAttribute))) == NULL)
         return NULL;
 
     result->name = wbxml_attribute_name_duplicate(attr->name);
