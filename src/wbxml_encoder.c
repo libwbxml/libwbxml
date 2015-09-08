@@ -1673,6 +1673,9 @@ static WBXMLError wbxml_encode_tag(WBXMLEncoder *encoder, WBXMLTreeNode *node, W
     const WBXMLTagEntry *tag = NULL;
     WB_UTINY token = 0x00, page = 0x00;
 
+    if (!node || !node->name) {
+    	return WBXML_ERROR_UNKNOWN_TAG;
+    }
     if (node->name->type == WBXML_VALUE_TOKEN) {
         token = node->name->u.token->wbxmlToken;
         page = node->name->u.token->wbxmlCodePage;
