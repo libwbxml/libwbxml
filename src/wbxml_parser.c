@@ -1625,6 +1625,7 @@ static WBXMLError parse_extension(WBXMLParser *parser, WBXMLTokenType code_space
             break;
 
         default:
+            wbxml_free(ext);
             return WBXML_ERROR_UNKNOWN_EXTENSION_TOKEN;
         }
     
