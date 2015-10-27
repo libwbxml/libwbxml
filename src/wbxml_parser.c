@@ -1672,6 +1672,7 @@ static WBXMLError parse_extension(WBXMLParser *parser, WBXMLTokenType code_space
 #if WBXML_PARSER_BEST_EFFORT
             ext = (WB_UTINY *) wbxml_strdup((const WB_TINY*) WBXML_PARSER_UNKNOWN_STRING);
             len = WBXML_STRLEN(WBXML_PARSER_UNKNOWN_STRING);
+            wbxml_free(ext);
             return WBXML_OK;
 #else
             return WBXML_ERROR_UNKNOWN_EXTENSION_VALUE;
