@@ -13,6 +13,7 @@ Pau Aliagas         <pau@smsarena.com>
 Michael Banck       (Debian package maintainer, testing)
 Michael Bell        <michael.bell@web.de>
 Gaurav Gupta        <g.gupta@samsung.com>
+Gil Hartmann        (Active Sync v16.0)
 Conrad Irwin        (performance fixes)
 Aymerick Jehanne    <aymerick@jehanne.org>
 Ossi Jormakka       (Ixonos Plc., ActiveSync)
@@ -21,6 +22,7 @@ Benedykt Kroplewski <benedykt@age.pl>
 Jeremy Lainé        (helped with cmake on Win32)
 Mark Ostrer         (Websense)
 Petr Písař          (RedHat/Fedora package maintainer)
+Renu Tyagi          (fixed some memory leaks)
 Boaz Yaniv          (MS Visual Studio fixes)
 
 If you think your name is missing here

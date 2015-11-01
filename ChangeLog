@@ -1,3 +1,9 @@
+  * Added support for ccache (pull request #44 from Gaurav Gupta).
+  * Fixed some memory leaks (pull requests #43 and #45 from Renu Tyagi).
+  * Added definitions of ActiveSync protocoll v16.0
+    (pull request #32 from Gil Hartmann).
+  * Avoid malloc typecasts (pull requests #31, #33, #34, #35, #36,
+    #37, #38, #39 and #40 from Gaurav Gupta).
   * Added support for automated testing with travis-ci.org
   * Fixed memory leak in function wbxml_strtbl_collect_words
     of wbxml_encoder (pull request #21 from Gaurav Gupta).
