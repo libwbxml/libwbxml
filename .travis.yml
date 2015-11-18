@@ -2,8 +2,9 @@ language: c
 compiler: 
   - gcc
   - clang
-os: linux
-    osx
+os:
+  - linux
+  - osx
 
 before_install: sudo apt-get update -qq
 install: sudo apt-get install -qq libexpat1-dev check
