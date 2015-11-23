@@ -2,10 +2,20 @@ language: c
 compiler: 
   - gcc
   - clang
-os: linux
+os:
+  - linux
+  - osx
 
-before_install: sudo apt-get update -qq
-install: sudo apt-get install -qq libexpat1-dev check
+before_install:
+  - if [ ${TRAVIS_OS_NAME} == "osx" ];
+    then brew update; else
+    sudo apt-get update -qq;
+    fi
+install:
+  - if [ ${TRAVIS_OS_NAME} == "osx" ];
+    then brew install check expat; else
+    sudo apt-get install -qq libexpat1-dev check;
+    fi
 
 before_script: cmake . -Bbuild
 script: cd build && make && make test
