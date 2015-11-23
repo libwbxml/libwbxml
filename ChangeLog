@@ -1,3 +1,4 @@
+  * Added support for MacOS X to Travis CI environment.
   * Added support for ccache (pull request #44 from Gaurav Gupta).
   * Fixed some memory leaks (pull requests #43 and #45 from Renu Tyagi).
   * Added definitions of ActiveSync protocoll v16.0
