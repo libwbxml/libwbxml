@@ -518,7 +518,7 @@ WBXML_DECLARE(WBXMLList *) wbxml_buffer_split_words_real(WBXMLBuffer *buff)
 }
 
 
-WBXML_DECLARE(WB_BOOL) wbxml_buffer_search_char(WBXMLBuffer *to, WB_UTINY ch, WB_ULONG pos, WB_ULONG *result)
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_search_char(WBXMLBuffer *to, const WB_UTINY ch, WB_ULONG pos, WB_ULONG *result)
 {
     WB_UTINY *p = NULL;
 
@@ -578,7 +578,7 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_search(WBXMLBuffer *to, WBXMLBuffer *search,
 }
 
 
-WBXML_DECLARE(WB_BOOL) wbxml_buffer_search_cstr(WBXMLBuffer *to, WB_UTINY *search, WB_ULONG pos, WB_ULONG *result)
+WBXML_DECLARE(WB_BOOL) wbxml_buffer_search_cstr(WBXMLBuffer *to, const WB_UTINY *search, WB_ULONG pos, WB_ULONG *result)
 {
     WB_UTINY first = 0;
 

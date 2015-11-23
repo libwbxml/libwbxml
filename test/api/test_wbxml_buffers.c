@@ -58,7 +58,7 @@ START_TEST (test_init_and_destroy_static)
     ck_assert( ! wbxml_buffer_set_char(buf, 3, 'c'));
 
     ck_assert( ! wbxml_buffer_insert(buf, buf2, 2));
-    ck_assert( ! wbxml_buffer_insert_cstr(buf, t2, 2));
+    ck_assert( ! wbxml_buffer_insert_cstr(buf, (const WB_UTINY*) t2, 2));
 
     ck_assert( ! wbxml_buffer_append(buf, buf2));
     ck_assert( ! wbxml_buffer_append_data(buf, t2, 2));
@@ -95,19 +95,19 @@ START_TEST (test_set_char)
     /* set first char */
 
     ck_assert(wbxml_buffer_set_char(buf, 0, 'T'));
-    ck_assert(wbxml_buffer_get_char(buf, 0, &c));
+    ck_assert(wbxml_buffer_get_char(buf, 0, (WB_UTINY *) &c));
     ck_assert(c == 'T');
 
     /* set middle char */
 
     ck_assert(wbxml_buffer_set_char(buf, 2, 'S'));
-    ck_assert(wbxml_buffer_get_char(buf, 2, &c));
+    ck_assert(wbxml_buffer_get_char(buf, 2, (WB_UTINY *) &c));
     ck_assert(c == 'S');
 
     /* set last char */
 
     ck_assert(wbxml_buffer_set_char(buf, 5, '2'));
-    ck_assert(wbxml_buffer_get_char(buf, 5, &c));
+    ck_assert(wbxml_buffer_get_char(buf, 5, (WB_UTINY *) &c));
     ck_assert(c == '2');
 
     /* set last+1 char */
@@ -198,36 +198,36 @@ START_TEST (test_insert)
 
     /* insert to an empty buffer */
 
-    ck_assert(wbxml_buffer_insert_cstr(buf, "test", 0));
+    ck_assert(wbxml_buffer_insert_cstr(buf, (const WB_UTINY *) "test", 0));
     ck_assert(wbxml_buffer_len(buf) == 4);
 
     /* insert to head */
 
-    ck_assert(wbxml_buffer_insert_cstr(buf, "1", 0));
+    ck_assert(wbxml_buffer_insert_cstr(buf, (const WB_UTINY *) "1", 0));
     ck_assert(wbxml_buffer_len(buf) == 5);
     ck_assert(wbxml_buffer_compare_cstr(buf, "1test") == 0);
 
     /* insert into middle */
 
-    ck_assert(wbxml_buffer_insert_cstr(buf, "23", 1));
+    ck_assert(wbxml_buffer_insert_cstr(buf, (const WB_UTINY *) "23", 1));
     ck_assert(wbxml_buffer_len(buf) == 7);
     ck_assert(wbxml_buffer_compare_cstr(buf, "123test") == 0);
 
     /* insert at end */
 
-    ck_assert(wbxml_buffer_insert_cstr(buf, "7", 6));
+    ck_assert(wbxml_buffer_insert_cstr(buf, (const WB_UTINY *) "7", 6));
     ck_assert(wbxml_buffer_len(buf) == 8);
     ck_assert(wbxml_buffer_compare_cstr(buf, "123tes7t") == 0);
 
     /* insert after end */
 
-    ck_assert(wbxml_buffer_insert_cstr(buf, "9", 8));
+    ck_assert(wbxml_buffer_insert_cstr(buf, (const WB_UTINY *) "9", 8));
     ck_assert(wbxml_buffer_len(buf) == 9);
     ck_assert(wbxml_buffer_compare_cstr(buf, "123tes7t9") == 0);
 
     /* insert far after end */
 
-    ck_assert( ! wbxml_buffer_insert_cstr(buf, "10", 10));
+    ck_assert( ! wbxml_buffer_insert_cstr(buf, (const WB_UTINY *) "10", 10));
     ck_assert(wbxml_buffer_len(buf) == 9);
     ck_assert(wbxml_buffer_compare_cstr(buf, "123tes7t9") == 0);
 
@@ -261,7 +261,7 @@ START_TEST (test_delete)
 
     /* insert */
 
-    ck_assert(wbxml_buffer_insert_cstr(buf, "test", 0));
+    ck_assert(wbxml_buffer_insert_cstr(buf, (const WB_UTINY *) "test", 0));
     ck_assert(wbxml_buffer_len(buf) == 4);
 
     /* delete head */
@@ -354,12 +354,12 @@ START_TEST (test_search)
     ck_assert(! wbxml_buffer_search(buf, buf2, 0, &l));
     ck_assert(! wbxml_buffer_search(buf, NULL, 0, &l));
 
-    ck_assert(! wbxml_buffer_search_cstr(NULL, "123", 0, &l));
-    ck_assert(! wbxml_buffer_search_cstr(NULL, "", 0, &l));
+    ck_assert(! wbxml_buffer_search_cstr(NULL, (const WB_UTINY *) "123", 0, &l));
+    ck_assert(! wbxml_buffer_search_cstr(NULL, (const WB_UTINY *) "", 0, &l));
     ck_assert(! wbxml_buffer_search_cstr(NULL, NULL, 0, &l));
-    ck_assert(! wbxml_buffer_search_cstr(buf, "123", 0, &l));
+    ck_assert(! wbxml_buffer_search_cstr(buf, (const WB_UTINY *) "123", 0, &l));
     l = 1;
-    ck_assert(wbxml_buffer_search_cstr(buf, "", 0, &l));
+    ck_assert(wbxml_buffer_search_cstr(buf, (const WB_UTINY *) "", 0, &l));
     ck_assert(l == 0);
     ck_assert(! wbxml_buffer_search_cstr(buf, NULL, 0, &l));
 
@@ -382,10 +382,10 @@ START_TEST (test_search)
     ck_assert(! wbxml_buffer_search(buf, buf2, 5, NULL));
 
     l = 1;
-    ck_assert(wbxml_buffer_search_cstr(buf, "123", 0, &l));
+    ck_assert(wbxml_buffer_search_cstr(buf, (const WB_UTINY *) "123", 0, &l));
     ck_assert(l == 4);
-    ck_assert(wbxml_buffer_search_cstr(buf, "123", 0, NULL));
-    ck_assert(wbxml_buffer_search_cstr(buf, "", 0, &l));
+    ck_assert(wbxml_buffer_search_cstr(buf, (const WB_UTINY *) "123", 0, NULL));
+    ck_assert(wbxml_buffer_search_cstr(buf, (const WB_UTINY *) "", 0, &l));
     ck_assert(l == 0);
     ck_assert(! wbxml_buffer_search_cstr(buf, NULL, 0, &l));
 
@@ -393,7 +393,7 @@ START_TEST (test_search)
 
     ck_assert(! wbxml_buffer_search_char(buf, '3', wbxml_buffer_len(buf), &l));
     ck_assert(! wbxml_buffer_search(buf, buf2, wbxml_buffer_len(buf), &l));
-    ck_assert(! wbxml_buffer_search_cstr(buf, "3", wbxml_buffer_len(buf), &l));
+    ck_assert(! wbxml_buffer_search_cstr(buf, (const WB_UTINY *) "3", wbxml_buffer_len(buf), &l));
 
     wbxml_buffer_destroy(buf);
     wbxml_buffer_destroy(buf2);
