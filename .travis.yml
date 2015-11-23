@@ -13,7 +13,7 @@ before_install:
     fi
 install:
   - if [ ${TRAVIS_OS_NAME} == "osx" ];
-    then brew install expat; else
+    then brew install check expat; else
     sudo apt-get install -qq libexpat1-dev check;
     fi
 
