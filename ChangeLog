@@ -1,5 +1,7 @@
+2017-02-12  Michael Bell <michael.bell@web.de>
+  * Released 0.11.5
   * Fixed ActiveSync element data of code pages ResolveRecipients and
-    GAL (issue #52 from tfux)
+    GAL (issue #52 from Thomas Führer, fixed in pull request #53).
   * Added support for MacOS X to Travis CI environment.
   * Added support for ccache (pull request #44 from Gaurav Gupta).
   * Fixed some memory leaks (pull requests #43 and #45 from Renu Tyagi).
