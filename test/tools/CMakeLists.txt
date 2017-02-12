@@ -2,7 +2,7 @@
 ENABLE_TESTING()
 CONFIGURE_FILE( "launchTests.sh" "${CMAKE_CURRENT_BINARY_DIR}/launchTests.sh")
 CONFIGURE_FILE( "normalize_xml.pl" "${CMAKE_CURRENT_BINARY_DIR}/normalize_xml.pl" @ONLY)
-SET( activesync_tests 12 )
+SET( activesync_tests 13 )
 SET( airsync_tests 4 )
 SET( ddf_tests 2 )
 # 2009-Jan-19 bellmich
