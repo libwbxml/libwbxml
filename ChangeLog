@@ -1,3 +1,5 @@
+  * Fixed ActiveSync element data of code pages ResolveRecipients and
+    GAL (issue #52 from tfux)
   * Added support for MacOS X to Travis CI environment.
   * Added support for ccache (pull request #44 from Gaurav Gupta).
   * Fixed some memory leaks (pull requests #43 and #45 from Renu Tyagi).

@@ -2923,7 +2923,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "MergedFreeBusy",         0x0a, 0x19 }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 12.1 */
     { "Picture",                0x0a, 0x1a }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "MaxSize",                0x0a, 0x1b }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
-    { "Data",                   0x0a, 0x1c }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "Data",                   0x0a, 0x1c, WBXML_TAG_OPTION_BINARY }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "MaxPictures",            0x0a, 0x1d }, /* r8.0: not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: ValidateCert (since v2.5 and r1.0) */
@@ -3060,7 +3060,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "EmailAddress",           0x10, 0x0f }, /* since r1.0 */
     { "Picture",                0x10, 0x10 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
     { "Status",                 0x10, 0x11 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
-    { "Data",                   0x10, 0x12 }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
+    { "Data",                   0x10, 0x12, WBXML_TAG_OPTION_BINARY }, /* not supported when the MS-ASProtocolVersion header is set to 14.0 or 12.1 */
 
     /* Code Page: AirSyncBase (since v12.0 and r1.0) */
     { "BodyPreference",         0x11, 0x05 }, /* since r1.0 */
