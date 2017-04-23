@@ -1,3 +1,6 @@
+  * Added a testcase for Microsoft ActiveSync EAS Provisioning
+    (clarifies issue #56).
+
 2017-02-12  Michael Bell <michael.bell@web.de>
   * Released 0.11.5
   * Fixed ActiveSync element data of code pages ResolveRecipients and

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ActiveSync PUBLIC "-//MICROSOFT//DTD ActiveSync//EN" "http://www.microsoft.com/">
+<Provision xmlns="Provision:">
+  <DeviceInformation xmlns="Settings:">
+    <Status>1</Status>
+  </DeviceInformation>
+  <Status>1</Status>
+  <Policies>
+    <Policy>
+      <PolicyType>MS-EAS-Provisioning-WBXML</PolicyType>
+      <Status>1</Status>
+      <PolicyKey>1686474474</PolicyKey>
+      <Data>
+        <EASProvisionDoc>
+          <DevicePasswordEnabled>0</DevicePasswordEnabled>
+          <AlphanumericDevicePasswordRequired>0</AlphanumericDevicePasswordRequired>
+          <PasswordRecoveryEnabled>0</PasswordRecoveryEnabled>
+          <!-- <RequireStorageCardEncryption>0</RequireStorageCardEncryption> -->
+          <!-- Microsoft renamed this element -->
+          <DeviceEncryptionEnabled>0</DeviceEncryptionEnabled>
+          <AttachmentsEnabled>1</AttachmentsEnabled>
+          <MinDevicePasswordLength/>
+          <MaxInactivityTimeDeviceLock/>
+          <MaxDevicePasswordFailedAttempts/>
+          <MaxAttachmentSize/>
+          <AllowSimpleDevicePassword>1</AllowSimpleDevicePassword>
+          <DevicePasswordExpiration/>
+          <DevicePasswordHistory>0</DevicePasswordHistory>
+          <AllowStorageCard>1</AllowStorageCard>
+          <AllowCamera>1</AllowCamera>
+          <RequireDeviceEncryption>0</RequireDeviceEncryption>
+          <AllowUnsignedApplications>1</AllowUnsignedApplications>
+          <AllowUnsignedInstallationPackages>1</AllowUnsignedInstallationPackages>
+          <MinDevicePasswordComplexCharacters>1</MinDevicePasswordComplexCharacters>
+          <AllowWiFi>1</AllowWiFi>
+          <AllowTextMessaging>1</AllowTextMessaging>
+          <AllowPOPIMAPEmail>1</AllowPOPIMAPEmail>
+          <AllowBluetooth>2</AllowBluetooth>
+          <AllowIrDA>1</AllowIrDA>
+          <RequireManualSyncWhenRoaming>0</RequireManualSyncWhenRoaming>
+          <AllowDesktopSync>1</AllowDesktopSync>
+          <MaxCalendarAgeFilter>0</MaxCalendarAgeFilter>
+          <AllowHTMLEmail>1</AllowHTMLEmail>
+          <MaxEmailAgeFilter>0</MaxEmailAgeFilter>
+          <MaxEmailBodyTruncationSize>-1</MaxEmailBodyTruncationSize>
+          <MaxEmailHTMLBodyTruncationSize>-1</MaxEmailHTMLBodyTruncationSize>
+          <RequireSignedSMIMEMessages>0</RequireSignedSMIMEMessages>
+          <RequireEncryptedSMIMEMessages>0</RequireEncryptedSMIMEMessages>
+          <RequireSignedSMIMEAlgorithm>0</RequireSignedSMIMEAlgorithm>
+          <RequireEncryptionSMIMEAlgorithm>0</RequireEncryptionSMIMEAlgorithm>
+          <AllowSMIMEEncryptionAlgorithmNegotiation>2</AllowSMIMEEncryptionAlgorithmNegotiation>
+          <AllowSMIMESoftCerts>1</AllowSMIMESoftCerts>
+          <AllowBrowser>1</AllowBrowser>
+          <AllowConsumerEmail>1</AllowConsumerEmail>
+          <AllowRemoteDesktop>1</AllowRemoteDesktop>
+          <AllowInternetSharing>1</AllowInternetSharing>
+          <UnapprovedInROMApplicationList/>
+          <ApprovedApplicationList/>
+        </EASProvisionDoc>
+      </Data>
+    </Policy>
+  </Policies>
+</Provision>
