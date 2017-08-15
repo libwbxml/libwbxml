@@ -1,3 +1,5 @@
+2017-08-15  Michael Bell <michael.bell@web.de>
+  * Released 0.11.6
   * Fixed/changed the encoding of element Content in CodePage
     AirSyncBase (0x11) to WBXML_BINARY_OPTION for Microsoft ActiveSync.
     This element is used when the clients send a request to save a draft
