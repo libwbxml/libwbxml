@@ -3088,7 +3088,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Add",                    0x11, 0x1c }, /* since 16.0 */
     { "Delete",                 0x11, 0x1d }, /* since 16.0 */
     { "ClientId",               0x11, 0x1e }, /* since 16.0 */
-    { "Content",                0x11, 0x1f }, /* since 16.0 */
+    { "Content",                0x11, 0x1f, WBXML_TAG_OPTION_BINARY }, /* since 16.0 */
     { "Location",               0x11, 0x20 }, /* since 16.0 */
     { "Annotation",             0x11, 0x21 }, /* since 16.0 */
     { "Street",                 0x11, 0x22 }, /* since 16.0 */
