@@ -1,3 +1,12 @@
+  * Fixed/changed the encoding of element Content in CodePage
+    AirSyncBase (0x11) to WBXML_BINARY_OPTION for Microsoft ActiveSync.
+    This element is used when the clients send a request to save a draft
+    email. An example can be found in:
+      http://interoperability.blob.core.windows.net/files/MS-ASEMAIL/[MS-ASEMAIL].pdf
+    (4.4 Adding a Draft Email with Attachments).
+    Reference:
+      https://msdn.microsoft.com/en-us/library/mt563406%28v=exchg.80%29.aspx
+    (issue #58 from Thomas Führer)
   * Added a testcase for Microsoft ActiveSync EAS Provisioning
     (clarifies issue #56).
 
