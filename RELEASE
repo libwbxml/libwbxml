@@ -24,7 +24,6 @@ To make a release of libwbxml, do the following:
     * Reset to 0 if any interface has been removed since last release.
       If any interface has been added then increment.
 
-
  - Run "make test" again several times to try to see race conditions.
    "cd trunk"
    "cmake . -B/tmp/build/libwbxml"
