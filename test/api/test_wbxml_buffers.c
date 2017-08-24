@@ -78,6 +78,7 @@ START_TEST (test_init_and_destroy_static)
 
     ck_assert( ! wbxml_buffer_remove_trailing_zeros(buf));
 
+    wbxml_buffer_destroy(buf2);
     wbxml_buffer_destroy(buf);
 }
 END_TEST
@@ -237,6 +238,7 @@ START_TEST (test_insert)
     ck_assert(wbxml_buffer_insert(buf, buf2, 3));
     ck_assert(wbxml_buffer_len(buf) == 12);
     ck_assert(wbxml_buffer_compare_cstr(buf, "123XYZtes7t9") == 0);
+    wbxml_buffer_destroy(buf2);
 
     wbxml_buffer_destroy(buf);
 }
@@ -332,6 +334,7 @@ START_TEST (test_compare)
     ck_assert(wbxml_buffer_compare(buf, buf2) != 0);
     ck_assert(wbxml_buffer_compare_cstr(buf, "test") != 0);
 
+    wbxml_buffer_destroy(buf2);
     wbxml_buffer_destroy(buf);
 }
 END_TEST
