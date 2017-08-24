@@ -34,7 +34,9 @@ START_TEST (test_decode)
     ck_assert(wbxml_base64_decode(NULL, 0, &result) <= 0);
     ck_assert(wbxml_base64_decode(NULL, 1, &result) <= 0);
     ck_assert(wbxml_base64_decode((const WB_UTINY*) "", 0, &result) <= 0);
+    wbxml_free(result);
     ck_assert(wbxml_base64_decode((const WB_UTINY*) "test", 0, &result) <= 0);
+    wbxml_free(result);
 
     /* decode a string */
 
