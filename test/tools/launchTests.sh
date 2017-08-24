@@ -45,7 +45,7 @@ fi
 # Debian does this by default
 if [ "${CMAKE_SKIP_RPATH}" ]
 then
-	LD_LIBRARY_PATH="${CMAKE_CURRENT_BINARY_DIR}/../../src"
+	LD_LIBRARY_PATH="${CMAKE_CURRENT_BINARY_DIR}/../../src:$LD_LIBRARY_PATH"
 	export LD_LIBRARY_PATH
 fi
 
