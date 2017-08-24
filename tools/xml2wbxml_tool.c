@@ -146,14 +146,14 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
         case '?':
         default:
             help();
-            return 0;
+            goto clean_up;
         }
     }
 
     if (optind >= argc) {
         fprintf(stderr, "Missing arguments\n");
         help();
-        return 0;
+        goto clean_up;
     }
 
 #ifdef WBXML_USE_LEAKTRACKER
