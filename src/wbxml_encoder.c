@@ -3177,7 +3177,6 @@ static WBXMLError wbxml_encode_wv_datetime_inline(WBXMLEncoder *encoder, WB_UTIN
  */
 static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTINY *buffer)
 {
-    WBXMLError error;
     WBXMLBuffer *tmp = NULL;
     WB_ULONG i = 0, len = 0;
     WB_UTINY ch = 0;
@@ -3192,7 +3191,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
 
     /* Create temp Buffer */
     if ((tmp = wbxml_buffer_create_from_cstr(buffer)) == NULL) {
-        error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
         goto error;
     }
 
@@ -3211,26 +3210,26 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     }
     if ((len != 15) && (len != 16)) {
         WBXML_ERROR((WBXML_CONV, "The length of a WV datetime must be 15 or 16."));
-        error = WBXML_ERROR_WV_DATETIME_FORMAT;
+        ret = WBXML_ERROR_WV_DATETIME_FORMAT;
         goto error;
     }
 
     /* Check position of 'T' */
     if (*(buffer+8) != 'T') {
         WBXML_ERROR((WBXML_CONV, "The 9th character of a WV datetime must be 'T'."));
-        error = WBXML_ERROR_WV_DATETIME_FORMAT;
+        ret = WBXML_ERROR_WV_DATETIME_FORMAT;
         goto error;
     }
 
     /* Check position of time zone */
     if (len == 16) {
         if (!wbxml_buffer_get_char(tmp, 15, &ch)) {
-            error = WBXML_ERROR_INTERNAL;
+            ret = WBXML_ERROR_INTERNAL;
             goto error;
         }
         if (ch < 'A' || ch == 'J' || ch > 'Z') {
             WBXML_ERROR((WBXML_CONV, "If the length of a WV datetime is 16 then the last character must be the time zone."));
-            error = WBXML_ERROR_WV_DATETIME_FORMAT;
+            ret = WBXML_ERROR_WV_DATETIME_FORMAT;
             goto error;
         }
 
@@ -3251,12 +3250,12 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     while (i < wbxml_buffer_len(tmp)) {
         /* Get char */
         if (!wbxml_buffer_get_char(tmp, i, &ch)) {
-            error = WBXML_ERROR_INTERNAL;
+            ret = WBXML_ERROR_INTERNAL;
             goto error;
         }
 
         if (!WBXML_ISDIGIT(ch)) {
-            error = WBXML_ERROR_WV_DATETIME_FORMAT;
+            ret = WBXML_ERROR_WV_DATETIME_FORMAT;
             goto error;
         }
         else
@@ -3268,7 +3267,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     /* Set Year */
     component = wbxml_buffer_duplicate(tmp);
     if (!component) {
-        error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
         goto error;
     }
     wbxml_buffer_delete(component, 4, 10);
@@ -3280,7 +3279,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     /* Set Month */
     component = wbxml_buffer_duplicate(tmp);
     if (!component) {
-        error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
         goto error;
     }
     wbxml_buffer_delete(component, 0, 4);
@@ -3294,7 +3293,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     /* Set Day */
     component = wbxml_buffer_duplicate(tmp);
     if (!component) {
-        error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
         goto error;
     }
     wbxml_buffer_delete(component, 0, 6);
@@ -3307,7 +3306,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     /* Set Hour */
     component = wbxml_buffer_duplicate(tmp);
     if (!component) {
-        error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
         goto error;
     }
     wbxml_buffer_delete(component, 0, 8);
@@ -3321,7 +3320,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     /* Set Minute */
     component = wbxml_buffer_duplicate(tmp);
     if (!component) {
-        error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
         goto error;
     }
     wbxml_buffer_delete(component, 0, 10);
@@ -3335,7 +3334,7 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
     /* Set Second */
     component = wbxml_buffer_duplicate(tmp);
     if (!component) {
-        error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
         goto error;
     }
     wbxml_buffer_delete(component, 0, 12);
@@ -3348,12 +3347,11 @@ static WBXMLError wbxml_encode_wv_datetime_opaque(WBXMLEncoder *encoder, WB_UTIN
 
     /* Encode it to Opaque */
     ret = wbxml_encode_opaque_data(encoder, octets, 6);
-
-    return ret;
+	
 error:
     if (tmp)
         wbxml_buffer_destroy(tmp);
-    return error;
+    return ret;
 }
 
 
