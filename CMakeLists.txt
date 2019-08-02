@@ -37,6 +37,20 @@ MATH( EXPR LIBWBXML_LIBVERSION_SOVERSION "${LIBWBXML_LIBVERSION_CURRENT} - ${LIB
 
 SET( LIBWBXML_LIBVERSION_VERSION "${LIBWBXML_LIBVERSION_SOVERSION}.${LIBWBXML_LIBVERSION_AGE}.${LIBWBXML_LIBVERSION_REVISION}" )
 
+# this hack protects the SO versioning of the library
+# it makes the exposing of internal header files possible and safe
+# usual library version: 2.6.1
+# special library version: 20601.0.0
+IF( WBXML_INSTALL_FULL_HEADERS )
+
+    # calculate big major version
+    MATH( EXPR LIBWBXML_LIBVERSION_SOVERSION "10000 * ${LIBWBXML_LIBVERSION_SOVERSION} + 100 * ${LIBWBXML_LIBVERSION_AGE} + ${LIBWBXML_LIBVERSION_REVISION}" )
+
+    # build a x.0.0 version
+    SET( LIBWBXML_LIBVERSION_VERSION "${LIBWBXML_LIBVERSION_SOVERSION}.0.0" )
+
+ENDIF( WBXML_INSTALL_FULL_HEADERS )
+
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
 
 # TODO: Move to external file/macro
@@ -151,6 +165,7 @@ OPTION( WBXML_SUPPORT_SYNCML "enable SYNCML support" ON )
 OPTION( WBXML_SUPPORT_WV "enable WV support" ON )
 OPTION( WBXML_SUPPORT_AIRSYNC "enable AIRSYNC support" ON )
 OPTION( WBXML_SUPPORT_CONML "enable Nokia ConML support" ON )
+OPTION( WBXML_INSTALL_FULL_HEADERS "install internal headers" OFF )
 
 SET( PACKAGE "libwbxml" )
 SET( PACKAGE_BUGREPORT " " )
@@ -233,6 +248,7 @@ SHOW_STATUS( WBXML_SUPPORT_CONML "enable Nokia ConML support\t" )
 SHOW_STATUS( BUILD_DOCUMENTATION "build dynamic documentation\t" )
 SHOW_STATUS( WBXML_SUPPORT_ICONV "enable iconv support\t\t" )
 SHOW_STATUS( ENABLE_INSTALL_DOC "install documentation\t" )
+SHOW_STATUS( WBXML_INSTALL_FULL_HEADERS "install internal headers\t" )
 
 # fatal error detection
 IF ( FATAL_ERROR_EXPAT )
