@@ -38,7 +38,7 @@ To make a release of libwbxml, do the following:
    git pull upstream master
    git status
    git commit -a
-   git tag $MAJOR.$MINOR.$PATCH
+   git tag libwbxml-$MAJOR.$MINOR.$PATCH
    git push origin
 
  - if someone else made changes and the push fails,
