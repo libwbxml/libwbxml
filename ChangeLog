@@ -1,3 +1,4 @@
+2020-04-15  Michael Bell <michael.bell@web.de>
   * Added WBXML_INSTALL_FULL_HEADERS cmake flag to expose internal API
     headers; changes version for compatibility (e.g. 2.6.1 -> 20601.0.0)
     (pull request #67 from David Llewellyn-Jones)
