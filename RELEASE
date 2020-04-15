@@ -31,7 +31,15 @@ To make a release of libwbxml, do the following:
    "make"
    "make test"
 
- - Commit and push the increased version changes (and build fixes)
+ - Check ChangeLog to be complete and add the new release name.
+
+ - Final steps with git:
+   git pull origin
+   git pull upstream master
+   git status
+   git commit -a
+   git tag $MAJOR.$MINOR.$PATCH
+   git push origin
 
  - if someone else made changes and the push fails,
    you have to "git pull" and run the tests again
@@ -39,9 +47,8 @@ To make a release of libwbxml, do the following:
  - please run "git status" before you continue to be 100 percent sure
    that there is no forgotten commit and no unrevisioned file.
 
- - Check ChangeLog to be complete and add the new release name.
-
  - Once the commit succeeds, you have to create a new release on GitHub.
+   Please create a pull request from your fork.
    Please use the web GUI of Github and write some useful release notes. 
 
  - create tarballs for an out-of-source-build with
