@@ -5,10 +5,10 @@
     (pull request #67 from David Llewellyn-Jones)
   * Link to libexpat correctly (private). Therefore the tools wbxml2xml
     and xml2wbxml do no longer link directly to libexpat.
-    (pull request #65 Peter Keresztes Schmidt)
+    (pull request #65 from Peter Keresztes Schmidt)
   * During build use headers which come with source code and not the
-    installed headers (pull request #66 from David Llewellyn-Jones)
-  * Fixed several memory leaks and leak-sanitizer issues
+    installed headers. (pull request #66 from David Llewellyn-Jones)
+  * Fixed several memory leaks and leak-sanitizer issues.
     (pull requests #61, #62, #63 and #64 from Gaurav Gupta)
 
 2017-08-15  Michael Bell <michael.bell@web.de>
