@@ -39,7 +39,7 @@ To make a release of libwbxml, do the following:
    git status
    git commit -a
    git tag libwbxml-$MAJOR.$MINOR.$PATCH
-   git push origin
+   git push origin libwbxml-$MAJOR.$MINOR.$PATCH
 
  - if someone else made changes and the push fails,
    you have to "git pull" and run the tests again
