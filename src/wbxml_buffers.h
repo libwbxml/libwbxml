@@ -62,7 +62,7 @@ typedef struct WBXMLBuffer_s WBXMLBuffer;
  * @param data The initial data for buffer
  * @param len Size of data
  * @param malloc_block Size of the initial malloc block (tune this parameter to avoid too many reallocations)
- * @return The newly created Buffer, or NULL if not enought memory
+ * @return The newly created Buffer, or NULL if not enough memory
  * @warning Do NOT use this function directly, use wbxml_buffer_create() macro instead
  */
 WBXML_DECLARE(WBXMLBuffer *) wbxml_buffer_create_real(const WB_UTINY *data, WB_ULONG len, WB_ULONG malloc_block);

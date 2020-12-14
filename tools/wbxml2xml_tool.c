@@ -421,7 +421,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
         wbxml = realloc(wbxml, total);
 #endif
         if (wbxml == NULL) {
-            fprintf(stderr, "Not enought memory\n");
+            fprintf(stderr, "Not enough memory\n");
             if (input_file != stdin)
                 fclose(input_file);
             if (wbxml != NULL)
@@ -446,8 +446,8 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
         fprintf(stderr, "wbxml2xml failed: %s\n", wbxml_errors_string(ret));
     }
     else {
-        /* fprintf(stderr, "wbxml2xml succeded: \n%s\n", xml); */
-        fprintf(stderr, "wbxml2xml succeded\n");
+        /* fprintf(stderr, "wbxml2xml succeeded: \n%s\n", xml); */
+        fprintf(stderr, "wbxml2xml succeeded\n");
 
         if (output != NULL) {
             if (WBXML_STRCMP(output, "-") == 0) {

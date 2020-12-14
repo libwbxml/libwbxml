@@ -3563,7 +3563,7 @@ static WBXMLError wbxml_encode_ota_nokia_icon(WBXMLEncoder *encoder, WB_UTINY *b
  * @brief Create a String Table element
  * @param string The WBXMLBuffer containing the String
  * @param is_stat If set to TRUE, this Buffer won't be destroyed in wbxml_strtbl_element_destroy() function
- * @return The newly created String Table Element, or NULL if not enought memory
+ * @return The newly created String Table Element, or NULL if not enough memory
  */
 static WBXMLStringTableElement *wbxml_strtbl_element_create(WBXMLBuffer *string, WB_BOOL is_stat)
 {
@@ -3684,7 +3684,7 @@ static void wbxml_strtbl_collect_strings(WBXMLEncoder *encoder, WBXMLTreeNode *n
 
             /** @todo Shrink / Strip Blanks */
 
-            /* Only add this string if it is big enought */
+            /* Only add this string if it is big enough */
             if (wbxml_buffer_len(node->content) > WBXML_ENCODER_STRING_TABLE_MIN) {
                 wbxml_list_append(strings, node->content);
                 WBXML_DEBUG((WBXML_ENCODER, "Strtbl - Collecting String: %s", wbxml_buffer_get_cstr(node->content)));
@@ -3698,7 +3698,7 @@ static void wbxml_strtbl_collect_strings(WBXMLEncoder *encoder, WBXMLTreeNode *n
                     /* Get attribute */
                     attr = wbxml_list_get(node->attrs, i);
 
-                    /* Only add this string if it is big enought */
+                    /* Only add this string if it is big enough */
                     if (attr && wbxml_buffer_len(attr->value) > WBXML_ENCODER_STRING_TABLE_MIN) {
                         /* This mustn't be a tokenisable Attribute Start */
                         attr_entry = wbxml_tables_get_attr_from_xml(encoder->lang,
