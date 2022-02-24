@@ -74,8 +74,11 @@
     WBXML_SUPPORT_OTA_SETTINGS : Support of Ericsson / Nokia OTA Settings v7.0
     WBXML_SUPPORT_SYNCML : Support of SyncML 1.0 / SyncML 1.1 / SyncML 1.2
     WBXML_SUPPORT_WV : Support of Wireless-Village CSP 1.1 / CSP 1.2
+    WBXML_SUPPORT_AIRSYNC : Support of AIRSYNC 2.5
+    WBXML_SUPPORT_CONML : Support of Nokia ConML
     
     HAVE_EXPAT : Enable XML Parsing feature (needs Expat)
+    WBXML_INSTALL_FULL_HEADERS : Install unstable internal API headers
     
     BUILD_SHARED_LIBS : Build wbxml as shared library
     BUILD_STATIC_LIBS : Build wbxml as static library

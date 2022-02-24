@@ -1,3 +1,16 @@
+2020-04-15  Michael Bell <michael.bell@web.de>
+  * Released 0.11.7
+  * Added WBXML_INSTALL_FULL_HEADERS cmake flag to expose internal API
+    headers; changes version for compatibility (e.g. 2.6.1 -> 20601.0.0)
+    (pull request #67 from David Llewellyn-Jones)
+  * Link to libexpat correctly (private). Therefore the tools wbxml2xml
+    and xml2wbxml do no longer link directly to libexpat.
+    (pull request #65 from Peter Keresztes Schmidt)
+  * During build use headers which come with source code and not the
+    installed headers. (pull request #66 from David Llewellyn-Jones)
+  * Fixed several memory leaks and leak-sanitizer issues.
+    (pull requests #61, #62, #63 and #64 from Gaurav Gupta)
+
 2017-08-15  Michael Bell <michael.bell@web.de>
   * Released 0.11.6
   * Fixed/changed the encoding of element Content in CodePage

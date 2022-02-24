@@ -66,7 +66,7 @@ static const WBXMLErrorCodeItem error_table [] = {
 #if defined( WBXML_SUPPORT_WV )
     { WBXML_ERROR_WV_DATETIME_FORMAT,           "Bad Wireless-Village Date and Time Format" },
 #endif /* WBXML_SUPPORT_WV */
-    { WBXML_ERROR_NO_CHARSET_CONV,              "No built-in charset convertor (Compiled without libiconv)" },
+    { WBXML_ERROR_NO_CHARSET_CONV,              "No built-in charset converter (Compiled without libiconv)" },
     { WBXML_ERROR_CHARSET_STR_LEN,              "Bad string length, can't convert" },
     /* WBXML Parser Errors */
     { WBXML_ERROR_ATTR_VALUE_TABLE_UNDEFINED,   "Attribute Value Table Undefined" },

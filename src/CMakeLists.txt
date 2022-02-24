@@ -30,7 +30,7 @@ IF(BUILD_SHARED_LIBS)
 
 	SET_TARGET_PROPERTIES( wbxml2 PROPERTIES SOVERSION ${LIBWBXML_LIBVERSION_SOVERSION} )
 	SET_TARGET_PROPERTIES( wbxml2 PROPERTIES VERSION ${LIBWBXML_LIBVERSION_VERSION} )
-	TARGET_LINK_LIBRARIES( wbxml2 ${EXPAT_LIBRARIES} )
+	TARGET_LINK_LIBRARIES( wbxml2 PRIVATE ${EXPAT_LIBRARIES} )
 
 	INSTALL( TARGETS wbxml2
    	   RUNTIME DESTINATION ${LIBWBXML_BIN_DIR}
@@ -44,7 +44,7 @@ IF(BUILD_STATIC_LIBS)
 
 	SET_TARGET_PROPERTIES( wbxml2_static PROPERTIES SOVERSION ${LIBWBXML_LIBVERSION_SOVERSION} )
 	SET_TARGET_PROPERTIES( wbxml2_static PROPERTIES VERSION ${LIBWBXML_LIBVERSION_VERSION} )
-	TARGET_LINK_LIBRARIES( wbxml2_static ${EXPAT_LIBRARIES} )
+	TARGET_LINK_LIBRARIES( wbxml2_static PRIVATE ${EXPAT_LIBRARIES} )
 	SET_TARGET_PROPERTIES( wbxml2_static PROPERTIES OUTPUT_NAME wbxml2 )
 
 	INSTALL( TARGETS wbxml2_static
@@ -64,3 +64,22 @@ INSTALL( FILES
 	DESTINATION ${LIBWBXML_INCLUDE_DIR}/wbxml
 )
 
+IF(WBXML_INSTALL_FULL_HEADERS)
+    INSTALL( FILES
+        wbxml_base64.h
+        wbxml_buffers.h
+        wbxml_charset.h
+        wbxml_elt.h
+        wbxml_encoder.h
+        wbxml_handlers.h
+        wbxml_lists.h
+        wbxml_log.h
+        wbxml_mem.h
+        wbxml_parser.h
+        wbxml_tables.h
+        wbxml_tree.h
+        wbxml_tree_clb_wbxml.h
+        wbxml_tree_clb_xml.h
+        DESTINATION ${LIBWBXML_INCLUDE_DIR}/wbxml
+    )
+ENDIF()

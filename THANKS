@@ -8,22 +8,25 @@ Michael Bell <michael.bell@web.de>
 
 The following people helped to develop and maintain this library:
 
-Amnon Aaronsohn     (ActiveSync)
-Pau Aliagas         <pau@smsarena.com>
-Michael Banck       (Debian package maintainer, testing)
-Michael Bell        <michael.bell@web.de>
-Gaurav Gupta        <g.gupta@samsung.com>
-Gil Hartmann        (Active Sync v16.0)
-Conrad Irwin        (performance fixes)
-Aymerick Jehanne    <aymerick@jehanne.org>
-Ossi Jormakka       (Ixonos Plc., ActiveSync)
-Anton D. Kachalov   (Nokia ConML support)
-Benedykt Kroplewski <benedykt@age.pl>
-Jeremy Lainé        (helped with cmake on Win32)
-Mark Ostrer         (Websense)
-Petr Písař          (RedHat/Fedora package maintainer)
-Renu Tyagi          (fixed some memory leaks)
-Boaz Yaniv          (MS Visual Studio fixes)
+Amnon Aaronsohn         (ActiveSync)
+Pau Aliagas             <pau@smsarena.com>
+Michael Banck           (Debian package maintainer, testing)
+Michael Bell            <michael.bell@web.de>
+Gaurav Gupta            <g.gupta@samsung.com>
+Gil Hartmann            (Active Sync v16.0)
+Conrad Irwin            (performance fixes)
+Aymerick Jehanne        <aymerick@jehanne.org>
+Ossi Jormakka           (Ixonos Plc., ActiveSync)
+Anton D. Kachalov       (Nokia ConML support)
+Peter Keresztes Schmidt (fixed libexpat linking)
+Benedykt Kroplewski      <benedykt@age.pl>
+Jeremy Lainé             (helped with cmake on Win32)
+Mark Ostrer              (Websense)
+Petr Písař               (RedHat/Fedora package maintainer)
+Renu Tyagi               (fixed some memory leaks)
+Boaz Yaniv               (MS Visual Studio fixes)
+Slava Monich             <slava@monich.com>
+David Llewellyn-Jones    <david.llewellyn-jones@jolla.com>
 
 If you think your name is missing here
 then please feel free to create a ticket.
