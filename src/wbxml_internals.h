@@ -157,8 +157,8 @@ typedef enum WBXMLWVDataType_e {
 #endif /* WIN32 */
 
 /* Separator must be the same in both cases - once as a char, once as a string */
-#define WBXML_NAMESPACE_SEPARATOR     ':'
-#define WBXML_NAMESPACE_SEPARATOR_STR ":"
+#define WBXML_NAMESPACE_SEPARATOR     '|'
+#define WBXML_NAMESPACE_SEPARATOR_STR "|"
 
 /** @} */
 
