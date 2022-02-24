@@ -156,7 +156,9 @@ typedef enum WBXMLWVDataType_e {
 #pragma warning(error: 4761) /**< integral size mismatch in argument : conversion supplied */
 #endif /* WIN32 */
 
-#define WBXML_NAMESPACE_SEPARATOR ':'
+/* Separator must be the same in both cases - once as a char, once as a string */
+#define WBXML_NAMESPACE_SEPARATOR     ':'
+#define WBXML_NAMESPACE_SEPARATOR_STR ":"
 
 /** @} */
 
