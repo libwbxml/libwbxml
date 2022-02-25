@@ -2479,7 +2479,8 @@ static WBXMLError decode_opaque_content(WBXMLParser  *parser,
     case WBXML_LANG_SYNCML_SYNCML11: 
     case WBXML_LANG_SYNCML_SYNCML12: 
         /* NextNonce */
-        if ((parser->current_tag->wbxmlCodePage == 0x01) &&
+        if ((parser->current_tag) &&
+            (parser->current_tag->wbxmlCodePage == 0x01) &&
             (parser->current_tag->wbxmlToken == 0x10)) 
         {
             /* Decode base64 value */ 

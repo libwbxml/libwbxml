@@ -33,6 +33,7 @@
  * @brief WBXML Tree Callbacks for XML Parser (Expat)
  */
 
+#include "wbxml_internals.h"
 #include "wbxml_config_internals.h"
 
 #if defined( HAVE_EXPAT )
@@ -160,8 +161,8 @@ void wbxml_tree_clb_xml_start_element(void           *ctx,
      * potentially embedded documents.
      */
     if ((
-         (WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0) ||
-         (WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0)
+         (WBXML_STRCMP(localName, "syncml:devinf" WBXML_NAMESPACE_SEPARATOR_STR "DevInf") == 0) ||
+         (WBXML_STRCMP(localName, "syncml:dmddf1.2" WBXML_NAMESPACE_SEPARATOR_STR "MgmtTree") == 0)
         )&&
         (tree_ctx->current != NULL))
     {
@@ -255,8 +256,8 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
             /* End of skipped node */
 
 #if defined( WBXML_SUPPORT_SYNCML )
-            if (WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0 ||
-	        WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0) {
+            if (WBXML_STRCMP(localName, "syncml:devinf" WBXML_NAMESPACE_SEPARATOR_STR "DevInf") == 0 ||
+	        WBXML_STRCMP(localName, "syncml:dmddf1.2" WBXML_NAMESPACE_SEPARATOR_STR "MgmtTree") == 0) {
 		/* definitions first ... or some compilers don't like it */
                 WBXMLBuffer *embed_doc = NULL;
                 WBXMLTree *tree = NULL;
@@ -277,10 +278,10 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
                 }
 
                 /* Check Buffer Creation and add the closing tag */
-		if ((WBXML_STRCMP(localName, "syncml:devinf:DevInf") == 0 &&
+		if ((WBXML_STRCMP(localName, "syncml:devinf" WBXML_NAMESPACE_SEPARATOR_STR "DevInf") == 0 &&
 		     (!wbxml_buffer_append_cstr(embed_doc, "</DevInf>")))
                     ||
-		    (WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0 &&
+		    (WBXML_STRCMP(localName, "syncml:dmddf1.2" WBXML_NAMESPACE_SEPARATOR_STR "MgmtTree") == 0 &&
 		     (!wbxml_buffer_append_cstr(embed_doc, "</MgmtTree>"))))
                 {
                     tree_ctx->error = WBXML_ERROR_NOT_ENOUGH_MEMORY;
@@ -289,7 +290,7 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
                 }
 
                 /* Add doctype to give the XML parser a chance */
-		if (WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0 &&
+		if (WBXML_STRCMP(localName, "syncml:dmddf1.2" WBXML_NAMESPACE_SEPARATOR_STR "MgmtTree") == 0 &&
 		    tree_ctx->tree->lang->langID != WBXML_LANG_SYNCML_SYNCML12)
 		{
                     tree_ctx->error = WBXML_ERROR_UNKNOWN_XML_LANGUAGE;
@@ -305,7 +306,7 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 				lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DEVINF11);
 				break;
 			case WBXML_LANG_SYNCML_SYNCML12:
-				if (WBXML_STRCMP(localName, "syncml:dmddf1.2:MgmtTree") == 0) {
+				if (WBXML_STRCMP(localName, "syncml:dmddf1.2" WBXML_NAMESPACE_SEPARATOR_STR "MgmtTree") == 0) {
 					lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DMDDF12);
 				} else {
 					lang = wbxml_tables_get_table(WBXML_LANG_SYNCML_DEVINF12);
