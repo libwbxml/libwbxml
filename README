@@ -150,6 +150,11 @@
         Please use GitHub to report bugs, ask questions or submit code:
         https://github.com/libwbxml/libwbxml
 
-        Releases can be found on Sourceforge too:
+        Releases can be found on GitHub too:
+        https://github.com/libwbxml/libwbxml/releases
+
+        In the past, releases were published on SourceForge:
         https://sourceforge.net/projects/libwbxml/
+
+        Today, releases are only published on GitHub.
 

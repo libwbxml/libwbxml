@@ -1,3 +1,4 @@
+  * Changed location of releases to GitHub only in README.
   * Change the default internal namespace separator from the colon to the pipe
     (issue #76 from Sebastian Pipping, fixed in pull request #78 from Slávek Banko).
     This solves compatibility with libexpat >= 2.4.5 after fix the security
