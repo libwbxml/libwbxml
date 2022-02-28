@@ -37,6 +37,7 @@ To make a release of libwbxml, do the following:
    git pull upstream master
    git status
    git commit -a
+   git push
    git tag libwbxml-$MAJOR.$MINOR.$PATCH
    git push origin libwbxml-$MAJOR.$MINOR.$PATCH
 
@@ -49,25 +50,4 @@ To make a release of libwbxml, do the following:
  - Once the commit succeeds, you have to create a new release on GitHub.
    Please create a pull request from your fork.
    Please use the web GUI of Github and write some useful release notes. 
-
- - create tarballs for an out-of-source-build with
-   "cmake . -B/tmp/build/libwbxml-$MAJOR.$MINOR.$PATCH",
-   "cd /tmp/build/libwbxml-$MAJOR.$MINOR.$PATCH",
-   "make package_source"
-
- - write checksums with md5sum from the tarballs to a file with the
-   same name like the tarballs without the tar and compression suffixes
-   and plus a new suffix md5sum
-   Example Linux:
-     md5sum libwbxml-$MAJOR.$MINOR.$PATCH.tar.* > libwbxml-$MAJOR.$MINOR.$PATCH.md5sum
-     md5sum -c libwbxml-$MAJOR.$MINOR.$PATCH.md5sum
-     sha512sum libwbxml-$MAJOR.$MINOR.$PATCH.tar.* > libwbxml-$MAJOR.$MINOR.$PATCH.sha512sum
-     sha512sum -c libwbxml-$MAJOR.$MINOR.$PATCH.sha512sum
-   Example MacOS:
-     md5 libwbxml-$MAJOR.$MINOR.$PATCH.tar.* > libwbxml-$MAJOR.$MINOR.$PATCH.md5sum
-     shasum -a 512 libwbxml-$MAJOR.$MINOR.$PATCH.tar.* > libwbxml-$MAJOR.$MINOR.$PATCH.sha512sum
-     shasum -c libwbxml-$MAJOR.$MINOR.$PATCH.sha512sum
-
- - upload the tarballs and the checksum file to the File Release System
-   of SourceForge via the web interface
 
