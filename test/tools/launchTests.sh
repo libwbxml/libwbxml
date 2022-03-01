@@ -172,7 +172,9 @@ do
 	echo CDATA_ENCAPSULATION
     else
 	$PERL_BIN $NORMALIZE_SCRIPT --delete-attribute xmlns $j $OUT_XML.org
+	if [ $? != 0 ]; then echo FAILED; RESULT="FAILED"; continue; fi
 	$PERL_BIN $NORMALIZE_SCRIPT --delete-attribute xmlns $OUT_XML $OUT_XML.new
+	if [ $? != 0 ]; then echo FAILED; RESULT="FAILED"; continue; fi
 	DIFF_RESULT=`$DIFF_BIN -b $OUT_XML.org $OUT_XML.new`
 	if [ " $DIFF_RESULT" != " " ];
 	then
