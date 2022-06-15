@@ -2,7 +2,8 @@
  * libwbxml, the WBXML Library.
  * Copyright (C) 2002-2008 Aymerick Jehanne <aymerick@jehanne.org>
  * Copyright (C) 2008-2011 Michael Bell <michael.bell@opensync.org>
- * 
+ * Copyright (c) 2022 Open Mobile Platform LLC.
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -2860,7 +2861,9 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "UserResponse",           0x08, 0x0c }, /* since r1.0 */
     { "Version",                0x08, 0x0d }, /* not defined in r8.0 but in r1.0 */
     { "InstanceId",             0x08, 0x0e }, /* since r8.0? */
-    { "SendResponse",           0x08, 0x12 }, /* since 16.0 */
+    { "ProposedStartTime",      0x08, 0x10 }, /* since v16.1 */
+    { "ProposedEndTime",        0x08, 0x11 }, /* since v16.1 */
+    { "SendResponse",           0x08, 0x12 }, /* since v16.0 */
 
     /* Code Page: Tasks (since v2.5 and r1.0) */
     { "Body",                   0x09, 0x05 }, /* not defined in r8.0 but in r1.0, supported by v2.5, v12.0 and v12.1 */
@@ -2879,9 +2882,8 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "Recurrence_Until",       0x09, 0x12 }, /* corrected in libwbxml 0.11.0, supported since v2.5, changed in r8.0, r1.0: RecurrenceUntil */
     { "Recurrence_Occurrences", 0x09, 0x13 }, /* corrected in libwbxml 0.11.0, supported since v2.5, changed in r8.0, r1.0: RecurrenceOccurrences */
     { "Recurrence_Interval",    0x09, 0x14 }, /* corrected in libwbxml 0.11.0, supported since v2.5, changed in r8.0, r1.0: RecurrenceInterval */
-    { "Recurrence_DayOfMonth",  0x09, 0x15 }, /* supported since v2.5, changed in r8.0, r1.0: RecurrenceDayOfMonth */
-    { "Recurrence_DayOfWeek",   0x09, 0x16 }, /* corrected in libwbxml 0.11.0, supported since v2.5, changed in r8.0, r1.0: RecurrenceDayOfWeek */
     { "Recurrence_DayOfMonth",  0x09, 0x15 }, /* corrected in libwbxml 0.11.0, supported since v2.5, changed in r8.0, r1.0: RecurrenceDayOfMonth */
+    { "Recurrence_DayOfWeek",   0x09, 0x16 }, /* corrected in libwbxml 0.11.0, supported since v2.5, changed in r8.0, r1.0: RecurrenceDayOfWeek */
     { "Recurrence_WeekOfMonth", 0x09, 0x17 }, /* corrected in libwbxml 0.11.0, supported since v2.5, changed in r8.0, r1.0: RecurrenceWeekOfMonth */
     { "Recurrence_MonthOfYear", 0x09, 0x18 }, /* corrected in libwbxml 0.11.0, supported since v2.5, changed in r8.0, r1.0: RecurrenceMonthOfYear */
     { "Recurrence_Regenerate",  0x09, 0x19 }, /* corrected in libwbxml 0.11.0, supported since v2.5, changed in r8.0, r1.0: RecurrenceRegenerate */
@@ -3013,6 +3015,7 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "ApplicationName",                          0x0e, 0x38 }, /* supported by v2.0 and v2.5 */
     { "ApprovedApplicationList",                  0x0e, 0x39 }, /* supported by v2.0 and v2.5 */
     { "Hash",                                     0x0e, 0x3a }, /* supported by v2.0 and v2.5 */
+    { "AccountOnlyRemoteWipe",                    0x0e, 0x3b }, /* supported since v16.1 */
 
     /* Code Page: Search (since v2.5 and r1.0) */
     /* Token 0x06 and 0x16 are not supported. */
@@ -3250,6 +3253,31 @@ const WBXMLTagEntry sv_airsync_tag_table[] = {
     { "ContentOwner",           0x18, 0x17 }, /* since r8.0? */
     { "RemoveRightsManagementDistribution",0x18, 0x18 }, /* since r8.0? */
 
+    /* Code Page: Find (since r18.0) */
+    /* r18.0 - r22.2: not supported when the MS-ASProtocolVersion header is set to 16.0 or lower */
+    { "Find"                   ,0x19, 0x05 }, /* since r18.0 */
+    { "SearchId"               ,0x19, 0x06 }, /* since r18.0 */
+    { "ExecuteSearch"          ,0x19, 0x07 }, /* since r18.0 */
+    { "MailBoxSearchCriterion" ,0x19, 0x08 }, /* since r18.0 */
+    { "Query"                  ,0x19, 0x09 }, /* since r18.0 */
+    { "Status"                 ,0x19, 0x0a }, /* since r18.0 */
+    { "FreeText"               ,0x19, 0x0b }, /* since r18.0 */
+    { "Options"                ,0x19, 0x0c }, /* since r18.0 */
+    { "Range"                  ,0x19, 0x0d }, /* since r18.0 */
+    { "DeepTraversal"          ,0x19, 0x0e }, /* since r18.0 */
+    { "Response"               ,0x19, 0x11 }, /* since r18.0 */
+    { "Result"                 ,0x19, 0x12 }, /* since r18.0 */
+    { "Properties"             ,0x19, 0x13 }, /* since r18.0 */
+    { "Preview"                ,0x19, 0x14 }, /* since r18.0 */
+    { "HasAttachments"         ,0x19, 0x15 }, /* since r18.0 */
+    { "Total"                  ,0x19, 0x16 }, /* since r18.0 */
+    { "DisplayCc"              ,0x19, 0x17 }, /* since r18.0 */
+    { "DisplayBcc"             ,0x19, 0x18 }, /* since r18.0 */
+    { "GalSearchCriterion"     ,0x19, 0x19 }, /* since r20.0 */
+    { "MaxPictures"            ,0x19, 0x20 }, /* since r22.1 */
+    { "MaxSize"                ,0x19, 0x21 }, /* since r22.1 */
+    { "Picture"                ,0x19, 0x22 }, /* since r22.2 */
+
     { NULL,                  0x00, 0x00 }
 };
 
@@ -3291,6 +3319,7 @@ const WBXMLAttrEntry sv_airsync_attr_table[] = {
  *   Email2:              http://synce.org/formats/airsync_wm5/email2
  *   Notes:               http://synce.org/formats/airsync_wm5/notes
  *   RightsManagement:    http://synce.org/formats/airsync_wm5/rightsmanagement
+ *   Find:                http://synce.org/formats/airsync_wm5/find
  *
  */
 const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
@@ -3319,6 +3348,7 @@ const WBXMLNameSpaceEntry sv_airsync_ns_table[] = {
     { "http://synce.org/formats/airsync_wm5/email2",            0x16 },     /**< Code Page 22 */
     { "http://synce.org/formats/airsync_wm5/notes",             0x17 },     /**< Code Page 23 */
     { "http://synce.org/formats/airsync_wm5/rightsmanagement",  0x18 },     /**< Code Page 24 */
+    { "http://synce.org/formats/airsync_wm5/find",              0x19 },     /**< Code Page 25 */
     { NULL,                                                     0x00 }
 };
 
@@ -3348,6 +3378,7 @@ const WBXMLNameSpaceEntry sv_activesync_ns_table[] = {
     { "Email2:",            0x16 },     /**< Code Page 22 */
     { "Notes:",             0x17 },     /**< Code Page 23 */
     { "RightsManagement:",  0x18 },     /**< Code Page 24 */
+    { "Find:",              0x19 },     /**< Code Page 25 */
     { NULL,                 0x00 }
 };
 
