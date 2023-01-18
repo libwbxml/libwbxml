@@ -318,7 +318,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
     FILE *input_file = NULL, *output_file = NULL;
     WB_LONG count = 0, wbxml_len = 0, total = 0;
     WB_ULONG xml_len = 0;
-    WB_TINY opt;
+    int opt;
     WBXMLError ret = WBXML_OK;
     WB_UTINY input_buffer[INPUT_BUFFER_SIZE + 1];
     WBXMLConvWBXML2XML *conv = NULL;
@@ -330,7 +330,7 @@ WB_LONG main(WB_LONG argc, WB_TINY **argv)
         goto clean_up;
     }
 
-    while ((opt = (WB_TINY) wbxml_getopt(argc, argv, "kh?o:m:i:l:c:")) != EOF)
+    while ((opt = wbxml_getopt(argc, argv, "kh?o:m:i:l:c:")) != EOF)
     {
         switch (opt) {
         case 'k':

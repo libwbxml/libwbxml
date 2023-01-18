@@ -1,3 +1,4 @@
+  * Modify wbxml_getopt return opt type to int
   * Check for normalize_xml.pl failures in the tests (pull request #84).
 
 2022-02-28  Michael Bell <michael.bell@web.de>
