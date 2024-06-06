@@ -2556,6 +2556,12 @@ static WBXMLError decode_wv_content(WBXMLParser  *parser, WBXMLBuffer **data)
     WBXMLWVDataType data_type = WBXML_WV_DATA_TYPE_STRING;
     WBXMLError      ret       = WBXML_OK;
 
+    /* Check for valid entry point */
+    if (parser->current_tag == NULL) {
+        /* no content to parse */
+        return WBXML_OK;
+    }
+
     /* Wireless-Village 1.1 / 1.2 */
   
     /* 
