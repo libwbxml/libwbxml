@@ -111,7 +111,8 @@ static const WBXMLErrorCodeItem error_table [] = {
     { WBXML_ERROR_CHARSET_UNKNOWN,              "The character set is unknown."},
     { WBXML_ERROR_CHARSET_CONV_INIT,            "The converter for the character set cannot be initialized."},
     { WBXML_ERROR_CHARSET_CONV,                 "The character conversion failed."},
-    { WBXML_ERROR_CHARSET_NOT_FOUND,            "The character set cannot be found."}
+    { WBXML_ERROR_CHARSET_NOT_FOUND,            "The character set cannot be found."},
+    { WBXML_ERROR_INVALID_UNICODE,              "Invalid Unicode character detected."}
 };
 
 #define ERROR_TABLE_SIZE ((WB_ULONG) (sizeof(error_table) / sizeof(error_table[0])))

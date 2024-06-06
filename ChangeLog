@@ -1,3 +1,18 @@
+  * Removed assert in function wbxml_tree_clb_xml_end_element of
+    wbxml_tree_clb_xml.c. The function had already the correct error handling
+    implemented. The library no longer crashes but returns an error. The usage
+    of assert.h was removed from wbxml_tree_clb_xml.c.
+  * Fixed SIGSEGV during parsing of malformed WV document in wbxml_parser.c.
+    (SIGSEGV from Simon Koski & Alex Zhang)
+  * Fixed the handling of a wrong Unicode character in the function
+    parse_entity of wbxml_parser.c. The library no longer crashes but returns
+    an error. Therefore, a new error was defined in wbxml_errors.h. The usage
+    of assert.h was removed from wbxml_parser.c.
+    (SIGABRT from Simon Koski & Alex Zhang)
+  * Added missing NULL pointer check in function decode_opaque_content of
+    wbxml_parser.c (SIGSEGV from Simon Koski & Alex Zhang).
+  * Added a directory for and with fuzz tests which crash(ed) the library.
+    (Thanks goes to Simon Koski & Alex Zhang for the tests.)
   * Modify wbxml_getopt return opt type to int
   * Check for normalize_xml.pl failures in the tests (pull request #84).
 

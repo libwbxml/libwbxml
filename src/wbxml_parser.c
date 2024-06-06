@@ -48,7 +48,6 @@
 #include "wbxml_internals.h"
 #include "wbxml_base64.h"
 #include "wbxml_charset.h"
-#include <assert.h>
 
 
 /* Memory management related defines */
@@ -1739,7 +1738,11 @@ static WBXMLError parse_entity(WBXMLParser *parser, WBXMLBuffer **result)
      * Convert the UCS-4 code to a UTF-8 encoded string.
      */
 
-    assert(code < 0x80000000);
+    if (code >= 0x80000000)
+    {
+        /* no valid unicode */
+        return WBXML_ERROR_INVALID_UNICODE;
+    }
 
     if (code < 0x80)
     {
@@ -2463,7 +2466,8 @@ static WBXMLError decode_opaque_content(WBXMLParser  *parser,
 
     case WBXML_LANG_DRMREL10:
         /* ds:KeyValue */
-        if ((parser->current_tag->wbxmlCodePage == 0x00) &&
+        if ((parser->current_tag) &&
+            (parser->current_tag->wbxmlCodePage == 0x00) &&
             (parser->current_tag->wbxmlToken == 0x0C))
         {
             /* Decode base64 value */ 
@@ -2551,6 +2555,12 @@ static WBXMLError decode_wv_content(WBXMLParser  *parser, WBXMLBuffer **data)
 {
     WBXMLWVDataType data_type = WBXML_WV_DATA_TYPE_STRING;
     WBXMLError      ret       = WBXML_OK;
+
+    /* Check for valid entry point */
+    if (parser->current_tag == NULL) {
+        /* no content to parse */
+        return WBXML_OK;
+    }
 
     /* Wireless-Village 1.1 / 1.2 */
   
