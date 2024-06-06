@@ -43,7 +43,6 @@
 #include "wbxml_log.h"
 #include "wbxml_charset.h"
 #include "wbxml_base64.h"
-#include <assert.h>
 
 /************************************
  *  Public Functions
@@ -318,7 +317,6 @@ void wbxml_tree_clb_xml_end_element(void           *ctx,
 				return;
 		}
 
-		assert (lang!= NULL);
 		if (lang == NULL) {
 			tree_ctx->error = WBXML_ERROR_UNKNOWN_XML_LANGUAGE;
 			wbxml_buffer_destroy(embed_doc);
