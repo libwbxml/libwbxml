@@ -2463,7 +2463,8 @@ static WBXMLError decode_opaque_content(WBXMLParser  *parser,
 
     case WBXML_LANG_DRMREL10:
         /* ds:KeyValue */
-        if ((parser->current_tag->wbxmlCodePage == 0x00) &&
+        if ((parser->current_tag) &&
+            (parser->current_tag->wbxmlCodePage == 0x00) &&
             (parser->current_tag->wbxmlToken == 0x0C))
         {
             /* Decode base64 value */ 

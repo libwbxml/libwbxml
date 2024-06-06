@@ -1,3 +1,5 @@
+  * Added missing NULL pointer check in function decode_opaque_content of
+    wbxml_parser.c (SIGSEGV from Simon Koski & Alex Zhang).
   * Added a directory for and with fuzz tests which crash(ed) the library.
     (Thanks goes to Simon Koski & Alex Zhang for the tests.)
   * Modify wbxml_getopt return opt type to int
