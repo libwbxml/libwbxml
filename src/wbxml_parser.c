@@ -48,7 +48,6 @@
 #include "wbxml_internals.h"
 #include "wbxml_base64.h"
 #include "wbxml_charset.h"
-#include <assert.h>
 
 
 /* Memory management related defines */
@@ -1739,7 +1738,11 @@ static WBXMLError parse_entity(WBXMLParser *parser, WBXMLBuffer **result)
      * Convert the UCS-4 code to a UTF-8 encoded string.
      */
 
-    assert(code < 0x80000000);
+    if (code >= 0x80000000)
+    {
+        /* no valid unicode */
+        return WBXML_ERROR_INVALID_UNICODE;
+    }
 
     if (code < 0x80)
     {

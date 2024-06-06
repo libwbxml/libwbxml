@@ -1,3 +1,8 @@
+  * Fixed the handling of a wrong Unicode character in the function
+    parse_entity of wbxml_parser.c. The library no longer crashes but returns
+    an error. Therefore, a new error was defined in wbxml_errors.h. The usage
+    of assert.h was removed from wbxml_parser.c.
+    (SIGABRT from Simon Koski & Alex Zhang)
   * Added missing NULL pointer check in function decode_opaque_content of
     wbxml_parser.c (SIGSEGV from Simon Koski & Alex Zhang).
   * Added a directory for and with fuzz tests which crash(ed) the library.
