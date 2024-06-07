@@ -3,7 +3,10 @@ Making a release
 
 To make a release of libwbxml, do the following:
 
-(1) Check out a fresh copy from github
+(1) Check out a fresh copy from GitHub
+
+   Please check upfront if your fork is in sync with the upstream repositiory.
+   GitHub can do this for you by just clicking on the button "Sync fork".
 
 (2) Update the version numbers in CMakeLists.txt
 
@@ -45,7 +48,9 @@ To make a release of libwbxml, do the following:
 
    Please merge the pull request via the web GUI of GitHub.
 
-(7) Create a new release tag.
+(7) Create a new tag.
+
+   Please create a new tag via the web GUI of GitHub.
 
    libwbxml-$MAJOR.$MINOR.$PATCH
 
