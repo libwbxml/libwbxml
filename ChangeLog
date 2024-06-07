@@ -1,3 +1,5 @@
+2024-06-07  Michael Bell <michael.bell@web.de>
+  * Released 0.11.9
   * Removed assert in function wbxml_tree_clb_xml_end_element of
     wbxml_tree_clb_xml.c. The function had already the correct error handling
     implemented. The library no longer crashes but returns an error. The usage
