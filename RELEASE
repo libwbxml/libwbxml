@@ -3,9 +3,11 @@ Making a release
 
 To make a release of libwbxml, do the following:
 
- - check out a fresh copy from github
+(1) Check out a fresh copy from github
 
- - increment the version numbers in ./CMakeLists.txt: 
+(2) Update the version numbers in CMakeLists.txt
+
+   Please follow strictly the guidance in CMakelists.txt.
 
    Package Version:
    LIBWBXML_VERSION_MAJOR
@@ -13,41 +15,45 @@ To make a release of libwbxml, do the following:
    LIBWBXML_VERSION_PATCH
 
    Library Version:
-   LIBWBXML_LIBVERSION_AGE 
-    * Increment if any interface changed since last release.
-
+   LIBWBXML_LIBVERSION_CURRENT 
    LIBWBXML_LIBVERSION_REVISION
-    * Increment if any library code changed since last release.
-      Set to 0 if any interface  has been changed since last release.
-
    LIBWBXML_LIBVERSION_AGE
-    * Reset to 0 if any interface has been removed since last release.
-      If any interface has been added then increment.
 
- - Run "make test" again several times to try to see race conditions.
+(3) Test the source code
+
+   Run "make test" again several times to try to see race conditions.
+
    "cmake . -B/tmp/build/libwbxml"
    "cd /tmp/build/libwbxml"
    "make"
    "make test"
 
- - Check ChangeLog to be complete and add the new release name.
+(4) Update ChangeLog
 
- - Final steps with git:
-   git pull origin
-   git pull upstream master
+   Check ChangeLog to be complete and add the new release name.
+
+(5) Create a pull request for the new release
+
+   git pull
    git status
    git commit -a
    git push
-   git tag libwbxml-$MAJOR.$MINOR.$PATCH
-   git push origin libwbxml-$MAJOR.$MINOR.$PATCH
 
- - if someone else made changes and the push fails,
-   you have to "git pull" and run the tests again
+   Please create the pull request via the web GUI of GitHub.
 
- - please run "git status" before you continue to be 100 percent sure
-   that there is no forgotten commit and no unrevisioned file.
+(6) Merge the pull request.
 
- - Once the commit succeeds, you have to create a new release on GitHub.
-   Please create a pull request from your fork.
-   Please use the web GUI of Github and write some useful release notes. 
+   Please merge the pull request via the web GUI of GitHub.
+
+(7) Create a new release tag.
+
+   libwbxml-$MAJOR.$MINOR.$PATCH
+
+(8) Write the release notes
+
+   Please create a new release on GitHub and use the web GUI of Github. 
+   Please reflect about the ChangeLog and add think about to whom you
+   would like to say thank you.
+
+(9) Celebrate the release!
 
