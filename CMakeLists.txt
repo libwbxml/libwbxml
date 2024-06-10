@@ -93,22 +93,31 @@ MACRO_ENSURE_OUT_OF_SOURCE_BUILD("${CMAKE_PROJECT_NAME} doesn't allow to build w
 # zlib is not used
 # nsl is part of libc6
 
+# Expat support
 FIND_PACKAGE( Expat REQUIRED )
-FIND_PACKAGE( PkgConfig )
-IF(PKGCONFIG_FOUND)
-    PKG_CHECK_MODULES( CHECK check )
-ENDIF(PKGCONFIG_FOUND)
-FIND_PACKAGE( Iconv )
-
+IF( NOT EXPAT_FOUND )
+    # cmake introduced a bug in version 3.27
+    FIND_PACKAGE( PkgConfig )
+    IF(PKGCONFIG_FOUND)
+        PKG_CHECK_MODULES( EXPAT Expat )
+    ENDIF(PKGCONFIG_FOUND)
+ENDIF ( NOT EXPAT_FOUND )
 IF( EXPAT_FOUND )
     SET( HAVE_EXPAT 1 )
 ENDIF( EXPAT_FOUND )
 
+# Testing support
+FIND_PACKAGE( PkgConfig )
+IF(PKGCONFIG_FOUND)
+    PKG_CHECK_MODULES( CHECK check )
+ENDIF(PKGCONFIG_FOUND)
 IF(CHECK_FOUND)
 	OPTION( ENABLE_UNIT_TEST "enable unit tests" ON )
 	ENABLE_TESTING()
 ENDIF(CHECK_FOUND)
 
+# Character conversion support
+FIND_PACKAGE( Iconv )
 SET( WBXML_SUPPORT_ICONV OFF )
 IF( ICONV_FOUND )
     SET( HAVE_ICONV 1 )
