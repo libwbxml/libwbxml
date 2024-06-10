@@ -99,7 +99,7 @@ IF( NOT EXPAT_FOUND )
     # cmake introduced a bug in version 3.27
     FIND_PACKAGE( PkgConfig )
     IF(PKGCONFIG_FOUND)
-        PKG_CHECK_MODULES( EXPAT Expat )
+        PKG_CHECK_MODULES( EXPAT expat )
     ENDIF(PKGCONFIG_FOUND)
 ENDIF ( NOT EXPAT_FOUND )
 IF( EXPAT_FOUND )
