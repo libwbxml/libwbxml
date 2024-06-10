@@ -1,7 +1,4 @@
 
-# To debug issues with GitHub runner ubuntu
-SET(ENV{CTEST_OUTPUT_ON_FAILURE} 1)
-
 ENABLE_TESTING()
 CONFIGURE_FILE( "launchTests.sh" "${CMAKE_CURRENT_BINARY_DIR}/launchTests.sh")
 CONFIGURE_FILE( "normalize_xml.pl" "${CMAKE_CURRENT_BINARY_DIR}/normalize_xml.pl" @ONLY)
