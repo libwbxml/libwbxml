@@ -6,7 +6,6 @@ START_TEST (security_test_xml_build_result_null_params)
 {
     WBXMLEncoder *enc = NULL;
     WB_UTINY *xml = NULL;
-    WB_ULONG len = 0;
 
     enc = wbxml_encoder_create();
 

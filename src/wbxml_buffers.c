@@ -373,7 +373,7 @@ WBXML_DECLARE(WB_BOOL) wbxml_buffer_strip_blanks(WBXMLBuffer *buffer)
 
 WBXML_DECLARE(void) wbxml_buffer_no_spaces(WBXMLBuffer *buffer)
 {
-    WB_ULONG i = 0, j = 0, end = 0;
+    WB_ULONG i = 0;
     WB_UTINY ch = 0;
     
     if ((buffer == NULL) || buffer->is_static)
