@@ -53,7 +53,9 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_wbxml(WB_UTINY *wbxml,
                                                 WBXMLTree **tree)
 {
     WBXMLParser *wbxml_parser = NULL;
-    WB_LONG error_index = 0;
+#if defined( WBXML_LIB_VERBOSE )
+    WB_LONG error_index;
+#endif
     WBXMLTreeClbCtx wbxml_tree_clb_ctx;
     WBXMLError ret = WBXML_OK;
     WBXMLContentHandler wbxml_tree_content_handler = 
@@ -100,11 +102,13 @@ WBXML_DECLARE(WBXMLError) wbxml_tree_from_wbxml(WB_UTINY *wbxml,
     ret = wbxml_parser_parse(wbxml_parser, wbxml, wbxml_len);
     if ((ret != WBXML_OK) || (wbxml_tree_clb_ctx.error != WBXML_OK)) 
     {
+#if defined( WBXML_LIB_VERBOSE )
         error_index = wbxml_parser_get_current_byte_index(wbxml_parser);
         WBXML_ERROR((WBXML_PARSER, "WBXML Parser failed at %ld - token: %x (%s)", 
                                    error_index,
                                    wbxml[error_index],
                                    ret != WBXML_OK ? wbxml_errors_string(ret) : wbxml_errors_string(wbxml_tree_clb_ctx.error)));
+#endif
         
         wbxml_tree_destroy(wbxml_tree_clb_ctx.tree);
     }

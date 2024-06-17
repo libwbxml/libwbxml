@@ -2845,7 +2845,6 @@ static WBXMLError decode_wv_datetime(WBXMLBuffer **data)
               the_hour[3], the_minute[3], the_second[3],
               result[17];
     WB_ULONG the_value = 0;
-    WBXMLError ret = WBXML_OK;
   
     /** @todo Test decode_wv_datetime() ! */
   
@@ -2914,7 +2913,7 @@ static WBXMLError decode_wv_datetime(WBXMLBuffer **data)
 
     /* Set data */
     if (!wbxml_buffer_append_cstr(*data, result)) {
-        ret = WBXML_ERROR_NOT_ENOUGH_MEMORY;
+        return WBXML_ERROR_NOT_ENOUGH_MEMORY;
     }
   
     return WBXML_OK;
