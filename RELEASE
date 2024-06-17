@@ -39,7 +39,8 @@ To make a release of libwbxml, do the following:
 
    git pull
    git status
-   git commit -a
+   git diff
+   git commit -a -m "libwbxml v$MAJOR.$MINOR.$PATCH"
    git push
 
    Please create the pull request via the web GUI of GitHub.
@@ -47,6 +48,7 @@ To make a release of libwbxml, do the following:
 (6) Merge the pull request.
 
    Please merge the pull request via the web GUI of GitHub.
+   Please use "libwbxml v$MAJOR.$MINOR.$PATCH" as title and description.
 
 (7) Create a new tag.
 
