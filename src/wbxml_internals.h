@@ -126,7 +126,6 @@ typedef enum WBXMLWVDataType_e {
 #pragma warning(error: 4054) /**< 'conversion' : from function pointer 'type1' to data pointer 'type2' */
 #pragma warning(error: 4057) /**< 'operator' : 'identifier1' indirection to slightly different base types from 'identifier2' */
 #pragma warning(error: 4059) /**< pascal string too big, length byte is length % 256 */
-#pragma warning(error: 4061) /**< enumerate 'identifier' in switch of enum 'identifier' is not explicitly handled by a case label */
 #pragma warning(error: 4063) /**< case 'identifier' is not a valid value for switch of enum 'identifier' */
 #pragma warning(error: 4064) /**< switch of incomplete enum 'identifier' */
 #pragma warning(error: 4071) /**< 'function' : no function prototype given */

@@ -1,3 +1,6 @@
+  * Removed pragma 4061 from wbxml_internals.h which caused compiler
+    errors on win32 platform (issue #75).
+
 2024-06-17  Michael Bell <michael.bell@web.de>
   * Released 0.11.10
   * Removed a few unused variables which gcc reported during building
