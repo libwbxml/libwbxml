@@ -2,6 +2,7 @@
 # Standard header and include paths were already defined.
 
 include(CMakePackageConfigHelpers)
+include(GNUInstallDirs)
 
 configure_package_config_file(
     libwbxml2-config.cmake.in
