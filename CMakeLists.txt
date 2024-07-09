@@ -94,7 +94,7 @@ MACRO_ENSURE_OUT_OF_SOURCE_BUILD("${CMAKE_PROJECT_NAME} doesn't allow to build w
 # nsl is part of libc6
 
 # Expat support
-FIND_PACKAGE( Expat REQUIRED )
+FIND_PACKAGE( Expat )
 IF( NOT EXPAT_FOUND )
     # cmake introduced a bug in version 3.27
     FIND_PACKAGE( PkgConfig )
