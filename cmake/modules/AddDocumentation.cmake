@@ -10,9 +10,8 @@
 
 INCLUDE( Documentation )
 
-SET( SHARE_INSTALL_DIR    "${CMAKE_INSTALL_PREFIX}/share" CACHE INTERNAL "share location" )
-SET( DOC_MAN_INSTALL_DIR  "${SHARE_INSTALL_DIR}/man" CACHE INTERNAL "man page location" )
-SET( DOC_INSTALL_DIR      "${SHARE_INSTALL_DIR}/doc/${PROJECT_NAME}" CACHE INTERNAL "documentation location" )
+SET( DOC_MAN_INSTALL_DIR  "${CMAKE_INSTALL_MANDIR}" CACHE INTERNAL "man page location" )
+SET( DOC_INSTALL_DIR      "${CMAKE_INSTALL_DATAROOTDIR}/doc/${PROJECT_NAME}" CACHE INTERNAL "documentation location" )
 SET( DOC_TEXT_INSTALL_DIR "${DOC_INSTALL_DIR}" CACHE INTERNAL "text documentation location" )
 SET( DOC_HTML_INSTALL_DIR "${DOC_INSTALL_DIR}/html" CACHE INTERNAL "HTML documentation location" )
 
